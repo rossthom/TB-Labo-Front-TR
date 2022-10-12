@@ -1,0 +1,436 @@
+{
+    "coop_types": [
+        {
+            "id": 1,
+            "label": "Réseau Transition"
+        },
+        {
+            "id": 2,
+            "label": "Contrat de Rivière"
+        },
+        {
+            "id": 3,
+            "label": "GASAP"
+        },
+        {
+            "id": 4,
+            "label": "ASBL"
+        }
+    ],
+
+    "event_types": [
+        {
+            "id": 1,
+        "label": "Ramassage Déchets"
+        },
+        {
+            "id": 2,
+            "label": "Atelier"
+        },
+        {
+            "id": 3,
+            "label": "Aide Récolte"
+        },
+        {
+            "id": 4,
+            "label": "Ciné-Débat"
+        },
+        {
+            "id": 5,
+            "label": "Sortie Nature"
+        }
+    ],
+
+    "cooperatives": [
+        {
+            "id": 1,
+            "coop_type_id": 4,
+            "name": "Natagora",
+            "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
+            "address": {
+                "postal_code": 5002,
+                "city": "Namur",
+                "street_name": "Traverse des Muses",
+                "street_nb": "1"
+            },
+            "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png"
+        },
+        {
+            "id": 2,
+            "coop_type_id": 1,
+            "name": "Transition Ciney",
+            "description": "Réseau Transition de Ciney",
+            "address": {
+                "postal_code": 5590,
+                "city": "Ciney",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png"
+        },
+        {
+            "id": 3,
+            "coop_type_id": 1,
+            "name": "Transition Gesves",
+            "description": "Réseau Transition de Gesves",
+            "address": {
+                "postal_code": 5340,
+                "city": "Gesves",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png"
+        },
+        {
+            "id": 4,
+            "coop_type_id": 2,
+            "name": "Contrat Rivière Haute Meuse",
+            "description": "Le Contrat de rivière Haute-Meuse (CRHM) est une asbl qui est financée par le Service public de Wallonie, la Province de Namur, la Province du Hainaut et 27 communes partenaires. Son fonctionnement s’articule autour de 3 structures : le Comité de rivière, les Comités locaux de concertation et la Cellule de coordination.",
+            "address": {
+                "postal_code": 5000,
+                "city": "Namur",
+                "street_name": "Rue Henri Blès",
+                "street_nb": "190C"
+            },
+            "logo": "https://www.crhm.be/templates/frontend/images/base/crhm-logo-new.png"
+        },
+        {
+            "id": 5,
+            "coop_type_id": 2,
+            "name": "Contrat Rivière Meuse Aval",
+            "description": "Le Contrat de Rivière Meuse Aval et affluents est une ASBL (Association Sans But Lucratif).",
+            "address": {
+                "postal_code": 4520,
+                "city": "Wanze",
+                "street_name": "Place François Fagniel",
+                "street_nb": "8"
+            },
+            "logo": "https://lh5.googleusercontent.com/p/AF1QipO-sTa20VDzggIFhpruKKoh6xGmH_hmctR12wFk=s518-k-no"
+        },
+        {
+            "id": 6,
+            "coop_type_id": 3,
+            "name": "GASAP Jardin des Mycorhizes",
+            "description": "Groupe d'Achat Solidaire de l'Agriculture Paysanne - Jardin des Mycorhizes",
+            "address": {
+                "postal_code": 5340,
+                "city": "Haut-Bois",
+                "street_name": "Rue de Hamel",
+                "street_nb": "27"
+            },
+            "logo": "https://yt3.ggpht.com/ytc/AMLnZu_kSjmyvsKjLxNj4C3zxM1fOPSUOWNxg_nNJqDUDqA=s176-c-k-c0x00ffffff-no-rj"
+        }        
+    ],
+
+    "events": [
+        {
+            "id": 1,
+            "coop_id": 1,
+            "event_type_id": 4,
+            "name": "Sortie Ornithologie",
+            "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
+            "address": {
+                "lieu": "La Plante",
+                "postal_code": 5000,
+                "city": "Namur",
+                "street_name": "Rue Théodore Baron",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-05-22T09:00:00+02:00",
+            "datetime_end": "2023-05-22T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 20
+        },
+        {
+            "id": 2,
+            "coop_id": 1,
+            "event_type_id": 2,
+            "name": "Atelier de Conservation",
+            "description": "Conserver vos broccolis pour en avoir toute l'année, miam !",
+            "address": {
+                "lieu": "Mundo N",
+                "postal_code": 5002,
+                "city": "Namur",
+                "street_name": "Rue Nanon",
+                "street_nb": "98"
+            },
+            "datetime_start": "2023-01-12T17:00:00+02:00",
+            "datetime_end": "2023-01-12T19:00:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 10
+        },
+        {
+            "id": 3,
+            "coop_id": 1,
+            "event_type_id": 4,
+            "name": "La voiture électrique?",
+            "description": "Ciné-Débat sur les enjeux causés par la voiture électrique, animé par Aurore Stéphant",
+            "address": {
+                "lieu": "Delta",
+                "postal_code": 5000,
+                "city": "Namur",
+                "street_name": "Avenue Fernand Golenvaux",
+                "street_nb": "18"
+            },
+            "datetime_start": "2023-02-12T19:30:00+02:00",
+            "datetime_end": "2023-02-12T22:30:00+02:00",
+            "nb_people_min": -1,
+            "nb_people_max": 200
+        },
+        {
+            "id": 4,
+            "coop_id": 2,
+            "event_type_id": 1,
+            "name": "Ramassage Déchets",
+            "description": "Ramassage de déchets dans les rues de Ciney",
+            "address": {
+                "lieu": "",
+                "postal_code": 5590,
+                "city": "Ciney",
+                "street_name": "Allée des Abattoirs",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-05-22T09:00:00+02:00",
+            "datetime_end": "2023-05-22T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 15
+        },
+        {
+            "id": 5,
+            "coop_id": 2,
+            "event_type_id": 2,
+            "name": "Atelier Zéro Déchets",
+            "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à créer vos propres adruinos à partir de vieilles cartes graphiques !",
+            "address": {
+                "lieu": "",
+                "postal_code": 5590,
+                "city": "Ciney",
+                "street_name": "Allée des Artisans",
+                "street_nb": "19"
+            },
+            "datetime_start": "2023-01-15T17:00:00+02:00",
+            "datetime_end": "2023-01-15T19:00:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 15
+        },
+        {
+            "id": 6,
+            "coop_id": 3,
+            "event_type_id": 1,
+            "name": "Ramassage Déchets",
+            "description": "Ramassage de déchets aux alentours de Gesves",
+            "address": {
+                "lieu": "",
+                "postal_code": 5340,
+                "city": "Gesves",
+                "street_name": "Chaussée de Gramptinne",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-05-15T09:00:00+02:00",
+            "datetime_end": "2023-05-15T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 15
+        },
+        {
+            "id": 7,
+            "coop_id": 3,
+            "event_type_id": 2,
+            "name": "Atelier Zéro Déchets",
+            "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à fabriquer votre propre dentifrice !",
+            "address": {
+                "lieu": "Maison de la Laicité",
+                "postal_code": 5340,
+                "city": "Gesves",
+                "street_name": "Chaussée de Gramptinne",
+                "street_nb": "118"
+            },
+            "datetime_start": "2023-02-21T17:00:00+02:00",
+            "datetime_end": "2023-02-21T19:00:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 10
+        },
+        {
+            "id": 8,
+            "coop_id": 4,
+            "event_type_id": 1,
+            "name": "Nettoyage du Bocq",
+            "description": "Venez nous aider à nettoyer les rives du Bocq",
+            "address": {
+                "lieu": "Donjon de Crupet",
+                "postal_code": 5332,
+                "city": "Assesse",
+                "street_name": "Rue Basse",
+                "street_nb": "27"
+            },
+            "datetime_start": "2023-03-22T08:00:00+02:00",
+            "datetime_end": "2023-03-22T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 15
+        },
+        {
+            "id": 9,
+            "coop_id": 4,
+            "event_type_id": 5,
+            "name": "Sortie Nature à La Plante",
+            "description": "Découvrez les plantes invasives qui poussent sur les îles de La Plante",
+            "address": {
+                "lieu": "La Plante",
+                "postal_code": 5000,
+                "city": "Namur",
+                "street_name": "Rue Théodore Baron",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-06-08T08:00:00+02:00",
+            "datetime_end": "2023-06-08T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 20
+        },
+        {
+            "id": 10,
+            "coop_id": 5,
+            "event_type_id": 1,
+            "name": "Nettoyage des bords de Meuse à Huy",
+            "description": "Aidez-nous à nettoyer les rives de la Meuse à Huy",
+            "address": {
+                "lieu": "Port de la Neuve Voie",
+                "postal_code": 4500,
+                "city": "Huy",
+                "street_name": "Port de la Neuve voie",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-03-05T08:00:00+02:00",
+            "datetime_end": "2023-03-05T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 15
+        },
+        {
+            "id": 11,
+            "coop_id": 5,
+            "event_type_id": 5,
+            "name": "Sortie Nature à Liège",
+            "description": "Découvrez les plantes invasives qui poussent au bord de la Meuse à Liège",
+            "address": {
+                "lieu": "Lac de la Gravière Brock",
+                "postal_code": 4681,
+                "city": "Oupeye",
+                "street_name": "Rue Florent Leruth",
+                "street_nb": ""
+            },
+            "datetime_start": "2023-06-16T08:00:00+02:00",
+            "datetime_end": "2023-06-16T11:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 20
+        },
+        {
+            "id": 12,
+            "coop_id": 6,
+            "event_type_id": 3,
+            "name": "Aide Récolte",
+            "description": "Venez donner un coup de main pour la récolte de notre maraichère locale, buvette et panier de légumes gratuit !",
+            "address": {
+                "lieu": "",
+                "postal_code": 5340,
+                "city": "Haut-Bois",
+                "street_name": "Rue de Hamel",
+                "street_nb": "27"
+            },
+            "datetime_start": "2023-06-30T09:00:00+02:00",
+            "datetime_end": "2023-06-30T16:30:00+02:00",
+            "nb_people_min": 5,
+            "nb_people_max": 10
+        }
+    ],
+
+    "participants": [
+        {
+            "id": 1,
+            "first_name": "Dominique",
+            "last_name": "Lambert",
+            "email": "d.lambert@yoo.be",
+            "password": "abcde",
+            "birth_date": "1980-06-12",
+            "address": {
+                "postal_code": 5100,
+                "city": "Jambes",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        },
+        {
+            "id": 2,
+            "first_name": "Bart",
+            "last_name": "Noot",
+            "email": "bnoot@flaayoo.be",
+            "password": "fghij",
+            "birth_date": "1963-02-21",
+            "address": {
+                "postal_code": 5590,
+                "city": "Ciney",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        },
+        {
+            "id": 3,
+            "first_name": "Antoine",
+            "last_name": "Dupont",
+            "email": "a.dupont@telegraph.be",
+            "password": "klmno",
+            "birth_date": "1992-08-22",
+            "address": {
+                "postal_code": 5350,
+                "city": "Ohey",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        },
+        {
+            "id": 4,
+            "first_name": "Arlette",
+            "last_name": "Leclerq",
+            "email": "aleclerc3@techcrunch.be",
+            "password": "pqrst",
+            "birth_date": "1976-04-16",
+            "address": {
+                "postal_code": 5360,
+                "city": "Hamois",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        },
+        {
+            "id": 5,
+            "first_name": "Denis",
+            "last_name": "De Smet",
+            "email": "ddsmet@sfgate.be",
+            "password": "uvwsy",
+            "birth_date": "1989-10-23",
+            "address": {
+                "postal_code": 5101,
+                "city": "Erpent",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        },
+        {
+            "id": 6,
+            "first_name": "Rita",
+            "last_name": "Grindrod",
+            "email": "rgrindrod@yoo.be",
+            "password": "12345",
+            "birth_date": "1985-06-03",
+            "address": {
+                "postal_code": 4500,
+                "city": "Huy",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": []
+        }
+    ]
+}

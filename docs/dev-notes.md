@@ -10,13 +10,26 @@
 - link to github
 	- first commit
 	- create dev branch, commit
-		o create new feature branch
-		...
+
+# NOTES:
+json-server command:
+`json-server --watch .\json-server\data.json --port 3000`
+
 
 # TODO:
-o start developing Auth module (at least a fake-out)
+o Develop Cooperatives detail view
+o Develop Events detail view
 
-o change Sakai default theme
+o Develop Cooperative CRUD
+o Develop Events CRUD
+
+o Develop user detail view
+o Develop User CRUD
+o Manage User login
+o Manage user logout
+
+...
+o Develop Auth module (at least a fake-out)
 
 
 # Errors
