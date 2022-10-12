@@ -8,8 +8,8 @@
 - Change index.html title
 
 - link to github
-	o first commit
-	o create dev branch, commit
+	- first commit
+	- create dev branch, commit
 		o create new feature branch
 		...
 
