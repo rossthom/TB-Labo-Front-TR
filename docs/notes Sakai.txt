@@ -1,0 +1,56 @@
+# ANGULAR+SAKAI SKELETON CREATION:
+## 1.1 Clone Sakai project and add it to my repo
+- crreate GitLab repo
+- $ git clone https://github.com/primefaces/sakai-ng.git
+- delete .git folder
+- rename README.md to README-SAKAI.md
+- $ git init
+- $ git remote add origin <myrepo>
+- $ git pull origin main
+- $ git add .
+- $ git commit -m "Initial Commit"
+- $ git push -uf origin main
+
+## 1.2 Reroute Sakai Demo
+- open project with VSCode
+  // primeicons throws errors, so I execute with the flag --legacy-peer-deps
+- $ npm i --legacy-peer-deps
+  // At build-time, we can see vulnerability issues
+  // execute next command to solve them:
+  // doc: https://docs.npmjs.com/cli/v8/commands/npm-audit
+- $ npm audit fix --force
+
+## 1.3 Reroute sakai demo to URL/sakai
+- app-routing.module.ts:
+  - on 'AppLayoutComponent', set path to 'sakai'
+  - add 'sakai/' to 'landing' et 'auth' routes
+- app/layout/app.menu.component.ts:
+  - update all routerLinks by adding 'sakai/'
+- Top menu links
+  - Modify routerLink for 'layout-topbar-logo'
+  - Modify routerLink for 'layout-topbar-button' documentation
+- Actually, de-activate the whole sakai demo, it's not useful as I modify the 'layout' components for my core project.
+
+## 1.4 Skeleton creation for project
+- create 'projet' module
+  - $ ng g m projet --routing
+  - create a 'home' compo within 'projet/compos' 
+  - update module's routing by setting 'home' compoment to ''
+
+- Other resources folders
+  - create 'shared' folder containing folders for each type of angular resource (compos, services, pipes, models, ...)
+  - create folder 'src/assets/projet', with 'data' and 'images' folder
+  - create folder 'docs' and move this file there.
+
+## 1.5 Adapt Sakai Demo's layout to look like a project skeletton
+This means I can't access sakai demo anymore, I will need to have a separate project to see Sakai's demo...
+
+
+## Default theme
+// STILL NEEDS TO BE DONE !!!
+o change default theme to Vela-Green:
+    - !! do not hard-code it on index.html, or I won't have the ability to dynamically change the theme from the settings sidepanel.
+    - There is a better method, but I can't find it anywhere...
+
+## Create doc:
+o change README.md, describing how to use this skeleton.
