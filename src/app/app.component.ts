@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { GestcoopService } from './gest-coop/services/gestcoop.service';
 import { LayoutService } from './layout/service/app.layout.service';
 @Component({
     selector: 'app-root',
@@ -9,7 +10,8 @@ export class AppComponent {
 
     constructor(
         private primengConfig: PrimeNGConfig,
-        private layoutService: LayoutService
+        private layoutService: LayoutService,
+        private gestcoopService: GestcoopService
     ) { }
 
     ngOnInit() {
@@ -25,6 +27,5 @@ export class AppComponent {
             theme: 'saga-green',                //default component theme for PrimeNG
             scale: 14                           //size of the body font size to scale the whole application
         };
-        
     }
 }

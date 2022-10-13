@@ -21,6 +21,13 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
+                label: 'Gest. Coop',
+                items: [
+                    { label: 'Coops', icon: 'pi pi-fw pi-id-card', routerLink: ['/gest-coop'] },
+                    //...
+                ]
+            },
+            {
                 label: 'DUMMY',
                 items: [
                     { label: 'DUMMY', icon: 'pi pi-fw pi-id-card', routerLink: ['/'] },

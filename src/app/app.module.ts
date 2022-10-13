@@ -9,16 +9,22 @@ import { AppLayoutModule } from './layout/app.layout.module';
 
 // Project
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { GestCoopModule } from './gest-coop/gest-coop.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        NotfoundComponent
+        NotfoundComponent,
     ],
     imports: [
         AppRoutingModule,
-        AppLayoutModule
+        AppLayoutModule,
+        HttpClientModule,
+        FormsModule,
+        GestCoopModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -1,0 +1,44 @@
+<h1>DEBUG INFOS</h1>
+<h2>Types de Coopératives</h2>
+<ul>
+    <li *ngFor="let coopType of coopTypes">
+        {{ coopType.id }}: {{ coopType.label }}
+    </li>
+</ul>
+
+<h2>Types d'Evènements</h2>
+<ul>
+    <li *ngFor="let eventType of eventTypes">
+        {{ eventType.id }}: {{ eventType.label }}
+    </li>
+</ul>
+
+<h2>Liste Coops</h2>
+<button (click)="getAllCoops()">Get Coops</button>
+<ul>
+    <li *ngFor="let coop of cooperatives">
+        {{ coop.id }}: {{ coop.name }} - {{ coop.coop_type_label }}
+    </li>
+</ul>
+
+<h2>Liste Evènements</h2>
+<button (click)="getAllEvents()">Get Evènements</button>
+<ul>
+    <li *ngFor="let event of events">
+        {{ event.id }}: {{ event.name }} - {{ event.event_type_label }}
+    </li>
+</ul>
+
+<h2>TestGps</h2>
+<button (click)="testGetGpsPos()">Test GPS</button>
+<p>
+    <b>Exemple:</b> Traverse des Muses, 1 5002 Namur
+    <br />
+    <b>Résultat souhaité:</b> lat: 50.4731373 ; lon: 4.8629776
+</p>
+<p 
+    class="surface-800 text-orange-500" 
+    style="font-family: monospace; padding: 5px; white-space: pre-line"
+>
+    {{ testGps | json }}
+</p>

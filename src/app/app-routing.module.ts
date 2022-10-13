@@ -8,6 +8,7 @@ const routes: Routes = [
         path: '', component: AppLayoutComponent,
         children: [
             { path: '', loadChildren: () => import('./projet/projet.module').then(m => m.ProjetModule) },
+            { path: 'gest-coop', /*TODO: Add Guard !*/ loadChildren: () => import('./gest-coop/gest-coop.module').then(m => m.GestCoopModule) },
             
 
             // Routing 404
