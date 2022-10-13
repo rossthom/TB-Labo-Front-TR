@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Address, Category } from './models/types.model';
+import { Category } from './models/types.model';
 import { ICooperative } from './models/coop.model';
 import { IEvent } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
-import { NominatimService } from './services/nominatim.service';
 
 @Component({
   selector: 'app-gest-coop',
@@ -18,7 +17,7 @@ export class GestCoopComponent implements OnInit {
 
   cooperatives: ICooperative[] = []
   //coopList: string[] = []
-  selectedCoop!: ICooperative
+  selectedCoop!: ICooperative // TODO: warning, selectedCoop not initialized
 
   events: IEvent[] = []
 
@@ -27,15 +26,11 @@ export class GestCoopComponent implements OnInit {
 
   constructor(
     private gestCoopService: GestcoopService,
-    private nominatimService: NominatimService  // TODO: for test purpose only, should not be directly called here.
   ) {
    }
 
 
   ngOnInit(): void {
-    //console.log('GestCoopComponent ngOnInit()')
-    //console.log(this.coopTypes)
-    //console.log(this.eventTypes)
     this.gestCoopService.getCoopTypes().subscribe({
       next : (res : Category[]) => {
         this.coopTypes = res
@@ -51,17 +46,10 @@ export class GestCoopComponent implements OnInit {
 
 
   // Fetch all Cooperatives
-  /*
-  getCoopNamesList(){
-    this.coopList = this.gestCoopService.getCoopNamesList()
-  }
-  */
   getAllCoops() {
     this.gestCoopService.getAllCoops().subscribe({
       next : (res : ICooperative[]) => {
-        //console.log(res)
         this.cooperatives = res
-        //console.log(this.cooperatives)
       }
     })
   }
@@ -69,9 +57,7 @@ export class GestCoopComponent implements OnInit {
   getOneCoop(id: number) {
     this.gestCoopService.getOneCoop(id).subscribe({
       next : (res : ICooperative) => {
-        //console.log(res)
         this.selectedCoop = res
-        //console.log(this.selectedCoop)
       }
     })
   }
@@ -79,28 +65,9 @@ export class GestCoopComponent implements OnInit {
   getAllEvents(){
     this.gestCoopService.getAllEvents().subscribe({
       next : (res : IEvent[]) => {
-        //console.log(res)
         this.events = res
         console.log(this.events)
       }
     })
   }
-
-  
-  // TODO: to delete, only for test
-  testGetGpsPos(){
-    let addr = <Address>{
-      postal_code: 5002,
-      city: "Namur",
-      street_name: "Traverse des Muses",
-      street_nb: "1"
-    }
-
-    this.nominatimService.getAddressGpsLongLat(addr).subscribe({
-      next : (res : any) => {
-        console.log(res)
-        this.testGps = res
-      }
-    })
-  } 
 }
