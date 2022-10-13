@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { IAddress } from '../models/address.model';
+import { Address } from '../models/types.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class NominatimService {
     private httpC : HttpClient
   ) { }
 
-  private _generateNominatimQueryFrom(address: IAddress): string {
+  private _generateNominatimQueryFrom(address: Address): string {
     let query: string = ""
 
     query += "postalcode=" + address.postal_code
@@ -25,7 +25,7 @@ export class NominatimService {
     return query
   }
 
-  getAddressGpsLongLat(address: IAddress){
+  getAddressGpsLongLat(address: Address){
     return this.httpC.get<any>(this._apiUrl + this._generateNominatimQueryFrom(address))
   }
 }

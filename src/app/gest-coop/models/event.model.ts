@@ -1,4 +1,4 @@
-import { IAddress } from "./address.model"
+import { Address, GpsPosition } from "./types.model"
 
 export interface IEvent {
     // Raw data
@@ -8,7 +8,7 @@ export interface IEvent {
     name: string
     description: string
     lieu: string
-    address: IAddress
+    address: Address
     datetime_start: Date
     datetime_end: Date
     nb_people_min: number
@@ -16,4 +16,7 @@ export interface IEvent {
     
     // Merged data
     event_type_label: string
+    
+    // From 3rd Party API
+    gps: GpsPosition
 }

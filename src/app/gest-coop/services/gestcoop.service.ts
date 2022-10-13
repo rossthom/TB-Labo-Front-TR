@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Category } from '../models/category.model';
 import { ICooperative } from '../models/coop.model';
 import { IEvent } from '../models/event.model';
+import { Category } from '../models/types.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,7 +75,7 @@ export class GestcoopService {
     return this.httpC.get<Category[]>(this._apiUrl+"event_types")
   }
 
-  
+
   getAllCoops(): Observable<ICooperative[]>{
     return this.httpC.get<ICooperative[]>(this._apiUrl+"cooperatives").pipe(
       // For each Cooperative, I want to get: ...
@@ -108,5 +108,4 @@ export class GestcoopService {
       // ...
     )
   }
-
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAddress } from './models/address.model';
-import { Category } from './models/category.model';
+import { Address, Category } from './models/types.model';
 import { ICooperative } from './models/coop.model';
 import { IEvent } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
@@ -71,7 +70,7 @@ export class GestCoopComponent implements OnInit {
   
   // TODO: to delete, only for test
   testGetGpsPos(){
-    let addr = <IAddress>{
+    let addr = <Address>{
       postal_code: 5002,
       city: "Namur",
       street_name: "Traverse des Muses",

@@ -1,4 +1,4 @@
-import { IAddress } from "./address.model"
+import { Address, GpsPosition } from "./types.model"
 import { IEvent } from "./event.model"
 
 export interface ICooperative {
@@ -7,7 +7,7 @@ export interface ICooperative {
     coop_type_id: number
     name: string
     description: string
-    address: IAddress
+    address: Address
     logo: string
     
     // Merged data
@@ -15,8 +15,5 @@ export interface ICooperative {
     /*events: IEvent[]*/
     
     // From 3rd Party API
-    gps: {
-        x: number
-        y: number
-    }
+    gps: GpsPosition
 }
