@@ -26,6 +26,8 @@ export class NominatimService {
   }
 
   getAddressGpsLongLat(address: Address){
+    console.log('coucou from nominatimService')
+
     return this.httpC.get<any>(this._apiUrl + this._generateNominatimQueryFrom(address))
   }
 }
