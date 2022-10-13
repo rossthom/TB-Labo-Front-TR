@@ -1,4 +1,58 @@
-# INIT: 
+# NOTES:
+json-server start command:
+`json-server --watch .\json-server\data.json --port 3000`
+
+
+# TODO:
+o Start GestCoop module
+	- Develop Cooperatives detail view
+	- Develop Events detail view
+	o Develop Cooperative CRUD
+	o Develop Events CRUD
+o Create Coop & Events CRUD compos
+o Create Coop & Events views compos 
+o Manage Coop. login
+	o Guard on Coop Gest. routes
+
+o Develop user detail view
+o Develop User CRUD
+o Manage User login
+o Manage user logout
+
+
+# ARCHITECTURE
+- module gestCoop
+	- services
+		- gestCoopService
+			- get CoopTypes
+			- CRUD Coop
+		- gestEventService
+			- get EventTypes
+			- CRUD Events
+		- nominatimService
+			- get data from address
+	- models
+		- Coop
+		- Events
+	- compos
+		- ...
+
+- in app-modules:
+	- services
+		- usersService
+			- CRUD users
+	- home: 
+		- connect as coop
+			- unlock gest coop routes
+		- connect as user
+
+
+# ERRORS
+## Auth module (on sandbox project)
+Can't bind to 'formGroup' since it isn't a known property of 'form'
+
+
+# PROJECT INIT: 
 - Start new project with sakai skeleton
 - move Sakai demo to documentation
 	- build project
@@ -10,52 +64,6 @@
 - link to github
 	- first commit
 	- create dev branch, commit
-
-# NOTES:
-json-server command:
-`json-server --watch .\json-server\data.json --port 3000`
-
-
-# ARCHITECTURE
-- module gestCoop
-	services/gestCoopService
-		- CRUD Coop
-		- CRUD Events
-		- CRUD CoopTypes
-		- CRUD EventTypes
-	models/
-		- Coop
-		- Events
-	compos/
-		- ...
-
-- in app-modules:
-	- gest users.
-	- home: 
-		- connect as coop
-			- unlock gest coop routes
-		- connect as user
-
-
-# TODO:
-o Start GestCoop module
-	o Develop Cooperatives detail view
-	o Develop Events detail view
-	o Develop Cooperative CRUD
-	o Develop Events CRUD
-o Manage Coop. login
-	o Guard on Coop Gest. routes
-
-o Develop user detail view
-o Develop User CRUD
-o Manage User login
-o Manage user logout
-
-
-# Errors
-## Auth module (on sandbox project)
-Can't bind to 'formGroup' since it isn't a known property of 'form'
-
 
 ======================================================
 
