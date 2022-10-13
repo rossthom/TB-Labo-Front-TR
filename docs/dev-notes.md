@@ -6,7 +6,7 @@ json-server start command:
 # WHAT NOW ?
 - CRUD Coopératives:
 	- faire un compo de creation / update coop
-	- JSON vide pour coops et events
+	o JSON vide pour coops et events
 
 
 # TODO GUIDELINE
