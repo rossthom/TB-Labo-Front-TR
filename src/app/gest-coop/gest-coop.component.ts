@@ -3,6 +3,7 @@ import { Category } from './models/types.model';
 import { ICooperative } from './models/coop.model';
 import { IEvent } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
+import { GesteventService } from './services/gestevent.service';
 
 @Component({
   selector: 'app-gest-coop',
@@ -26,6 +27,7 @@ export class GestCoopComponent implements OnInit {
 
   constructor(
     private gestCoopService: GestcoopService,
+    private gestEventService: GesteventService
   ) {
    }
 
@@ -63,7 +65,7 @@ export class GestCoopComponent implements OnInit {
   }
 
   getAllEvents(){
-    this.gestCoopService.getAllEvents().subscribe({
+    this.gestEventService.getAllEvents().subscribe({
       next : (res : IEvent[]) => {
         this.events = res
         console.log(this.events)
