@@ -1,57 +1,62 @@
-<h1>Gestion coopératives</h1>
+<h1>GESTION COOPERATIVES</h1>
 
-<div class="card p-fluid">
-    <span class="pr-2 pb-1" style="border-radius: 2px; background-color: 'var(--yellow-100)';">
-        <p-tag styleClass="mr-2" severity="warning" value="Warning"></p-tag>
-        Cette page ne devra afficher qu'une seule Coop, cette liste disparaitra.
-    </span>
-    <h2>Liste des coopératives</h2>
-    <p-dropdown 
-        [options]="listCoops" optionLabel="name" optionValue="id"
-        [(ngModel)]="coopId" 
-        placeholder="Choisissez une coopérative" 
-        [showClear]="true"
-        (onChange)="getOneCoop(coopId)"
-    >
-    </p-dropdown>
-</div>
+<div class="grid">
+    <div class="col-12">
 
-<div *ngIf="selectedCoop" class="card p-fluid">
-    <h2>Détail Coopérative</h2>
-    <div class="grid">
-        <div class="col-2">
-            <img src="{{ selectedCoop.logo }}" width="70%">
+        <div class="card p-fluid">
+            <span class="pr-2 pb-1" style="border-radius: 2px; background-color: 'var(--yellow-100)';">
+                <p-tag styleClass="mr-2" severity="warning" value="Warning"></p-tag>
+                Cette page ne devra afficher qu'une seule Coop, cette liste disparaitra.
+            </span>
+            <h2>Liste des coopératives</h2>
+            <p-dropdown 
+                [options]="listCoops" optionLabel="name" optionValue="id"
+                [(ngModel)]="coopId" 
+                placeholder="Choisissez une coopérative" 
+                [showClear]="true"
+                (onChange)="getOneCoop(coopId)"
+            >
+            </p-dropdown>
         </div>
-        <div class="col">
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Nom</th>
-                        <td>{{ selectedCoop.name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Type</th>
-                        <td>{{ selectedCoop.coop_type.label }} ({{ selectedCoop.coop_type.id }})</td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td>{{ selectedCoop.description }}</td>
-                    </tr>
-                    <tr>
-                        <th>Addresse</th>
-                        <td>
-                            <span *ngIf="selectedCoop.address.street_name">
-                                {{ selectedCoop.address.street_name }}
-                                <span *ngIf="selectedCoop.address.street_nb">, {{selectedCoop.address.street_nb }}</span>
-                                <br />
-                            </span>
-                            {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
-                            <br />
-                            lon: {{ selectedCoop.gps.lon }} ; lat: {{ selectedCoop.gps.lat }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        
+        <div *ngIf="selectedCoop" class="card p-fluid">
+            <h2>Détail Coopérative</h2>
+            <div class="grid">
+                <div class="col-2">
+                    <img src="{{ selectedCoop.logo }}" width="70%">
+                </div>
+                <div class="col">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Nom</th>
+                                <td>{{ selectedCoop.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Type</th>
+                                <td>{{ selectedCoop.coop_type.label }} ({{ selectedCoop.coop_type.id }})</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ selectedCoop.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Addresse</th>
+                                <td>
+                                    <span *ngIf="selectedCoop.address.street_name">
+                                        {{ selectedCoop.address.street_name }}
+                                        <span *ngIf="selectedCoop.address.street_nb">, {{selectedCoop.address.street_nb }}</span>
+                                        <br />
+                                    </span>
+                                    {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
+                                    <br />
+                                    lon: {{ selectedCoop.gps.lon }} ; lat: {{ selectedCoop.gps.lat }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>            
     </div>
 </div>
