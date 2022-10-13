@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { ButtonModule } from 'primeng/button';
 
-// Project
+// Application
 import { AppRoutingModule } from './app-routing.module';
 import { GestCoopModule } from './gest-coop/gest-coop.module';
 import { AppComponent } from './app.component';

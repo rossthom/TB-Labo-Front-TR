@@ -1,10 +1,14 @@
+// Angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// PrimeNG Sakai
+import { ButtonModule } from 'primeng/button';
+
+// Application
 import { ProjetRoutingModule } from './projet-routing.module';
 import { HomeComponent } from './compos/home/home.component';
 import { TestboardComponent } from './compos/testboard/testboard.component';
-import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -13,9 +17,12 @@ import { ButtonModule } from 'primeng/button';
     TestboardComponent
   ],
   imports: [
+    // Angular
     CommonModule,
-    ProjetRoutingModule,
+    // PrimeNG
     ButtonModule,
+    // Application
+    ProjetRoutingModule,
   ]
 })
 export class ProjetModule { }
