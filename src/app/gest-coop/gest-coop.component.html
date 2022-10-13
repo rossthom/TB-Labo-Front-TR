@@ -109,9 +109,9 @@
                     <tr>
                         <th>Du ...<br />Au ...</th>
                         <td>
-                            {{ selectedEvent.datetime_start | date }}
+                            {{ selectedEvent.datetime_start | date:'YYYY/MM/dd H:mm' }}
                             <br />
-                            {{ selectedEvent.datetime_end }}
+                            {{ selectedEvent.datetime_end | date:'YYYY/MM/dd H:mm' }}
                         </td>
                     </tr>
                     <tr>
