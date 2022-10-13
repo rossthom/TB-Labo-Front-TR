@@ -17,20 +17,14 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items: [
-                    { label: 'Home page', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Home page', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+                    { label: 'Test Board', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/test'] },
                 ]
             },
             {
                 label: 'Gest. Coop',
                 items: [
                     { label: 'Coops', icon: 'pi pi-fw pi-id-card', routerLink: ['/gest-coop'] },
-                    //...
-                ]
-            },
-            {
-                label: 'DUMMY',
-                items: [
-                    { label: 'DUMMY', icon: 'pi pi-fw pi-id-card', routerLink: ['/'] },
                     //...
                 ]
             },

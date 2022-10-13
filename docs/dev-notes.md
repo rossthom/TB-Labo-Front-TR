@@ -5,16 +5,16 @@ json-server start command:
 
 # WHAT NOW ?
 - CRUD Coopératives:
-	- créer compo projet/compos/tests
-		- router + sidebar
-		- y mettre tout ce que j'y ai mis dans gest-coop (.ts & .html)
-		- test que ça marche
+	o créer compo projet/compos/tests
+		o router + sidebar
+		o y mettre tout ce que j'y ai mis dans gest-coop (.ts & .html)
+		o test que ça marche
 	
 	- home page: 
-		- créer un bouton de lien vers la page test
-		- créer 2 fake boutons:
-			- 'login as coop'	> TODO: mènera à la page de login coop (à créer plus tard)
-			- 'login as user'	> TODO: mènera à la page login user (à créer plus tard)
+		o créer un bouton de lien vers la page test
+		o créer 2 fake boutons:
+			o 'login as coop'	> TODO: mènera à la page de login coop (à créer plus tard)
+			o 'login as user'	> TODO: mènera à la page login user (à créer plus tard)
 	
 	- JSON vide pour coops et events
 	- utiliser gest-coop pour admin d'une seule coop 

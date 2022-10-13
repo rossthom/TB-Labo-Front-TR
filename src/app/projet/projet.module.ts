@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { ProjetRoutingModule } from './projet-routing.module';
 import { HomeComponent } from './compos/home/home.component';
+import { TestboardComponent } from './compos/testboard/testboard.component';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    TestboardComponent
   ],
   imports: [
     CommonModule,
-    ProjetRoutingModule
+    ProjetRoutingModule,
+    ButtonModule,
   ]
 })
 export class ProjetModule { }
