@@ -2,7 +2,6 @@
 
 <div class="grid">
     <div class="col-12">
-
         <div class="card p-fluid">
             <span class="pr-2 pb-1" style="border-radius: 2px; background-color: 'var(--yellow-100)';">
                 <p-tag styleClass="mr-2" severity="warning" value="Warning"></p-tag>
@@ -57,6 +56,84 @@
                     </table>
                 </div>
             </div>
-        </div>            
+            <hr />
+
+            <div *ngIf="coopEvents">
+                <div class="grid">
+                    <div class="col-4">
+                        <h3>Evènements</h3>
+                        <table>
+                            <tbody>
+                                <tr *ngFor="let event of coopEvents">
+                                    <td>
+                                        <b><em>{{ event.event_type.label }}:</em></b> {{ event.name }}<span *ngIf="event.location != ''"> ({{ event.location }})</span>
+                                    </td>
+                                    <td>
+                                        <button pButton pRipple 
+                                            label="Détail"
+                                            type="button" 
+                                            class="p-button-outlined p-button-sm p-button-primary mr-2 mb-2" 
+                                            (click)="getOneEvent(event.id)"
+                                        ></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <div *ngIf="selectedEvent != null && selectedEvent != undefined">
+                            <h2>Détail Evènement</h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <td>{{ selectedEvent.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Type</th>
+                                        <td>{{ selectedEvent.event_type.label }} ({{ selectedEvent.event_type.id }})</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Du ...<br />Au ...</th>
+                                        <td>
+                                            {{ selectedEvent.datetime_start | date:'YYYY/MM/dd H:mm' }}
+                                            <br />
+                                            {{ selectedEvent.datetime_end | date:'YYYY/MM/dd H:mm' }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nb personnes min - max</th>
+                                        <td>
+                                            {{ selectedEvent.nb_people_min }} - {{ selectedEvent.nb_people_max }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Description</th>
+                                        <td>{{ selectedEvent.description }}</td>
+                                    </tr>
+                                    <tr *ngIf="selectedEvent.location != ''">
+                                        <th>Lieu</th>
+                                        <td>{{ selectedEvent.location }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Addresse</th>
+                                        <td>
+                                            <span *ngIf="selectedEvent.address.street_name">
+                                                {{ selectedEvent.address.street_name }}
+                                                <span *ngIf="selectedEvent.address.street_nb">, {{selectedEvent.address.street_nb }}</span>
+                                                <br />
+                                            </span>
+                                            {{ selectedEvent.address.postal_code }} {{ selectedEvent.address.city }}
+                                            <br />
+                                            lon: {{ selectedEvent.gps.lon }} ; lat: {{ selectedEvent.gps.lat }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

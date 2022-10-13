@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICooperative } from './models/coop.model';
+import { IEvent } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
+import { GesteventService } from './services/gestevent.service';
 
 
 @Component({
@@ -10,11 +12,14 @@ import { GestcoopService } from './services/gestcoop.service';
 })
 export class GestCoopComponent implements OnInit {
   coopId: number = 0
-  listCoops!: ICooperative[]
-  selectedCoop!: ICooperative
-  
+  listCoops!: ICooperative[]    // TODO: attribut listCoops non initialisé !
+  selectedCoop!: ICooperative   // TODO: attribut selectedCoop non initialisé !
+  coopEvents!: IEvent[]         // TODO: attribut coopEvents non initialisé !
+  selectedEvent!: IEvent        // TODO: attribut selectedEvent non initialisé !
+
   constructor(
-    private gestCoopService: GestcoopService
+    private gestCoopService: GestcoopService,
+    private gestEventService: GesteventService
   ) {
   }
 
@@ -33,6 +38,22 @@ export class GestCoopComponent implements OnInit {
           this.selectedCoop = res
         }
       })
+
+      this.gestEventService.getAllEventsFromCoop(id).subscribe({
+        next : (res : IEvent[]) => {
+          this.coopEvents = res
+        }
+      })
     }
+  }
+
+  getOneEvent(eventId: number){
+    console.log('coucou')
+    this.gestEventService.getOneEvent(eventId).subscribe({
+      next : (res : IEvent) => {
+        this.selectedEvent = res
+        //console.log(this.selectedEvent)
+      }
+    })
   }
 }

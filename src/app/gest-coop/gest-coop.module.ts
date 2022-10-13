@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG Sakai
+import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
 
@@ -21,6 +22,7 @@ import { GestCoopComponent } from './gest-coop.component';
     CommonModule,
     FormsModule,
     // PrimeNG
+    ButtonModule,
     DropdownModule,
     TagModule,
 

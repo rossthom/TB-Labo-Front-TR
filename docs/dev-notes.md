@@ -4,14 +4,24 @@ json-server start command:
 
 
 # WHAT NOW ?
+- ❓ Demander à Loic: création d'une coop avec mot de passe ?
+	- si oui, mot de passe en clair dans le JSON ?
+
 - CRU Coopératives:
-	- faire un compo de creation / update coop
+	- voir page Sakai CRUD
+		- voir comment faire une page de modification pour les coop, comme l'exemple sakai (avec popup)
+		- développer UPDATE Coop'
+	- Vue Coop:
+		- Bouton détail affiche détail d'un event en popup ?
+	- voir comment CREER et UPDATE evenement (pas Delete)
+	- Développer page CREER Coop
 	o JSON vide pour coops et events
 
+- Développer Connection Cooperative
 
 # TODO GUIDELINE
 o Start GestCoop module
-	- Develop Cooperatives detail view
+	o Develop Cooperatives detail view
 	- Develop Events detail view
 	o Develop Cooperative CRUD
 	o Develop Events CRUD
