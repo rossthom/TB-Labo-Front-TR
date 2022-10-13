@@ -15,7 +15,11 @@ export class GestCoopComponent implements OnInit {
   coopTypes: Category[] = []
   eventTypes: Category[] = []
 
+
   cooperatives: ICooperative[] = []
+  //coopList: string[] = []
+  selectedCoop!: ICooperative
+
   events: IEvent[] = []
 
   testGps: any = {}
@@ -47,12 +51,27 @@ export class GestCoopComponent implements OnInit {
 
 
   // Fetch all Cooperatives
-  getAllCoops(){
+  /*
+  getCoopNamesList(){
+    this.coopList = this.gestCoopService.getCoopNamesList()
+  }
+  */
+  getAllCoops() {
     this.gestCoopService.getAllCoops().subscribe({
       next : (res : ICooperative[]) => {
         //console.log(res)
         this.cooperatives = res
-        console.log(this.cooperatives)
+        //console.log(this.cooperatives)
+      }
+    })
+  }
+
+  getOneCoop(id: number) {
+    this.gestCoopService.getOneCoop(id).subscribe({
+      next : (res : ICooperative) => {
+        //console.log(res)
+        this.selectedCoop = res
+        //console.log(this.selectedCoop)
       }
     })
   }

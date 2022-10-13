@@ -12,6 +12,6 @@ export type Address = {
 }
 
 export type GpsPosition = {
-    long: number
+    lon: number
     lat: number
 }

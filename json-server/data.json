@@ -44,7 +44,7 @@
     "cooperatives": [
         {
             "id": 1,
-            "coop_type_id": 4,
+            "coop_typeId": 4,
             "name": "Natagora",
             "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
             "address": {
@@ -53,11 +53,15 @@
                 "street_name": "Traverse des Muses",
                 "street_nb": "1"
             },
-            "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png"
+            "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png",
+            "gps": {
+                "lon": 	4.8629776,
+                "lat": 	50.4731373
+            }
         },
         {
             "id": 2,
-            "coop_type_id": 1,
+            "coop_typeId": 1,
             "name": "Transition Ciney",
             "description": "Réseau Transition de Ciney",
             "address": {
@@ -66,11 +70,15 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png"
+            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
+            "gps": {
+                "lon": 	5.091454,
+                "lat": 	50.2913832
+            }
         },
         {
             "id": 3,
-            "coop_type_id": 1,
+            "coop_typeId": 1,
             "name": "Transition Gesves",
             "description": "Réseau Transition de Gesves",
             "address": {
@@ -79,11 +87,15 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png"
+            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
+            "gps": {
+                "lon": 	5.0738031,
+                "lat": 	50.4024718
+            }	
         },
         {
             "id": 4,
-            "coop_type_id": 2,
+            "coop_typeId": 2,
             "name": "Contrat Rivière Haute Meuse",
             "description": "Le Contrat de rivière Haute-Meuse (CRHM) est une asbl qui est financée par le Service public de Wallonie, la Province de Namur, la Province du Hainaut et 27 communes partenaires. Son fonctionnement s’articule autour de 3 structures : le Comité de rivière, les Comités locaux de concertation et la Cellule de coordination.",
             "address": {
@@ -92,24 +104,32 @@
                 "street_name": "Rue Henri Blès",
                 "street_nb": "190C"
             },
-            "logo": "https://www.crhm.be/templates/frontend/images/base/crhm-logo-new.png"
+            "logo": "https://www.crhm.be/templates/frontend/images/base/crhm-logo-new.png",
+            "gps": {
+                "lon": 	4.835776762,
+                "lat": 	50.4638439
+            }	
         },
         {
             "id": 5,
-            "coop_type_id": 2,
+            "coop_typeId": 2,
             "name": "Contrat Rivière Meuse Aval",
             "description": "Le Contrat de Rivière Meuse Aval et affluents est une ASBL (Association Sans But Lucratif).",
             "address": {
                 "postal_code": 4520,
                 "city": "Wanze",
-                "street_name": "Place François Fagniel",
+                "street_name": "Place François Faniel",
                 "street_nb": "8"
             },
-            "logo": "https://lh5.googleusercontent.com/p/AF1QipO-sTa20VDzggIFhpruKKoh6xGmH_hmctR12wFk=s518-k-no"
+            "logo": "https://www.wanze.be/annuaire/contrat-de-riviere-meuse-aval-et-affluents/@@images/2cb31ef4-5915-4ed9-9b73-c91c5e5b100b.jpeg",
+            "gps": {
+                "lon": 	5.21433094,
+                "lat": 	50.53574415
+            }	
         },
         {
             "id": 6,
-            "coop_type_id": 3,
+            "coop_typeId": 3,
             "name": "GASAP Jardin des Mycorhizes",
             "description": "Groupe d'Achat Solidaire de l'Agriculture Paysanne - Jardin des Mycorhizes",
             "address": {
@@ -118,7 +138,11 @@
                 "street_name": "Rue de Hamel",
                 "street_nb": "27"
             },
-            "logo": "https://yt3.ggpht.com/ytc/AMLnZu_kSjmyvsKjLxNj4C3zxM1fOPSUOWNxg_nNJqDUDqA=s176-c-k-c0x00ffffff-no-rj"
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Mycorrhizal_root_tips_%28amanita%29.jpg/370px-Mycorrhizal_root_tips_%28amanita%29.jpg",
+            "gps": {
+                "lon": 	5.074436332,
+                "lat": 	50.4281824
+            }	
         }        
     ],
 
@@ -126,7 +150,7 @@
         {
             "id": 1,
             "coop_id": 1,
-            "event_type_id": 4,
+            "event_typeId": 4,
             "name": "Sortie Ornithologie",
             "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
             "lieu": "La Plante",
@@ -144,7 +168,7 @@
         {
             "id": 2,
             "coop_id": 1,
-            "event_type_id": 2,
+            "event_typeId": 2,
             "name": "Atelier de Conservation",
             "description": "Conserver vos broccolis pour en avoir toute l'année, miam !",
             "lieu": "Mundo N",
@@ -162,7 +186,7 @@
         {
             "id": 3,
             "coop_id": 1,
-            "event_type_id": 4,
+            "event_typeId": 4,
             "name": "La voiture électrique?",
             "description": "Ciné-Débat sur les enjeux causés par la voiture électrique, animé par Aurore Stéphant",
             "lieu": "Delta",
@@ -180,7 +204,7 @@
         {
             "id": 4,
             "coop_id": 2,
-            "event_type_id": 1,
+            "event_typeId": 1,
             "name": "Ramassage Déchets",
             "description": "Ramassage de déchets dans les rues de Ciney",
             "lieu": "",
@@ -198,7 +222,7 @@
         {
             "id": 5,
             "coop_id": 2,
-            "event_type_id": 2,
+            "event_typeId": 2,
             "name": "Atelier Zéro Déchets",
             "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à créer vos propres adruinos à partir de vieilles cartes graphiques !",
             "lieu": "",
@@ -216,7 +240,7 @@
         {
             "id": 6,
             "coop_id": 3,
-            "event_type_id": 1,
+            "event_typeId": 1,
             "name": "Ramassage Déchets",
             "description": "Ramassage de déchets aux alentours de Gesves",
             "lieu": "",
@@ -234,7 +258,7 @@
         {
             "id": 7,
             "coop_id": 3,
-            "event_type_id": 2,
+            "event_typeId": 2,
             "name": "Atelier Zéro Déchets",
             "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à fabriquer votre propre dentifrice !",
             "lieu": "Maison de la Laicité",
@@ -252,7 +276,7 @@
         {
             "id": 8,
             "coop_id": 4,
-            "event_type_id": 1,
+            "event_typeId": 1,
             "name": "Nettoyage du Bocq",
             "description": "Venez nous aider à nettoyer les rives du Bocq",
             "lieu": "Donjon de Crupet",
@@ -270,7 +294,7 @@
         {
             "id": 9,
             "coop_id": 4,
-            "event_type_id": 5,
+            "event_typeId": 5,
             "name": "Sortie Nature à La Plante",
             "description": "Découvrez les plantes invasives qui poussent sur les îles de La Plante",
             "lieu": "La Plante",
@@ -288,7 +312,7 @@
         {
             "id": 10,
             "coop_id": 5,
-            "event_type_id": 1,
+            "event_typeId": 1,
             "name": "Nettoyage des bords de Meuse à Huy",
             "description": "Aidez-nous à nettoyer les rives de la Meuse à Huy",
             "lieu": "Port de la Neuve Voie",
@@ -306,7 +330,7 @@
         {
             "id": 11,
             "coop_id": 5,
-            "event_type_id": 5,
+            "event_typeId": 5,
             "name": "Sortie Nature à Liège",
             "description": "Découvrez les plantes invasives qui poussent au bord de la Meuse à Liège",
             "lieu": "Lac de la Gravière Brock",
@@ -324,7 +348,7 @@
         {
             "id": 12,
             "coop_id": 6,
-            "event_type_id": 3,
+            "event_typeId": 3,
             "name": "Aide Récolte",
             "description": "Venez donner un coup de main pour la récolte de notre maraichère locale, buvette et panier de légumes gratuit !",
             "lieu": "",
