@@ -15,10 +15,11 @@ export class NominatimService {
 
   private _generateNominatimQueryFrom(address: Address): string {
     let query: string = ""
+    console.log(address)
 
     query += "postalcode=" + address.postal_code
     query += "&city=" + address.city
-    query += "&street=" + address.street_nb + "+" + address.street_name.split(' ').join("+") + ","
+    query += "&street=" + (address.street_nb ? address.street_nb + "+" : '') + address.street_name.split(' ').join("+") + ","
     query += "&format=json"
 
     console.log(this._apiUrl + query)
@@ -26,8 +27,6 @@ export class NominatimService {
   }
 
   getAddressGpsLongLat(address: Address){
-    console.log('coucou from nominatimService')
-
     return this.httpC.get<any>(this._apiUrl + this._generateNominatimQueryFrom(address))
   }
 }

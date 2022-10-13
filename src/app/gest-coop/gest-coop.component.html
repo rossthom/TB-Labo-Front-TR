@@ -1,7 +1,7 @@
 <h1>DEBUG INFOS</h1>
 
 <div class="grid" style="width: 100%;">
-    <div class="col-6">
+    <div class="col-3">
         <h2>Types de Coopératives</h2>
         <ul>
             <li *ngFor="let coopType of coopTypes">
@@ -9,13 +9,24 @@
             </li>
         </ul>
     </div>
-    <div class="col-6">
+    <div class="col-3">
         <h2>Types d'Evènements</h2>
         <ul>
             <li *ngFor="let eventType of eventTypes">
                 {{ eventType.id }}: {{ eventType.label }}
             </li>
         </ul>
+    </div>
+    <div class="col-6">
+        <h2>Test Nominatim</h2>
+        <p
+            class="surface-800 text-orange-500"
+            style="font-family: monospace; padding: 5px; white-space: pre-line"
+        >
+            lon: {{ testGps?.lon }}
+            <br />
+            lat: {{ testGps?.lat }}
+        </p>
     </div>
 </div>
 
@@ -40,18 +51,23 @@
                         <td>{{ selectedCoop.name }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
-                        <td>{{ selectedCoop.description }}</td>
-                    </tr>
-                    <tr>
                         <th>Type</th>
                         <td>{{ selectedCoop.coop_type.label }} ({{ selectedCoop.coop_type.id }})</td>
                     </tr>
                     <tr>
-                        <th>Addresse</th>
+                        <th>Description</th>
+                        <td>{{ selectedCoop.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Addresse
+                            <br />
+                            <button (click)="testNominatim(selectedCoop.address)">Test Nominatim</button>
+                        </th>
                         <td>
                             <span *ngIf="selectedCoop.address.street_name">
-                                {{ selectedCoop.address.street_name }}, {{selectedCoop.address.street_nb }}
+                                {{ selectedCoop.address.street_name }}
+                                <span *ngIf="selectedCoop.address.street_nb">, {{selectedCoop.address.street_nb }}</span>
                                 <br />
                             </span>
                             {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
@@ -61,29 +77,76 @@
                     </tr>
                 </tbody>
             </table>
+            <button (click)="getAllEventFromCoop(selectedCoop.id)">Liste Evènements de cette coop</button>
         </div>
     </div>
 </div>
 <hr />
 
-<h2>Liste Evènements</h2>
-<button (click)="getAllEvents()">Get Evènements</button>
-<ul>
-    <li *ngFor="let event of events">
-        {{ event.id }}: {{ event.name }} - {{ event.event_type.label }}
-    </li>
-</ul>
-
-<h2>TestGps</h2>
-<button (click)="testGetGpsPos()">Test GPS</button>
-<p>
-    <b>Exemple:</b> Traverse des Muses, 1 5002 Namur
-    <br />
-    <b>Résultat souhaité:</b> lat: 50.4731373 ; lon: 4.8629776
-</p>
-<p 
-    class="surface-800 text-orange-500" 
-    style="font-family: monospace; padding: 5px; white-space: pre-line"
->
-    {{ testGps | json }}
-</p>
+<div class="grid" style="width: 100%;">
+    <div class="col-6">
+        <h2>Liste Evènements</h2>
+        <button (click)="getAllEvents()">Tous les Evènements</button>
+        <ul>
+            <li *ngFor="let event of events">
+                {{ event.name }}&nbsp;<button (click)="getOneEvent(event.id)">Détails</button>
+            </li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <div *ngIf="selectedEvent != null && selectedEvent != undefined">
+            <h2>Détail Evènement</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ selectedEvent.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ selectedEvent.event_type.label }} ({{ selectedEvent.event_type.id }})</td>
+                    </tr>
+                    <tr>
+                        <th>Du ...<br />Au ...</th>
+                        <td>
+                            {{ selectedEvent.datetime_start | date }}
+                            <br />
+                            {{ selectedEvent.datetime_end }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nb personnes min - max</th>
+                        <td>
+                            {{ selectedEvent.nb_people_min }} - {{ selectedEvent.nb_people_max }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ selectedEvent.description }}</td>
+                    </tr>
+                    <tr *ngIf="selectedEvent.location != ''">
+                        <th>Lieu</th>
+                        <td>{{ selectedEvent.location }}</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Addresse
+                            <br />
+                            <button (click)="testNominatim(selectedEvent.address)">Test Nominatim</button>
+                        </th>
+                        <td>
+                            <span *ngIf="selectedEvent.address.street_name">
+                                {{ selectedEvent.address.street_name }}
+                                <span *ngIf="selectedEvent.address.street_nb">, {{selectedEvent.address.street_nb }}</span>
+                                <br />
+                            </span>
+                            {{ selectedEvent.address.postal_code }} {{ selectedEvent.address.city }}
+                            <br />
+                            lon: {{ selectedEvent.gps.lon }} ; lat: {{ selectedEvent.gps.lat }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

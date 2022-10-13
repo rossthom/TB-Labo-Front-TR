@@ -153,7 +153,7 @@
             "event_typeId": 4,
             "name": "Sortie Ornithologie",
             "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
-            "lieu": "La Plante",
+            "location": "La Plante",
             "address": {
                 "postal_code": 5000,
                 "city": "Namur",
@@ -163,7 +163,11 @@
             "datetime_start": "2023-05-22T09:00:00+02:00",
             "datetime_end": "2023-05-22T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 20
+            "nb_people_max": 20,
+            "gps": {
+                "lon": 	4.8592757,
+                "lat": 	50.4510159
+            }
         },
         {
             "id": 2,
@@ -171,7 +175,7 @@
             "event_typeId": 2,
             "name": "Atelier de Conservation",
             "description": "Conserver vos broccolis pour en avoir toute l'année, miam !",
-            "lieu": "Mundo N",
+            "location": "Mundo N",
             "address": {
                 "postal_code": 5002,
                 "city": "Namur",
@@ -181,7 +185,11 @@
             "datetime_start": "2023-01-12T17:00:00+02:00",
             "datetime_end": "2023-01-12T19:00:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 10
+            "nb_people_max": 10,
+            "gps": {
+                "lon": 	4.8586927,
+                "lat": 	50.4739593
+            }
         },
         {
             "id": 3,
@@ -189,7 +197,7 @@
             "event_typeId": 4,
             "name": "La voiture électrique?",
             "description": "Ciné-Débat sur les enjeux causés par la voiture électrique, animé par Aurore Stéphant",
-            "lieu": "Delta",
+            "location": "Delta",
             "address": {
                 "postal_code": 5000,
                 "city": "Namur",
@@ -199,7 +207,11 @@
             "datetime_start": "2023-02-12T19:30:00+02:00",
             "datetime_end": "2023-02-12T22:30:00+02:00",
             "nb_people_min": -1,
-            "nb_people_max": 200
+            "nb_people_max": 200,
+            "gps": {
+                "lon": 	4.868552997,
+                "lat": 	50.4624114
+            }	
         },
         {
             "id": 4,
@@ -207,7 +219,7 @@
             "event_typeId": 1,
             "name": "Ramassage Déchets",
             "description": "Ramassage de déchets dans les rues de Ciney",
-            "lieu": "",
+            "location": "",
             "address": {
                 "postal_code": 5590,
                 "city": "Ciney",
@@ -217,7 +229,11 @@
             "datetime_start": "2023-05-22T09:00:00+02:00",
             "datetime_end": "2023-05-22T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 15
+            "nb_people_max": 15,
+            "gps": {
+                "lon": 	5.1101419,
+                "lat": 	50.3084048
+            }	
         },
         {
             "id": 5,
@@ -225,7 +241,7 @@
             "event_typeId": 2,
             "name": "Atelier Zéro Déchets",
             "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à créer vos propres adruinos à partir de vieilles cartes graphiques !",
-            "lieu": "",
+            "location": "Technobel",
             "address": {
                 "postal_code": 5590,
                 "city": "Ciney",
@@ -235,7 +251,11 @@
             "datetime_start": "2023-01-15T17:00:00+02:00",
             "datetime_end": "2023-01-15T19:00:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 15
+            "nb_people_max": 15,
+            "gps": {
+                "lon": 	5.107368278,
+                "lat": 	50.3117664
+            }	
         },
         {
             "id": 6,
@@ -243,7 +263,7 @@
             "event_typeId": 1,
             "name": "Ramassage Déchets",
             "description": "Ramassage de déchets aux alentours de Gesves",
-            "lieu": "",
+            "location": "",
             "address": {
                 "postal_code": 5340,
                 "city": "Gesves",
@@ -253,7 +273,11 @@
             "datetime_start": "2023-05-15T09:00:00+02:00",
             "datetime_end": "2023-05-15T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 15
+            "nb_people_max": 15,
+            "gps": {
+                "lon": 	5.0546225,
+                "lat": 	50.4040891
+            }	
         },
         {
             "id": 7,
@@ -261,7 +285,7 @@
             "event_typeId": 2,
             "name": "Atelier Zéro Déchets",
             "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à fabriquer votre propre dentifrice !",
-            "lieu": "Maison de la Laicité",
+            "location": "Maison de la Laicité",
             "address": {
                 "postal_code": 5340,
                 "city": "Gesves",
@@ -271,7 +295,11 @@
             "datetime_start": "2023-02-21T17:00:00+02:00",
             "datetime_end": "2023-02-21T19:00:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 10
+            "nb_people_max": 10,
+            "gps": {
+                "lon": 	5.0546225,
+                "lat": 	50.4040891
+            }
         },
         {
             "id": 8,
@@ -279,7 +307,7 @@
             "event_typeId": 1,
             "name": "Nettoyage du Bocq",
             "description": "Venez nous aider à nettoyer les rives du Bocq",
-            "lieu": "Donjon de Crupet",
+            "location": "Donjon de Crupet",
             "address": {
                 "postal_code": 5332,
                 "city": "Assesse",
@@ -289,7 +317,11 @@
             "datetime_start": "2023-03-22T08:00:00+02:00",
             "datetime_end": "2023-03-22T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 15
+            "nb_people_max": 15,
+            "gps": {
+                "lon": 	4.956566781,
+                "lat": 	50.349224
+            }
         },
         {
             "id": 9,
@@ -297,7 +329,7 @@
             "event_typeId": 5,
             "name": "Sortie Nature à La Plante",
             "description": "Découvrez les plantes invasives qui poussent sur les îles de La Plante",
-            "lieu": "La Plante",
+            "location": "La Plante",
             "address": {
                 "postal_code": 5000,
                 "city": "Namur",
@@ -307,7 +339,11 @@
             "datetime_start": "2023-06-08T08:00:00+02:00",
             "datetime_end": "2023-06-08T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 20
+            "nb_people_max": 20,
+            "gps": {
+                "lon": 	4.8592757,
+                "lat": 	50.4510159
+            }
         },
         {
             "id": 10,
@@ -315,17 +351,21 @@
             "event_typeId": 1,
             "name": "Nettoyage des bords de Meuse à Huy",
             "description": "Aidez-nous à nettoyer les rives de la Meuse à Huy",
-            "lieu": "Port de la Neuve Voie",
+            "location": "Port de la Neuve Voie",
             "address": {
                 "postal_code": 4500,
                 "city": "Huy",
-                "street_name": "Port de la Neuve voie",
+                "street_name": "Rue du Ponton",
                 "street_nb": ""
             },
             "datetime_start": "2023-03-05T08:00:00+02:00",
             "datetime_end": "2023-03-05T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 15
+            "nb_people_max": 15,
+            "gps": {
+                "lon": 	5.2357097,
+                "lat": 	50.5174631
+            }
         },
         {
             "id": 11,
@@ -333,7 +373,7 @@
             "event_typeId": 5,
             "name": "Sortie Nature à Liège",
             "description": "Découvrez les plantes invasives qui poussent au bord de la Meuse à Liège",
-            "lieu": "Lac de la Gravière Brock",
+            "location": "Lac de la Gravière Brock",
             "address": {
                 "postal_code": 4681,
                 "city": "Oupeye",
@@ -343,7 +383,11 @@
             "datetime_start": "2023-06-16T08:00:00+02:00",
             "datetime_end": "2023-06-16T11:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 20
+            "nb_people_max": 20,
+            "gps": {
+                "lon": 	5.6750872,
+                "lat": 	50.708632
+            }
         },
         {
             "id": 12,
@@ -351,7 +395,7 @@
             "event_typeId": 3,
             "name": "Aide Récolte",
             "description": "Venez donner un coup de main pour la récolte de notre maraichère locale, buvette et panier de légumes gratuit !",
-            "lieu": "",
+            "location": "Jardin des Mycorhizes",
             "address": {
                 "postal_code": 5340,
                 "city": "Haut-Bois",
@@ -361,7 +405,11 @@
             "datetime_start": "2023-06-30T09:00:00+02:00",
             "datetime_end": "2023-06-30T16:30:00+02:00",
             "nb_people_min": 5,
-            "nb_people_max": 10
+            "nb_people_max": 10,
+            "gps": {
+                "lon": 	5.074436332,
+                "lat": 	50.4281824
+            }
         }
     ],
 

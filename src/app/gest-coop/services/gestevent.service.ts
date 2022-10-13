@@ -10,7 +10,7 @@ import { IEvent } from '../models/event.model';
 export class GesteventService {
   private _apiUrl: string = environment.dataUrl
 
-  
+
   constructor(
     private httpC : HttpClient,
   ) { }
@@ -18,5 +18,13 @@ export class GesteventService {
 
   getAllEvents(): Observable<IEvent[]>{
     return this.httpC.get<IEvent[]>(this._apiUrl+"events?_expand=event_type")
+  }
+
+  getAllEventsFromCoop(coopId: number){
+    return this.httpC.get<IEvent[]>(this._apiUrl+"events?_expand=event_type&coop_id=" + coopId)
+  }
+
+  getOneEvent(id: number){
+    return this.httpC.get<IEvent>(this._apiUrl+"events/"+ id + "?_expand=event_type")
   }
 }

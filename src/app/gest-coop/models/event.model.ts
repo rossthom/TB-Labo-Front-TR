@@ -8,7 +8,7 @@ export interface IEvent {
     event_type: Category
     name: string
     description: string
-    lieu: string
+    location: string
     address: Address
     datetime_start: Date
     datetime_end: Date
