@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SIGTERM } from 'constants';
 import { forkJoin, map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../models/category.model';
@@ -65,10 +64,18 @@ export class GestcoopService {
     */
   }
 
-  get coopTypes() {return this._coopTypes}
-  get eventTypes() {return this._eventTypes}
+  //get coopTypes() {return this._coopTypes}
+  //get eventTypes() {return this._eventTypes}
+  
+  getCoopTypes(): Observable<Category[]>{
+    return this.httpC.get<Category[]>(this._apiUrl+"coop_types")
+  }
 
+  getEventTypes(): Observable<Category[]>{
+    return this.httpC.get<Category[]>(this._apiUrl+"event_types")
+  }
 
+  
   getAllCoops(): Observable<ICooperative[]>{
     return this.httpC.get<ICooperative[]>(this._apiUrl+"cooperatives").pipe(
       // For each Cooperative, I want to get: ...

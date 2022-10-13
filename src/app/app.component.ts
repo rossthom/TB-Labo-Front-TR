@@ -10,8 +10,7 @@ export class AppComponent {
 
     constructor(
         private primengConfig: PrimeNGConfig,
-        private layoutService: LayoutService,
-        private gestcoopService: GestcoopService
+        private layoutService: LayoutService
     ) { }
 
     ngOnInit() {

@@ -13,15 +13,8 @@ import { NominatimService } from './services/nominatim.service';
 })
 export class GestCoopComponent implements OnInit {
   
-  coopTypes: Category[] = [
-    {id: 1, label:"dummy coop type 1"},
-    {id: 2, label:"dummy coop type 2"}
-  ]//this.gestCoopService.coopTypes
-  eventTypes: Category[] = [
-    {id: 1, label:"dummy coop event 1"},
-    {id: 2, label:"dummy coop event 2"}
-  ]//this.gestCoopService.eventTypes
-
+  coopTypes: Category[] = []
+  eventTypes: Category[] = []
 
   cooperatives: ICooperative[] = []
   events: IEvent[] = []
@@ -40,6 +33,17 @@ export class GestCoopComponent implements OnInit {
     //console.log('GestCoopComponent ngOnInit()')
     //console.log(this.coopTypes)
     //console.log(this.eventTypes)
+    this.gestCoopService.getCoopTypes().subscribe({
+      next : (res : Category[]) => {
+        this.coopTypes = res
+      }
+    })
+
+    this.gestCoopService.getEventTypes().subscribe({
+      next : (res : Category[]) => {
+        this.eventTypes = res
+      }
+    })
   }
 
 

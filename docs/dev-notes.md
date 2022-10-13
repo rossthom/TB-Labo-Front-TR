@@ -68,7 +68,7 @@ then push on github
 
 	... dev ...
 
-	`git checkout dev`		// going back on 'main'
+	`git checkout dev`		// going back on 'dev'
 	`git merge myFeature` 	// merge 'myFeature' on 'dev' (I need to be on 'dev' branch)
 
 ... test...
