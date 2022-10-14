@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
 import { Address, Category, GpsPosition } from '../models/types.model';
@@ -10,7 +10,7 @@ import { generateUpdCoopForm } from './forms/coop-upd.form';
   templateUrl: './coop-upd.component.html',
   styleUrls: ['./coop-upd.component.scss']
 })
-export class CoopUpdComponent implements OnInit {
+export class CoopUpdComponent implements OnInit, OnChanges {
   updCoopForm: FormGroup = generateUpdCoopForm(this.fb)
   coopTypes: Category[] = []
 
@@ -29,14 +29,27 @@ export class CoopUpdComponent implements OnInit {
     private gestCoopService: GestcoopService
   ) { }
 
+  
   ngOnInit(): void {
     this.gestCoopService.getCoopTypes().subscribe({
       next : (res : Category[]) => {
         this.coopTypes = res
       }
     })
-
-    console.log(this.cooperative)
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    //console.log(this.cooperative)
+    if (this.cooperative){
+      this.formControls['name'].setValue(this.cooperative.name)
+      this.formControls['coop_typeId'].setValue(this.cooperative.coop_typeId)
+      this.formControls['description'].setValue(this.cooperative.description)
+      this.formControls['addr_postal_code'].setValue(this.cooperative.address.postal_code)
+      this.formControls['addr_city'].setValue(this.cooperative.address.city)
+      this.formControls['addr_street_name'].setValue(this.cooperative.address.street_name)
+      this.formControls['addr_street_nb'].setValue(this.cooperative.address.street_nb)
+      this.formControls['logo'].setValue(this.cooperative.logo)
+    }
   }
 
   get formControls() { 
