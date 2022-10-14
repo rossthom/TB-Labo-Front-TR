@@ -15,11 +15,11 @@ json-server start command:
 			o JSON: ajout email et password pour coop
 			o Avoir un CoopView et un CoopDtoUpd, CoopDtoAdd
 			o FormGroup
-			- Validateurs: tester les validateurs de base
-			- Address: créer un NominatimValidator
-				- si l'adresse a changé, il faut rappeler nominatim. 
-					- Si il y a un résultat, c'est OK et il faut l'enregistrer dans l'objet coop
-					- Sinon, afficher message erreur au niveau du champ adresse.
+			o Validateurs: tester les validateurs de base
+			o Address: créer un NominatimValidator
+				o si l'adresse a changé, il faut rappeler nominatim. 
+					o Si il y a un résultat, c'est OK et il faut l'enregistrer dans l'objet coop
+					o Sinon, afficher message erreur au niveau du champ adresse.
 			- Call update function from service
 
 	- Vue Coop:

@@ -79,19 +79,16 @@ export class CoopUpdComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(coopUdt)
-
-    //TODO: call service for update
-
-
-    this.clickOnCoopUpdate.emit(this.cooperative.id)
-    console.log('child emits "clickOnCoopUpdate"')
+    this.gestCoopService.updateCoop(coopUdt).subscribe({
+      next : () => {
+        this.clickOnCoopUpdate.emit(this.cooperative.id)
+      }
+    })
   }
 
   cancelModifications(){
     this._fillFormWithCoop()
     this.clickOnCancel.emit(this.cooperative.id)
-    console.log('child emits "clickOnCancel"')
   }
 
 

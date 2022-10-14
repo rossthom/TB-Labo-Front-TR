@@ -37,7 +37,6 @@ export class NominatimService {
   }
 
   getAddressGpsLongLat(address: Address /* TODO:add deepness=4 */){
-
     return this.httpC.get<any>(this._apiUrl + this._generateNominatimQueryFrom(address /* TODO: , deepness */))
   }
 }

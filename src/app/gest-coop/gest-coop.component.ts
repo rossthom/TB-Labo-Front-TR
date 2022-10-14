@@ -50,11 +50,9 @@ export class GestCoopComponent implements OnInit {
   }
 
   getOneEvent(eventId: number){
-    console.log('coucou')
     this.gestEventService.getOneEvent(eventId).subscribe({
       next : (res : EventView) => {
         this.selectedEvent = res
-        //console.log(this.selectedEvent)
       }
     })
   }
@@ -64,12 +62,11 @@ export class GestCoopComponent implements OnInit {
   }
 
   updateCooperative(coopId: number) {
-    console.log('parent caught update event')
+    this.getOneCoop(coopId)
     this.updatePopupVisible = false
   }
   
   cancelUpdate(coopId: number) {
-    console.log('parent caught cancel update event')
     this.updatePopupVisible = false
   }
 }
