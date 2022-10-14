@@ -13,12 +13,14 @@ json-server start command:
 		o faire la popup dans un children ? => comment refresh la page parente avec les nouvelles données ?
 		- développer UPDATE Coop'
 			o JSON: ajout email et password pour coop
-			- Avoir un CoopView et un CoopDtoUpd, CoopDtoAdd
-			- FormGroup
+			o Avoir un CoopView et un CoopDtoUpd, CoopDtoAdd
+			o FormGroup
+			- Validateurs: tester les validateurs de base
 			- Address: créer un NominatimValidator
 				- si l'adresse a changé, il faut rappeler nominatim. 
 					- Si il y a un résultat, c'est OK et il faut l'enregistrer dans l'objet coop
 					- Sinon, afficher message erreur au niveau du champ adresse.
+			- Call update function from service
 
 	- Vue Coop:
 		- Bouton détail affiche détail d'un event en popup ?

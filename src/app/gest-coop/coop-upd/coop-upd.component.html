@@ -83,15 +83,9 @@
                         <br />
                         <p 
                             class="text-red-500"
-                            *ngIf="formControls['addr_postal_code'].errors?.['minlength']" 
+                            *ngIf="formControls['addr_postal_code'].errors?.['pattern']" 
                         >
-                            Un code postal ne comprend que {{ formControls['addr_postal_code'].errors?.['minlength'].requiredLength }} chiffres seulements
-                        </p>
-                        <p 
-                            class="text-red-500"
-                            *ngIf="formControls['addr_postal_code'].errors?.['maxlength']" 
-                        >
-                            Un code postal ne comprend que {{ formControls['addr_postal_code'].errors?.['minlength'].requiredLength }} chiffres seulements
+                            Un code postal est composé de 4 chiffres uniquement.
                         </p>
                         <p 
                             class="text-red-500"

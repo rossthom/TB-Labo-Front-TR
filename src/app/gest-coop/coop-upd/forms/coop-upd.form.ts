@@ -31,8 +31,9 @@ export function generateUpdCoopForm(fb: FormBuilder/*, httpC: HttpClient*/): For
             {
                 validators: [
                     Validators.required,
-                    Validators.minLength(4),
-                    Validators.maxLength(4),
+                    Validators.pattern('^([0-9]{4})$'),
+                    //Validators.minLength(4),
+                    //Validators.maxLength(4),
                 ]
             }
         ],
@@ -57,5 +58,8 @@ export function generateUpdCoopForm(fb: FormBuilder/*, httpC: HttpClient*/): For
             {}
         ]
     },
-    {})
+    {
+        // Options
+        updateOn: 'blur'    // update when loses focus, that's what 'blur' means in this context      
+    })
 }
