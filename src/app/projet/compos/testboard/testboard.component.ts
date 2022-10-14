@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICooperative } from 'src/app/gest-coop/models/coop.model';
-import { IEvent } from 'src/app/gest-coop/models/event.model';
+import { CooperativeView } from 'src/app/gest-coop/models/coop.model';
+import { EventView } from 'src/app/gest-coop/models/event.model';
 import { Address, Category } from 'src/app/gest-coop/models/types.model';
 import { GestcoopService } from 'src/app/gest-coop/services/gestcoop.service';
 import { GesteventService } from 'src/app/gest-coop/services/gestevent.service';
@@ -16,12 +16,12 @@ export class TestboardComponent implements OnInit {
   eventTypes: Category[] = []
 
 
-  cooperatives: ICooperative[] = []
+  cooperatives: CooperativeView[] = []
   //coopList: string[] = []
-  selectedCoop!: ICooperative    // TODO: warning, selectedCoop not initialized
+  selectedCoop!: CooperativeView    // TODO: warning, selectedCoop not initialized
 
-  events: IEvent[] = []
-  selectedEvent!: IEvent         // TODO: warning, selectedEvent not initialized
+  events: EventView[] = []
+  selectedEvent!: EventView         // TODO: warning, selectedEvent not initialized
 
   testGps: any = {}
 
@@ -48,7 +48,7 @@ export class TestboardComponent implements OnInit {
   // Fetch all Cooperatives
   getAllCoops() {
     this.gestCoopService.getAllCoops().subscribe({
-      next : (res : ICooperative[]) => {
+      next : (res : CooperativeView[]) => {
         this.cooperatives = res
       }
     })
@@ -56,7 +56,7 @@ export class TestboardComponent implements OnInit {
 
   getOneCoop(id: number) {
     this.gestCoopService.getOneCoop(id).subscribe({
-      next : (res : ICooperative) => {
+      next : (res : CooperativeView) => {
         this.selectedCoop = res
       }
     })
@@ -64,7 +64,7 @@ export class TestboardComponent implements OnInit {
 
   getAllEvents(){
     this.gestEventService.getAllEvents().subscribe({
-      next : (res : IEvent[]) => {
+      next : (res : EventView[]) => {
         this.events = res
       }
     })
@@ -72,7 +72,7 @@ export class TestboardComponent implements OnInit {
 
   getAllEventFromCoop(coopId: number) {
     this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
-      next : (res : IEvent[]) => {
+      next : (res : EventView[]) => {
         this.events = res
       }
     })   
@@ -80,7 +80,7 @@ export class TestboardComponent implements OnInit {
 
   getOneEvent(eventId: number){
     this.gestEventService.getOneEvent(eventId).subscribe({
-      next : (res : IEvent) => {
+      next : (res : EventView) => {
         this.selectedEvent = res
         console.log(this.selectedEvent)
       }

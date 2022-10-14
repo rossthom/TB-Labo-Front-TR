@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ICooperative } from '../models/coop.model';
+import { CooperativeView } from '../models/coop.model';
 
 @Component({
   selector: 'app-coop-upd',
@@ -8,13 +8,13 @@ import { ICooperative } from '../models/coop.model';
 })
 export class CoopUpdComponent implements OnInit {
   @Input()
-  cooperative!: ICooperative
+  cooperative!: CooperativeView
 
   @Output() 
-  clickOnCoopUpdate: EventEmitter<ICooperative> = new EventEmitter<ICooperative>()
+  clickOnCoopUpdate: EventEmitter<CooperativeView> = new EventEmitter<CooperativeView>()
 
   @Output() 
-  clickOnCancel: EventEmitter<ICooperative> = new EventEmitter<ICooperative>()
+  clickOnCancel: EventEmitter<CooperativeView> = new EventEmitter<CooperativeView>()
 
 
   constructor() { }

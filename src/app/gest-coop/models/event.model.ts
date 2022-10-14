@@ -1,7 +1,6 @@
 import { Address, Category, GpsPosition } from "./types.model"
 
-export interface IEvent {
-    // Raw data
+export type EventView = {
     id: number
     coop_id: number
     event_typeId: number
@@ -14,7 +13,34 @@ export interface IEvent {
     datetime_end: Date
     nb_people_min: number
     nb_people_max: number
-    
-    // From 3rd Party API
+    gps: GpsPosition
+}
+
+export type EventDtoUpd = {
+    id: number
+    coop_id: number
+    event_typeId: number
+    name: string
+    description: string
+    location: string
+    address: Address
+    datetime_start: Date
+    datetime_end: Date
+    nb_people_min: number
+    nb_people_max: number
+    gps: GpsPosition
+}
+
+export type EventDtoNew = {
+    coop_id: number
+    event_typeId: number
+    name: string
+    description: string
+    location: string
+    address: Address
+    datetime_start: Date
+    datetime_end: Date
+    nb_people_min: number
+    nb_people_max: number
     gps: GpsPosition
 }

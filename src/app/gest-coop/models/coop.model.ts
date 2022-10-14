@@ -1,9 +1,21 @@
 import { Address, Category, GpsPosition } from "./types.model"
 
-export interface ICooperative {
+export type CooperativeView = {
     id: number
     coop_typeId: number
     coop_type: Category
+    name: string
+    email: string
+    description: string
+    address: Address
+    logo: string
+    gps: GpsPosition
+}
+
+
+export type CooperativeDtoUpd = {
+    id: number
+    coop_typeId: number
     name: string
     description: string
     address: Address
@@ -11,15 +23,13 @@ export interface ICooperative {
     gps: GpsPosition
 }
 
-/*
-export type CooperativeDto = {
-    // Same, without coop_type
-    id: number
+export type CooperativeDtoNew = {
     coop_typeId: number
     name: string
+    email: string
+    password: string
     description: string
     address: Address
     logo: string
     gps: GpsPosition
 }
-*/

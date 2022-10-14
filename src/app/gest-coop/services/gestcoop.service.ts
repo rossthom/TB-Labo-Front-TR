@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ICooperative } from '../models/coop.model';
+import { CooperativeView } from '../models/coop.model';
 import { Category } from '../models/types.model';
 
 @Injectable({
@@ -25,18 +25,18 @@ export class GestcoopService {
     return this.httpC.get<Category[]>(this._apiUrl+"event_types")
   }
 
-  getAllCoops(): Observable<ICooperative[]>{
-    return this.httpC.get<ICooperative[]>(this._apiUrl+"cooperatives?_expand=coop_type")
+  getAllCoops(): Observable<CooperativeView[]>{
+    return this.httpC.get<CooperativeView[]>(this._apiUrl+"cooperatives?_expand=coop_type")
   }
 
-  getOneCoop(id: number): Observable<ICooperative>{
+  getOneCoop(id: number): Observable<CooperativeView>{
     /* The Jawad touch, use _expand to link directly coop_types to cooperatives.
      * for it to work, 'cooperatives' must have its FK named 'coop_typeId' (so the targetted file name: 'coop_types', minus the 's', plus 'Id')
      * that's the naming convension for it to work.
      * _expand is for many-to-one
      * _embed is for one-to-many
     */
-    return this.httpC.get<ICooperative>(this._apiUrl+"cooperatives/" + id + "?_expand=coop_type")
+    return this.httpC.get<CooperativeView>(this._apiUrl+"cooperatives/" + id + "?_expand=coop_type")
     
     /* Old code. It worked, but it's pointless now.
     return this.httpC.get<ICooperative>(this._apiUrl+"cooperatives/" + id).pipe(

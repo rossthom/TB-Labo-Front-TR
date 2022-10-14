@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICooperative } from './models/coop.model';
-import { IEvent } from './models/event.model';
+import { CooperativeView } from './models/coop.model';
+import { EventView } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
 import { GesteventService } from './services/gestevent.service';
 
@@ -12,10 +12,10 @@ import { GesteventService } from './services/gestevent.service';
 })
 export class GestCoopComponent implements OnInit {
   coopId: number = 0
-  listCoops!: ICooperative[]    // TODO: attribut listCoops non initialisé !
-  selectedCoop!: ICooperative   // TODO: attribut selectedCoop non initialisé !
-  coopEvents!: IEvent[]         // TODO: attribut coopEvents non initialisé !
-  selectedEvent!: IEvent        // TODO: attribut selectedEvent non initialisé !
+  listCoops!: CooperativeView[]    // TODO: attribut listCoops non initialisé !
+  selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
+  coopEvents!: EventView[]         // TODO: attribut coopEvents non initialisé !
+  selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
 
   updatePopupVisible: boolean = false;
 
@@ -27,7 +27,7 @@ export class GestCoopComponent implements OnInit {
 
   ngOnInit(): void {
     this.gestCoopService.getAllCoops().subscribe({
-      next : (res : ICooperative[]) => {
+      next : (res : CooperativeView[]) => {
         this.listCoops = res
       }
     })
@@ -36,13 +36,13 @@ export class GestCoopComponent implements OnInit {
   getOneCoop(id: number) {
     if (id != 0) {
       this.gestCoopService.getOneCoop(id).subscribe({
-        next : (res : ICooperative) => {
+        next : (res : CooperativeView) => {
           this.selectedCoop = res
         }
       })
 
       this.gestEventService.getAllEventsFromCoop(id).subscribe({
-        next : (res : IEvent[]) => {
+        next : (res : EventView[]) => {
           this.coopEvents = res
         }
       })
@@ -52,7 +52,7 @@ export class GestCoopComponent implements OnInit {
   getOneEvent(eventId: number){
     console.log('coucou')
     this.gestEventService.getOneEvent(eventId).subscribe({
-      next : (res : IEvent) => {
+      next : (res : EventView) => {
         this.selectedEvent = res
         //console.log(this.selectedEvent)
       }
@@ -63,12 +63,12 @@ export class GestCoopComponent implements OnInit {
     this.updatePopupVisible = true;
   }
 
-  updateCooperative(cooperative: ICooperative) {
+  updateCooperative(cooperative: CooperativeView) {
     console.log('parent caught update event')
     this.updatePopupVisible = false
   }
   
-  cancelUpdate(cooperative: ICooperative) {
+  cancelUpdate(cooperative: CooperativeView) {
     console.log('parent caught cancel update event')
     this.updatePopupVisible = false
   }

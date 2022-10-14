@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IEvent } from '../models/event.model';
+import { EventView } from '../models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,15 @@ export class GesteventService {
   ) { }
 
 
-  getAllEvents(): Observable<IEvent[]>{
-    return this.httpC.get<IEvent[]>(this._apiUrl+"events?_expand=event_type")
+  getAllEvents(): Observable<EventView[]>{
+    return this.httpC.get<EventView[]>(this._apiUrl+"events?_expand=event_type")
   }
 
   getAllEventsFromCoop(coopId: number){
-    return this.httpC.get<IEvent[]>(this._apiUrl+"events?_expand=event_type&coop_id=" + coopId)
+    return this.httpC.get<EventView[]>(this._apiUrl+"events?_expand=event_type&coop_id=" + coopId)
   }
 
   getOneEvent(id: number){
-    return this.httpC.get<IEvent>(this._apiUrl+"events/"+ id + "?_expand=event_type")
+    return this.httpC.get<EventView>(this._apiUrl+"events/"+ id + "?_expand=event_type")
   }
 }
