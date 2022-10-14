@@ -1,8 +1,9 @@
-import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NominatimService } from "../../services/nominatim.service";
+import { NominatimValidator } from "./validators/nominatim.validator";
 
 
-export function generateUpdCoopForm(fb: FormBuilder/*, httpC: HttpClient*/): FormGroup {
+export function generateUpdCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
     return fb.group({
         // Controls
         name: [
@@ -59,6 +60,9 @@ export function generateUpdCoopForm(fb: FormBuilder/*, httpC: HttpClient*/): For
         ]
     },
     {
+        asyncValidators: [
+            NominatimValidator.checkAddress(nominatimService),
+        ],
         // Options
         updateOn: 'blur'    // update when loses focus, that's what 'blur' means in this context      
     })

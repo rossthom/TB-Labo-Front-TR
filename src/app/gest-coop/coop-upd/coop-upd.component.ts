@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
 import { Address, Category, GpsPosition } from '../models/types.model';
 import { GestcoopService } from '../services/gestcoop.service';
+import { NominatimService } from '../services/nominatim.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
 
 @Component({
@@ -11,7 +12,7 @@ import { generateUpdCoopForm } from './forms/coop-upd.form';
   styleUrls: ['./coop-upd.component.scss']
 })
 export class CoopUpdComponent implements OnInit, OnChanges {
-  updCoopForm: FormGroup = generateUpdCoopForm(this.fb)
+  updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.nominatimService)
   coopTypes: Category[] = []
 
   @Input()
@@ -26,7 +27,8 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestCoopService: GestcoopService
+    private gestCoopService: GestcoopService,
+    private nominatimService: NominatimService
   ) { }
 
   
@@ -39,7 +41,15 @@ export class CoopUpdComponent implements OnInit, OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
-    //console.log(this.cooperative)
+    //console.log(changes)
+    this._fillFormWithCoop()
+  }
+
+  get formControls() { 
+    return this.updCoopForm.controls; 
+  }
+
+  private _fillFormWithCoop() {
     if (this.cooperative){
       this.formControls['name'].setValue(this.cooperative.name)
       this.formControls['coop_typeId'].setValue(this.cooperative.coop_typeId)
@@ -52,9 +62,6 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     }
   }
 
-  get formControls() { 
-    return this.updCoopForm.controls; 
-  }
 
   saveModifications(){
     let coopUdt = <CooperativeDtoUpd>{
@@ -82,7 +89,15 @@ export class CoopUpdComponent implements OnInit, OnChanges {
   }
 
   cancelModifications(){
+    this._fillFormWithCoop()
     this.clickOnCancel.emit(this.cooperative.id)
     console.log('child emits "clickOnCancel"')
+  }
+
+
+
+
+  testLogForm(){
+    console.log(this.updCoopForm)
   }
 }

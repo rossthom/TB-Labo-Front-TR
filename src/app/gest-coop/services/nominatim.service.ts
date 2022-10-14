@@ -21,7 +21,7 @@ export class NominatimService {
    */
   private _generateNominatimQueryFrom(address: Address /* TODO: add deepness: number */): string {
     let query: string = ""
-    console.log(address)
+    //console.log(address)
 
     query += "postalcode=" + address.postal_code
     // TODO: if deepness = 2: use city
@@ -32,7 +32,7 @@ export class NominatimService {
     query += "&format=json"
     query += "&countrycodes=be"
 
-    console.log(this._apiUrl + query)
+    //console.log(this._apiUrl + query)
     return query
   }
 

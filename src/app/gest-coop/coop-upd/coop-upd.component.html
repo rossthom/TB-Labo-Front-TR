@@ -12,7 +12,10 @@
                             <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <input pInputText id="name" type="text" placeholder="Nom de la Coopérative" formControlName="name">
+                        <input pInputText type="text" 
+                            id="name" formControlName="name"
+                            placeholder="Nom de la Coopérative" 
+                        >
                         <br />
                         <p 
                             class="text-red-500"
@@ -64,7 +67,10 @@
                             <span>V {{ formControls['description'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <textarea pInputTextarea id="description" type="text" placeholder="Description" formControlName="description"></textarea>
+                        <textarea pInputTextarea type="text" 
+                            id="description" formControlName="description"
+                            placeholder="Description" 
+                        ></textarea>
                     </div>
                 </div>
                 <br />
@@ -79,7 +85,11 @@
                             <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <input pInputText id="addr_postal_code" type="text" placeholder="Code Postal" formControlName="addr_postal_code">
+                        <input pInputText type="text"
+                            id="addr_postal_code" formControlName="addr_postal_code"
+                            placeholder="Code Postal" 
+                            [ngClass]="updCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <br />
                         <p 
                             class="text-red-500"
@@ -103,7 +113,11 @@
                             <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <input pInputText id="addr_city" type="text" placeholder="Ville / Village" formControlName="addr_city">
+                        <input pInputText type="text"
+                            id="addr_city" formControlName="addr_city"
+                            placeholder="Ville / Village" 
+                            [ngClass]="updCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <br />
                         <p 
                             class="text-red-500"
@@ -125,7 +139,11 @@
                             <span>V {{ formControls['addr_street_name'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <input pInputText id="addr_street_name" type="text" placeholder="Nom de Rue" formControlName="addr_street_name">
+                        <input pInputText type="text"
+                            id="addr_street_name" formControlName="addr_street_name"
+                            placeholder="Nom de Rue"
+                            [ngClass]="updCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <br />
                     </div>
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
@@ -137,10 +155,21 @@
                             <span>V {{ formControls['addr_street_nb'].valid ? '✔️': '❌' }}</span>
                         </label>
                         <br />
-                        <input pInputText id="addr_street_nb" type="text" placeholder="N° de Rue" formControlName="addr_street_nb">
+                        <input pInputText type="text" 
+                            id="addr_street_nb" formControlName="addr_street_nb"
+                            placeholder="N° de Rue" 
+                            [ngClass]="updCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <br />
                     </div>
                 </div>
+                <p 
+                    class="text-red-500 mt-2"
+                    style="text-align: center;"
+                    *ngIf="updCoopForm.errors?.['NominatimValidator']" 
+                >
+                    {{ updCoopForm.errors?.['NominatimValidator'] }}
+                </p>
                 <br />
                 
                 <div class="grid formgrid">
@@ -178,6 +207,15 @@
                         type="button" 
                         class="p-button-outlined p-button-danger mr-2 mb-2" 
                         (click)="cancelModifications()"
+                    ></button>
+                </div>
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                        label="Log Form Obj."
+                        icon="pi pi-times-circle"
+                        type="button" 
+                        class="p-button-outlined p-button-warning mr-2 mb-2" 
+                        (click)="testLogForm()"
                     ></button>
                 </div>
             </div>
