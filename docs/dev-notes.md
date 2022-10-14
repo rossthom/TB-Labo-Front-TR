@@ -3,16 +3,26 @@ json-server start command:
 `json-server --watch .\json-server\data.json --port 3000`
 
 
-# WHAT NOW ?
-- ❓ Demander à Loic: création d'une coop avec mot de passe ?
-	- si oui, mot de passe en clair dans le JSON ?
+# QUESTIONS LOIC
+- ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 
+# WHAT NOW ?
 - CRU Coopératives:
-	- voir page Sakai CRUD
-		- voir comment faire une page de modification pour les coop, comme l'exemple sakai (avec popup)
+	o voir page Sakai CRUD
+		o voir comment faire une page de modification pour les coop, comme l'exemple sakai (avec popup)
+		o faire la popup dans un children ? => comment refresh la page parente avec les nouvelles données ?
 		- développer UPDATE Coop'
+			o JSON: ajout email et password pour coop
+			- Avoir un CoopView et un CoopDtoUpd, CoopDtoAdd
+			- FormGroup
+			- Address: créer un NominatimValidator
+				- si l'adresse a changé, il faut rappeler nominatim. 
+					- Si il y a un résultat, c'est OK et il faut l'enregistrer dans l'objet coop
+					- Sinon, afficher message erreur au niveau du champ adresse.
+
 	- Vue Coop:
 		- Bouton détail affiche détail d'un event en popup ?
+		- Ce détail d'event est un child?
 	- voir comment CREER et UPDATE evenement (pas Delete)
 	- Développer page CREER Coop
 	o JSON vide pour coops et events
@@ -35,6 +45,8 @@ o Develop User CRUD
 o Manage User login
 o Manage user logout
 
+o Cleanup
+	o Delete all test components, delete routes, ...
 
 # ARCHITECTURE
 - module gestCoop

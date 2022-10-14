@@ -11,6 +11,7 @@ export interface ICooperative {
     gps: GpsPosition
 }
 
+/*
 export type CooperativeDto = {
     // Same, without coop_type
     id: number
@@ -21,3 +22,4 @@ export type CooperativeDto = {
     logo: string
     gps: GpsPosition
 }
+*/

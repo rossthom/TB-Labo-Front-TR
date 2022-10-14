@@ -17,6 +17,8 @@ export class GestCoopComponent implements OnInit {
   coopEvents!: IEvent[]         // TODO: attribut coopEvents non initialisé !
   selectedEvent!: IEvent        // TODO: attribut selectedEvent non initialisé !
 
+  updatePopupVisible: boolean = false;
+
   constructor(
     private gestCoopService: GestcoopService,
     private gestEventService: GesteventService
@@ -55,5 +57,19 @@ export class GestCoopComponent implements OnInit {
         //console.log(this.selectedEvent)
       }
     })
+  }
+
+  showUpdatePopup(){
+    this.updatePopupVisible = true;
+  }
+
+  updateCooperative(cooperative: ICooperative) {
+    console.log('parent caught update event')
+    this.updatePopupVisible = false
+  }
+  
+  cancelUpdate(cooperative: ICooperative) {
+    console.log('parent caught cancel update event')
+    this.updatePopupVisible = false
   }
 }

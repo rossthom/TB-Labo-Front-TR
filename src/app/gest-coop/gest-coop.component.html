@@ -18,7 +18,7 @@
             </p-dropdown>
         </div>
         
-        <div *ngIf="selectedCoop" class="card p-fluid">
+        <div *ngIf="selectedCoop" class="card">
             <h2>Détail Coopérative</h2>
             <div class="grid">
                 <div class="col-2">
@@ -54,6 +54,13 @@
                             </tr>
                         </tbody>
                     </table>
+                    <button pButton pRipple 
+                        label="Modifier"
+                        icon="pi pi-pencil"
+                        type="button" 
+                        class="p-button-outlined p-button-primary mr-2 mb-2" 
+                        (click)="showUpdatePopup()"
+                    ></button>
                 </div>
             </div>
             <hr />
@@ -71,6 +78,7 @@
                                     <td>
                                         <button pButton pRipple 
                                             label="Détail"
+                                            icon="pi pi-info-circle"
                                             type="button" 
                                             class="p-button-outlined p-button-sm p-button-primary mr-2 mb-2" 
                                             (click)="getOneEvent(event.id)"
@@ -137,3 +145,17 @@
         </div>
     </div>
 </div>
+
+<!-- POPUPS -->
+<p-dialog 
+    [(visible)]="updatePopupVisible" 
+    [style]="{width: '450px'}" 
+    header="Modification Coopérative" 
+    [modal]="true">
+    <app-coop-upd 
+        [cooperative]="selectedCoop"
+        (clickOnCoopUpdate)="updateCooperative($event)"
+        (clickOnCancel)="cancelUpdate($event)"
+    >
+    </app-coop-upd>
+</p-dialog>

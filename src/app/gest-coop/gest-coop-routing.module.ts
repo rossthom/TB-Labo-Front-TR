@@ -4,6 +4,8 @@ import { GestCoopComponent } from './gest-coop.component';
 
 const routes: Routes = [
   { path: '', component: GestCoopComponent },
+  //{ path: 'coop-create', component: CoopCuComponent },
+  //{ path: 'coop-update/:id', component: CoopCuComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,24 @@
+<div *ngIf="cooperative" class="grid">
+    <div class="col-12">
+        <div class="card">
+            <p>{{ cooperative.name }}</p>
+            
+        </div>
+        <div class="gc-popup-footer">
+            <button pButton pRipple 
+                label="Enregistrer"
+                icon="pi pi-save"
+                type="button" 
+                class="p-button-outlined p-button-success mr-2 mb-2"
+                (click)="saveModifications()"
+            ></button>
+            <button pButton pRipple 
+                label="Annuler"
+                icon="pi pi-times-circle"
+                type="button" 
+                class="p-button-outlined p-button-danger mr-2 mb-2" 
+                (click)="cancelModifications()"
+            ></button>
+        </div>
+    </div>
+</div>
