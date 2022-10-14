@@ -1,24 +1,192 @@
-<div *ngIf="cooperative" class="grid">
+<div *ngIf="cooperative" class="grid p-fluid">
     <div class="col-12">
         <div class="card">
-            <p>{{ cooperative.name }}</p>
-            
+            <form [formGroup]="updCoopForm">
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="name">
+                            <span>P {{ formControls['name'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['name'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="name" type="text" placeholder="Nom de la Coopérative" formControlName="name">
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['name'].errors?.['minlength']" 
+                        >
+                            Le nom doit avoir au moins {{ formControls['name'].errors?.['minlength'].requiredLength }} caractères
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['name'].touched && formControls['name'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="coop_typeId">
+                            <span>P {{ formControls['coop_typeId'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['coop_typeId'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['coop_typeId'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-dropdown 
+                            id="coop_typeId" 
+                            formControlName="coop_typeId"
+                            [options]="coopTypes" optionLabel="label" optionValue="id"
+                            placeholder="Choisissez un type de coopérative" 
+                            [showClear]="true"
+                        >
+                        </p-dropdown>
+                        <p 
+                        class="text-red-500"
+                        *ngIf="formControls['coop_typeId'].touched && formControls['coop_typeId'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                    </div>
+                </div>
+                <br />
+
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="description">
+                            <span>P {{ formControls['description'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['description'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['description'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <textarea pInputTextarea id="description" type="text" placeholder="Description" formControlName="description"></textarea>
+                    </div>
+                </div>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_postal_code">
+                            <span>P {{ formControls['addr_postal_code'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_postal_code'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="addr_postal_code" type="text" placeholder="Code Postal" formControlName="addr_postal_code">
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_postal_code'].errors?.['minlength']" 
+                        >
+                            Un code postal ne comprend que {{ formControls['addr_postal_code'].errors?.['minlength'].requiredLength }} chiffres seulements
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_postal_code'].errors?.['maxlength']" 
+                        >
+                            Un code postal ne comprend que {{ formControls['addr_postal_code'].errors?.['minlength'].requiredLength }} chiffres seulements
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_postal_code'].touched && formControls['addr_postal_code'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_city">
+                            <span>P {{ formControls['addr_city'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_city'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="addr_city" type="text" placeholder="Ville / Village" formControlName="addr_city">
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_city'].touched && formControls['addr_city'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                </div>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_name">
+                            <span>P {{ formControls['addr_street_name'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_street_name'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_street_name'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="addr_street_name" type="text" placeholder="Nom de Rue" formControlName="addr_street_name">
+                        <br />
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_nb">
+                            <span>P {{ formControls['addr_street_nb'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_street_nb'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_street_nb'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="addr_street_nb" type="text" placeholder="N° de Rue" formControlName="addr_street_nb">
+                        <br />
+                    </div>
+                </div>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="logo">
+                            <span>P {{ formControls['logo'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['logo'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['logo'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText id="logo" type="text" placeholder="Logo (lien vers image)" formControlName="logo">
+                        <br />
+                    </div>
+                </div>
+            </form>
         </div>
+
         <div class="gc-popup-footer">
-            <button pButton pRipple 
-                label="Enregistrer"
-                icon="pi pi-save"
-                type="button" 
-                class="p-button-outlined p-button-success mr-2 mb-2"
-                (click)="saveModifications()"
-            ></button>
-            <button pButton pRipple 
-                label="Annuler"
-                icon="pi pi-times-circle"
-                type="button" 
-                class="p-button-outlined p-button-danger mr-2 mb-2" 
-                (click)="cancelModifications()"
-            ></button>
+            <div class="grid formgrid">
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                    label="Enregistrer"
+                    icon="pi pi-save"
+                    type="button" 
+                    class="p-button-outlined p-button-success mr-2 mb-2"
+                    (click)="saveModifications()"
+                    ></button>
+                </div>
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                        label="Annuler"
+                        icon="pi pi-times-circle"
+                        type="button" 
+                        class="p-button-outlined p-button-danger mr-2 mb-2" 
+                        (click)="cancelModifications()"
+                    ></button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

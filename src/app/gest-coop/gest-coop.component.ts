@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CooperativeView } from './models/coop.model';
+import { CooperativeDtoUpd, CooperativeView } from './models/coop.model';
 import { EventView } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
 import { GesteventService } from './services/gestevent.service';
@@ -63,12 +63,12 @@ export class GestCoopComponent implements OnInit {
     this.updatePopupVisible = true;
   }
 
-  updateCooperative(cooperative: CooperativeView) {
+  updateCooperative(coopId: number) {
     console.log('parent caught update event')
     this.updatePopupVisible = false
   }
   
-  cancelUpdate(cooperative: CooperativeView) {
+  cancelUpdate(coopId: number) {
     console.log('parent caught cancel update event')
     this.updatePopupVisible = false
   }

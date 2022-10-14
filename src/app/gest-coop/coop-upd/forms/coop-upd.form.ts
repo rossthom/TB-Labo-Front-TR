@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-/*
-export function generateUpdCoopForm(fb: FormBuilder, httpC: HttpClient): FormGroup {
+
+export function generateUpdCoopForm(fb: FormBuilder/*, httpC: HttpClient*/): FormGroup {
     return fb.group({
         // Controls
         name: [
@@ -14,50 +14,48 @@ export function generateUpdCoopForm(fb: FormBuilder, httpC: HttpClient): FormGro
                 ],
             }
         ],
-        email: [
+        coop_typeId: [
             "", // Valeur par défaut.
             {
                 validators: [
                     Validators.required,
-                    Validators.email,
                 ]
             }
         ],
-        password: [
+        description: [
+            "", // Valeur par défaut.
+            {}
+        ],
+        addr_postal_code: [
             "", // Valeur par défaut.
             {
                 validators: [
                     Validators.required,
-                    Validators.minLength(6),
+                    Validators.minLength(4),
+                    Validators.maxLength(4),
                 ]
             }
         ],
-        confirmPwd: [
+        addr_city: [
             "", // Valeur par défaut.
             {
                 validators: [
                     Validators.required,
-                    Validators.minLength(6),
                 ]
             }
         ],
-        country: [
+        addr_street_name: [
             "", // Valeur par défaut.
-            {
-                validators: null,
-                asyncValidators: [
-                    AsyncCountryValidator.check(httpC),
-                ],
-                updateOn: 'change'
-            }
+            {}
         ],
+        addr_street_nb: [
+            "", // Valeur par défaut.
+            {}
+        ],
+        logo: [
+            "", // Valeur par défaut.
+            {}
+        ]
     },
-    {
-        // Options
-        validators: [
-            matchPasswordValidator,
-        ],
-        updateOn: 'blur'    // update when loses focus, that's what 'blur' means in this context      
-    })
+    {})
 }
-*/

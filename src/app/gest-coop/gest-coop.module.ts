@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { TagModule } from 'primeng/tag';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
 
 // Application
 import { GestCoopRoutingModule } from './gest-coop-routing.module';
@@ -30,6 +32,8 @@ import { CoopUpdComponent } from './coop-upd/coop-upd.component';
     ButtonModule,
     DialogModule,
     DropdownModule,
+    InputTextareaModule,
+    InputTextModule,
     TagModule,
 
     // Application
