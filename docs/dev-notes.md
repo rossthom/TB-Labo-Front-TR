@@ -6,28 +6,19 @@ json-server start command:
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 
+- ❓ Comment modifier mon objet juste avant de faire l'update en DB ?
+
 # WHAT NOW ?
 - CRU Coopératives:
-	o voir page Sakai CRUD
-		o voir comment faire une page de modification pour les coop, comme l'exemple sakai (avec popup)
-		o faire la popup dans un children ? => comment refresh la page parente avec les nouvelles données ?
-		- développer UPDATE Coop'
-			o JSON: ajout email et password pour coop
-			o Avoir un CoopView et un CoopDtoUpd, CoopDtoAdd
-			o FormGroup
-			o Validateurs: tester les validateurs de base
-			o Address: créer un NominatimValidator
-				o si l'adresse a changé, il faut rappeler nominatim. 
-					o Si il y a un résultat, c'est OK et il faut l'enregistrer dans l'objet coop
-					o Sinon, afficher message erreur au niveau du champ adresse.
-			- Call update function from service
+	- développer UPDATE Coop'
+		- Call update function from service
+			- make Nominatim work
 
 	- Vue Coop:
 		- Bouton détail affiche détail d'un event en popup ?
 		- Ce détail d'event est un child?
 	- voir comment CREER et UPDATE evenement (pas Delete)
 	- Développer page CREER Coop
-	o JSON vide pour coops et events
 
 - Développer Connection Cooperative
 
