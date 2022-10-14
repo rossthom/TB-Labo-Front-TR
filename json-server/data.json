@@ -46,6 +46,8 @@
             "id": 1,
             "coop_typeId": 4,
             "name": "Natagora",
+            "email": "info@natagora.be",
+            "password": "natagora#pwd",
             "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
             "address": {
                 "postal_code": 5002,
@@ -63,6 +65,8 @@
             "id": 2,
             "coop_typeId": 1,
             "name": "Transition Ciney",
+            "email": "info@tciney.be",
+            "password": "tciney#pwd",
             "description": "Réseau Transition de Ciney",
             "address": {
                 "postal_code": 5590,
@@ -80,6 +84,8 @@
             "id": 3,
             "coop_typeId": 1,
             "name": "Transition Gesves",
+            "email": "info@tgesves.be",
+            "password": "tgesves#pwd",
             "description": "Réseau Transition de Gesves",
             "address": {
                 "postal_code": 5340,

@@ -46,6 +46,8 @@
             "id": 1,
             "coop_typeId": 4,
             "name": "Natagora",
+            "email": "info@natagora.be",
+            "password": "natagora#pwd",
             "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
             "address": {
                 "postal_code": 5002,
@@ -63,6 +65,8 @@
             "id": 2,
             "coop_typeId": 1,
             "name": "Transition Ciney",
+            "email": "info@tciney.be",
+            "password": "tciney#pwd",
             "description": "Réseau Transition de Ciney",
             "address": {
                 "postal_code": 5590,
@@ -80,6 +84,8 @@
             "id": 3,
             "coop_typeId": 1,
             "name": "Transition Gesves",
+            "email": "info@tgesves.be",
+            "password": "tgesves#pwd",
             "description": "Réseau Transition de Gesves",
             "address": {
                 "postal_code": 5340,
@@ -97,6 +103,8 @@
             "id": 4,
             "coop_typeId": 2,
             "name": "Contrat Rivière Haute Meuse",
+            "email": "info@crhm.be",
+            "password": "crhm#pwd",
             "description": "Le Contrat de rivière Haute-Meuse (CRHM) est une asbl qui est financée par le Service public de Wallonie, la Province de Namur, la Province du Hainaut et 27 communes partenaires. Son fonctionnement s’articule autour de 3 structures : le Comité de rivière, les Comités locaux de concertation et la Cellule de coordination.",
             "address": {
                 "postal_code": 5000,
@@ -114,6 +122,8 @@
             "id": 5,
             "coop_typeId": 2,
             "name": "Contrat Rivière Meuse Aval",
+            "email": "info@crma.be",
+            "password": "crma#pwd",
             "description": "Le Contrat de Rivière Meuse Aval et affluents est une ASBL (Association Sans But Lucratif).",
             "address": {
                 "postal_code": 4520,
@@ -131,6 +141,8 @@
             "id": 6,
             "coop_typeId": 3,
             "name": "GASAP Jardin des Mycorhizes",
+            "email": "info@myco.be",
+            "password": "myco#pwd",
             "description": "Groupe d'Achat Solidaire de l'Agriculture Paysanne - Jardin des Mycorhizes",
             "address": {
                 "postal_code": 5340,
