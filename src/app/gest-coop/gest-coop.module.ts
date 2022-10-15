@@ -18,6 +18,7 @@ import { GestCoopRoutingModule } from './gest-coop-routing.module';
 import { GestCoopComponent } from './gest-coop.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
 import { EventCruComponent } from './event-cru/event-cru.component';
+import { CoopNewComponent } from './coop-new/coop-new.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { EventCruComponent } from './event-cru/event-cru.component';
     GestCoopComponent,
     CoopUpdComponent,
     EventCruComponent,
+    CoopNewComponent,
   ],
   imports: [
     // Angular

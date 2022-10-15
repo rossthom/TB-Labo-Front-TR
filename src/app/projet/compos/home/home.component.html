@@ -16,38 +16,42 @@
         
         <div class="card">
             <h2>Coopératives</h2>
-            <button pButton pRipple 
-            label="Connection (Coop)"
-            type="button" 
-            disabled="true" 
-            class="p-button-outlined p-button-primary mr-2 mb-2" 
-            routerLink="/"
-            ></button>
-            <button pButton pRipple 
-            label="Créer une Coop"
-            type="button" 
-            disabled="true" 
-            class="p-button-outlined p-button-primary mr-2 mb-2" 
-            routerLink="/"
-            ></button>
-            <button pButton pRipple 
-            label="Vue Coop"
-            type="button" 
-            class="p-button-outlined p-button-primary mr-2 mb-2" 
-            routerLink="/gest-coop"
-            ></button>
-        </div>
-
-        <div class="card">
-            <h2>Participants</h2>
-            <button pButton pRipple 
-                label="Connection (Participant)"
+            <button pButton pRipple
+                icon="pi pi-sign-in" 
+                label="Connection (Coop)"
                 type="button" 
                 disabled="true" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
                 routerLink="/"
             ></button>
             <button pButton pRipple 
+                icon="pi pi-plus-circle" 
+                label="Créer une Coop"
+                type="button" 
+                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                routerLink="/gest-coop/new"
+            ></button>
+            <button pButton pRipple 
+                icon="pi pi-id-card" 
+                label="Admin Coop"
+                type="button" 
+                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                routerLink="/gest-coop"
+            ></button>
+        </div>
+
+        <div class="card">
+            <h2>Participants</h2>
+            <button pButton pRipple 
+            icon="pi pi-sign-in" 
+            label="Connection (Participant)"
+                type="button" 
+                disabled="true" 
+                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                routerLink="/"
+            ></button>
+            <button pButton pRipple 
+                icon="pi pi-user-plus" 
                 label="Création Participant"
                 type="button" 
                 disabled="true" 
@@ -55,6 +59,7 @@
                 routerLink="/"
             ></button>
             <button pButton pRipple 
+                icon="pi pi-id-card" 
                 label="Vue Participant"
                 type="button" 
                 disabled="true" 
