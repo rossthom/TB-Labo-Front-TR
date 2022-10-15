@@ -88,17 +88,14 @@ export class GestCoopComponent implements OnInit {
   // ℹ️ View-Update Events Child Compo emitted Outputs managment
   updateEvent(eventId: number){
     this._getEventsFromCoop(this.coopId)
-    console.log('GestCoopComponent (parent) caught clickOnEventUpdate')
     this.ruEventPopupVisible = false
   }
 
   cancelEventUpdate(eventId: number){
-    console.log('GestCoopComponent (parent) caught clickOnEventCancel')
     this.ruEventPopupVisible = false
   }
 
   closeEventView(eventId: number){
-    console.log('GestCoopComponent (parent) caught clickOnEventClose')
     this.ruEventPopupVisible = false
   }
 }
