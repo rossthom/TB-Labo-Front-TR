@@ -17,17 +17,19 @@ import { TagModule } from 'primeng/tag';
 // Application
 import { GestCoopRoutingModule } from './gest-coop-routing.module';
 import { GestCoopComponent } from './gest-coop.component';
-import { CoopUpdComponent } from './coop-upd/coop-upd.component';
-import { EventCruComponent } from './event-cru/event-cru.component';
 import { CoopNewComponent } from './coop-new/coop-new.component';
+import { CoopUpdComponent } from './coop-upd/coop-upd.component';
+import { CoopLoginComponent } from './coop-login/coop-login.component';
+import { EventCruComponent } from './event-cru/event-cru.component';
 
 
 @NgModule({
   declarations: [
     GestCoopComponent,
-    CoopUpdComponent,
-    EventCruComponent,
     CoopNewComponent,
+    CoopUpdComponent,
+    CoopLoginComponent,
+    EventCruComponent,
   ],
   imports: [
     // Angular

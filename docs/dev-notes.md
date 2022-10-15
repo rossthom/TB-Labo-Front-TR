@@ -30,6 +30,7 @@ json-server start command:
 	🙏 NTH: child for event list
 
 o Développer Connection Cooperative
+	o Form avec email et mot de passe (page login Sakai)
 	o Guard sur Gest. Coop. routes
 
 o Développer Registration User
