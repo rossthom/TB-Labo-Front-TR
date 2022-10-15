@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NominatimService } from "../../shared/services/nominatim.service";
 import { minMaxValidator } from "../../shared/validators/minMax.validator";
 import { NominatimValidator } from "../../shared/validators/nominatim.validator";
@@ -95,7 +95,7 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             }
         ],
     },
-    {
+    <AbstractControlOptions>{
         validators: [
             startEndDateValidator,
             minMaxValidator,

@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { NominatimService } from "../../shared/services/nominatim.service";
 import { NominatimValidator } from "../../shared/validators/nominatim.validator";
 
@@ -57,7 +57,7 @@ export function generateUpdCoopForm(fb: FormBuilder, nominatimService: Nominatim
             {}
         ]
     },
-    {
+    <AbstractControlOptions>{
         asyncValidators: [
             NominatimValidator.checkAddress(nominatimService),
         ],
