@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generateCruCoopForm } from '../shared/forms/coop-cru.form';
+import { generateNewCoopForm } from '../shared/forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Address, Category, GpsPosition } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
@@ -13,7 +13,7 @@ import { NominatimService } from '../shared/services/nominatim.service';
   styleUrls: ['./coop-new.component.scss']
 })
 export class CoopNewComponent implements OnInit {
-  newCoopForm: FormGroup = generateCruCoopForm(this.fb, this.nominatimService)
+  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService)
   coopTypes: Category[] = []
 
 
@@ -40,6 +40,8 @@ export class CoopNewComponent implements OnInit {
     let coopNew = <CooperativeDtoNew>{
       coop_typeId: parseInt(this.formControls['coop_typeId'].value),
       name: this.formControls['name'].value,
+      email: this.formControls['email'].value,
+      password: this.formControls['password'].value,
       description: this.formControls['description'].value,
       address: <Address> {
         postal_code: parseInt(this.formControls['addr_postal_code'].value),

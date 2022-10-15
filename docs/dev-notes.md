@@ -5,59 +5,62 @@ json-server start command:
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
+- ❓ form .group() deprecated avec les options qu'on lui donne...
 
 - ⚠️❓ Comment modifier mon objet juste avant de faire l'update en DB ?
 - ⚠️❓ Construction formulaire avec options: méthode dépréciée !
 
 
 # DEV ROADMAP
-- CRU Coopératives:
-	o Validateurs
+- CRU Coopératives & Events:
+	👷 Page CREER Coop
+		- Ajouter email & pwd (+ confirm pwd)
+		- valid email
+		- valid pwd (valid globale)
+
+	o Sur TOUS les form (CCoop, UCoop, CEvent, UEvent), tester les Validateurs
 		🐛 Vérifier les erreurs de validation. 
 			- Il semble que NominatimValidator ne se trigger pas dans NewEvent
 			- Bien tester tous les messages...
 
-	o Vue Coop:
-		👷 Implémenter update Coop
-			⚠️ make Nominatim work (adresse update coop)
-			o Test Update Coop
+	👷 faire fonctionner Nominatim lors de :
+		- update Coop
+		- update Evenement
+		- insert Evenement
+		- insert Coop
 
-		👷 Implémenter UPDATE Evenement
-			⚠️ make Nominatim work (adresse update evenement)
-			o Test Update Evenement
+	o Test Créer Event
+	o Test Update Coop
+	o Test Créer Event
+	o Test Update Event
 
-		👷 Implémenter CREATE event
-			⚠️ make Nominatim work (adresse nouvel evenement)
-			o Test Create Evenement
-
-	👷 Développer page CREER Coop
-		⚠️ make Nominatim work  (adresse nouvelle coop)
-		o Test Create Coop
+	o Clean test button and methods from CCoop, UCoop, CRUEvent
 
 	🙏 NTH: child for event list
 	
-	o Clean test button and methods from NewCoop
-
 o Développer Connection Cooperative
 	o Guard sur Gest. Coop. routes
 
 o Développer Registration User
 	o ⚠️ make Nominatim work (adresse nouvel utilisateur)
-	o Clean PTV screens from NewCoop
-	o Clean test button and methods from NewCoop
-	o Guard sur Coop vues routes
+	o Clean PTV screens from NewUser
+	o Clean test button and methods from NewUser
+	o Guard sur routes Vue Coop vues
 	o User login
 	o User logout
+
+o Développer inscription à un event
+	o BONUS... Dans event list, voir combien de personnes sont inscrites...
 
 o Développer vues events et coop quand user connecté
 	o Carte ?
 	o Calendrier ?
 
-o Développer inscription à un event
-	o BONUS... Dans event list, voir combien de personnes sont inscrites...
-
-o Cleanup
-	o Delete all test components, delete routes, ...
+o Clean code (everywhere, html, css, ts, modules, routes, ...):
+	o check TODOs
+	o check debug elements dans interface
+	o check console.log
+	o delete commented code
 
 
 # ARCHITECTURE

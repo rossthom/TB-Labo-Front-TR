@@ -34,7 +34,7 @@ export class NominatimService {
     query += "&format=json"
     query += "&countrycodes=be"
 
-    //console.log(this._apiUrl + query)
+    console.log(this._apiUrl + query)
     return query
   }
 

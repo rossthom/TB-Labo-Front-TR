@@ -4,13 +4,11 @@
     <div class="col-6">
         <div class="card p-fluid">
             <form [formGroup]="newCoopForm">
-                <div class="col-12 mb-2">
-                    <span class="p-float-label mb-3">
-                        <input pInputText type="text" 
-                            id="name" formControlName="name"
-                        >
-                        <label for="name">Nom de la Coopérative</label>
-                    </span>
+                <div class="col-12">
+                    <label for="name">Nom de la Coopérative</label>
+                    <input pInputText type="text" 
+                        id="name" formControlName="name"
+                    >
                     <p 
                         class="text-red-500"
                         *ngIf="formControls['name'].errors?.['minlength']" 
@@ -24,16 +22,87 @@
                         Ce champ est requis
                     </p>
                 </div>
-                <div class="col-12 mb-2">
-                    <span class="p-float-label mb-3">
-                        <p-dropdown 
-                            id="coop_typeId" formControlName="coop_typeId"
-                            [options]="coopTypes" optionLabel="label" optionValue="id"
-                            [showClear]="false"
+                <div class="col-12">
+                    <label for="email">Email de contact</label>
+                    <input pInputText type="email" 
+                        id="email" formControlName="email"
+                    >
+                    <p 
+                        class="text-red-500"
+                        *ngIf="formControls['email'].errors?.['email']" 
+                    >
+                        Le format de l'email n'est pas valide
+                    </p>
+                    <p 
+                        class="text-red-500"
+                        *ngIf="formControls['email'].touched && formControls['email'].errors?.['required']" 
+                    >
+                        Ce champ est requis
+                    </p>
+                </div>
+
+                <div class="grid col-12 my-grid">
+                    <div class="col-6 pl-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                            <span>P {{ formControls['password'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['password'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['password'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <label for="password">Mot de passe</label>
+                        <p-password
+                            id="password" formControlName="password"
+                            [toggleMask]="false"
+                            [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        ></p-password>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['password'].touched && formControls['password'].errors?.['required']" 
                         >
-                        </p-dropdown>
-                        <label for="coop_typeId">Choisissez un type de coopérative</label>
-                    </span>
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-6 pr-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                            <span>P {{ formControls['password_confirm'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['password_confirm'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['password_confirm'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <label for="password_confirm">Confirmez votre mot de passe</label>
+                        <p-password
+                            id="password_confirm" formControlName="password_confirm"
+                            [toggleMask]="false"
+                            [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        ></p-password>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['password_confirm'].touched && formControls['password_confirm'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div *ngIf="newCoopForm.errors?.['MatchPasswordValidator']" class="col-12 pt-0">
+                        <p 
+                            class="text-red-500"
+                            style="text-align: center;"
+                            >
+                            {{ newCoopForm.errors?.['MatchPasswordValidator'] }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="coop_typeId">Choisissez un type de coopérative</label>
+                    <p-dropdown 
+                        id="coop_typeId" formControlName="coop_typeId"
+                        [options]="coopTypes" optionLabel="label" optionValue="id"
+                        [showClear]="false"
+                    >
+                    </p-dropdown>
                     <p 
                         class="text-red-500"
                         *ngIf="formControls['coop_typeId'].touched && formControls['coop_typeId'].errors?.['required']" 
@@ -41,23 +110,20 @@
                         Ce champ est requis
                     </p>
                 </div>
-                <div class="col-12 mb-2">
-                    <span class="p-float-label mb-3">
-                        <textarea pInputTextarea type="text" 
-                            id="description" formControlName="description"
-                        ></textarea>
-                        <label for="description">Description</label>
-                    </span>
+                <div class="col-12">
+                    <label for="description">Description</label>
+                    <textarea pInputTextarea type="text" 
+                        id="description" formControlName="description"
+                    ></textarea>
                 </div>
-                <div class="grid ml-0 mr-0">
-                    <div class="col-4 mb-2">
-                        <span class="p-float-label mb-3">
-                            <input pInputText type="text"
-                                id="addr_postal_code" formControlName="addr_postal_code"
-                                [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
-                            >
-                            <label for="addr_postal_code">Code Postal</label>
-                        </span>
+
+                <div class="grid col-12 my-grid">
+                    <div class="col-4 pl-0">
+                        <label for="addr_postal_code">Code Postal</label>
+                        <input pInputText type="text"
+                            id="addr_postal_code" formControlName="addr_postal_code"
+                            [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['addr_postal_code'].errors?.['pattern']" 
@@ -71,14 +137,12 @@
                             Ce champ est requis
                         </p>
                     </div>
-                    <div class="col mb-2">
-                        <span class="p-float-label mb-3">
-                            <input pInputText type="text"
-                                id="addr_city" formControlName="addr_city"
-                                [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
-                            >
-                            <label for="addr_city">Ville / Village</label>
-                        </span>
+                    <div class="col pr-0">
+                        <label for="addr_city">Ville / Village</label>
+                        <input pInputText type="text"
+                            id="addr_city" formControlName="addr_city"
+                            [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['addr_city'].touched && formControls['addr_city'].errors?.['required']" 
@@ -87,26 +151,22 @@
                         </p>
                     </div>
                 </div>
-                <div class="grid ml-0 mr-0">
-                    <div class="col-10 mb-2">
-                        <span class="p-float-label mb-3">
-                            <input pInputText type="text"
-                                id="addr_street_name" formControlName="addr_street_name"
-                                [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
-                            >
-                            <label for="addr_street_name">Nom de Rue</label>
-                        </span>
+                <div class="grid col-12 my-grid">
+                    <div class="col-10 pl-0">
+                        <label for="addr_street_name">Nom de Rue</label>
+                        <input pInputText type="text"
+                            id="addr_street_name" formControlName="addr_street_name"
+                            [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                     </div>
-                    <div class="col mb-2">
-                        <span class="p-float-label mb-3">
-                            <input pInputText type="text" 
-                                id="addr_street_nb" formControlName="addr_street_nb"
-                                [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
-                            >
-                            <label for="addr_street_nb">N° de Rue</label>
-                        </span>
+                    <div class="col pr-0">
+                        <label for="addr_street_nb">N° de Rue</label>
+                        <input pInputText type="text" 
+                            id="addr_street_nb" formControlName="addr_street_nb"
+                            [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
                     </div>
-                    <div *ngIf="newCoopForm.errors?.['NominatimValidator']" class="col-12 mb-2">
+                    <div *ngIf="newCoopForm.errors?.['NominatimValidator']" class="col-12 pt-0">
                         <p 
                             class="text-red-500"
                             style="text-align: center;"
@@ -115,17 +175,17 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-12 mb-2">
-                    <span class="p-float-label mb-3">
-                        <input pInputText type="text" 
-                            id="logo" 
-                            formControlName="logo"
-                        >
-                        <label for="logo">Logo (lien vers image)</label>
-                    </span>
-                    <br />
+
+                <div class="col-12">
+                    <label for="logo">Logo (lien vers image)</label>
+                    <input pInputText type="text" 
+                        id="logo" 
+                        formControlName="logo"
+                    >
                 </div>
             </form>
+            <br />
+            <!-- ℹ️ FOOTER -->
             <div class="grid ml-0 mr-0">
                 <div class="col-6 mb-2">
                     <button pButton pRipple 

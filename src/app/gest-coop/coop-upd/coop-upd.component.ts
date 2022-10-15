@@ -4,7 +4,7 @@ import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model'
 import { Address, Category, GpsPosition } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
 import { NominatimService } from '../shared/services/nominatim.service';
-import { generateCruCoopForm } from '../shared/forms/coop-cru.form';
+import { generateUpdCoopForm } from '../shared/forms/coop-upd.form';
 
 @Component({
   selector: 'app-coop-upd',
@@ -12,7 +12,7 @@ import { generateCruCoopForm } from '../shared/forms/coop-cru.form';
   styleUrls: ['./coop-upd.component.scss']
 })
 export class CoopUpdComponent implements OnInit, OnChanges {
-  updCoopForm: FormGroup = generateCruCoopForm(this.fb, this.nominatimService)
+  updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.nominatimService)
   coopTypes: Category[] = []
 
   @Input()

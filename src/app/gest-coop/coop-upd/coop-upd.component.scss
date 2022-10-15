@@ -1,3 +1,8 @@
-.gc-popup-footer {
-    text-align: right;
+div.my-grid {
+    margin-left: auto;
+    margin-right: auto;
+}
+div.my-grid>div {
+    padding-top: 0;
+    padding-bottom: 0;
 }
