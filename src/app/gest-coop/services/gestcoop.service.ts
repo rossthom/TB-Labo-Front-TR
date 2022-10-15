@@ -48,27 +48,10 @@ export class GestcoopService {
           )
         )
       ),
-      
-      //No need for GPS data, it's on the DB already. We'll fetch them at CREATE and PUT
-      // switchMap((coop: ICooperative) => this.nominatimService.getAddressGpsLongLat(coop.address)
-      //   .pipe(
-      //     map((res: any) => {
-      //       console.log('res from nominatimService')
-      //       //console.log(res.lon + " ; " + res.lat)
-      //       console.log(res[0])
-      //       coop.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
-      //       return coop
-      //     }
-      //     )
-      //   )
-      // ),
-      )
-      */
+    */
   }
 
   updateCoop(coop: CooperativeDtoUpd){
-    //console.log(this._apiUrl + "cooperatives/" + coop.id)
-    //console.log(coop)
     return this.httpC.patch(
       this._apiUrl + "cooperatives/" + coop.id,
       coop
@@ -77,9 +60,7 @@ export class GestcoopService {
         switchMap(_ => this.nominatimService.getAddressGpsLongLat(coop.address)
         .pipe(
           map((res: any) => {
-            //console.log(res)
             coop.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
-            //console.log(coop)
             return coop
           })
         )
