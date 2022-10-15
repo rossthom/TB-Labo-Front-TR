@@ -64,7 +64,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
 
   saveModifications(){
-    let coopUdt = <CooperativeDtoUpd>{
+    let coopUpd = <CooperativeDtoUpd>{
       id: this.cooperative.id,
       coop_typeId: parseInt(this.formControls['coop_typeId'].value),
       name: this.formControls['name'].value,
@@ -79,7 +79,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestCoopService.updateCoop(coopUdt).subscribe({
+    this.gestCoopService.updateCoop(coopUpd).subscribe({
       next : () => {
         this.clickOnCoopUpdate.emit(this.cooperative.id)
       }
