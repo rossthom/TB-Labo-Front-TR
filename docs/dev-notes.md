@@ -12,29 +12,30 @@ json-server start command:
 
 # DEV ROADMAP
 - CRU Coopératives:
+	o Validateurs
+		🐛 Vérifier les erreurs de validation. 
+			- Il semble que NominatimValidator ne se trigger pas dans NewEvent
+			- Bien tester tous les messages...
+
 	o Vue Coop:
 		👷 Implémenter update Coop
-			⚠️ make Nominatim work  (adresse update coop)
+			⚠️ make Nominatim work (adresse update coop)
 			o Test Update Coop
+
 		👷 Implémenter UPDATE Evenement
 			⚠️ make Nominatim work (adresse update evenement)
 			o Test Update Evenement
+
 		👷 Implémenter CREATE event
 			⚠️ make Nominatim work (adresse nouvel evenement)
 			o Test Create Evenement
-
-		🙏 NTH: child for event list
-
-	o Validateurs
-		🐛 Vérifier les erreurs de validation. Si le nom n'a pas été touché, mais n'est pas valide, et qu'on a entré une mauvaise adresse, l'erreur sur l'adresse n'apparait pas.
 
 	👷 Développer page CREER Coop
 		⚠️ make Nominatim work  (adresse nouvelle coop)
 		o Test Create Coop
 
-	o Forms: mettre floating labels partout en fait ...
-
-	o Clean PTV screens from NewCoop
+	🙏 NTH: child for event list
+	
 	o Clean test button and methods from NewCoop
 
 o Développer Connection Cooperative

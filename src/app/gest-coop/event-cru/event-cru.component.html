@@ -3,14 +3,15 @@
         <!-- ℹ️ FORM -->
         <div class="card">
             <form [formGroup]="cruEventForm">
-                <div class="grid formgrid">
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <input pInputText type="text" 
-                            id="name" formControlName="name"
-                            placeholder="Nom de la Coopérative" 
-                            [class.p-disabled]="formMode == 1"
-                        >
-                        <br />
+                <div class="grid formgrid mb-2">
+                    <div class="col-12 mb-2">
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="name" formControlName="name"
+                                [class.p-disabled]="formMode == 1"
+                            >
+                            <label for="name">Nom de la Coopérative</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['name'].errors?.['minlength']" 
@@ -24,63 +25,69 @@
                             Ce champ est requis
                         </p>
                     </div>
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <p-dropdown 
-                            id="event_typeId" formControlName="event_typeId"
-                            *ngIf="formMode != 1"
-                            [options]="eventTypes" optionLabel="label" optionValue="id"
-                            placeholder="Choisissez un type d'évènement" 
-                            [showClear]="false"
-                        >
-                        </p-dropdown>
-                        <input pInputText type="text" 
-                            *ngIf="formMode == 1"
-                            id="event_type"
-                            placeholder="Type d'évènement" 
-                            value="{{ eventType.label }}"
-                            class="p-disabled"
-                        >
+                </div>
+                <div class="grid formgrid mb-2">
+                    <div class="col-12 mb-2">
+                        <span *ngIf="formMode != 1" class="p-float-label mb-3">
+                            <p-dropdown 
+                                id="event_typeId" formControlName="event_typeId"
+                                [options]="eventTypes" optionLabel="label" optionValue="id"
+                                [showClear]="false"
+                            ></p-dropdown>
+                            <label for="event_typeId">Choisissez un type d'évènement</label>
+                        </span>
+                        <span *ngIf="formMode == 1" class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="event_type"
+                                value="{{ eventType.label }}"
+                                class="p-disabled"
+                            >
+                            <label for="event_type">Type d'évènement</label>
+                        </span>
                         <p 
-                        class="text-red-500"
-                        *ngIf="formControls['event_typeId'].touched && formControls['event_typeId'].errors?.['required']" 
+                            class="text-red-500"
+                            *ngIf="formControls['event_typeId'].touched && formControls['event_typeId'].errors?.['required']" 
                         >
                           Ce champ est requis
                         </p>
                     </div>
                 </div>
-                <br />
 
-                <div class="grid formgrid">
+                <div class="grid formgrid mb-2">
                     <div class="col-12 mb-2">
-                        <textarea pInputTextarea type="text" 
-                            id="description" formControlName="description"
-                            placeholder="Description" 
-                            [class.p-disabled]="formMode == 1"
-                        ></textarea>
+                        <span class="p-float-label mb-3">
+                            <textarea pInputTextarea type="text" 
+                                id="description" formControlName="description"
+                                [class.p-disabled]="formMode == 1"
+                            ></textarea>
+                            <label for="Description">Description</label>
+                        </span>
                     </div>
                 </div>
-                <br />
-                <div class="grid formgrid">
+                <div class="grid formgrid mb-2">
                     <div class="col-12 mb-2">
-                        <input pInputText type="text" 
-                            id="location" formControlName="location"
-                            placeholder="Lieu" 
-                            [class.p-disabled]="formMode == 1"
-                        >
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="location" formControlName="location"
+                                [class.p-disabled]="formMode == 1"
+                            >
+                            <label for="location">Lieu</label>
+                        </span>
                     </div>
                 </div>
                 <br />
                 
-                <div class="grid formgrid">
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <input pInputText type="text"
-                            id="addr_postal_code" formControlName="addr_postal_code"
-                            placeholder="Code Postal" 
-                            [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
-                        >
-                        <br />
+                <div class="grid formgrid mb-2">
+                    <div class="col-4 mb-2">
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text"
+                                id="addr_postal_code" formControlName="addr_postal_code"
+                                [class.p-disabled]="formMode == 1"
+                                [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                                [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
+                            >
+                            <label for="addr_postal_code">Code Postal</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['addr_postal_code'].errors?.['pattern']" 
@@ -94,15 +101,16 @@
                             Ce champ est requis
                         </p>
                     </div>
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <input pInputText type="text"
-                            id="addr_city" formControlName="addr_city"
-                            placeholder="Ville / Village" 
-                            [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
-                        >
-                        <br />
+                    <div class="col mb-2">
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text"
+                                id="addr_city" formControlName="addr_city"
+                                [class.p-disabled]="formMode == 1"
+                                [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                                [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
+                            >
+                            <label for="addr_city">Ville / Village</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['addr_city'].touched && formControls['addr_city'].errors?.['required']" 
@@ -111,55 +119,57 @@
                         </p>
                     </div>
                 </div>
-                <br />
-                
-                <div class="grid formgrid">
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <input pInputText type="text"
-                            id="addr_street_name" formControlName="addr_street_name"
-                            placeholder="Nom de Rue"
-                            [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
-                        >
-                        <br />
+
+                <div class="grid formgrid mb-2">
+                    <div class="col-10 mb-2">
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text"
+                                id="addr_street_name" formControlName="addr_street_name"
+                                [class.p-disabled]="formMode == 1"
+                                [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                                [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
+                            >
+                            <label for="addr_street_name">Nom de Rue</label>
+                        </span>
                     </div>
-                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <input pInputText type="text" 
-                            id="addr_street_nb" formControlName="addr_street_nb"
-                            placeholder="N° de Rue" 
-                            [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
+                    <div class="col mb-2">
+                        <span class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="addr_street_nb" formControlName="addr_street_nb"
+                                [class.p-disabled]="formMode == 1"
+                                [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                                [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
+                            >
+                            <label for="addr_street_nb">N° de Rue</label>
+                        </span>
+                    </div>
+                    <div *ngIf="cruEventForm.errors?.['NominatimValidator']" class="col mb-2">
+                        <p 
+                            class="text-red-500"
+                            style="text-align: center;"
                         >
-                        <br />
+                            {{ cruEventForm.errors?.['NominatimValidator'] }}
+                        </p>
                     </div>
                 </div>
-                <p 
-                    class="text-red-500 mt-2"
-                    style="text-align: center;"
-                    *ngIf="cruEventForm.errors?.['NominatimValidator']" 
-                >
-                    {{ cruEventForm.errors?.['NominatimValidator'] }}
-                </p>
-                <br />
-                
-                <div class="grid formgrid">
+                <div class="grid formgrid mb-2">
                     <div class="col-6 mb-2">
-                        <p-calendar 
-                            id="datetime_start" formControlName="datetime_start"
-                            *ngIf="formMode != 1"
-                            placeholder="Date évènement" 
-                            [showTime]="true" hourFormat="24"
-                            [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        ></p-calendar>
-                        <input pInputText type="text" 
-                            *ngIf="formMode == 1"
-                            id="datetime_start"
-                            placeholder="Date" 
-                            value="{{ event?.datetime_start | date: 'dd MMM yyyy H:mm' }}"
-                            class="p-disabled"
-                        >
+                        <span *ngIf="formMode != 1" class="p-float-label mb-3">
+                            <p-calendar 
+                                id="datetime_start" formControlName="datetime_start"
+                                [showTime]="true" hourFormat="24"
+                                [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            ></p-calendar>
+                            <label for="datetime_start">Début</label>
+                        </span>
+                        <span *ngIf="formMode == 1" class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="datetime_start"
+                                value="{{ event?.datetime_start | date: 'dd MMM yyyy H:mm' }}"
+                                class="p-disabled"
+                            >
+                            <label for="datetime_start">Début</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['datetime_start'].touched && formControls['datetime_start'].errors?.['required']" 
@@ -168,20 +178,22 @@
                         </p>
                     </div>
                     <div class="col-6 mb-2">
-                        <p-calendar 
-                            id="datetime_end" formControlName="datetime_end"
-                            *ngIf="formMode != 1"
-                            placeholder="Date évènement" 
-                            [showTime]="true" hourFormat="24"
-                            [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        ></p-calendar>
-                        <input pInputText type="text" 
-                            *ngIf="formMode == 1"
-                            id="datetime_end"
-                            placeholder="Date" 
-                            value="{{ event?.datetime_end | date: 'dd MMM yyyy H:mm' }}"
-                            class="p-disabled"
-                        >
+                        <span *ngIf="formMode != 1" class="p-float-label mb-3">
+                            <p-calendar 
+                                id="datetime_end" formControlName="datetime_end"
+                                [showTime]="true" hourFormat="24"
+                                [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            ></p-calendar>
+                            <label for="datetime_end">Fin</label>
+                        </span>
+                        <span *ngIf="formMode == 1" class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="datetime_end"
+                                value="{{ event?.datetime_end | date: 'dd MMM yyyy H:mm' }}"
+                                class="p-disabled"
+                            >
+                            <label for="datetime_end">Fin</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['datetime_end'].touched && formControls['datetime_end'].errors?.['required']" 
@@ -189,33 +201,33 @@
                           Ce champ est requis
                         </p>
                     </div>
+                    <div *ngIf="cruEventForm.errors?.['StartEndDateValidator']" class="col-6 mb-2">
+                        <p 
+                            class="text-red-500"
+                            style="text-align: center;"
+                        >
+                            {{ cruEventForm.errors?.['StartEndDateValidator'] }}
+                        </p>
+                    </div>
                 </div>
-                <p 
-                    class="text-red-500 mt-2"
-                    style="text-align: center;"
-                    *ngIf="cruEventForm.errors?.['StartEndDateValidator']" 
-                >
-                    {{ cruEventForm.errors?.['StartEndDateValidator'] }}
-                </p>
-                <br />
-                
-                <div class="grid formgrid">
+                <div class="grid formgrid mb-2">
                     <div class="col-6 mb-2">
-                        <p-inputNumber 
-                            id="nb_people_min" formControlName="nb_people_min"
-                            *ngIf="formMode != 1"
-                            inputId="integeronly"
-                            placeholder="Nb minimum de participants" 
-                            [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        >
-                        </p-inputNumber>
-                        <input pInputText type="text" 
-                            *ngIf="formMode == 1"
-                            id="nb_people_min"
-                            placeholder="Nb minimum de participants" 
-                            value="{{ event?.nb_people_min }}"
-                            class="p-disabled"
-                        >
+                        <span *ngIf="formMode != 1" class="p-float-label mb-3">
+                            <p-inputNumber 
+                                id="nb_people_min" formControlName="nb_people_min"
+                                inputId="integeronly"
+                                [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            ></p-inputNumber>
+                            <label for="nb_people_min">Nb minimum de participants</label>
+                        </span>
+                        <span *ngIf="formMode == 1" class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="nb_people_min"
+                                value="{{ event?.nb_people_min }}"
+                                class="p-disabled"
+                            >
+                            <label for="nb_people_min">Nb minimum de participants</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['nb_people_min'].touched && formControls['nb_people_min'].errors?.['required']" 
@@ -230,21 +242,22 @@
                         </p>
                     </div>
                     <div class="col-6 mb-2">
-                        <p-inputNumber 
-                            id="nb_people_max" formControlName="nb_people_max"
-                            *ngIf="formMode != 1"
-                            inputId="integeronly"
-                            placeholder="Nb minimum de participants" 
-                            [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        >
-                        </p-inputNumber>
-                        <input pInputText type="text" 
-                            *ngIf="formMode == 1"
-                            id="nb_people_max"
-                            placeholder="Nb minimum de participants" 
-                            value="{{ event?.nb_people_max }}"
-                            class="p-disabled"
-                        >
+                        <span *ngIf="formMode != 1" class="p-float-label mb-3">
+                            <p-inputNumber 
+                                id="nb_people_max" formControlName="nb_people_max"
+                                inputId="integeronly"
+                                [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            ></p-inputNumber>
+                            <label for="nb_people_max">Nb maximum de participants</label>
+                        </span>
+                        <span *ngIf="formMode == 1" class="p-float-label mb-3">
+                            <input pInputText type="text" 
+                                id="nb_people_max"
+                                value="{{ event?.nb_people_max }}"
+                                class="p-disabled"
+                            >
+                            <label for="nb_people_max">Nb maximum de participants</label>
+                        </span>
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['nb_people_max'].touched && formControls['nb_people_max'].errors?.['required']" 
@@ -258,14 +271,15 @@
                             Entrez un nombre de 1 à 4 chiffres.
                         </p>
                     </div>
+                    <div *ngIf="cruEventForm.errors?.['MinMaxValidator']"  class="col-12 mb-2">
+                        <p 
+                            class="text-red-500 mb-2"
+                            style="text-align: center;"
+                        >
+                            {{ cruEventForm.errors?.['MinMaxValidator'] }}
+                        </p>
+                    </div>
                 </div>
-                <p 
-                    class="text-red-500 mt-2"
-                    style="text-align: center;"
-                    *ngIf="cruEventForm.errors?.['MinMaxValidator']" 
-                >
-                    {{ cruEventForm.errors?.['MinMaxValidator'] }}
-                </p>
             </form>
         </div>
 
