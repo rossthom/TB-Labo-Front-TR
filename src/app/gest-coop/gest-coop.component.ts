@@ -75,7 +75,7 @@ export class GestCoopComponent implements OnInit {
   
 
   // ℹ️ Event Popup
-  showEventPopup(eventId: number, coopId: number, mode: FormMode){
+  showEventPopup(eventId: number, mode: FormMode){
     if (mode == FormMode.New) {
       this.cruEventPopupVisible = true;
       this.cruEventPopupMode = mode;

@@ -130,6 +130,7 @@
             <div class="grid formgrid">
                 <div class="col-6 mb-2">
                     <button pButton pRipple 
+                    [disabled]="!updCoopForm.valid"
                     label="Enregistrer"
                     icon="pi pi-save"
                     type="button" 

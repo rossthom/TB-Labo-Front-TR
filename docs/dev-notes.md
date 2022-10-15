@@ -14,20 +14,26 @@ json-server start command:
 - CRU Coopératives:
 	o Vue Coop:
 		👷 Implémenter update Coop
-			o ⚠️ make Nominatim work  (adresse update coop)
-		👷 Implémenter UPDATE evenement
-			o ⚠️ make Nominatim work (adresse update evenement)
-		o Implémenter CREATE event
-			o Créer Popup création nouvel event + Form
-				o test form components
-				o test validators
-			o Implement POST
-				o ⚠️ make Nominatim work (adresse nouvel evenement)
+			⚠️ make Nominatim work  (adresse update coop)
+			o Test Update Coop
+		👷 Implémenter UPDATE Evenement
+			⚠️ make Nominatim work (adresse update evenement)
+			o Test Update Evenement
+		👷 Implémenter CREATE event
+			⚠️ make Nominatim work (adresse nouvel evenement)
+			o Test Create Evenement
 
 		🙏 NTH: child for event list
 
-	o Développer page CREER Coop
-		o ⚠️ make Nominatim work  (adresse nouvelle coop)
+	o Validateurs
+		🐛 Vérifier les erreurs de validation. Si le nom n'a pas été touché, mais n'est pas valide, et qu'on a entré une mauvaise adresse, l'erreur sur l'adresse n'apparait pas.
+
+	👷 Développer page CREER Coop
+		⚠️ make Nominatim work  (adresse nouvelle coop)
+		o Test Create Coop
+
+	o Forms: mettre floating labels partout en fait ...
+
 	o Clean PTV screens from NewCoop
 	o Clean test button and methods from NewCoop
 

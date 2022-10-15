@@ -1,8 +1,8 @@
-<div *ngIf="event" class="grid p-fluid">
+<div *ngIf="coopId != 0 || event" class="grid p-fluid">
     <div class="col-12">
         <!-- ℹ️ FORM -->
         <div class="card">
-            <form [formGroup]="ruEventForm">
+            <form [formGroup]="cruEventForm">
                 <div class="grid formgrid">
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
                         <input pInputText type="text" 
@@ -77,8 +77,8 @@
                             id="addr_postal_code" formControlName="addr_postal_code"
                             placeholder="Code Postal" 
                             [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
                         >
                         <br />
                         <p 
@@ -99,8 +99,8 @@
                             id="addr_city" formControlName="addr_city"
                             placeholder="Ville / Village" 
                             [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
                         >
                         <br />
                         <p 
@@ -119,8 +119,8 @@
                             id="addr_street_name" formControlName="addr_street_name"
                             placeholder="Nom de Rue"
                             [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
                         >
                         <br />
                     </div>
@@ -129,8 +129,8 @@
                             id="addr_street_nb" formControlName="addr_street_nb"
                             placeholder="N° de Rue" 
                             [class.p-disabled]="formMode == 1"
-                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
-                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-invalid]="cruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="cruEventForm.errors?.['NominatimValidator']"
                         >
                         <br />
                     </div>
@@ -138,9 +138,9 @@
                 <p 
                     class="text-red-500 mt-2"
                     style="text-align: center;"
-                    *ngIf="ruEventForm.errors?.['NominatimValidator']" 
+                    *ngIf="cruEventForm.errors?.['NominatimValidator']" 
                 >
-                    {{ ruEventForm.errors?.['NominatimValidator'] }}
+                    {{ cruEventForm.errors?.['NominatimValidator'] }}
                 </p>
                 <br />
                 
@@ -151,13 +151,13 @@
                             *ngIf="formMode != 1"
                             placeholder="Date évènement" 
                             [showTime]="true" hourFormat="24"
-                            [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
                         ></p-calendar>
                         <input pInputText type="text" 
                             *ngIf="formMode == 1"
                             id="datetime_start"
                             placeholder="Date" 
-                            value="{{ event.datetime_start | date: 'dd MMM yyyy H:mm' }}"
+                            value="{{ event?.datetime_start | date: 'dd MMM yyyy H:mm' }}"
                             class="p-disabled"
                         >
                         <p 
@@ -173,13 +173,13 @@
                             *ngIf="formMode != 1"
                             placeholder="Date évènement" 
                             [showTime]="true" hourFormat="24"
-                            [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            [ngClass]="cruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
                         ></p-calendar>
                         <input pInputText type="text" 
                             *ngIf="formMode == 1"
                             id="datetime_end"
                             placeholder="Date" 
-                            value="{{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}"
+                            value="{{ event?.datetime_end | date: 'dd MMM yyyy H:mm' }}"
                             class="p-disabled"
                         >
                         <p 
@@ -193,9 +193,9 @@
                 <p 
                     class="text-red-500 mt-2"
                     style="text-align: center;"
-                    *ngIf="ruEventForm.errors?.['StartEndDateValidator']" 
+                    *ngIf="cruEventForm.errors?.['StartEndDateValidator']" 
                 >
-                    {{ ruEventForm.errors?.['StartEndDateValidator'] }}
+                    {{ cruEventForm.errors?.['StartEndDateValidator'] }}
                 </p>
                 <br />
                 
@@ -206,14 +206,14 @@
                             *ngIf="formMode != 1"
                             inputId="integeronly"
                             placeholder="Nb minimum de participants" 
-                            [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
                         >
                         </p-inputNumber>
                         <input pInputText type="text" 
                             *ngIf="formMode == 1"
                             id="nb_people_min"
                             placeholder="Nb minimum de participants" 
-                            value="{{ event.nb_people_min }}"
+                            value="{{ event?.nb_people_min }}"
                             class="p-disabled"
                         >
                         <p 
@@ -235,14 +235,14 @@
                             *ngIf="formMode != 1"
                             inputId="integeronly"
                             placeholder="Nb minimum de participants" 
-                            [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                            [ngClass]="cruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
                         >
                         </p-inputNumber>
                         <input pInputText type="text" 
                             *ngIf="formMode == 1"
                             id="nb_people_max"
                             placeholder="Nb minimum de participants" 
-                            value="{{ event.nb_people_max }}"
+                            value="{{ event?.nb_people_max }}"
                             class="p-disabled"
                         >
                         <p 
@@ -262,9 +262,9 @@
                 <p 
                     class="text-red-500 mt-2"
                     style="text-align: center;"
-                    *ngIf="ruEventForm.errors?.['MinMaxValidator']" 
+                    *ngIf="cruEventForm.errors?.['MinMaxValidator']" 
                 >
-                    {{ ruEventForm.errors?.['MinMaxValidator'] }}
+                    {{ cruEventForm.errors?.['MinMaxValidator'] }}
                 </p>
             </form>
         </div>
@@ -288,6 +288,7 @@
                 <div class="col-6 mb-2">
                     <button pButton pRipple 
                         *ngIf="formMode == 2" 
+                        [disabled]="!cruEventForm.valid"
                         label="Enregistrer Modifications"
                         icon="pi pi-save"
                         type="button" 
@@ -296,6 +297,7 @@
                     ></button>
                     <button pButton pRipple 
                         *ngIf="formMode == 3" 
+                        [disabled]="!cruEventForm.valid"
                         label="Enregistrer"
                         icon="pi pi-save"
                         type="button" 

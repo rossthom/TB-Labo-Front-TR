@@ -14,7 +14,7 @@ import { generateCRUEventForm } from './forms/event-cru.form';
 export class EventCruComponent implements OnInit, OnChanges {
   private _unknownEventType: Category = <Category>{id: 0, label:"Type d'évènement inconnu"}
 
-  ruEventForm: FormGroup = generateCRUEventForm(this.fb, this.nominatimService)
+  cruEventForm: FormGroup = generateCRUEventForm(this.fb, this.nominatimService)
   eventTypes: Category[] = []
   eventType: Category = this._unknownEventType
 
@@ -58,16 +58,17 @@ export class EventCruComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     //console.log(changes)
     this._updateEventType()
-    this._fillFormWithEvent()
+    if (this.formMode != FormMode.New){
+      this._fillFormWithEvent()
+    }
   }
 
   get formControls() { 
-    return this.ruEventForm.controls; 
+    return this.cruEventForm.controls; 
   }
 
   private _fillFormWithEvent() {
     if (this.event){
-      // 👷 to implement...
       this.formControls['name'].setValue(this.event.name)
       this.formControls['event_typeId'].setValue(this.event.event_typeId)
       this.formControls['description'].setValue(this.event.description)
@@ -83,18 +84,73 @@ export class EventCruComponent implements OnInit, OnChanges {
     }
   }
 
+  private _emptyForm() {
+    console.log('Empty form...')
+    this.event = <EventView>{
+        id: 0,
+        coop_id: 0,
+        event_typeId: 0,
+        event_type: <Category> {
+          id: 0,
+          label: ''
+        },
+        name: '',
+        description: '',
+        location: '',
+        address: <Address>{
+          postal_code: 0,
+          city: '',
+          street_name: '',
+          street_nb: ''
+        },
+        datetime_start: new Date(),
+        datetime_end: new Date(),
+        nb_people_min: 0,
+        nb_people_max: 0,
+        gps: <GpsPosition>{
+          lon: 0,
+          lat: 0
+        }
+    }
+
+    this.cruEventForm.reset({
+      name: '',
+      event_typeId: '',
+      description: '',
+      location: '',
+      addr_postal_code: '',
+      addr_city: '',
+      addr_street_name: '',
+      addr_street_nb: '',
+      datetime_start: '',
+      datetime_end: '',
+      nb_people_min: '',
+      nb_people_max: ''
+    })
+    /*
+    this.formControls['name'].setValue('')
+    this.formControls['event_typeId'].setValue('')
+    this.formControls['description'].setValue('')
+    this.formControls['location'].setValue('')
+    this.formControls['addr_postal_code'].setValue('')
+    this.formControls['addr_city'].setValue('')
+    this.formControls['addr_street_name'].setValue('')
+    this.formControls['addr_street_nb'].setValue('')
+    this.formControls['datetime_start'].setValue('')
+    this.formControls['datetime_end'].setValue('')
+    this.formControls['nb_people_min'].setValue(null)
+    this.formControls['nb_people_max'].setValue(null)
+    */
+  }
+
   private _updateEventType() {
     if (this.event){
-      console.log('_updateEventType(): entering')
-      console.log(this.event.event_typeId)
       let retType = this.eventTypes.find((type : Category) => {
         if(type.id == this.event.event_typeId) {
           return type
         }
         return null
       })
-      console.log('_updateEventType(): outside find')
-      console.log(retType)
       this.eventType = retType ? retType : this._unknownEventType
     }
     else {
@@ -105,7 +161,8 @@ export class EventCruComponent implements OnInit, OnChanges {
 
   // 👁️‍🗨️ READ Mode
   closePopup(){
-    this.clickOnEventClose.emit(this.event.id)
+    this._emptyForm()
+    this.clickOnEventClose.emit(/*this.event.id*/)
   }
   
   
@@ -134,14 +191,16 @@ export class EventCruComponent implements OnInit, OnChanges {
     // 👷 TODO: call service
     //this.gestEventService.updateEvent(eventUpd).subscribe({
     //  next : () => {
+        this._emptyForm()
         this.clickOnEventUpdate.emit(this.event.id)
     //  }
     //})
   }
   
   cancelModifications(){
-    this._fillFormWithEvent()
-    this.clickOnEventCancel.emit(this.event.id)
+    //this._fillFormWithEvent()
+    this._emptyForm()
+    this.clickOnEventCancel.emit(/*this.event.id*/)
   }
   
 
@@ -169,7 +228,9 @@ export class EventCruComponent implements OnInit, OnChanges {
     // 👷 TODO: call service
     //this.gestEventService.insertEvent(eventNew).subscribe({
     //  next : () => {
-        this.clickOnNewEventSave.emit(this.coopId)
+        this._emptyForm()
+        // TODO: Emit newly created id ?
+        this.clickOnNewEventSave.emit(/*this.coopId*/)
     //  }
     //})
   }
