@@ -58,6 +58,7 @@ export function generateUpdCoopForm(fb: FormBuilder, nominatimService: Nominatim
         ]
     },
     <AbstractControlOptions>{
+        validators: [],
         asyncValidators: [
             NominatimValidator.checkAddress(nominatimService),
         ],

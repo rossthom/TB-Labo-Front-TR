@@ -24,7 +24,44 @@ export class TestboardComponent implements OnInit {
   selectedEvent!: EventView         // TODO: warning, selectedEvent not initialized
 
   testGps: any = {}
-
+  testAddresses: Address[] = [
+    {
+      postal_code: 5002,
+      city: 'Namur',
+      street_name: 'Traverse des Muses',
+      street_nb: '1'
+    },
+    {
+      postal_code: 5002,
+      city: 'Namur',
+      street_name: 'Traverse des Muses',
+      street_nb: ''
+    },
+    {
+      postal_code: 5002,
+      city: 'Namur',
+      street_name: '',
+      street_nb: ''
+    },
+    {
+      postal_code: 5000,
+      city: '',
+      street_name: '',
+      street_nb: ''
+    },
+    {
+      postal_code: 1234,
+      city: 'Namur',
+      street_name: '',
+      street_nb: ''
+    },
+    {
+      postal_code: 1234,
+      city: 'gmlkjd',
+      street_name: '',
+      street_nb: ''
+    },
+  ]
 
   constructor(
     private gestCoopService: GestcoopService,

@@ -65,11 +65,10 @@
                             &nbsp;|&nbsp;
                             <span>V {{ formControls['password'].valid ? '✔️': '❌' }}</span>
                         </label>
-                        <p-password
+                        <input type="password" pPassword
                             id="password" formControlName="password"
-                            [toggleMask]="false"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        ></p-password>
+                        >
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['password'].touched && formControls['password'].errors?.['required']" 
@@ -86,11 +85,10 @@
                             &nbsp;|&nbsp;
                             <span>V {{ formControls['password_confirm'].valid ? '✔️': '❌' }}</span>
                         </label>
-                        <p-password
+                        <input type="password" pPassword
                             id="password_confirm" formControlName="password_confirm"
-                            [toggleMask]="false"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
-                        ></p-password>
+                        >
                         <p 
                             class="text-red-500"
                             *ngIf="formControls['password_confirm'].touched && formControls['password_confirm'].errors?.['required']" 
@@ -119,6 +117,7 @@
                     <p-dropdown 
                         id="coop_typeId" formControlName="coop_typeId"
                         [options]="coopTypes" optionLabel="label" optionValue="id"
+                        placeholder="&nbsp;"
                         [showClear]="false"
                     >
                     </p-dropdown>

@@ -1,12 +1,11 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from "@angular/forms"
 import { Observable, timer, switchMap, map } from 'rxjs';
-import { Address, GpsPosition } from "src/app/gest-coop/shared/models/types.model";
+import { Address } from "src/app/gest-coop/shared/models/types.model";
 import { NominatimService } from "src/app/gest-coop/shared/services/nominatim.service";
 
 
 export class NominatimValidator {
     public static checkAddress(nominatimService: NominatimService): AsyncValidatorFn | null/*GpsPosition*/ {
-        console.log('NominatimValidator triggered')
         return (controlGroup: AbstractControl): Observable<ValidationErrors | null> => {
             let address = <Address>{
                 postal_code: controlGroup.value['addr_postal_code'],
@@ -19,7 +18,6 @@ export class NominatimValidator {
                 switchMap(_ => nominatimService.getAddressGpsLongLat(address).pipe(
                     map((res: any[]) => {
                         if (res.length == 0){
-                            console.log('NominatimValidator detected error')
                             return { NominatimValidator : "Adresse non trouvée sur OpenStreetMap" }
                         }
                         return null;//<GpsPosition>{lon: res[0].lon, lat: res[0].lat}

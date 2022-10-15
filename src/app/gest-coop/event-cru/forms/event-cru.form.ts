@@ -32,18 +32,16 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             {}
         ],
         addr_postal_code: [
-            "", // Valeur par défaut.
+            "",
             {
                 validators: [
                     Validators.required,
                     Validators.pattern('^([0-9]{4})$'),
-                    //Validators.minLength(4),
-                    //Validators.maxLength(4),
                 ]
             }
         ],
         addr_city: [
-            "", // Valeur par défaut.
+            "",
             {
                 validators: [
                     Validators.required,
@@ -86,7 +84,7 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             }
         ],
         nb_people_max: [
-            "", // Valeur par défaut.
+            "",
             {
                 validators: [
                     Validators.required,

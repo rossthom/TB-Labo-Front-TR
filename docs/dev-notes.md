@@ -13,16 +13,6 @@ json-server start command:
 
 # DEV ROADMAP
 - CRU Coopératives & Events:
-	👷 Page CREER Coop
-		- Ajouter email & pwd (+ confirm pwd)
-		o valid email
-		o valid pwd (valid globale)
-
-	o Sur TOUS les form (CCoop, UCoop, CEvent, UEvent), tester les Validateurs
-		🐛 Vérifier les erreurs de validation. 
-			- Il semble que NominatimValidator ne se trigger pas dans NewEvent
-			- Bien tester tous les messages...
-
 	👷 faire fonctionner Nominatim lors de :
 		- update Coop
 		- update Evenement
@@ -34,10 +24,11 @@ json-server start command:
 	o Test Créer Event
 	o Test Update Event
 
+	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
 	o Clean test button and methods from CCoop, UCoop, CRUEvent
 
 	🙏 NTH: child for event list
-	
+
 o Développer Connection Cooperative
 	o Guard sur Gest. Coop. routes
 
