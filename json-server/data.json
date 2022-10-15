@@ -105,7 +105,7 @@
         {
             "id": 1,
             "coop_id": 1,
-            "event_typeId": 4,
+            "event_typeId": 5,
             "name": "Sortie Ornithologie",
             "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
             "location": "La Plante",

@@ -11,13 +11,17 @@ import { GesteventService } from './services/gestevent.service';
   styleUrls: ['./gest-coop.component.scss']
 })
 export class GestCoopComponent implements OnInit {
+  listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
+
   coopId: number = 0
-  listCoops!: CooperativeView[]    // TODO: attribut listCoops non initialisé !
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
+  updatePopupVisible: boolean = false;
+  
   coopEvents!: EventView[]         // TODO: attribut coopEvents non initialisé !
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
-
-  updatePopupVisible: boolean = false;
+  ruEventPopupVisible: boolean = false;   // READ / UPDATE Event popup display status
+  ruEventPopupEditMode: boolean = false;  // READ / UPDATE Event popup edit mode status
+  cEventPopupVisible: boolean = false;    // CREATE Event popup display status
 
   constructor(
     private gestCoopService: GestcoopService,
@@ -41,23 +45,33 @@ export class GestCoopComponent implements OnInit {
         }
       })
 
-      this.gestEventService.getAllEventsFromCoop(id).subscribe({
-        next : (res : EventView[]) => {
-          this.coopEvents = res
+      this._getEventsFromCoop(id)
+    }
+  }
+
+  private _getEventsFromCoop(coopId: number){
+    this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
+      next : (res : EventView[]) => {
+        this.coopEvents = res
+      }
+    })
+  }
+
+
+  showEvent(id: number, edit: boolean){
+    if (id != 0) {
+      this.gestEventService.getOneEvent(id).subscribe({
+        next : (res : EventView) => {
+          this.selectedEvent = res
+          this.ruEventPopupVisible = true;
+          this.ruEventPopupEditMode = edit;
         }
       })
     }
   }
 
-  getOneEvent(eventId: number){
-    this.gestEventService.getOneEvent(eventId).subscribe({
-      next : (res : EventView) => {
-        this.selectedEvent = res
-      }
-    })
-  }
-
-  showUpdatePopup(){
+  // ℹ️ Update Coop Child Compo emitted Outputs managment
+  showCoopUpdatePopup(){
     this.updatePopupVisible = true;
   }
 
@@ -66,7 +80,25 @@ export class GestCoopComponent implements OnInit {
     this.updatePopupVisible = false
   }
   
-  cancelUpdate(coopId: number) {
+  cancelCoopUpdate(coopId: number) {
     this.updatePopupVisible = false
+  }
+  
+
+  // ℹ️ View-Update Events Child Compo emitted Outputs managment
+  updateEvent(eventId: number){
+    this._getEventsFromCoop(this.coopId)
+    console.log('GestCoopComponent (parent) caught clickOnEventUpdate')
+    this.ruEventPopupVisible = false
+  }
+
+  cancelEventUpdate(eventId: number){
+    console.log('GestCoopComponent (parent) caught clickOnEventCancel')
+    this.ruEventPopupVisible = false
+  }
+
+  closeEventView(eventId: number){
+    console.log('GestCoopComponent (parent) caught clickOnEventClose')
+    this.ruEventPopupVisible = false
   }
 }

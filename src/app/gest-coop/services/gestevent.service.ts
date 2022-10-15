@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EventView } from '../models/event.model';
+import { Category } from '../models/types.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class GesteventService {
     private httpC : HttpClient,
   ) { }
 
+
+  getEventTypes(): Observable<Category[]>{
+    return this.httpC.get<Category[]>(this._apiUrl+"event_types")
+  }
 
   getAllEvents(): Observable<EventView[]>{
     return this.httpC.get<EventView[]>(this._apiUrl+"events?_expand=event_type")

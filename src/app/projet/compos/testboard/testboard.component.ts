@@ -39,7 +39,7 @@ export class TestboardComponent implements OnInit {
       }
     })
 
-    this.gestCoopService.getEventTypes().subscribe({
+    this.gestEventService.getEventTypes().subscribe({
       next : (res : Category[]) => {
         this.eventTypes = res
       }

@@ -23,10 +23,6 @@ export class GestcoopService {
     return this.httpC.get<Category[]>(this._apiUrl+"coop_types")
   }
 
-  getEventTypes(): Observable<Category[]>{
-    return this.httpC.get<Category[]>(this._apiUrl+"event_types")
-  }
-
   getAllCoops(): Observable<CooperativeView[]>{
     return this.httpC.get<CooperativeView[]>(this._apiUrl+"cooperatives?_expand=coop_type")
   }

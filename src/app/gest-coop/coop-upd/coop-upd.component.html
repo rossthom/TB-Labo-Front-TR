@@ -1,5 +1,6 @@
 <div *ngIf="cooperative" class="grid p-fluid">
     <div class="col-12">
+        <!-- ℹ️ FORM -->
         <div class="card">
             <form [formGroup]="updCoopForm">
                 <div class="grid formgrid">
@@ -40,11 +41,10 @@
                         </label>
                         <br />
                         <p-dropdown 
-                            id="coop_typeId" 
-                            formControlName="coop_typeId"
+                            id="coop_typeId" formControlName="coop_typeId"
                             [options]="coopTypes" optionLabel="label" optionValue="id"
                             placeholder="Choisissez un type de coopérative" 
-                            [showClear]="true"
+                            [showClear]="false"
                         >
                         </p-dropdown>
                         <p 
@@ -189,6 +189,7 @@
             </form>
         </div>
 
+        <!-- ℹ️ FOOTER -->
         <div class="gc-popup-footer">
             <div class="grid formgrid">
                 <div class="col-6 mb-2">
@@ -209,7 +210,9 @@
                         (click)="cancelModifications()"
                     ></button>
                 </div>
-                <div class="col-6 mb-2">
+            </div>
+            <div class="grid formgrid"> 
+                <div class="col mb-2">
                     <button pButton pRipple 
                         label="Log Form Obj."
                         icon="pi pi-times-circle"

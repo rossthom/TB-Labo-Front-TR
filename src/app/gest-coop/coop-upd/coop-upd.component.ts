@@ -22,7 +22,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
   clickOnCoopUpdate: EventEmitter<number> = new EventEmitter<number>()
 
   @Output() 
-  clickOnCancel: EventEmitter<number> = new EventEmitter<number>()
+  clickOnCoopCancel: EventEmitter<number> = new EventEmitter<number>()
 
 
   constructor(
@@ -88,7 +88,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   cancelModifications(){
     this._fillFormWithCoop()
-    this.clickOnCancel.emit(this.cooperative.id)
+    this.clickOnCoopCancel.emit(this.cooperative.id)
   }
 
 

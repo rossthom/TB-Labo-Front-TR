@@ -6,40 +6,58 @@ json-server start command:
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 
-- ❓ Comment modifier mon objet juste avant de faire l'update en DB ?
+- ⚠️❓ Comment modifier mon objet juste avant de faire l'update en DB ?
+- ⚠️❓ Construction formulaire avec options: méthode dépréciée !
 
-# WHAT NOW ?
+
+# DEV ROADMAP
 - CRU Coopératives:
 	- développer UPDATE Coop'
 		- Call update function from service
-			- make Nominatim work
+			o ⚠️ make Nominatim work  (adresse update coop)
 
-	- Vue Coop:
-		- Bouton détail affiche détail d'un event en popup ?
-		- Ce détail d'event est un child?
-	- voir comment CREER et UPDATE evenement (pas Delete)
-	- Développer page CREER Coop
+	o Vue Coop:
+		- Bouton 'détail' affiche détail d'un event en popup (child compo)
+		- Bouton 'modifier' appel cette même popup, en mode edit
+		- Verif vues READ et UPD des Events,
+			- Verif remplissage champs par défaut
+			- Verif form components 
+			- Verif validateurs de base
+			- Verif validateurs Nominatim
+		- Dev validateurs custom
+			- end_date > start_date Validator
+			- nb_people_max > nb_people_min Validator
+		o implémenter UPDATE evenement
+			o ⚠️ make Nominatim work (adresse update evenement)
+		o implémenter CREATE event
+			o Créer Popup création nouvel event + Form
+				o test form components
+				o test validators
+			o implement POST
+				o ⚠️ make Nominatim work (adresse nouvel evenement)
 
-- Développer Connection Cooperative
+	o Développer page CREER Coop
+		o ⚠️ make Nominatim work  (adresse nouvelle coop)
 
-# TODO GUIDELINE
-o Start GestCoop module
-	o Develop Cooperatives detail view
-	- Develop Events detail view
-	o Develop Cooperative CRUD
-	o Develop Events CRUD
-o Create Coop & Events CRUD compos
-o Create Coop & Events views compos 
-o Manage Coop. login
-	o Guard on Coop Gest. routes
+o Développer Connection Cooperative
+	o Guard sur Gest. Coop. routes
 
-o Develop user detail view
-o Develop User CRUD
-o Manage User login
-o Manage user logout
+o Développer Registration User
+	o ⚠️ make Nominatim work (adresse nouvel utilisateur)
+	o Guard sur Coop vues routes
+	o User login
+	o User logout
+
+o Développer vues events et coop quand user connecté
+	o Carte ?
+	o Calendrier ?
+
+o Développer inscription à un event
+	o BONUS... Dans event list, voir combien de personnes sont inscrites...
 
 o Cleanup
 	o Delete all test components, delete routes, ...
+
 
 # ARCHITECTURE
 - module gestCoop
@@ -66,11 +84,6 @@ o Cleanup
 		- connect as coop
 			- unlock gest coop routes
 		- connect as user
-
-
-# ERRORS
-## Auth module (on sandbox project)
-Can't bind to 'formGroup' since it isn't a known property of 'form'
 
 
 # PROJECT INIT: 

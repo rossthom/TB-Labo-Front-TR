@@ -1,0 +1,420 @@
+<h5 *ngIf="!editMode">👁️‍🗨️ READ MODE</h5>
+<h5 *ngIf="editMode">✍️ EDIT MODE</h5>
+
+
+<div *ngIf="event" class="grid p-fluid">
+    <div class="col-12">
+        <!-- ℹ️ FORM -->
+        <div class="card">
+            <form [formGroup]="ruEventForm">
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="name">
+                            <span>P {{ formControls['name'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['name'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text" 
+                            id="name" formControlName="name"
+                            placeholder="Nom de la Coopérative" 
+                            [ngClass]="!editMode?'p-disabled':''"
+                        >
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['name'].errors?.['minlength']" 
+                        >
+                            Le nom doit avoir au moins {{ formControls['name'].errors?.['minlength'].requiredLength }} caractères
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['name'].touched && formControls['name'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="event_typeId">
+                            <span>P {{ formControls['event_typeId'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['event_typeId'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['event_typeId'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-dropdown 
+                            id="event_typeId" formControlName="event_typeId"
+                            *ngIf="editMode"
+                            [options]="eventTypes" optionLabel="label" optionValue="id"
+                            placeholder="Choisissez un type d'évènement" 
+                            [showClear]="false"
+                        >
+                        </p-dropdown>
+                        <input pInputText type="text" 
+                            *ngIf="!editMode"
+                            id="event_type"
+                            placeholder="Type d'évènement" 
+                            value="{{ eventType.label }}"
+                            class="p-disabled"
+                        >
+                        <p 
+                        class="text-red-500"
+                        *ngIf="formControls['event_typeId'].touched && formControls['event_typeId'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                    </div>
+                </div>
+                <br />
+
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="description">
+                            <span>P {{ formControls['description'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['description'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['description'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <textarea pInputTextarea type="text" 
+                            id="description" formControlName="description"
+                            placeholder="Description" 
+                            [ngClass]="!editMode?'p-disabled':''"
+                        ></textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="location">
+                            <span>P {{ formControls['location'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['location'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['location'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text" 
+                            id="location" formControlName="location"
+                            placeholder="Lieu" 
+                            [ngClass]="!editMode?'p-disabled':''"
+                        >
+                    </div>
+                </div>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_postal_code">
+                            <span>P {{ formControls['addr_postal_code'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_postal_code'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text"
+                            id="addr_postal_code" formControlName="addr_postal_code"
+                            placeholder="Code Postal" 
+                            [class.p-disabled]="!editMode"
+                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                        >
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_postal_code'].errors?.['pattern']" 
+                        >
+                            Un code postal est composé de 4 chiffres uniquement.
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_postal_code'].touched && formControls['addr_postal_code'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_city">
+                            <span>P {{ formControls['addr_city'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_city'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text"
+                            id="addr_city" formControlName="addr_city"
+                            placeholder="Ville / Village" 
+                            [class.p-disabled]="!editMode"
+                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                        >
+                        <br />
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['addr_city'].touched && formControls['addr_city'].errors?.['required']" 
+                        >
+                            Ce champ est requis
+                        </p>
+                    </div>
+                </div>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_name">
+                            <span>P {{ formControls['addr_street_name'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_street_name'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_street_name'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text"
+                            id="addr_street_name" formControlName="addr_street_name"
+                            placeholder="Nom de Rue"
+                            [class.p-disabled]="!editMode"
+                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                        >
+                        <br />
+                    </div>
+                    <div class="col-12 mb-2 lg:col-6 lg:mb-0">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_nb">
+                            <span>P {{ formControls['addr_street_nb'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['addr_street_nb'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['addr_street_nb'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <input pInputText type="text" 
+                            id="addr_street_nb" formControlName="addr_street_nb"
+                            placeholder="N° de Rue" 
+                            [class.p-disabled]="!editMode"
+                            [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
+                            [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
+                        >
+                        <br />
+                    </div>
+                </div>
+                <p 
+                    class="text-red-500 mt-2"
+                    style="text-align: center;"
+                    *ngIf="ruEventForm.errors?.['NominatimValidator']" 
+                >
+                    {{ ruEventForm.errors?.['NominatimValidator'] }}
+                </p>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-6 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="datetime_start">
+                            <span>P {{ formControls['datetime_start'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['datetime_start'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['datetime_start'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-calendar 
+                            id="datetime_start" formControlName="datetime_start"
+                            *ngIf="editMode"
+                            placeholder="Date évènement" 
+                            [showTime]="true" hourFormat="24"
+                            [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        ></p-calendar>
+                        <input pInputText type="text" 
+                            *ngIf="!editMode"
+                            id="datetime_start"
+                            placeholder="Date" 
+                            value="{{ event.datetime_start | date: 'dd MMM yyyy H:mm' }}"
+                            class="p-disabled"
+                        >
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['datetime_start'].touched && formControls['datetime_start'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="datetime_end">
+                            <span>P {{ formControls['datetime_end'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['datetime_end'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['datetime_end'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-calendar 
+                            id="datetime_end" formControlName="datetime_end"
+                            *ngIf="editMode"
+                            placeholder="Date évènement" 
+                            [showTime]="true" hourFormat="24"
+                            [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        ></p-calendar>
+                        <input pInputText type="text" 
+                            *ngIf="!editMode"
+                            id="datetime_end"
+                            placeholder="Date" 
+                            value="{{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}"
+                            class="p-disabled"
+                        >
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['datetime_end'].touched && formControls['datetime_end'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                    </div>
+                </div>
+                <p 
+                    class="text-red-500 mt-2"
+                    style="text-align: center;"
+                    *ngIf="ruEventForm.errors?.['StartEndDateValidator']" 
+                >
+                    {{ ruEventForm.errors?.['StartEndDateValidator'] }}
+                </p>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-6 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="nb_people_min">
+                            <span>P {{ formControls['nb_people_min'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['nb_people_min'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['nb_people_min'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-inputNumber 
+                            id="nb_people_min" formControlName="nb_people_min"
+                            *ngIf="editMode"
+                            inputId="integeronly"
+                            placeholder="Nb minimum de participants" 
+                            [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
+                        </p-inputNumber>
+                        <input pInputText type="text" 
+                            *ngIf="!editMode"
+                            id="nb_people_min"
+                            placeholder="Nb minimum de participants" 
+                            value="{{ event.nb_people_min }}"
+                            class="p-disabled"
+                        >
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['nb_people_min'].touched && formControls['nb_people_min'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['nb_people_min'].errors?.['pattern']" 
+                        >
+                            Entrez un nombre de 1 à 4 chiffres.
+                        </p>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="nb_people_max">
+                            <span>P {{ formControls['nb_people_max'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['nb_people_max'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['nb_people_max'].valid ? '✔️': '❌' }}</span>
+                        </label>
+                        <br />
+                        <p-inputNumber 
+                            id="nb_people_max" formControlName="nb_people_max"
+                            *ngIf="editMode"
+                            inputId="integeronly"
+                            placeholder="Nb minimum de participants" 
+                            [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
+                        >
+                        </p-inputNumber>
+                        <input pInputText type="text" 
+                            *ngIf="!editMode"
+                            id="nb_people_max"
+                            placeholder="Nb minimum de participants" 
+                            value="{{ event.nb_people_max }}"
+                            class="p-disabled"
+                        >
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['nb_people_max'].touched && formControls['nb_people_max'].errors?.['required']" 
+                        >
+                          Ce champ est requis
+                        </p>
+                        <p 
+                            class="text-red-500"
+                            *ngIf="formControls['nb_people_max'].errors?.['pattern']" 
+                        >
+                            Entrez un nombre de 1 à 4 chiffres.
+                        </p>
+                    </div>
+                </div>
+                <p 
+                    class="text-red-500 mt-2"
+                    style="text-align: center;"
+                    *ngIf="ruEventForm.errors?.['MinMaxValidator']" 
+                >
+                    {{ ruEventForm.errors?.['MinMaxValidator'] }}
+                </p>
+            </form>
+        </div>
+
+        <!-- ℹ️ FOOTER -->
+        <div class="gc-popup-footer">
+            <div *ngIf="!editMode" class="grid formgrid">
+                <div class="col-6 mb-2">
+                </div>
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                        label="Close"
+                        icon="pi pi-times-circle"
+                        type="button" 
+                        class="p-button-outlined p-button-danger mr-2 mb-2" 
+                        (click)="closePopup()"
+                    ></button>
+                </div>
+            </div>
+            <div *ngIf="editMode" class="grid formgrid">
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                    label="Enregistrer"
+                    icon="pi pi-save"
+                    type="button" 
+                    class="p-button-outlined p-button-success mr-2 mb-2"
+                    (click)="saveModifications()"
+                    ></button>
+                </div>
+                <div class="col-6 mb-2">
+                    <button pButton pRipple 
+                        label="Annuler"
+                        icon="pi pi-times-circle"
+                        type="button" 
+                        class="p-button-outlined p-button-danger mr-2 mb-2" 
+                        (click)="cancelModifications()"
+                    ></button>
+                </div>
+            </div>
+            <div class="grid formgrid"> 
+                <div class="col mb-2">
+                    <button pButton pRipple 
+                        label="Log Form Obj."
+                        icon="pi pi-times-circle"
+                        type="button" 
+                        class="p-button-outlined p-button-warning mr-2 mb-2" 
+                        (click)="testLogForm()"
+                    ></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

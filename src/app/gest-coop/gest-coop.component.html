@@ -2,6 +2,7 @@
 
 <div class="grid">
     <div class="col-12">
+        <!-- ⚠️ REMOVE THIS DIV WHEN COOP AUTH IS READY -->
         <div class="card p-fluid">
             <span class="pr-2 pb-1" style="border-radius: 2px; background-color: 'var(--yellow-100)';">
                 <p-tag styleClass="mr-2" severity="warning" value="Warning"></p-tag>
@@ -12,150 +13,133 @@
                 [options]="listCoops" optionLabel="name" optionValue="id"
                 [(ngModel)]="coopId" 
                 placeholder="Choisissez une coopérative" 
-                [showClear]="true"
+                [showClear]="false"
                 (onChange)="getOneCoop(coopId)"
             >
             </p-dropdown>
         </div>
         
+        <!-- ℹ️ Cooperative and Events Details -->
         <div *ngIf="selectedCoop" class="card">
-            <h2>Détail Coopérative</h2>
             <div class="grid">
-                <div class="col-2">
-                    <img src="{{ selectedCoop.logo }}" width="70%">
-                </div>
-                <div class="col">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Nom</th>
-                                <td>{{ selectedCoop.name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Type</th>
-                                <td>{{ selectedCoop.coop_type.label }} ({{ selectedCoop.coop_type.id }})</td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td>{{ selectedCoop.description }}</td>
-                            </tr>
-                            <tr>
-                                <th>Addresse</th>
-                                <td>
-                                    <span *ngIf="selectedCoop.address.street_name">
-                                        {{ selectedCoop.address.street_name }}
-                                        <span *ngIf="selectedCoop.address.street_nb">, {{selectedCoop.address.street_nb }}</span>
-                                        <br />
-                                    </span>
-                                    {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
-                                    <br />
-                                    lon: {{ selectedCoop.gps.lon }} ; lat: {{ selectedCoop.gps.lat }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button pButton pRipple 
-                        label="Modifier"
-                        icon="pi pi-pencil"
-                        type="button" 
-                        class="p-button-outlined p-button-primary mr-2 mb-2" 
-                        (click)="showUpdatePopup()"
-                    ></button>
-                </div>
-            </div>
-            <hr />
-
-            <div *ngIf="coopEvents">
-                <div class="grid">
-                    <div class="col-4">
-                        <h3>Evènements</h3>
-                        <table>
-                            <tbody>
-                                <tr *ngFor="let event of coopEvents">
-                                    <td>
-                                        <b><em>{{ event.event_type.label }}:</em></b> {{ event.name }}<span *ngIf="event.location != ''"> ({{ event.location }})</span>
-                                    </td>
-                                    <td>
-                                        <button pButton pRipple 
-                                            label="Détail"
-                                            icon="pi pi-info-circle"
-                                            type="button" 
-                                            class="p-button-outlined p-button-sm p-button-primary mr-2 mb-2" 
-                                            (click)="getOneEvent(event.id)"
-                                        ></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col">
-                        <div *ngIf="selectedEvent != null && selectedEvent != undefined">
-                            <h2>Détail Evènement</h2>
+                <!-- ℹ️ Cooperative Details -->
+                <div class="col-6" style="border-right: 1px solid var(--gray-300)">
+                    <h2>Détail Coopérative</h2>
+                    <div class="grid">
+                        <div class="col-2">
+                            <img src="{{ selectedCoop.logo }}" width="70%">
+                        </div>
+                        <div class="col">
                             <table>
                                 <tbody>
                                     <tr>
                                         <th>Nom</th>
-                                        <td>{{ selectedEvent.name }}</td>
+                                        <td>{{ selectedCoop.name }}</td>
                                     </tr>
                                     <tr>
                                         <th>Type</th>
-                                        <td>{{ selectedEvent.event_type.label }} ({{ selectedEvent.event_type.id }})</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Du ...<br />Au ...</th>
-                                        <td>
-                                            {{ selectedEvent.datetime_start | date:'YYYY/MM/dd H:mm' }}
-                                            <br />
-                                            {{ selectedEvent.datetime_end | date:'YYYY/MM/dd H:mm' }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nb personnes min - max</th>
-                                        <td>
-                                            {{ selectedEvent.nb_people_min }} - {{ selectedEvent.nb_people_max }}
-                                        </td>
+                                        <td>{{ selectedCoop.coop_type.label }} ({{ selectedCoop.coop_type.id }})</td>
                                     </tr>
                                     <tr>
                                         <th>Description</th>
-                                        <td>{{ selectedEvent.description }}</td>
-                                    </tr>
-                                    <tr *ngIf="selectedEvent.location != ''">
-                                        <th>Lieu</th>
-                                        <td>{{ selectedEvent.location }}</td>
+                                        <td>{{ selectedCoop.description }}</td>
                                     </tr>
                                     <tr>
                                         <th>Addresse</th>
                                         <td>
-                                            <span *ngIf="selectedEvent.address.street_name">
-                                                {{ selectedEvent.address.street_name }}
-                                                <span *ngIf="selectedEvent.address.street_nb">, {{selectedEvent.address.street_nb }}</span>
+                                            <span *ngIf="selectedCoop.address.street_name">
+                                                {{ selectedCoop.address.street_name }}
+                                                <span *ngIf="selectedCoop.address.street_nb">, {{selectedCoop.address.street_nb }}</span>
                                                 <br />
                                             </span>
-                                            {{ selectedEvent.address.postal_code }} {{ selectedEvent.address.city }}
+                                            {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
                                             <br />
-                                            lon: {{ selectedEvent.gps.lon }} ; lat: {{ selectedEvent.gps.lat }}
+                                            lon: {{ selectedCoop.gps.lon }} ; lat: {{ selectedCoop.gps.lat }}
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <button pButton pRipple 
+                                label="Modifier"
+                                icon="pi pi-pencil"
+                                type="button" 
+                                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                                (click)="showCoopUpdatePopup()"
+                            ></button>
                         </div>
                     </div>
+                </div>
+
+                <!-- ℹ️ Coop's Events list -->
+                <div *ngIf="coopEvents" class="col-6">
+                    <h3>Evènements</h3>
+                    <table>
+                        <tbody>
+                            <tr *ngFor="let event of coopEvents">
+                                <th style="text-align: right">
+                                    <em>{{ event.event_type.label }}</em>
+                                <td>
+                                    {{ event.name }}
+                                </td>
+                                <td>
+                                    <span *ngIf="event.location != ''"> ({{ event.location }})</span>
+                                    <span *ngIf="event.location == ''"> ({{ event.address.city }})</span>
+                                </td>
+                                <td>
+                                    <button pButton pRipple 
+                                        label=""
+                                        icon="pi pi-info-circle"
+                                        type="button" 
+                                        class="p-button-outlined p-button-sm p-button-info mr-2 mb-2" 
+                                        (click)="showEvent(event.id, false)"
+                                    ></button>
+                                </td>
+                                <td>
+                                    <button pButton pRipple 
+                                        label=""
+                                        icon="pi pi-pencil"
+                                        type="button" 
+                                        class="p-button-outlined p-button-sm p-button-primary mr-2 mb-2" 
+                                        (click)="showEvent(event.id, true)"
+                                    ></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- POPUPS -->
+<!-- Update Coop Popup -->
 <p-dialog 
     [(visible)]="updatePopupVisible" 
     [style]="{width: '600px'}" 
     header="Modification Coopérative" 
-    [modal]="true">
+    [modal]="true"
+>
     <app-coop-upd 
         [cooperative]="selectedCoop"
         (clickOnCoopUpdate)="updateCooperative($event)"
-        (clickOnCancel)="cancelUpdate($event)"
+        (clickOnCoopCancel)="cancelCoopUpdate($event)"
     >
     </app-coop-upd>
+</p-dialog>
+
+<!-- View-Update Event Popup -->
+<p-dialog 
+    [(visible)]="ruEventPopupVisible" 
+    [style]="{width: '800px'}" 
+    header="Détail Evènement" 
+    [modal]="true"
+>
+    <app-event-rupd 
+        [event]="selectedEvent"
+        [editMode]="ruEventPopupEditMode"
+        (clickOnEventUpdate)="updateEvent($event)"
+        (clickOnEventCancel)="cancelEventUpdate($event)"
+        (clickOnEventClose)="closeEventView($event)"
+    >
+    </app-event-rupd>
 </p-dialog>
