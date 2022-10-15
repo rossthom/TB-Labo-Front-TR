@@ -17,14 +17,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { GestCoopRoutingModule } from './gest-coop-routing.module';
 import { GestCoopComponent } from './gest-coop.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
-import { EventRUpdComponent } from './event-rupd/event-rupd.component';
+import { EventCruComponent } from './event-cru/event-cru.component';
 
 
 @NgModule({
   declarations: [
     GestCoopComponent,
     CoopUpdComponent,
-    EventRUpdComponent,
+    EventCruComponent,
   ],
   imports: [
     // Angular

@@ -53,8 +53,6 @@
                                                 <br />
                                             </span>
                                             {{ selectedCoop.address.postal_code }} {{ selectedCoop.address.city }}
-                                            <br />
-                                            lon: {{ selectedCoop.gps.lon }} ; lat: {{ selectedCoop.gps.lat }}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -94,7 +92,7 @@
                                         icon="pi pi-info-circle"
                                         type="button" 
                                         class="p-button-outlined p-button-sm p-button-info mr-2 mb-2" 
-                                        (click)="showEvent(event.id, false)"
+                                        (click)="showEventPopup(event.id, coopId, 1)"
                                     ></button>
                                 </td>
                                 <td>
@@ -103,12 +101,22 @@
                                         icon="pi pi-pencil"
                                         type="button" 
                                         class="p-button-outlined p-button-sm p-button-primary mr-2 mb-2" 
-                                        (click)="showEvent(event.id, true)"
+                                        (click)="showEventPopup(event.id, coopId, 2)"
                                     ></button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <br />
+                    <div>
+                        <button pButton pRipple 
+                            label="Nouvel Evènement"
+                            icon="pi pi-plus-circle"
+                            type="button" 
+                            class="p-button-outlined p-button-primary mr-2 mb-2" 
+                            (click)="showEventPopup(0, coopId, 3)"
+                        ></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,17 +140,19 @@
 
 <!-- View-Update Event Popup -->
 <p-dialog 
-    [(visible)]="ruEventPopupVisible" 
+    [(visible)]="cruEventPopupVisible" 
     [style]="{width: '800px'}" 
-    header="Détail Evènement" 
+    [header]="cruEventPopupMode == 1 ? '👁️‍🗨️ Détail Evènement' : cruEventPopupMode == 2 ? '✍️ Modifier Evènement' : '✨ Nouvel Evènement'"
     [modal]="true"
 >
-    <app-event-rupd 
+    <app-event-cru 
         [event]="selectedEvent"
-        [editMode]="ruEventPopupEditMode"
-        (clickOnEventUpdate)="updateEvent($event)"
-        (clickOnEventCancel)="cancelEventUpdate($event)"
-        (clickOnEventClose)="closeEventView($event)"
+        [event]="selectedEvent"
+        [formMode]="cruEventPopupMode"
+        (clickOnEventClose)="eventViewClosed($event)"
+        (clickOnEventUpdate)="eventUpdated($event)"
+        (clickOnEventCancel)="eventUpdateNewCanceled($event)"
+        (clickOnNewEventSave)="newEventSaved($event)"
     >
-    </app-event-rupd>
+    </app-event-cru>
 </p-dialog>

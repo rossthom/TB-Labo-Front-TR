@@ -4,7 +4,7 @@ import { minMaxValidator } from "../../validators/minMax.validator";
 import { NominatimValidator } from "../../validators/nominatim.validator";
 import { startEndDateValidator } from "../../validators/startEndDate.validator";
 
-export function generateRUpdEventForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
+export function generateCRUEventForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
     return fb.group({
         name: [
             "",

@@ -12,28 +12,35 @@ json-server start command:
 
 # DEV ROADMAP
 - CRU Coopératives:
-	- développer UPDATE Coop'
-		- Call update function from service
-			o ⚠️ make Nominatim work  (adresse update coop)
-
 	o Vue Coop:
-		o implémenter UPDATE evenement
+		👷 Implémenter update Coop
+			o ⚠️ make Nominatim work  (adresse update coop)
+		👷 Implémenter UPDATE evenement
 			o ⚠️ make Nominatim work (adresse update evenement)
-		o implémenter CREATE event
+		o Implémenter CREATE event
 			o Créer Popup création nouvel event + Form
 				o test form components
 				o test validators
-			o implement POST
+			o Implement POST
 				o ⚠️ make Nominatim work (adresse nouvel evenement)
+
+		o child for event list
+
+		o Clean PTV screens from UpdCoop, ViewUpdEvent and NewEvent Popups
+		o Clean test buttons and methods from UpdCoop, ViewUpdEvent and NewEvent
 
 	o Développer page CREER Coop
 		o ⚠️ make Nominatim work  (adresse nouvelle coop)
+	o Clean PTV screens from NewCoop
+	o Clean test button and methods from NewCoop
 
 o Développer Connection Cooperative
 	o Guard sur Gest. Coop. routes
 
 o Développer Registration User
 	o ⚠️ make Nominatim work (adresse nouvel utilisateur)
+	o Clean PTV screens from NewCoop
+	o Clean test button and methods from NewCoop
 	o Guard sur Coop vues routes
 	o User login
 	o User logout

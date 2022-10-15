@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CooperativeDtoUpd, CooperativeView } from './models/coop.model';
+import { FormMode } from './event-cru/event-cru.component';
+import { CooperativeView } from './models/coop.model';
 import { EventView } from './models/event.model';
 import { GestcoopService } from './services/gestcoop.service';
 import { GesteventService } from './services/gestevent.service';
@@ -19,9 +20,9 @@ export class GestCoopComponent implements OnInit {
   
   coopEvents!: EventView[]         // TODO: attribut coopEvents non initialisé !
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
-  ruEventPopupVisible: boolean = false;   // READ / UPDATE Event popup display status
-  ruEventPopupEditMode: boolean = false;  // READ / UPDATE Event popup edit mode status
-  cEventPopupVisible: boolean = false;    // CREATE Event popup display status
+  cruEventPopupVisible: boolean = false;          // Event popup display status
+  cruEventPopupMode: FormMode = FormMode.Read;    // Event popup display mode
+  //cEventPopupVisible: boolean = false;    // CREATE Event popup display status
 
   constructor(
     private gestCoopService: GestcoopService,
@@ -58,19 +59,7 @@ export class GestCoopComponent implements OnInit {
   }
 
 
-  showEvent(id: number, edit: boolean){
-    if (id != 0) {
-      this.gestEventService.getOneEvent(id).subscribe({
-        next : (res : EventView) => {
-          this.selectedEvent = res
-          this.ruEventPopupVisible = true;
-          this.ruEventPopupEditMode = edit;
-        }
-      })
-    }
-  }
-
-  // ℹ️ Update Coop Child Compo emitted Outputs managment
+  // ℹ️ Update Coop Popup
   showCoopUpdatePopup(){
     this.updatePopupVisible = true;
   }
@@ -85,17 +74,44 @@ export class GestCoopComponent implements OnInit {
   }
   
 
-  // ℹ️ View-Update Events Child Compo emitted Outputs managment
-  updateEvent(eventId: number){
+  // ℹ️ Event Popup
+  showEventPopup(eventId: number, coopId: number, mode: FormMode){
+    if (mode == FormMode.New) {
+      this.cruEventPopupVisible = true;
+      this.cruEventPopupMode = mode;
+    }
+    else {
+      if (eventId != 0) {
+        this.gestEventService.getOneEvent(eventId).subscribe({
+          next : (res : EventView) => {
+            this.selectedEvent = res
+            this.cruEventPopupVisible = true;
+            this.cruEventPopupMode = mode;
+          }
+        })
+      }
+    }
+  }
+  
+  eventViewClosed(eventId: number){
+    this.cruEventPopupVisible = false
+    this.cruEventPopupMode = FormMode.Read
+  }
+
+  eventUpdated(eventId: number){
     this._getEventsFromCoop(this.coopId)
-    this.ruEventPopupVisible = false
+    this.cruEventPopupVisible = false
   }
 
-  cancelEventUpdate(eventId: number){
-    this.ruEventPopupVisible = false
+  eventUpdateNewCanceled(eventId: number){
+    this.cruEventPopupVisible = false
+    this.cruEventPopupMode = FormMode.Read
   }
-
-  closeEventView(eventId: number){
-    this.ruEventPopupVisible = false
+  
+  // ℹ️ New Event Popup
+  newEventSaved(eventId: number){
+    this._getEventsFromCoop(this.coopId)
+    this.cruEventPopupVisible = false
+    this.cruEventPopupMode = FormMode.Read
   }
 }

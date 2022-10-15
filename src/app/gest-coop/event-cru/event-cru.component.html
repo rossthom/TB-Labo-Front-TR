@@ -16,7 +16,7 @@
                         <input pInputText type="text" 
                             id="name" formControlName="name"
                             placeholder="Nom de la Coopérative" 
-                            [ngClass]="!editMode?'p-disabled':''"
+                            [class.p-disabled]="formMode == 1"
                         >
                         <br />
                         <p 
@@ -43,14 +43,14 @@
                         <br />
                         <p-dropdown 
                             id="event_typeId" formControlName="event_typeId"
-                            *ngIf="editMode"
+                            *ngIf="formMode != 1"
                             [options]="eventTypes" optionLabel="label" optionValue="id"
                             placeholder="Choisissez un type d'évènement" 
                             [showClear]="false"
                         >
                         </p-dropdown>
                         <input pInputText type="text" 
-                            *ngIf="!editMode"
+                            *ngIf="formMode == 1"
                             id="event_type"
                             placeholder="Type d'évènement" 
                             value="{{ eventType.label }}"
@@ -79,7 +79,7 @@
                         <textarea pInputTextarea type="text" 
                             id="description" formControlName="description"
                             placeholder="Description" 
-                            [ngClass]="!editMode?'p-disabled':''"
+                            [class.p-disabled]="formMode == 1"
                         ></textarea>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <input pInputText type="text" 
                             id="location" formControlName="location"
                             placeholder="Lieu" 
-                            [ngClass]="!editMode?'p-disabled':''"
+                            [class.p-disabled]="formMode == 1"
                         >
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                         <input pInputText type="text"
                             id="addr_postal_code" formControlName="addr_postal_code"
                             placeholder="Code Postal" 
-                            [class.p-disabled]="!editMode"
+                            [class.p-disabled]="formMode == 1"
                             [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
                             [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
                         >
@@ -146,7 +146,7 @@
                         <input pInputText type="text"
                             id="addr_city" formControlName="addr_city"
                             placeholder="Ville / Village" 
-                            [class.p-disabled]="!editMode"
+                            [class.p-disabled]="formMode == 1"
                             [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
                             [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
                         >
@@ -174,7 +174,7 @@
                         <input pInputText type="text"
                             id="addr_street_name" formControlName="addr_street_name"
                             placeholder="Nom de Rue"
-                            [class.p-disabled]="!editMode"
+                            [class.p-disabled]="formMode == 1"
                             [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
                             [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
                         >
@@ -192,7 +192,7 @@
                         <input pInputText type="text" 
                             id="addr_street_nb" formControlName="addr_street_nb"
                             placeholder="N° de Rue" 
-                            [class.p-disabled]="!editMode"
+                            [class.p-disabled]="formMode == 1"
                             [class.ng-invalid]="ruEventForm.errors?.['NominatimValidator']"
                             [class.ng-dirty]="ruEventForm.errors?.['NominatimValidator']"
                         >
@@ -220,13 +220,13 @@
                         <br />
                         <p-calendar 
                             id="datetime_start" formControlName="datetime_start"
-                            *ngIf="editMode"
+                            *ngIf="formMode != 1"
                             placeholder="Date évènement" 
                             [showTime]="true" hourFormat="24"
                             [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
                         ></p-calendar>
                         <input pInputText type="text" 
-                            *ngIf="!editMode"
+                            *ngIf="formMode == 1"
                             id="datetime_start"
                             placeholder="Date" 
                             value="{{ event.datetime_start | date: 'dd MMM yyyy H:mm' }}"
@@ -250,13 +250,13 @@
                         <br />
                         <p-calendar 
                             id="datetime_end" formControlName="datetime_end"
-                            *ngIf="editMode"
+                            *ngIf="formMode != 1"
                             placeholder="Date évènement" 
                             [showTime]="true" hourFormat="24"
                             [ngClass]="ruEventForm.errors?.['StartEndDateValidator'] ? 'ng-invalid ng-dirty' : ''"
                         ></p-calendar>
                         <input pInputText type="text" 
-                            *ngIf="!editMode"
+                            *ngIf="formMode == 1"
                             id="datetime_end"
                             placeholder="Date" 
                             value="{{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}"
@@ -291,14 +291,14 @@
                         <br />
                         <p-inputNumber 
                             id="nb_people_min" formControlName="nb_people_min"
-                            *ngIf="editMode"
+                            *ngIf="formMode != 1"
                             inputId="integeronly"
                             placeholder="Nb minimum de participants" 
                             [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
                         >
                         </p-inputNumber>
                         <input pInputText type="text" 
-                            *ngIf="!editMode"
+                            *ngIf="formMode == 1"
                             id="nb_people_min"
                             placeholder="Nb minimum de participants" 
                             value="{{ event.nb_people_min }}"
@@ -328,14 +328,14 @@
                         <br />
                         <p-inputNumber 
                             id="nb_people_max" formControlName="nb_people_max"
-                            *ngIf="editMode"
+                            *ngIf="formMode != 1"
                             inputId="integeronly"
                             placeholder="Nb minimum de participants" 
                             [ngClass]="ruEventForm.errors?.['MinMaxValidator'] ? 'ng-invalid ng-dirty' : ''"
                         >
                         </p-inputNumber>
                         <input pInputText type="text" 
-                            *ngIf="!editMode"
+                            *ngIf="formMode == 1"
                             id="nb_people_max"
                             placeholder="Nb minimum de participants" 
                             value="{{ event.nb_people_max }}"
@@ -367,7 +367,7 @@
 
         <!-- ℹ️ FOOTER -->
         <div class="gc-popup-footer">
-            <div *ngIf="!editMode" class="grid formgrid">
+            <div *ngIf="formMode == 1" class="grid formgrid">
                 <div class="col-6 mb-2">
                 </div>
                 <div class="col-6 mb-2">
@@ -380,14 +380,23 @@
                     ></button>
                 </div>
             </div>
-            <div *ngIf="editMode" class="grid formgrid">
+            <div *ngIf="formMode != 1" class="grid formgrid">
                 <div class="col-6 mb-2">
                     <button pButton pRipple 
-                    label="Enregistrer"
-                    icon="pi pi-save"
-                    type="button" 
-                    class="p-button-outlined p-button-success mr-2 mb-2"
-                    (click)="saveModifications()"
+                        *ngIf="formMode == 2" 
+                        label="Enregistrer Modifications"
+                        icon="pi pi-save"
+                        type="button" 
+                        class="p-button-outlined p-button-success mr-2 mb-2"
+                        (click)="saveModifications()"
+                    ></button>
+                    <button pButton pRipple 
+                        *ngIf="formMode == 3" 
+                        label="Enregistrer"
+                        icon="pi pi-save"
+                        type="button" 
+                        class="p-button-outlined p-button-success mr-2 mb-2"
+                        (click)="saveModifications()"
                     ></button>
                 </div>
                 <div class="col-6 mb-2">
