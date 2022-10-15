@@ -90,11 +90,4 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     this._fillFormWithCoop()
     this.clickOnCoopCancel.emit(this.cooperative.id)
   }
-
-
-
-
-  testLogForm(){
-    console.log(this.updCoopForm)
-  }
 }

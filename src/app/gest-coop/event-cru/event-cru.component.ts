@@ -173,13 +173,6 @@ export class EventCruComponent implements OnInit, OnChanges {
     //  }
     //})
   }
-
-
-  
-  // 👷 DEBUG
-  testLogForm(){
-    console.log(this.ruEventForm)
-  }
 }
 
 export enum FormMode {

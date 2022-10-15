@@ -5,14 +5,6 @@
             <form [formGroup]="updCoopForm">
                 <div class="grid formgrid">
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="name">
-                            <span>P {{ formControls['name'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['name'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText type="text" 
                             id="name" formControlName="name"
                             placeholder="Nom de la Coopérative" 
@@ -32,14 +24,6 @@
                         </p>
                     </div>
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="coop_typeId">
-                            <span>P {{ formControls['coop_typeId'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['coop_typeId'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['coop_typeId'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <p-dropdown 
                             id="coop_typeId" formControlName="coop_typeId"
                             [options]="coopTypes" optionLabel="label" optionValue="id"
@@ -59,14 +43,6 @@
 
                 <div class="grid formgrid">
                     <div class="col-12 mb-2">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="description">
-                            <span>P {{ formControls['description'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['description'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['description'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <textarea pInputTextarea type="text" 
                             id="description" formControlName="description"
                             placeholder="Description" 
@@ -77,14 +53,6 @@
                 
                 <div class="grid formgrid">
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_postal_code">
-                            <span>P {{ formControls['addr_postal_code'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_postal_code'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText type="text"
                             id="addr_postal_code" formControlName="addr_postal_code"
                             placeholder="Code Postal" 
@@ -105,14 +73,6 @@
                         </p>
                     </div>
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_city">
-                            <span>P {{ formControls['addr_city'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_city'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText type="text"
                             id="addr_city" formControlName="addr_city"
                             placeholder="Ville / Village" 
@@ -131,14 +91,6 @@
                 
                 <div class="grid formgrid">
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_name">
-                            <span>P {{ formControls['addr_street_name'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_street_name'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_street_name'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText type="text"
                             id="addr_street_name" formControlName="addr_street_name"
                             placeholder="Nom de Rue"
@@ -147,14 +99,6 @@
                         <br />
                     </div>
                     <div class="col-12 mb-2 lg:col-6 lg:mb-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="addr_street_nb">
-                            <span>P {{ formControls['addr_street_nb'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_street_nb'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_street_nb'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText type="text" 
                             id="addr_street_nb" formControlName="addr_street_nb"
                             placeholder="N° de Rue" 
@@ -174,14 +118,6 @@
                 
                 <div class="grid formgrid">
                     <div class="col-12 mb-2">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1" for="logo">
-                            <span>P {{ formControls['logo'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['logo'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['logo'].valid ? '✔️': '❌' }}</span>
-                        </label>
-                        <br />
                         <input pInputText id="logo" type="text" placeholder="Logo (lien vers image)" formControlName="logo">
                         <br />
                     </div>
@@ -208,17 +144,6 @@
                         type="button" 
                         class="p-button-outlined p-button-danger mr-2 mb-2" 
                         (click)="cancelModifications()"
-                    ></button>
-                </div>
-            </div>
-            <div class="grid formgrid"> 
-                <div class="col mb-2">
-                    <button pButton pRipple 
-                        label="Log Form Obj."
-                        icon="pi pi-times-circle"
-                        type="button" 
-                        class="p-button-outlined p-button-warning mr-2 mb-2" 
-                        (click)="testLogForm()"
                     ></button>
                 </div>
             </div>

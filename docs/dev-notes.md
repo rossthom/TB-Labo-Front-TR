@@ -24,10 +24,7 @@ json-server start command:
 			o Implement POST
 				o ⚠️ make Nominatim work (adresse nouvel evenement)
 
-		o child for event list
-
-		o Clean PTV screens from UpdCoop, ViewUpdEvent and NewEvent Popups
-		o Clean test buttons and methods from UpdCoop, ViewUpdEvent and NewEvent
+		🙏 NTH: child for event list
 
 	o Développer page CREER Coop
 		o ⚠️ make Nominatim work  (adresse nouvelle coop)
