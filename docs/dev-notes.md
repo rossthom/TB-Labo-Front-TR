@@ -15,8 +15,8 @@ json-server start command:
 - CRU Coopératives & Events:
 	👷 Page CREER Coop
 		- Ajouter email & pwd (+ confirm pwd)
-		- valid email
-		- valid pwd (valid globale)
+		o valid email
+		o valid pwd (valid globale)
 
 	o Sur TOUS les form (CCoop, UCoop, CEvent, UEvent), tester les Validateurs
 		🐛 Vérifier les erreurs de validation. 

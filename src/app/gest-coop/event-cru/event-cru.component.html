@@ -6,6 +6,13 @@
                 <form [formGroup]="cruEventForm">
                     <div class="col-12">
                         <label for="name">Nom de la Coopérative</label>
+                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                            <span>P {{ formControls['name'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['name'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
+                        </label>
                         <input pInputText type="text" 
                             id="name" formControlName="name"
                             [class.p-disabled]="formMode == 1"
@@ -26,6 +33,13 @@
                     <div class="col-12">
                         <div *ngIf="formMode != 1">
                             <label for="event_typeId">Choisissez un type d'évènement</label>
+                            <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                <span>P {{ formControls['event_typeId'].pristine ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>T {{ formControls['event_typeId'].touched ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>V {{ formControls['event_typeId'].valid ? '✔️': '❌' }}</span>
+                            </label>
                             <p-dropdown 
                                 id="event_typeId" formControlName="event_typeId"
                                 [options]="eventTypes" optionLabel="label" optionValue="id"
@@ -50,6 +64,13 @@
 
                     <div class="col-12">
                         <label for="Description">Description</label>
+                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                            <span>P {{ formControls['description'].pristine ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>T {{ formControls['description'].touched ? '✔️': '❌' }}</span>
+                            &nbsp;|&nbsp;
+                            <span>V {{ formControls['description'].valid ? '✔️': '❌' }}</span>
+                        </label>
                         <textarea pInputTextarea type="text" 
                             id="description" formControlName="description"
                             [class.p-disabled]="formMode == 1"
@@ -65,6 +86,13 @@
                     <div class="grid col-12 my-grid">
                         <div class="col-4 pl-0">
                             <label for="addr_postal_code">Code Postal</label>
+                            <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                <span>P {{ formControls['addr_postal_code'].pristine ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>T {{ formControls['addr_postal_code'].touched ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
+                            </label>
                             <input pInputText type="text"
                                 id="addr_postal_code" formControlName="addr_postal_code"
                                 [class.p-disabled]="formMode == 1"
@@ -86,6 +114,13 @@
                         </div>
                         <div class="col pr-0">
                             <label for="addr_city">Ville / Village</label>
+                            <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                <span>P {{ formControls['addr_city'].pristine ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>T {{ formControls['addr_city'].touched ? '✔️': '❌' }}</span>
+                                &nbsp;|&nbsp;
+                                <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
+                            </label>
                             <input pInputText type="text"
                                 id="addr_city" formControlName="addr_city"
                                 [class.p-disabled]="formMode == 1"
@@ -133,6 +168,13 @@
                         <div class="col-6 pl-0">
                             <div *ngIf="formMode != 1">
                                 <label for="datetime_start">Début</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['datetime_start'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['datetime_start'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['datetime_start'].valid ? '✔️': '❌' }}</span>
+                                </label>
                                 <p-calendar 
                                     id="datetime_start" formControlName="datetime_start"
                                     [showTime]="true" hourFormat="24"
@@ -157,6 +199,13 @@
                         <div class="col-6 pr-0">
                             <div *ngIf="formMode != 1">
                                 <label for="datetime_end">Fin</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['datetime_end'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['datetime_end'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['datetime_end'].valid ? '✔️': '❌' }}</span>
+                                </label>
                                 <p-calendar 
                                     id="datetime_end" formControlName="datetime_end"
                                     [showTime]="true" hourFormat="24"
@@ -191,6 +240,13 @@
                         <div class="col-6 pl-0">
                             <div *ngIf="formMode != 1">
                                 <label for="nb_people_min">Nb minimum de participants</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['nb_people_min'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['nb_people_min'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['nb_people_min'].valid ? '✔️': '❌' }}</span>
+                                </label>
                                 <p-inputNumber 
                                     id="nb_people_min" formControlName="nb_people_min"
                                     inputId="integeronly"
@@ -221,6 +277,13 @@
                         <div class="col-6 pr-0">
                             <div *ngIf="formMode != 1">
                                 <label for="nb_people_max">Nb maximum de participants</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['nb_people_max'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['nb_people_max'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['nb_people_max'].valid ? '✔️': '❌' }}</span>
+                                </label>
                                 <p-inputNumber 
                                     id="nb_people_max" formControlName="nb_people_max"
                                     inputId="integeronly"
@@ -263,7 +326,7 @@
 
         <!-- ℹ️ FOOTER -->
         <div class="gc-popup-footer">
-            <div *ngIf="formMode == 1" class="grid formgrid">
+            <div *ngIf="formMode == 1" class="grid ml-0 mr-0">
                 <div class="col-6 mb-2">
                 </div>
                 <div class="col-6 mb-2">
@@ -276,7 +339,7 @@
                     ></button>
                 </div>
             </div>
-            <div *ngIf="formMode != 1" class="grid formgrid">
+            <div *ngIf="formMode != 1" class="grid ml-0 mr-0">
                 <div class="col-6 mb-2">
                     <button pButton pRipple 
                         *ngIf="formMode == 2" 
@@ -304,6 +367,17 @@
                         type="button" 
                         class="p-button-outlined p-button-danger mr-2 mb-2" 
                         (click)="cancelModifications()"
+                    ></button>
+                </div>
+            </div>
+            <div class="grid ml-0 mr-0">
+                <div class="col-12 mb-2">
+                    <button pButton pRipple 
+                    label="Test"
+                    icon="pi pi-cog"
+                    type="button" 
+                    class="p-button-outlined p-button-warning mr-2 mb-2"
+                    (click)="testForm()"
                     ></button>
                 </div>
             </div>

@@ -68,8 +68,11 @@ export class CoopNewComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
+
+
+  // 👷 DEBUG
   testForm(){
     console.log(this.newCoopForm)
-    console.log(this.newCoopForm.valid)
+    console.log('New Coop Form is ' + (this.newCoopForm.valid?'':'not ') + 'valid')
   }
 }
