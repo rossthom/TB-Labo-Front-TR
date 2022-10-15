@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EventView } from '../models/event.model';
-import { Category } from '../models/types.model';
+import { EventDtoUpd, EventView } from '../models/event.model';
+import { Address, Category, GpsPosition } from '../models/types.model';
 import { GesteventService } from '../services/gestevent.service';
 import { NominatimService } from '../services/nominatim.service';
 import { generateRUpdEventForm } from './forms/event-ru.form';
@@ -98,22 +98,40 @@ export class EventRUpdComponent implements OnInit, OnChanges {
   
 
   saveModifications() {
-    // 👷 build UptDTO object
+    let eventUpd = <EventDtoUpd>{
+      id: this.event.id,
+      coop_id: this.event.coop_id,
+      event_typeId: this.formControls['event_typeId'].value,
+      name: this.formControls['name'].value,
+      description: this.formControls['description'].value,
+      location: this.formControls['location'].value,
+      address: <Address> {
+        postal_code: parseInt(this.formControls['addr_postal_code'].value),
+        city: this.formControls['addr_city'].value,
+        street_name: this.formControls['addr_street_name'].value,
+        street_nb: this.formControls['addr_street_nb'].value
+      },
+      datetime_start: new Date(this.formControls['datetime_start'].value),
+      datetime_end: new Date(this.formControls['datetime_end'].value),
+      nb_people_min: parseInt(this.formControls['nb_people_min'].value),
+      nb_people_max: parseInt(this.formControls['nb_people_max'].value),
+      gps: <GpsPosition>{lon: 0, lat: 0}
+    }
 
     // 👷 call service
-    // 👷 this goes to service's call's next:
-    console.log('EventRUpdComponent (child) emits clickOnEventUpdate')
-    this.clickOnEventUpdate.emit(this.event.id)
+    //this.gestEventService.updateEvent(eventUpd).subscribe({
+    //  next : () => {
+        this.clickOnEventUpdate.emit(this.event.id)
+    //  }
+    //})
   }
   
   cancelModifications(){
     this._fillFormWithEvent()
-    console.log('EventRUpdComponent (child) emits clickOnEventCancel')
     this.clickOnEventCancel.emit(this.event.id)
   }
   
   closePopup(){
-    console.log('EventRUpdComponent (child) emits clickOnEventClose')
     this.clickOnEventClose.emit(this.event.id)
   }
 

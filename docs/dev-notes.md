@@ -17,16 +17,6 @@ json-server start command:
 			o ⚠️ make Nominatim work  (adresse update coop)
 
 	o Vue Coop:
-		- Bouton 'détail' affiche détail d'un event en popup (child compo)
-		- Bouton 'modifier' appel cette même popup, en mode edit
-		- Verif vues READ et UPD des Events,
-			- Verif remplissage champs par défaut
-			- Verif form components 
-			- Verif validateurs de base
-			- Verif validateurs Nominatim
-		- Dev validateurs custom
-			- end_date > start_date Validator
-			- nb_people_max > nb_people_min Validator
 		o implémenter UPDATE evenement
 			o ⚠️ make Nominatim work (adresse update evenement)
 		o implémenter CREATE event
