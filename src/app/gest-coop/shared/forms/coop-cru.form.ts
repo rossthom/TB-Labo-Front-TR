@@ -1,9 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../services/nominatim.service";
-import { NominatimValidator } from "../../validators/nominatim.validator";
+import { NominatimService } from "../services/nominatim.service";
+import { NominatimValidator } from "../validators/nominatim.validator";
 
 
-export function generateUpdCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
+export function generateCruCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
     return fb.group({
         // Controls
         name: [

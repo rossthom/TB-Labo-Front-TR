@@ -1,1 +1,144 @@
-<p>coop-new works!</p>
+<h1>Bienvenue! Créez un compte Coopérative ici</h1>
+
+<div class="grid">
+    <div class="col-6">
+        <div class="card p-fluid">
+            <form [formGroup]="newCoopForm">
+                <input pInputText type="text" 
+                    id="name" formControlName="name"
+                    placeholder="Nom de la Coopérative" 
+                >
+                <br />
+                <p 
+                    class="text-red-500"
+                    *ngIf="formControls['name'].errors?.['minlength']" 
+                >
+                    Le nom doit avoir au moins {{ formControls['name'].errors?.['minlength'].requiredLength }} caractères
+                </p>
+                <p 
+                    class="text-red-500"
+                    *ngIf="formControls['name'].touched && formControls['name'].errors?.['required']" 
+                >
+                    Ce champ est requis
+                </p>
+                <br />
+                <p-dropdown 
+                    id="coop_typeId" formControlName="coop_typeId"
+                    [options]="coopTypes" optionLabel="label" optionValue="id"
+                    placeholder="Choisissez un type de coopérative" 
+                    [showClear]="false"
+                >
+                </p-dropdown>
+                <p 
+                class="text-red-500"
+                *ngIf="formControls['coop_typeId'].touched && formControls['coop_typeId'].errors?.['required']" 
+                >
+                    Ce champ est requis
+                </p>
+                <br />
+                <textarea pInputTextarea type="text" 
+                    id="description" formControlName="description"
+                    placeholder="Description" 
+                ></textarea>
+                <br />
+                <br />
+                <input pInputText type="text"
+                    id="addr_postal_code" formControlName="addr_postal_code"
+                    placeholder="Code Postal" 
+                    [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                >
+                <br />
+                <p 
+                    class="text-red-500"
+                    *ngIf="formControls['addr_postal_code'].errors?.['pattern']" 
+                >
+                    Un code postal est composé de 4 chiffres uniquement.
+                </p>
+                <p 
+                    class="text-red-500"
+                    *ngIf="formControls['addr_postal_code'].touched && formControls['addr_postal_code'].errors?.['required']" 
+                >
+                    Ce champ est requis
+                </p>
+                <br />
+
+                <input pInputText type="text"
+                    id="addr_city" formControlName="addr_city"
+                    placeholder="Ville / Village" 
+                    [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                >
+                <br />
+                <p 
+                    class="text-red-500"
+                    *ngIf="formControls['addr_city'].touched && formControls['addr_city'].errors?.['required']" 
+                >
+                    Ce champ est requis
+                </p>
+                <br />
+                <input pInputText type="text"
+                    id="addr_street_name" formControlName="addr_street_name"
+                    placeholder="Nom de Rue"
+                    [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                >
+                <br />
+                <br />
+                <input pInputText type="text" 
+                    id="addr_street_nb" formControlName="addr_street_nb"
+                    placeholder="N° de Rue" 
+                    [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
+                >
+                <br />
+                <p 
+                    class="text-red-500 mt-2"
+                    style="text-align: center;"
+                    *ngIf="newCoopForm.errors?.['NominatimValidator']" 
+                >
+                    {{ newCoopForm.errors?.['NominatimValidator'] }}
+                </p>
+                <br />
+                
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <input pInputText id="logo" type="text" placeholder="Logo (lien vers image)" formControlName="logo">
+                        <br />
+                    </div>
+                </div>
+            </form>
+            <br />
+            <div class="gc-popup-footer">
+                <div class="grid">
+                    <div class="col-6 mb-2">
+                        <button pButton pRipple 
+                        [disabled]="!newCoopForm.valid"
+                        label="Enregistrer"
+                        icon="pi pi-save"
+                        type="button" 
+                        class="p-button-outlined p-button-success mr-2 mb-2"
+                        (click)="saveModifications()"
+                        ></button>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <button pButton pRipple 
+                            label="Annuler"
+                            icon="pi pi-times-circle"
+                            type="button" 
+                            class="p-button-outlined p-button-danger mr-2 mb-2" 
+                            (click)="cancelModifications()"
+                        ></button>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-12 mb-2">
+                        <button pButton pRipple 
+                        label="Test"
+                        icon="pi pi-cog"
+                        type="button" 
+                        class="p-button-outlined p-button-warning mr-2 mb-2"
+                        (click)="testForm()"
+                        ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

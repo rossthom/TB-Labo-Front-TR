@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormMode } from './event-cru/event-cru.component';
-import { CooperativeView } from './models/coop.model';
-import { EventView } from './models/event.model';
-import { GestcoopService } from './services/gestcoop.service';
-import { GesteventService } from './services/gestevent.service';
+import { CooperativeView } from './shared/models/coop.model';
+import { EventView } from './shared/models/event.model';
+import { GestcoopService } from './shared/services/gestcoop.service';
+import { GesteventService } from './shared/services/gestevent.service';
 
 
 @Component({

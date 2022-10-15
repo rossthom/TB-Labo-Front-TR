@@ -28,11 +28,13 @@ export class NominatimService {
     query += "&city=" + address.city
     // TODO: if deepness = 3: use street name
     // TODO: if deepness = 4: use street number
-    query += "&street=" + (address.street_nb ? address.street_nb + "+" : '') + address.street_name.split(' ').join("+") + ","
+    if (address.street_name){
+      query += "&street=" + (address.street_nb ? address.street_nb + "+" : '') + address.street_name.split(' ').join("+") + ","
+    }
     query += "&format=json"
     query += "&countrycodes=be"
 
-    //console.log(this._apiUrl + query)
+    console.log(this._apiUrl + query)
     return query
   }
 

@@ -1,8 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../services/nominatim.service";
-import { minMaxValidator } from "../../validators/minMax.validator";
-import { NominatimValidator } from "../../validators/nominatim.validator";
-import { startEndDateValidator } from "../../validators/startEndDate.validator";
+import { NominatimService } from "../../shared/services/nominatim.service";
+import { minMaxValidator } from "../../shared/validators/minMax.validator";
+import { NominatimValidator } from "../../shared/validators/nominatim.validator";
+import { startEndDateValidator } from "../../shared/validators/startEndDate.validator";
 
 export function generateCRUEventForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
     return fb.group({

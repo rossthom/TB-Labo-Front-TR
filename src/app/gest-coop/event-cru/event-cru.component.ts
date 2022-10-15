@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EventDtoNew, EventDtoUpd, EventView } from '../models/event.model';
-import { Address, Category, GpsPosition } from '../models/types.model';
-import { GesteventService } from '../services/gestevent.service';
-import { NominatimService } from '../services/nominatim.service';
+import { EventDtoNew, EventDtoUpd, EventView } from '../shared/models/event.model';
+import { Address, Category, GpsPosition } from '../shared/models/types.model';
+import { GesteventService } from '../shared/services/gestevent.service';
+import { NominatimService } from '../shared/services/nominatim.service';
 import { generateCRUEventForm } from './forms/event-cru.form';
 
 @Component({

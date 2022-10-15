@@ -1,7 +1,7 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from "@angular/forms"
 import { Observable, timer, switchMap, map } from 'rxjs';
-import { Address, GpsPosition } from "src/app/gest-coop/models/types.model";
-import { NominatimService } from "src/app/gest-coop/services/nominatim.service";
+import { Address, GpsPosition } from "src/app/gest-coop/shared/models/types.model";
+import { NominatimService } from "src/app/gest-coop/shared/services/nominatim.service";
 
 
 export class NominatimValidator {

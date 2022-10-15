@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
+import { CooperativeDtoNew, CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
 import { Category, GpsPosition } from '../models/types.model';
 import { NominatimService } from './nominatim.service';
 
@@ -54,6 +54,23 @@ export class GestcoopService {
   updateCoop(coop: CooperativeDtoUpd){
     return this.httpC.patch(
       this._apiUrl + "cooperatives/" + coop.id,
+      coop
+      ).pipe(
+        // TODO: not working, execute the patch before getting response from Nominatim...
+        switchMap(_ => this.nominatimService.getAddressGpsLongLat(coop.address)
+        .pipe(
+          map((res: any) => {
+            coop.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
+            return coop
+          })
+        )
+      )
+    )
+  }
+
+  insertCoop(coop: CooperativeDtoNew){
+    return this.httpC.post(
+      this._apiUrl + "cooperatives",
       coop
       ).pipe(
         // TODO: not working, execute the patch before getting response from Nominatim...

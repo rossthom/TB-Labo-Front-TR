@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CooperativeView } from 'src/app/gest-coop/models/coop.model';
-import { EventView } from 'src/app/gest-coop/models/event.model';
-import { Address, Category } from 'src/app/gest-coop/models/types.model';
-import { GestcoopService } from 'src/app/gest-coop/services/gestcoop.service';
-import { GesteventService } from 'src/app/gest-coop/services/gestevent.service';
-import { NominatimService } from 'src/app/gest-coop/services/nominatim.service';
+import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
+import { EventView } from 'src/app/gest-coop/shared/models/event.model';
+import { Address, Category } from 'src/app/gest-coop/shared/models/types.model';
+import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
+import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
+import { NominatimService } from 'src/app/gest-coop/shared/services/nominatim.service';
 
 @Component({
   selector: 'app-testboard',
