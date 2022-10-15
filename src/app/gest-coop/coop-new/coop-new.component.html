@@ -78,15 +78,14 @@
                         </p>
                     </div>
                     <div class="col-6 pr-0">
-                        <label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                        <label for="password_confirm">Confirmez votre mot de passe</label>
+                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
                             <span>P {{ formControls['password_confirm'].pristine ? '✔️': '❌' }}</span>
                             &nbsp;|&nbsp;
                             <span>T {{ formControls['password_confirm'].touched ? '✔️': '❌' }}</span>
                             &nbsp;|&nbsp;
                             <span>V {{ formControls['password_confirm'].valid ? '✔️': '❌' }}</span>
                         </label>
-                        <br />
-                        <label for="password_confirm">Confirmez votre mot de passe</label>
                         <p-password
                             id="password_confirm" formControlName="password_confirm"
                             [toggleMask]="false"

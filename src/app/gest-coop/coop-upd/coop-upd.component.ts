@@ -4,7 +4,7 @@ import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model'
 import { Address, Category, GpsPosition } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
 import { NominatimService } from '../shared/services/nominatim.service';
-import { generateUpdCoopForm } from '../shared/forms/coop-upd.form';
+import { generateUpdCoopForm } from './forms/coop-upd.form';
 
 @Component({
   selector: 'app-coop-upd',

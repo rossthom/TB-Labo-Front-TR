@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../services/nominatim.service";
-import { matchPasswordValidator } from "../validators/matchPassword.validator";
-import { NominatimValidator } from "../validators/nominatim.validator";
+import { NominatimService } from "../../shared/services/nominatim.service";
+import { matchPasswordValidator } from "../../shared/validators/matchPassword.validator";
+import { NominatimValidator } from "../../shared/validators/nominatim.validator";
 
 
 export function generateNewCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {

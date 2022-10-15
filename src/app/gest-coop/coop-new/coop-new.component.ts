@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generateNewCoopForm } from '../shared/forms/coop-new.form';
+import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Address, Category, GpsPosition } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
