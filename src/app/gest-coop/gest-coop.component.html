@@ -83,6 +83,9 @@
                                     {{ event.name }}
                                 </td>
                                 <td>
+                                    {{ event.datetime_start | date: 'dd MMM yy' }}
+                                </td>
+                                <td>
                                     <span *ngIf="event.location != ''"> ({{ event.location }})</span>
                                     <span *ngIf="event.location == ''"> ({{ event.address.city }})</span>
                                 </td>

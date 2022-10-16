@@ -18,15 +18,26 @@ export class AppMenuComponent implements OnInit {
                 label: 'Home',
                 items: [
                     { label: 'Home page', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+                    { label: 'Login Coop', icon: 'pi pi-fw pi-sign-in', routerLink: ['/coop-login'] },
+                    //{ label: 'Login Usezr', icon: 'pi pi-fw pi-sign-in', routerLink: ['/user-login'] },
                     { label: 'Test Board', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/test'] },
+                    //...
                 ]
             },
             {
-                label: 'Gest. Coop',
+                label: 'Coopératives',
                 items: [
-                    { label: 'Create Coop', icon: 'pi pi-fw pi-user-plus', routerLink: ['/gest-coop/new'] },
-                    { label: 'Login Coop', icon: 'pi pi-fw pi-sign-in', routerLink: ['/coop-login'] },
-                    { label: 'Admin Coop', icon: 'pi pi-fw pi-id-card', routerLink: ['/gest-coop'] },
+                    { label: 'Vue Coops', icon: 'pi pi-fw pi-search', routerLink: ['/coop'] },
+                    { label: 'Admin Coop', icon: 'pi pi-fw pi-id-card', routerLink: ['/coop/admin'] },
+                    { label: 'Create Coop', icon: 'pi pi-fw pi-user-plus', routerLink: ['/coop/admin/new'] },
+                    //...
+                ]
+            },
+            {
+                label: 'Utilisateurs',
+                items: [
+                    //{ label: 'Admin User', icon: 'pi pi-fw pi-id-card', routerLink: ['/user/admin'] },
+                    //{ label: 'Create User', icon: 'pi pi-fw pi-user-plus', routerLink: ['/user/admin/new'] },
                     //...
                 ]
             },

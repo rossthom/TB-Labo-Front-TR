@@ -18,7 +18,8 @@ json-server start command:
 		- insert Evenement
 		- insert Coop
 
-	o Test Créer Event
+	o Test Créer Coop
+		⚠️ check si email n'existe pas déjà !!!
 		o rajouter un toast
 	o Test Update Coop
 		o rajouter un toast
@@ -30,31 +31,29 @@ json-server start command:
 	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
 	o Clean test button and methods from CCoop, UCoop, CRUEvent
 
-	⚠️ CREATE Coop: check si email n'existe pas déjà !!!
-
 o Développer Connection Cooperative
 	- Form avec email et mot de passe (page login Sakai)
 	o coopAuthService: login() => check si email+mpd est OK
 	o gérer statut de login, rediriger vers la page de la Coop (gest-coop:id) 
 		o => refaire cette page en enlevant la liste de coops
 			🙏 NTH: child for event list
-		o ajouter un bouton déconnection sur la page
+		o Coop logout: ajouter un bouton déconnection sur cette page
 	o Guard sur Gest. Coop. routes
 	🙏 gérer 'remember me' (local storage)
-	o Coop logout
+	o Guard désactiver vue recherche évènement quand Coop connectée
 
 o Développer Registration User
 	o créer compo user-crea avec formulaire de création
 		o validateurs !
+		⚠️ check si email n'existe pas déjà !!!
 		⚠️ make Nominatim work (adresse nouvel utilisateur)
-		⚠️ CREATE Coop: check si email n'existe pas déjà !!!
 	o User login
 		o créer compo user-login avec formulaire
 			o validators !
 	o Guard sur routes Vue Coop vues
 	o User logout
 
-o Développer inscription à un event
+o Développer inscription à un event !
 	o BONUS... Dans event list, voir combien de personnes sont inscrites...
 
 o Développer vues events et coop quand user connecté

@@ -18,7 +18,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-3">
+        <div class="col-6">
             <h2>Tests Toasts</h2>
             <button pButton pRipple 
                 label="Test Toast"
@@ -30,8 +30,8 @@
             <p>
                 Il faut injecter 'MessageService' dans les 'providers' du module,<br />
                 puis ajouter le 'ToastModule' dans les 'imports' du module.<br />
-                Ensuite, dans le constructeur du compo, on injecte la dép. de MessageService<br />
-                pour ajouter des toasts... C'est tout simple.
+                Ensuite, dans le constructeur du compo, on injecte la dép. de MessageService pour ajouter des toasts...<br />
+                C'est tout simple.
             </p>
         </div>
     </div>
@@ -83,6 +83,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <p
+                    class="surface-800 text-orange-500"
+                    style="font-family: monospace; padding: 5px; white-space: pre-line"
+                >
+                    lon: {{ testGps?.lon }}
+                    <br />
+                    lat: {{ testGps?.lat }}
+                </p>
                 <button (click)="getAllEventFromCoop(selectedCoop.id)">Liste Evènements de cette coop</button>
             </div>
         </div>
@@ -153,6 +161,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <p
+                    class="surface-800 text-orange-500"
+                    style="font-family: monospace; padding: 5px; white-space: pre-line"
+                >
+                    lon: {{ testGps?.lon }}
+                    <br />
+                    lat: {{ testGps?.lat }}
+                </p>
             </div>
         </div>
     </div>
