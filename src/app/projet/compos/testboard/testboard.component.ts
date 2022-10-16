@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { Address, Category } from 'src/app/gest-coop/shared/models/types.model';
@@ -66,7 +67,8 @@ export class TestboardComponent implements OnInit {
   constructor(
     private gestCoopService: GestcoopService,
     private gestEventService: GesteventService,
-    private nominatimService: NominatimService
+    private nominatimService: NominatimService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -131,5 +133,10 @@ export class TestboardComponent implements OnInit {
         console.log(this.testGps)
       }
     })
+  }
+
+
+  toast1() {
+    this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
   }
 }

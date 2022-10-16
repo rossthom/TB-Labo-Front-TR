@@ -57,12 +57,12 @@ export function generateUpdCoopForm(fb: FormBuilder, nominatimService: Nominatim
             {}
         ]
     },
+    // Options
     <AbstractControlOptions>{
         validators: [],
         asyncValidators: [
             NominatimValidator.checkAddress(nominatimService),
         ],
-        // Options
         updateOn: 'blur'   // update when loses focus, that's what 'blur' means in this context      
     })
 }

@@ -5,10 +5,9 @@ json-server start command:
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
-- ❓ form .group() deprecated avec les options qu'on lui donne...
 
 - ⚠️❓ Comment modifier mon objet juste avant de faire l'update en DB ?
-- ⚠️❓ Construction formulaire avec options: méthode dépréciée !
+- ⚠️❓ Creation nouvelle Coop ou User: vérifier si email pas déjà donné... (Camille)
 
 
 # DEV ROADMAP
@@ -20,25 +19,39 @@ json-server start command:
 		- insert Coop
 
 	o Test Créer Event
+		o rajouter un toast
 	o Test Update Coop
+		o rajouter un toast
 	o Test Créer Event
+		o rajouter un toast
 	o Test Update Event
+		o rajouter un toast
 
 	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
 	o Clean test button and methods from CCoop, UCoop, CRUEvent
 
-	🙏 NTH: child for event list
+	⚠️ CREATE Coop: check si email n'existe pas déjà !!!
 
 o Développer Connection Cooperative
-	o Form avec email et mot de passe (page login Sakai)
+	- Form avec email et mot de passe (page login Sakai)
+	o coopAuthService: login() => check si email+mpd est OK
+	o gérer statut de login, rediriger vers la page de la Coop (gest-coop:id) 
+		o => refaire cette page en enlevant la liste de coops
+			🙏 NTH: child for event list
+		o ajouter un bouton déconnection sur la page
 	o Guard sur Gest. Coop. routes
+	🙏 gérer 'remember me' (local storage)
+	o Coop logout
 
 o Développer Registration User
-	o ⚠️ make Nominatim work (adresse nouvel utilisateur)
-	o Clean PTV screens from NewUser
-	o Clean test button and methods from NewUser
-	o Guard sur routes Vue Coop vues
+	o créer compo user-crea avec formulaire de création
+		o validateurs !
+		⚠️ make Nominatim work (adresse nouvel utilisateur)
+		⚠️ CREATE Coop: check si email n'existe pas déjà !!!
 	o User login
+		o créer compo user-login avec formulaire
+			o validators !
+	o Guard sur routes Vue Coop vues
 	o User logout
 
 o Développer inscription à un event

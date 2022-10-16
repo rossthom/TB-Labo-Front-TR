@@ -64,7 +64,6 @@ export class CoopNewComponent implements OnInit {
   }
   
   cancelModifications(){
-    //TODO: RouterLink to Home
     this.router.navigate(['/'])
   }
 

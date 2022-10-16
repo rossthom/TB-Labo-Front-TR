@@ -83,6 +83,7 @@ export function generateNewCoopForm(fb: FormBuilder, nominatimService: Nominatim
             {}
         ]
     },
+    // Options
     <AbstractControlOptions>{
         validators: [
             matchPasswordValidator,
@@ -90,7 +91,6 @@ export function generateNewCoopForm(fb: FormBuilder, nominatimService: Nominatim
         asyncValidators: [
             NominatimValidator.checkAddress(nominatimService),
         ],
-        // Options
         updateOn: 'blur'   // update when loses focus, that's what 'blur' means in this context      
     })
 }
