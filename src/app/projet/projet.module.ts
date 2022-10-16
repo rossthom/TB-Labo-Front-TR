@@ -13,10 +13,11 @@ import { ToastModule } from 'primeng/toast';
 
 // Application
 import { ProjetRoutingModule } from './projet-routing.module';
-import { HomeComponent } from './compos/home/home.component';
-import { TestboardComponent } from './compos/testboard/testboard.component';
-import { CoopLoginComponent } from './compos/coop-login/coop-login.component';
+import { HomeComponent } from './home/home.component';
+import { TestboardComponent } from './testboard/testboard.component';
+import { CoopLoginComponent } from './coop-login/coop-login.component';
 import { MessageService } from 'primeng/api';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MessageService } from 'primeng/api';
     HomeComponent,
     CoopLoginComponent,
     TestboardComponent,
+    UserLoginComponent,
   ],
   imports: [
     // Angular

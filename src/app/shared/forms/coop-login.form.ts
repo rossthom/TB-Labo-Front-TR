@@ -1,6 +1,6 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-export function generateCoopLoginForm(fb: FormBuilder): FormGroup {
+export function generateLoginForm(fb: FormBuilder): FormGroup {
     return fb.group({
         // Controls
         email: [

@@ -1,0 +1,88 @@
+<div class="grid justify-content-center">
+    <div class="col-12">
+        <div class="card p-fluid">
+            <div class="col-12" style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
+                <div class="h-full w-full m-0 py-7 px-4" style="border-radius:53px; background: linear-gradient(180deg, var(--surface-50) 38.9%, var(--surface-0));">
+                    <div class="text-center mb-5">
+                        <div class="text-900 text-3xl font-medium mb-3">Bienvenue !</div>
+                        <span class="text-600 font-medium">Connectez-vous en tant que Participant</span>
+                    </div>
+    
+                    <div class="w-full md:w-10 mx-auto">
+                        <form [formGroup]="userLoginForm">
+                            <div class="col-12">
+                                <label for="email">Email</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['email'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['email'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['email'].valid ? '✔️': '❌' }}</span>
+                                </label>
+                                <input pInputText type="email" 
+                                    id="email" formControlName="email"
+                                >
+                                <p 
+                                    class="text-red-500"
+                                    *ngIf="formControls['email'].errors?.['email']" 
+                                >
+                                    Le format de l'email n'est pas valide
+                                </p>
+                                <p 
+                                    class="text-red-500"
+                                    *ngIf="formControls['email'].touched && formControls['email'].errors?.['required']" 
+                                >
+                                    Ce champ est requis
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <label for="password">Mot de passe</label>
+                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
+                                    <span>P {{ formControls['password'].pristine ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>T {{ formControls['password'].touched ? '✔️': '❌' }}</span>
+                                    &nbsp;|&nbsp;
+                                    <span>V {{ formControls['password'].valid ? '✔️': '❌' }}</span>
+                                </label>
+                                <input type="password" pPassword
+                                    id="password" formControlName="password"
+                                >
+                                <p 
+                                    class="text-red-500"
+                                    *ngIf="formControls['password'].touched && formControls['password'].errors?.['required']" 
+                                >
+                                    Ce champ est requis
+                                </p>
+                            </div>
+                        </form>
+                        <div class="col-12">
+                            <p-checkbox id="rememberme" name="rememberme" label="Se souvenir de moi" value="remember" [(ngModel)]="selectedValues"></p-checkbox>
+                        </div>
+                        <br />
+                        <div class="grid ml-0 mr-0">
+                            <div class="col-6 mb-2">
+                                <button pButton pRipple 
+                                [disabled]="!userLoginForm.valid"
+                                label="Se Connecter"
+                                icon="pi pi-sign-in"
+                                type="button" 
+                                class="p-button-outlined p-button-success mr-2 mb-2"
+                                (click)="login()"
+                                ></button>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <button pButton pRipple 
+                                    label="Annuler"
+                                    icon="pi pi-times-circle"
+                                    type="button" 
+                                    class="p-button-outlined p-button-danger mr-2 mb-2" 
+                                    (click)="cancelLogin()"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

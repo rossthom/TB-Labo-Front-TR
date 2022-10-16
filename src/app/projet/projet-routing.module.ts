@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CoopLoginComponent } from './compos/coop-login/coop-login.component';
-import { HomeComponent } from './compos/home/home.component';
-import { TestboardComponent } from './compos/testboard/testboard.component';
+import { CoopLoginComponent } from './coop-login/coop-login.component';
+import { HomeComponent } from './home/home.component';
+import { TestboardComponent } from './testboard/testboard.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'coop-login', component: CoopLoginComponent },
+  { path: 'user-login', component: UserLoginComponent },
   { path: 'test', component: TestboardComponent },
 ];
 

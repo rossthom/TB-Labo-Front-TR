@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generateCoopLoginForm } from './forms/coop-login.form';
+import { generateLoginForm } from 'src/app/shared/forms/coop-login.form';
 
 @Component({
-  selector: 'app-coop-login',
-  templateUrl: './coop-login.component.html',
-  styleUrls: ['./coop-login.component.scss']
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.scss']
 })
-export class CoopLoginComponent implements OnInit {
-  coopLoginForm: FormGroup = generateCoopLoginForm(this.fb)
+export class UserLoginComponent implements OnInit {
+  userLoginForm: FormGroup = generateLoginForm(this.fb)
 
   selectedValues: string[] = [];
   
@@ -23,7 +23,7 @@ export class CoopLoginComponent implements OnInit {
   }
 
   get formControls() { 
-    return this.coopLoginForm.controls; 
+    return this.userLoginForm.controls; 
   }
 
 

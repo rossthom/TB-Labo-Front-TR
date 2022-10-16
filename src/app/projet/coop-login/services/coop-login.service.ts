@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class CoopLoginService {
   private _apiUrl: string = environment.dataUrl
 
-  isConnected: boolean = false
+  coopIsConnected: boolean = false
 
   constructor(
     private httpC : HttpClient
@@ -23,14 +23,14 @@ export class CoopLoginService {
       .pipe(
         tap(() => {
           // TODO: 
-          //this.isConnected = true;
+          //this.coopIsConnected = true;
 
 
           if (remember){
-            localStorage.setItem("isConnected", JSON.stringify(this.isConnected))
+            localStorage.setItem("coopIsConnected", JSON.stringify(this.coopIsConnected))
           }
           else {
-            sessionStorage.setItem("isConnected", JSON.stringify(this.isConnected))
+            sessionStorage.setItem("coopIsConnected", JSON.stringify(this.coopIsConnected))
           }
         })
       )
@@ -41,6 +41,6 @@ export class CoopLoginService {
   logout(){
     localStorage.removeItem('isConnect')
     sessionStorage.removeItem('isConnect')
-    this.isConnected = false;
+    this.coopIsConnected = false;
   }
 }
