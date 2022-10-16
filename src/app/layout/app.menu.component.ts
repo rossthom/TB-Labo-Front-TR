@@ -19,8 +19,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Home page', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
                     { label: 'Login Coop', icon: 'pi pi-fw pi-sign-in', routerLink: ['/coop-login'] },
-                    { label: 'Login Usezr', icon: 'pi pi-fw pi-sign-in', routerLink: ['/user-login'] },
-                    { label: 'Test Board', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/test'] },
+                    { label: 'Login User', icon: 'pi pi-fw pi-sign-in', routerLink: ['/user-login'] },
                     //...
                 ]
             },
@@ -36,8 +35,15 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Utilisateurs',
                 items: [
-                    //{ label: 'Admin User', icon: 'pi pi-fw pi-id-card', routerLink: ['/user/admin'] },
-                    //{ label: 'Create User', icon: 'pi pi-fw pi-user-plus', routerLink: ['/user/admin/new'] },
+                    //{ label: 'Admin User', icon: 'pi pi-fw pi-id-card', routerLink: ['/user/profile'] },
+                    { label: 'Create User', icon: 'pi pi-fw pi-user-plus', routerLink: ['/user/new'] },
+                    //...
+                ]
+            },
+            {
+                label: 'Tests',
+                items: [
+                    { label: 'Test Board', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/test'] },
                     //...
                 ]
             },

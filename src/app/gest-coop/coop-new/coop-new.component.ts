@@ -36,14 +36,14 @@ export class CoopNewComponent implements OnInit {
     return this.newCoopForm.controls; 
   }
 
-  saveModifications(){
+  saveCooperative(){
     let coopNew = <CooperativeDtoNew>{
       coop_typeId: parseInt(this.formControls['coop_typeId'].value),
       name: this.formControls['name'].value,
       email: this.formControls['email'].value,
       password: this.formControls['password'].value,
       description: this.formControls['description'].value,
-      address: <Address> {
+      address: <Address>{
         postal_code: parseInt(this.formControls['addr_postal_code'].value),
         city: this.formControls['addr_city'].value,
         street_name: this.formControls['addr_street_name'].value,
@@ -63,7 +63,7 @@ export class CoopNewComponent implements OnInit {
     //})
   }
   
-  cancelModifications(){
+  cancelCoopCreation(){
     this.router.navigate(['/'])
   }
 

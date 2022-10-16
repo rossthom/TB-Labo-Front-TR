@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // PrimeNG Sakai
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,6 +19,7 @@ import { TestboardComponent } from './testboard/testboard.component';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
 import { MessageService } from 'primeng/api';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UserNewComponent } from './user-new/user-new.component';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     CoopLoginComponent,
     TestboardComponent,
     UserLoginComponent,
+    UserNewComponent,
   ],
   imports: [
     // Angular
@@ -34,6 +37,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     ReactiveFormsModule,
     // PrimeNG
     ButtonModule,
+    CalendarModule,
     CheckboxModule,
     DialogModule,
     InputTextModule,

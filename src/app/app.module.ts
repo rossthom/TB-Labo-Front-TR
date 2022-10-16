@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GestCoopModule } from './gest-coop/gest-coop.module';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
+import { UserAuthService } from './shared/services/user-auth.service';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
+        UserAuthService,
     ],
     bootstrap: [AppComponent]
 })

@@ -34,26 +34,32 @@ json-server start command:
 o Développer Connection Cooperative
 	- Form avec email et mot de passe (page login Sakai)
 	o coopAuthService: login() => check si email+mpd est OK
-	o gérer statut de login, rediriger vers la page de la Coop (gest-coop:id) 
+	o gérer statut de login, rediriger vers la page de la Coop (coop/admin:id) 
 		o => refaire cette page en enlevant la liste de coops
 			🙏 NTH: child for event list
 		o Coop logout: ajouter un bouton déconnection sur cette page
 	o Guard sur Gest. Coop. routes
 	🙏 gérer 'remember me' (local storage)
-	o Guard désactiver vue recherche évènement quand Coop connectée
+	o Guard 'désactivate' vue recherche évènement quand Coop connectée
 
 o Développer Registration User
-	o créer compo user-crea avec formulaire de création
-		o validateurs !
+	- créer compo user-crea avec formulaire de création
+		- validateurs !
 		⚠️ check si email n'existe pas déjà !!!
 		⚠️ make Nominatim work (adresse nouvel utilisateur)
-	o User login
-		o créer compo user-login avec formulaire
-			o validators !
+	- User login
+		- créer compo user-login avec formulaire
+			- validators !
+	o userAuthService: login() => check si email+mpd est OK
+	o gérer statut de login, 
+		o rediriger vers une page du profil User (user/profile:id)
+			o créer cette page
+			o User Logout: ajouter un bouton déconnection sur la page de profil
 	o Guard sur routes Vue Coop vues
 	o User logout
 
 o Développer inscription à un event !
+	o avoir un endroit avec 'mes events' (profil)
 	o BONUS... Dans event list, voir combien de personnes sont inscrites...
 
 o Développer vues events et coop quand user connecté
@@ -64,7 +70,7 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check TODOs
 	o check debug elements dans interface
 	o check console.log
-	o delete commented code
+	o delete commented code and unnecessary comments
 
 
 # ARCHITECTURE
