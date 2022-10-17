@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, mergeMap } from 'rxjs';
+import { GpsPosition } from 'src/app/gest-coop/shared/models/types.model';
+import { NominatimService } from 'src/app/gest-coop/shared/services/nominatim.service';
 import { environment } from 'src/environments/environment';
-import { UserDtoNew, UserLogin, UserView } from '../models/user.model';
+import { UserDtoNew, UserLogin } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,8 @@ export class UserAuthService {
   
 
   constructor(
-    private httpC : HttpClient
+    private httpC : HttpClient,
+    private nominatimService: NominatimService
   ) {
     this.verifyLogged()
     this.emit_isConnect()
@@ -25,23 +28,15 @@ export class UserAuthService {
 
 
   createUser(user: UserDtoNew){
-    // TODO: check database if pwd is valid
-    /*
-    return this.httpC.post(
-      this._apiUrl + "participants",
-      user
-      ).pipe(
-        // TODO: not working, execute the patch before getting response from Nominatim...
-        switchMap(_ => this.nominatimService.getAddressGpsLongLat(user.address)
-        .pipe(
-          map((res: any) => {
-            user.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
-            return user
-          })
-        )
+    return this.nominatimService.getAddressGpsLongLat(user.address)
+      .pipe(
+        mergeMap(res => {
+          return this.httpC.post(
+            this._apiUrl + "participants",
+            { ...user, gps: <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}}
+          )
+        })
       )
-    )
-    */    
   }
 
   verifyLogged(): boolean {

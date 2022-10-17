@@ -1,282 +1,278 @@
 {
-    "coop_types": [
-        {
-            "id": 1,
-            "label": "Réseau Transition"
-        },
-        {
-            "id": 2,
-            "label": "Contrat de Rivière"
-        },
-        {
-            "id": 3,
-            "label": "GASAP"
-        },
-        {
-            "id": 4,
-            "label": "ASBL"
-        }
-    ],
-
-    "event_types": [
-        {
-            "id": 1,
-            "label": "Ramassage Déchets"
-        },
-        {
-            "id": 2,
-            "label": "Atelier"
-        },
-        {
-            "id": 3,
-            "label": "Aide Récolte"
-        },
-        {
-            "id": 4,
-            "label": "Ciné-Débat"
-        },
-        {
-            "id": 5,
-            "label": "Sortie Nature"
-        }
-    ],
-
-    "cooperatives": [
-        {
-            "id": 1,
-            "coop_typeId": 4,
-            "name": "Natagora",
-            "email": "info@natagora.be",
-            "password": "natagora#pwd",
-            "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
-            "address": {
-                "postal_code": 5002,
-                "city": "Namur",
-                "street_name": "Traverse des Muses",
-                "street_nb": "1"
-            },
-            "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png",
-            "gps": {
-                "lon": 	4.8629776,
-                "lat": 	50.4731373
-            }
-        },
-        {
-            "id": 2,
-            "coop_typeId": 1,
-            "name": "Transition Ciney",
-            "email": "info@tciney.be",
-            "password": "tciney#pwd",
-            "description": "Réseau Transition de Ciney",
-            "address": {
-                "postal_code": 5590,
-                "city": "Ciney",
-                "street_name": "",
-                "street_nb": ""
-            },
-            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
-            "gps": {
-                "lon": 	5.091454,
-                "lat": 	50.2913832
-            }
-        },
-        {
-            "id": 3,
-            "coop_typeId": 1,
-            "name": "Transition Gesves",
-            "email": "info@tgesves.be",
-            "password": "tgesves#pwd",
-            "description": "Réseau Transition de Gesves",
-            "address": {
-                "postal_code": 5340,
-                "city": "Gesves",
-                "street_name": "",
-                "street_nb": ""
-            },
-            "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
-            "gps": {
-                "lon": 	5.0738031,
-                "lat": 	50.4024718
-            }	
-        }     
-    ],
-
-    "events": [
-        {
-            "id": 1,
-            "coop_id": 1,
-            "event_typeId": 5,
-            "name": "Sortie Ornithologie",
-            "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
-            "location": "La Plante",
-            "address": {
-                "postal_code": 5000,
-                "city": "Namur",
-                "street_name": "Rue Théodore Baron",
-                "street_nb": ""
-            },
-            "datetime_start": "2023-05-22T09:00:00+02:00",
-            "datetime_end": "2023-05-22T11:30:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 20,
-            "gps": {
-                "lon": 	4.8592757,
-                "lat": 	50.4510159
-            }
-        },
-        {
-            "id": 2,
-            "coop_id": 1,
-            "event_typeId": 2,
-            "name": "Atelier de Conservation",
-            "description": "Conserver vos broccolis pour en avoir toute l'année, miam !",
-            "location": "Mundo N",
-            "address": {
-                "postal_code": 5002,
-                "city": "Namur",
-                "street_name": "Rue Nanon",
-                "street_nb": "98"
-            },
-            "datetime_start": "2023-01-12T17:00:00+02:00",
-            "datetime_end": "2023-01-12T19:00:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 10,
-            "gps": {
-                "lon": 	4.8586927,
-                "lat": 	50.4739593
-            }
-        },
-        {
-            "id": 3,
-            "coop_id": 1,
-            "event_typeId": 4,
-            "name": "La voiture électrique?",
-            "description": "Ciné-Débat sur les enjeux causés par la voiture électrique, animé par Aurore Stéphant",
-            "location": "Delta",
-            "address": {
-                "postal_code": 5000,
-                "city": "Namur",
-                "street_name": "Avenue Fernand Golenvaux",
-                "street_nb": "18"
-            },
-            "datetime_start": "2023-02-12T19:30:00+02:00",
-            "datetime_end": "2023-02-12T22:30:00+02:00",
-            "nb_people_min": -1,
-            "nb_people_max": 200,
-            "gps": {
-                "lon": 	4.868552997,
-                "lat": 	50.4624114
-            }	
-        },
-        {
-            "id": 4,
-            "coop_id": 2,
-            "event_typeId": 1,
-            "name": "Ramassage Déchets",
-            "description": "Ramassage de déchets dans les rues de Ciney",
-            "location": "",
-            "address": {
-                "postal_code": 5590,
-                "city": "Ciney",
-                "street_name": "Allée des Abattoirs",
-                "street_nb": ""
-            },
-            "datetime_start": "2023-05-22T09:00:00+02:00",
-            "datetime_end": "2023-05-22T11:30:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 15,
-            "gps": {
-                "lon": 	5.1101419,
-                "lat": 	50.3084048
-            }	
-        },
-        {
-            "id": 5,
-            "coop_id": 2,
-            "event_typeId": 2,
-            "name": "Atelier Zéro Déchets",
-            "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à créer vos propres adruinos à partir de vieilles cartes graphiques !",
-            "location": "Technobel",
-            "address": {
-                "postal_code": 5590,
-                "city": "Ciney",
-                "street_name": "Allée des Artisans",
-                "street_nb": "19"
-            },
-            "datetime_start": "2023-01-15T17:00:00+02:00",
-            "datetime_end": "2023-01-15T19:00:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 15,
-            "gps": {
-                "lon": 	5.107368278,
-                "lat": 	50.3117664
-            }	
-        },
-        {
-            "id": 6,
-            "coop_id": 3,
-            "event_typeId": 1,
-            "name": "Ramassage Déchets",
-            "description": "Ramassage de déchets aux alentours de Gesves",
-            "location": "",
-            "address": {
-                "postal_code": 5340,
-                "city": "Gesves",
-                "street_name": "Chaussée de Gramptinne",
-                "street_nb": ""
-            },
-            "datetime_start": "2023-05-15T09:00:00+02:00",
-            "datetime_end": "2023-05-15T11:30:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 15,
-            "gps": {
-                "lon": 	5.0546225,
-                "lat": 	50.4040891
-            }	
-        },
-        {
-            "id": 7,
-            "coop_id": 3,
-            "event_typeId": 2,
-            "name": "Atelier Zéro Déchets",
-            "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à fabriquer votre propre dentifrice !",
-            "location": "Maison de la Laicité",
-            "address": {
-                "postal_code": 5340,
-                "city": "Gesves",
-                "street_name": "Chaussée de Gramptinne",
-                "street_nb": "118"
-            },
-            "datetime_start": "2023-02-21T17:00:00+02:00",
-            "datetime_end": "2023-02-21T19:00:00+02:00",
-            "nb_people_min": 5,
-            "nb_people_max": 10,
-            "gps": {
-                "lon": 	5.0546225,
-                "lat": 	50.4040891
-            }
-        }
-    ],
-
-    "participants": [
-        {
-            "id": 1,
-            "first_name": "Dominique",
-            "last_name": "Lambert",
-            "email": "d.lambert@yoo.be",
-            "password": "abcde",
-            "birth_date": "1980-06-12",
-            "address": {
-                "postal_code": 5100,
-                "city": "Jambes",
-                "street_name": "",
-                "street_nb": ""
-            },
-            "events_participation": [],
-            "gps": {
-                "lon": 4.8723252,
-                "lat": 50.4589561
-            }
-        }
-    ]
+  "coop_types": [
+    {
+      "id": 1,
+      "label": "Réseau Transition"
+    },
+    {
+      "id": 2,
+      "label": "Contrat de Rivière"
+    },
+    {
+      "id": 3,
+      "label": "GASAP"
+    },
+    {
+      "id": 4,
+      "label": "ASBL"
+    }
+  ],
+  "event_types": [
+    {
+      "id": 1,
+      "label": "Ramassage Déchets"
+    },
+    {
+      "id": 2,
+      "label": "Atelier"
+    },
+    {
+      "id": 3,
+      "label": "Aide Récolte"
+    },
+    {
+      "id": 4,
+      "label": "Ciné-Débat"
+    },
+    {
+      "id": 5,
+      "label": "Sortie Nature"
+    }
+  ],
+  "cooperatives": [
+    {
+      "id": 1,
+      "coop_typeId": 4,
+      "name": "Natagora",
+      "email": "info@natagora.be",
+      "password": "natagora#pwd",
+      "description": "Natagora a pour but de protéger la nature, plus particulièrement en Wallonie et à Bruxelles.",
+      "address": {
+        "postal_code": 5002,
+        "city": "Namur",
+        "street_name": "Traverse des Muses",
+        "street_nb": "1"
+      },
+      "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png",
+      "gps": {
+        "lon": 4.8629776,
+        "lat": 50.4731373
+      }
+    },
+    {
+      "id": 2,
+      "coop_typeId": 1,
+      "name": "Transition Ciney",
+      "email": "info@tciney.be",
+      "password": "tciney#pwd",
+      "description": "Réseau Transition de Ciney",
+      "address": {
+        "postal_code": 5590,
+        "city": "Ciney",
+        "street_name": "",
+        "street_nb": ""
+      },
+      "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
+      "gps": {
+        "lon": 5.091454,
+        "lat": 50.2913832
+      }
+    },
+    {
+      "id": 3,
+      "coop_typeId": 1,
+      "name": "Transition Gesves",
+      "email": "info@tgesves.be",
+      "password": "tgesves#pwd",
+      "description": "Réseau Transition de Gesves",
+      "address": {
+        "postal_code": 5340,
+        "city": "Gesves",
+        "street_name": "",
+        "street_nb": ""
+      },
+      "logo": "http://www.reseautransition.be/wp-content/uploads/2016/08/Petit_logo_transition_carre%CC%81.png",
+      "gps": {
+        "lon": 5.0738031,
+        "lat": 50.4024718
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "coop_id": 1,
+      "event_typeId": 5,
+      "name": "Sortie Ornithologie",
+      "description": "Découvrez les oiseaux migrateurs avec notre expert en oiseaux",
+      "location": "La Plante",
+      "address": {
+        "postal_code": 5000,
+        "city": "Namur",
+        "street_name": "Rue Théodore Baron",
+        "street_nb": ""
+      },
+      "datetime_start": "2023-05-22T09:00:00+02:00",
+      "datetime_end": "2023-05-22T11:30:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 20,
+      "gps": {
+        "lon": 4.8592757,
+        "lat": 50.4510159
+      }
+    },
+    {
+      "id": 2,
+      "coop_id": 1,
+      "event_typeId": 2,
+      "name": "Atelier de Conservation",
+      "description": "Conserver vos broccolis pour en avoir toute l'année, miam !",
+      "location": "Mundo N",
+      "address": {
+        "postal_code": 5002,
+        "city": "Namur",
+        "street_name": "Rue Nanon",
+        "street_nb": "98"
+      },
+      "datetime_start": "2023-01-12T17:00:00+02:00",
+      "datetime_end": "2023-01-12T19:00:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 10,
+      "gps": {
+        "lon": 4.8586927,
+        "lat": 50.4739593
+      }
+    },
+    {
+      "id": 3,
+      "coop_id": 1,
+      "event_typeId": 4,
+      "name": "La voiture électrique?",
+      "description": "Ciné-Débat sur les enjeux causés par la voiture électrique, animé par Aurore Stéphant",
+      "location": "Delta",
+      "address": {
+        "postal_code": 5000,
+        "city": "Namur",
+        "street_name": "Avenue Fernand Golenvaux",
+        "street_nb": "18"
+      },
+      "datetime_start": "2023-02-12T19:30:00+02:00",
+      "datetime_end": "2023-02-12T22:30:00+02:00",
+      "nb_people_min": -1,
+      "nb_people_max": 200,
+      "gps": {
+        "lon": 4.868552997,
+        "lat": 50.4624114
+      }
+    },
+    {
+      "id": 4,
+      "coop_id": 2,
+      "event_typeId": 1,
+      "name": "Ramassage Déchets",
+      "description": "Ramassage de déchets dans les rues de Ciney",
+      "location": "",
+      "address": {
+        "postal_code": 5590,
+        "city": "Ciney",
+        "street_name": "Allée des Abattoirs",
+        "street_nb": ""
+      },
+      "datetime_start": "2023-05-22T09:00:00+02:00",
+      "datetime_end": "2023-05-22T11:30:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 15,
+      "gps": {
+        "lon": 5.1101419,
+        "lat": 50.3084048
+      }
+    },
+    {
+      "id": 5,
+      "coop_id": 2,
+      "event_typeId": 2,
+      "name": "Atelier Zéro Déchets",
+      "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à créer vos propres adruinos à partir de vieilles cartes graphiques !",
+      "location": "Technobel",
+      "address": {
+        "postal_code": 5590,
+        "city": "Ciney",
+        "street_name": "Allée des Artisans",
+        "street_nb": "19"
+      },
+      "datetime_start": "2023-01-15T17:00:00+02:00",
+      "datetime_end": "2023-01-15T19:00:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 15,
+      "gps": {
+        "lon": 5.107368278,
+        "lat": 50.3117664
+      }
+    },
+    {
+      "id": 6,
+      "coop_id": 3,
+      "event_typeId": 1,
+      "name": "Ramassage Déchets",
+      "description": "Ramassage de déchets aux alentours de Gesves",
+      "location": "",
+      "address": {
+        "postal_code": 5340,
+        "city": "Gesves",
+        "street_name": "Chaussée de Gramptinne",
+        "street_nb": ""
+      },
+      "datetime_start": "2023-05-15T09:00:00+02:00",
+      "datetime_end": "2023-05-15T11:30:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 15,
+      "gps": {
+        "lon": 5.0546225,
+        "lat": 50.4040891
+      }
+    },
+    {
+      "id": 7,
+      "coop_id": 3,
+      "event_typeId": 2,
+      "name": "Atelier Zéro Déchets",
+      "description": "Atelier Zéro Déchets animée par notre équipe. Apprenez à fabriquer votre propre dentifrice !",
+      "location": "Maison de la Laicité",
+      "address": {
+        "postal_code": 5340,
+        "city": "Gesves",
+        "street_name": "Chaussée de Gramptinne",
+        "street_nb": "118"
+      },
+      "datetime_start": "2023-02-21T17:00:00+02:00",
+      "datetime_end": "2023-02-21T19:00:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 10,
+      "gps": {
+        "lon": 5.0546225,
+        "lat": 50.4040891
+      }
+    }
+  ],
+  "participants": [
+    {
+      "id": 1,
+      "first_name": "Dominique",
+      "last_name": "Lambert",
+      "email": "d.lambert@yoo.be",
+      "password": "abcde",
+      "birth_date": "1980-06-12",
+      "address": {
+        "postal_code": 5100,
+        "city": "Jambes",
+        "street_name": "",
+        "street_nb": ""
+      },
+      "events_participation": [],
+      "gps": {
+        "lon": 4.8723252,
+        "lat": 50.4589561
+      }
+    }
+  ]
 }

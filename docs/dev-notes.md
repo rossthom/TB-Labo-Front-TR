@@ -16,12 +16,11 @@ o Connection Cooperative
 	- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
 
 - CRU Coops, Event, Users
-	👷 faire fonctionner Nominatim lors de :
-	😀 CODE DONNé PAR PIERRE
+	o faire fonctionner Nominatim lors de :
 		- Create Coop
 			o Test Créer Coop
-		- Update Coop
-			o Test Update Coop
+		✔️ Update Coop
+			✔️ Test Update Coop
 		- Create Evenement
 			o Test Créer Event
 		- Update Evenement
@@ -29,20 +28,15 @@ o Connection Cooperative
 		- Create User
 			o Test Créer User
 
-	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
-	o Clean test button and methods from CCoop, UCoop, CRUEvent
+	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent, CUser
+	o Clean test button and methods from CCoop, UCoop, CRUEvent, CUser
 
+o Page 'Vue Coop', changer en Vue Events (pour les users)
+	o Bouton 'détail event', affiche détail coop + event
+	o Développer inscription à un event !
+	🙏 Carte sur evenements
+		🙏 trajet avec coordo GPS user ?
 
-o page Vue Coop, changer en Vue Events (pour les users)
-	o bouton 'détail event', affiche détail coop + event
-
-o Développer inscription à un event !
-	o avoir un endroit avec 'mes events' (profil)
-	o BONUS... Dans event list, voir combien de personnes sont inscrites...
-
-o Développer vues events et coop quand user connecté
-	o Carte sur evenements
-	o trajet avec coordo GPS user ?
 
 o ⚠️ MODULES !!!
 	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal

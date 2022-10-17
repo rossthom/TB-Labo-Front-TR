@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, mergeMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EventDtoNew, EventDtoUpd, EventView } from '../models/event.model';
 import { Category, GpsPosition } from '../models/types.model';
@@ -36,36 +36,26 @@ export class GesteventService {
   }
 
   updateEvent(event: EventDtoUpd){
-    return this.httpC.patch(
-      this._apiUrl + "events/" + event.id,
-      event
-      ).pipe(
-        // TODO: not working, execute the patch before getting response from Nominatim...
-        switchMap(_ => this.nominatimService.getAddressGpsLongLat(event.address)
-        .pipe(
-          map((res: any) => {
-            event.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
-            return event
-          })
-        )
+    return this.nominatimService.getAddressGpsLongLat(event.address)
+      .pipe(
+        mergeMap(res => {
+          return this.httpC.patch(
+            this._apiUrl + "events/" + event.id,
+            { ...event, gps: <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}}
+          )
+        })
       )
-    )
   }
 
   insertEvent(event: EventDtoNew){
-    return this.httpC.post(
-      this._apiUrl + "events",
-      event
-      ).pipe(
-        // TODO: not working, execute the patch before getting response from Nominatim...
-        switchMap(_ => this.nominatimService.getAddressGpsLongLat(event.address)
-        .pipe(
-          map((res: any) => {
-            event.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
-            return event
-          })
-        )
+    return this.nominatimService.getAddressGpsLongLat(event.address)
+      .pipe(
+        mergeMap(res => {
+          return this.httpC.post(
+            this._apiUrl + "events",
+            { ...event, gps: <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}}
+          )
+        })
       )
-    )
   }
 }
