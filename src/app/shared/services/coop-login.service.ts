@@ -11,13 +11,17 @@ export class CoopLoginService {
   private _apiUrl: string = environment.dataUrl
 
   coopIsConnected: boolean = false
+  $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
+  
   coopIsConnectedKey = environment.coopIsConnectedKey //"coopIsConnected"
   coopIdKey = environment.coopIdKey //"coopId"
-  $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
 
   constructor(
     private httpC : HttpClient
-  ) { }
+  ) {
+    this.verifyLogged()
+    this.emit_isConnect()
+  }
 
   verifyLogged(): boolean {
     let tmpIsConnect = localStorage.getItem(this.coopIsConnectedKey)
@@ -34,6 +38,7 @@ export class CoopLoginService {
     // Merci Dorian !
     return this.httpC.get<CooperativeLogin[]>(this._apiUrl+"cooperatives")
       .pipe(
+        // 🤢 On reprend tous les users, je sais, mais c'est parce qu'on simule un backend
         map(coops => coops.filter(coop => coop.email === email && coop.password === password))
       )
   }

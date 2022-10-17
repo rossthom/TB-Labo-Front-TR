@@ -20,3 +20,9 @@ export type UserDtoNew = {
     events_participation: number[]
     gps: GpsPosition
 }
+
+export type UserLogin = {
+    id: number
+    email: string
+    password: string
+}

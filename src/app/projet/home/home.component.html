@@ -9,20 +9,20 @@
     <div class="col">
         <div class="card">
             <h2>Coopératives</h2>
-            <button pButton pRipple
-                icon="pi pi-sign-in" 
-                label="Connection (Coop)"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/coop-login"
-            ></button>
-            <br />
             <button pButton pRipple 
                 icon="pi pi-plus-circle" 
                 label="Créer une Coop"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
                 routerLink="/coop-admin/new"
+            ></button>
+            <br />
+            <button pButton pRipple
+                icon="pi pi-sign-in" 
+                label="Connection (Coop)"
+                type="button" 
+                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                routerLink="/coop-login"
             ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
@@ -36,27 +36,26 @@
         <div class="card">
             <h2>Participants</h2>
             <button pButton pRipple 
-            icon="pi pi-sign-in" 
-            label="Connection (Participant)"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/user-login"
-            ></button>
-            <br />
-            <button pButton pRipple 
                 icon="pi pi-user-plus" 
                 label="Création Participant"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
                 routerLink="/user/new"
             ></button>
+            <br />
+            <button pButton pRipple 
+            icon="pi pi-sign-in" 
+            label="Connection (Participant)"
+                type="button" 
+                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                routerLink="/user-login"
+            ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
                 label="Profil Participant"
                 type="button" 
-                disabled="true" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/user/profile"
+                (click)="seeUserProfile()"
             ></button>
             <br />
             <button pButton pRipple 

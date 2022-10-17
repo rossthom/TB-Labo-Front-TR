@@ -1,0 +1,20 @@
+a.my-top-right-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 3px;
+}
+a.my-top-right-button:hover {
+    background: rgba(76, 175, 80, 0.04);
+    color: #4CAF50;
+    border: 1px solid;
+}
+a.my-top-right-button:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #b7e0b8;
+  }

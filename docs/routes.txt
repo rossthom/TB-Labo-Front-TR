@@ -1,17 +1,17 @@
-/               ProjetModule.HomeComponent
-/coop-login     ProjetModule.CoopLoginComponent
-/user-login     ProjetModule.UserLoginComponent
-/coop           GestCoopModule.CoopViewComponent    //canActivate(UserLoginGuard) + //canDeactivate(CoopLoginGuard)
+/                   ProjetModule.HomeComponent
+/coop-login         ProjetModule.CoopLoginComponent
+/user-login         ProjetModule.UserLoginComponent
+/coop               GestCoopModule.CoopViewComponent    //canActivate(UserLoginGuard) + //canDeactivate(CoopLoginGuard)
 
 /coop-admin
-    /:id        GestCoopModule.GestCoopComponent    canActivate(CoopLoginGuard)
-    /new        GestCoopModule.CoopNewComponent
+    /view/:id       GestCoopModule.GestCoopComponent    canActivate(CoopLoginGuard)
+    /new            GestCoopModule.CoopNewComponent
 
-/user                                               //canDeactivate(CoopLoginGuard)
-    /new        ProjetModule.UserNewComponent           
-    /:id        ProjetModule.UserProfileComponent   //canActivate(UserLoginGuard)
+/user                                                   //canDeactivate(CoopLoginGuard)
+    /profile/:id    ProjetModule.UserProfileComponent   canActivate(UserLoginGuard)
+    /new            ProjetModule.UserNewComponent           
 
-/test           ProjetModule.TestboardComponent
+/test               ProjetModule.TestboardComponent
 
 
-**              ProjetModule.NotfoundComponent
+**                  ProjetModule.NotfoundComponent

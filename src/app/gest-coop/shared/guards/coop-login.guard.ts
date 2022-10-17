@@ -44,7 +44,5 @@ export class CoopLoginGuard implements CanActivate, CanDeactivate<unknown> {
         this.isConnected = isConnected
       }
     })
-
-    //this.isConnected = this.coopLoginService.coopIsConnected
   }
 }

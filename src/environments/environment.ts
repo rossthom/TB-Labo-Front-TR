@@ -4,11 +4,16 @@
 
 export const environment = {
   production: false,
+  
+  // Backends URLs
   dataUrl: "http://localhost:3000/",
   nominatimUrl: "https://nominatim.openstreetmap.org/search?",
 
+  // Storage Keys
   coopIsConnectedKey: "coopIsConnected",
   coopIdKey: "coopId",
+  userIsConnectedKey: "userIsConnected",
+  userIdKey: "userId",
 };
 
 /*

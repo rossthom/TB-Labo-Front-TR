@@ -24,15 +24,15 @@ o Développer Connection Cooperative
 
 o Développer Connection User
 	- Form avec email et mot de passe (page login Sakai)
-	o userAuthService: login() => check si email+mpd est OK
-	o gérer statut de login, 
-		o gérer 'remember me' (local storage)
+	- userAuthService: login() => check si email+mpd est OK
+	- gérer statut de login, 
+		- gérer 'remember me' (local storage)
 		o rediriger vers une page du profil User (user/profile:id)
-			o créer cette page
+			- créer cette page
 			o User Logout: ajouter un bouton déconnection sur la page de profil
 	o Guard sur routes Vue Coop vues
 
-o Navbar: améliorer status connection User et Coop
+- Navbar: améliorer status connection User et Coop
 
 - CRU Coops, Event, Users
 	👷 faire fonctionner Nominatim lors de :

@@ -22,6 +22,7 @@ import { CoopViewComponent } from './coop-view/coop-view.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserNewComponent } from './user-new/user-new.component';
 import { TestboardComponent } from './testboard/testboard.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TestboardComponent } from './testboard/testboard.component';
     UserLoginComponent,
     UserNewComponent,
     TestboardComponent,
+    UserProfileComponent,
   ],
   imports: [
     // Angular

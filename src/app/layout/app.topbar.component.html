@@ -12,15 +12,34 @@
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
+    <!--
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
     </div>
+    -->
 
-    <div *ngIf="coopIsConnected">
-        <i class="pi pi-thumbs-up-fill"></i>
+    <div #topbarmenu class="layout-topbar-menu" >
+        <div *ngIf="!coopIsConnected && !userIsConnected">
+            Connectez-vous:&nbsp;
+            <a routerLink="/coop-login" class="my-top-right-button">
+                <i class="pi pi-sign-in"></i>&nbsp;Coopérative
+            </a>
+            &nbsp;&nbsp;
+            <a routerLink="/user-login" class="my-top-right-button">
+                <i class="pi pi-sign-in"></i>&nbsp;Participant
+            </a>
+        </div>
+        <div *ngIf="coopIsConnected">
+            <i class="pi pi-thumbs-up-fill"></i>
+            <span>&nbsp;Coopérative connectée</span>
+        </div>
+        <div *ngIf="userIsConnected">
+            <i class="pi pi-thumbs-up-fill"></i>
+            <span>&nbsp;Participant connecté</span>
+        </div>
     </div>
 </div>
 
