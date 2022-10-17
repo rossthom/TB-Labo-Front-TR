@@ -14,8 +14,7 @@ export class EmailCheckService {
 
 
   checkEmailUnicity(email: string, entity: Entity){
-    let encodedEmail = encodeURI(email)
-    console.log(encodedEmail)
+    let encodedEmail = email.split('@').join('%40')
     return this.httpC.get<any>(this._apiUrl + entity + "/?email=" + encodedEmail)
   }
 }

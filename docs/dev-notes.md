@@ -33,8 +33,7 @@ json-server start command:
 
 o Développer Connection Cooperative
 	- Form avec email et mot de passe (page login Sakai)
-	o coopAuthService: login() => check si email+mpd est OK
-		💡 Directement via API URL ?
+	- coopAuthService: login() => check si email+mpd est OK
 	o gérer statut de login, rediriger vers la page de la Coop (coop/admin:id) 
 		o => refaire cette page en enlevant la liste de coops
 			🙏 NTH: child for event list
@@ -46,7 +45,7 @@ o Développer Connection Cooperative
 o Développer Registration User
 	- créer compo user-crea avec formulaire de création
 		- validateurs !
-		⚠️ check si email n'existe pas déjà !!!
+		- check si email n'existe pas déjà !!!
 		⚠️ make Nominatim work (adresse nouvel utilisateur)
 	- User login
 		- créer compo user-login avec formulaire
