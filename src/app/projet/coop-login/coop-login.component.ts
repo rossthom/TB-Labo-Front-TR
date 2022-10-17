@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generateLoginForm } from '../../shared/forms/coop-login.form';
+import { EmailCheckService, Entity } from 'src/app/shared/services/email-check.service';
+import { generateLoginForm } from '../../shared/forms/login.form';
 
 @Component({
   selector: 'app-coop-login',
@@ -9,14 +10,15 @@ import { generateLoginForm } from '../../shared/forms/coop-login.form';
   styleUrls: ['./coop-login.component.scss']
 })
 export class CoopLoginComponent implements OnInit {
-  coopLoginForm: FormGroup = generateLoginForm(this.fb)
+  coopLoginForm: FormGroup = generateLoginForm(this.fb, this.emailCheckService, Entity.Cooperative)
 
   selectedValues: string[] = [];
   
 
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private emailCheckService: EmailCheckService
   ) { }
 
   ngOnInit(): void {

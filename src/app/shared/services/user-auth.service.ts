@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UserDtoNew } from '../models/user.model';
+import { UserDtoNew, UserView } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'

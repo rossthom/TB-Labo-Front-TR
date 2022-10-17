@@ -17,7 +17,7 @@ export class GestcoopService {
     private httpC : HttpClient,
     private nominatimService: NominatimService
   ) { }
- 
+
 
   getCoopTypes(): Observable<Category[]>{
     return this.httpC.get<Category[]>(this._apiUrl+"coop_types")
@@ -56,11 +56,13 @@ export class GestcoopService {
       this._apiUrl + "cooperatives/" + coop.id,
       coop
       ).pipe(
-        // TODO: not working, execute the patch before getting response from Nominatim...
+        // 🐛 TODO: not working, execute the patch before getting response from Nominatim...
         switchMap(_ => this.nominatimService.getAddressGpsLongLat(coop.address)
         .pipe(
           map((res: any) => {
+            console.log('updateCoop Map')
             coop.gps = <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}
+            console.log(coop)
             return coop
           })
         )

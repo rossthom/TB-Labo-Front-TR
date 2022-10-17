@@ -259,5 +259,24 @@
     ],
 
     "participants": [
+        {
+            "id": 1,
+            "first_name": "Dominique",
+            "last_name": "Lambert",
+            "email": "d.lambert@yoo.be",
+            "password": "abcde",
+            "birth_date": "1980-06-12",
+            "address": {
+                "postal_code": 5100,
+                "city": "Jambes",
+                "street_name": "",
+                "street_nb": ""
+            },
+            "events_participation": [],
+            "gps": {
+                "lon": 4.8723252,
+                "lat": 50.4589561
+            }
+        }
     ]
 }

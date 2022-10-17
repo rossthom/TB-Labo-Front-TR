@@ -5,7 +5,7 @@ import { NominatimService } from "src/app/gest-coop/shared/services/nominatim.se
 
 
 export class NominatimValidator {
-    public static checkAddress(nominatimService: NominatimService): AsyncValidatorFn | null/*GpsPosition*/ {
+    public static checkAddress(nominatimService: NominatimService): AsyncValidatorFn | null {
         return (controlGroup: AbstractControl): Observable<ValidationErrors | null> => {
             let address = <Address>{
                 postal_code: controlGroup.value['addr_postal_code'],
@@ -20,7 +20,7 @@ export class NominatimValidator {
                         if (res.length == 0){
                             return { NominatimValidator : "Adresse non trouvée sur OpenStreetMap" }
                         }
-                        return null;//<GpsPosition>{lon: res[0].lon, lat: res[0].lat}
+                        return null;
                     })
                 ))
             )

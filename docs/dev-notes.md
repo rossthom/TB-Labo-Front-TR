@@ -34,6 +34,7 @@ json-server start command:
 o Développer Connection Cooperative
 	- Form avec email et mot de passe (page login Sakai)
 	o coopAuthService: login() => check si email+mpd est OK
+		💡 Directement via API URL ?
 	o gérer statut de login, rediriger vers la page de la Coop (coop/admin:id) 
 		o => refaire cette page en enlevant la liste de coops
 			🙏 NTH: child for event list
@@ -57,6 +58,9 @@ o Développer Registration User
 			o User Logout: ajouter un bouton déconnection sur la page de profil
 	o Guard sur routes Vue Coop vues
 	o User logout
+
+o page Vue Coop, changer en Vue Events (pour les users)
+	o bonton 'détail event', affiche détail coop + event
 
 o Développer inscription à un event !
 	o avoir un endroit avec 'mes events' (profil)
