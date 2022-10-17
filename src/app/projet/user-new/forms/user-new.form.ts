@@ -2,8 +2,10 @@ import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@ang
 import { NominatimService } from "src/app/gest-coop/shared/services/nominatim.service";
 import { matchPasswordValidator } from "src/app/gest-coop/shared/validators/matchPassword.validator";
 import { NominatimValidator } from "src/app/gest-coop/shared/validators/nominatim.validator";
+import { EmailCheckService, Entity } from "src/app/shared/services/email-check.service";
+import { EmailUnicityValidator } from "src/app/shared/validators/emailUnicityCheck.validator";
 
-export function generateNewUserForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
+export function generateNewUserForm(fb: FormBuilder, nominatimService: NominatimService, emailCheckService: EmailCheckService, entity: Entity): FormGroup {
     return fb.group({
         // Controls
         first_name: [
@@ -30,6 +32,9 @@ export function generateNewUserForm(fb: FormBuilder, nominatimService: Nominatim
                 validators: [
                     Validators.required,
                     Validators.email,
+                ],
+                asyncValidators: [
+                    EmailUnicityValidator.checkAddress(emailCheckService, entity)
                 ],
             }
         ],

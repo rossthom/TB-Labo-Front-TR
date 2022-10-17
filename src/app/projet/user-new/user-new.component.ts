@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Address, GpsPosition } from 'src/app/gest-coop/shared/models/types.model';
 import { NominatimService } from 'src/app/gest-coop/shared/services/nominatim.service';
 import { UserDtoNew } from 'src/app/shared/models/user.model';
+import { EmailCheckService, Entity } from 'src/app/shared/services/email-check.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { generateNewUserForm } from './forms/user-new.form';
 
@@ -13,12 +14,13 @@ import { generateNewUserForm } from './forms/user-new.form';
   styleUrls: ['./user-new.component.scss']
 })
 export class UserNewComponent implements OnInit {
-  newUserForm: FormGroup = generateNewUserForm(this.fb, this.nominatimService)
+  newUserForm: FormGroup = generateNewUserForm(this.fb, this.nominatimService, this.emailCheckService, Entity.Participant)
   
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private nominatimService: NominatimService,
+    private emailCheckService: EmailCheckService,
     private userAuthService: UserAuthService
   ) { }
 

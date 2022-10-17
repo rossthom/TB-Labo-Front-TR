@@ -9,7 +9,7 @@ export class EmailUnicityValidator {
                 switchMap(_ => emailCheckService.checkEmailUnicity(control.value, entity).pipe(
                     map((res: any[]) => {
                         if (res.length != 0){
-                            return { EmailUnicityValidator : "Cette adresse est déjà utilisée" }
+                            return { EmailUnicityValidator : "Cette adresse email est déjà utilisée" }
                         }
                         return null;
                     })

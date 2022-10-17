@@ -77,6 +77,12 @@
                     </p>
                     <p 
                         class="text-red-500"
+                        *ngIf="formControls['email'].errors?.['EmailUnicityValidator']" 
+                    >
+                        {{ formControls['email'].errors?.['EmailUnicityValidator'] }}
+                    </p>
+                    <p 
+                        class="text-red-500"
                         *ngIf="formControls['email'].touched && formControls['email'].errors?.['required']" 
                     >
                         Ce champ est requis

@@ -52,6 +52,18 @@ export class GestcoopService {
   }
 
   updateCoop(coop: CooperativeDtoUpd){
+/*
+updateCoop(coop: CooperativeDtoUpd){
+        return this.nominatimService.getAddressGpsLongLat(coop.address)
+            .pipe(mergeMap(res => {
+                return this.httpC.patch(this._apiUrl + "cooperatives/" + coop.id, { ...coop, gps: <GpsPosition>{lon: parseFloat(res[0].lon), lat: parseFloat(res[0].lat)}})
+            }))
+  }
+*/
+
+
+
+
     return this.httpC.patch(
       this._apiUrl + "cooperatives/" + coop.id,
       coop

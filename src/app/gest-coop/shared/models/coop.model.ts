@@ -33,3 +33,10 @@ export type CooperativeDtoNew = {
     logo: string
     gps: GpsPosition
 }
+
+
+export type CooperativeLogin = {
+    id: number
+    email: string
+    password: string
+}

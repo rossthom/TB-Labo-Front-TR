@@ -6,13 +6,14 @@ json-server start command:
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 
-- ⚠️❓ Comment modifier mon objet juste avant de faire l'update en DB ?
-- ⚠️❓ Creation nouvelle Coop ou User: vérifier si email pas déjà donné... (Camille)
+- ❓ Comment modifier mon objet juste avant de faire l'update en DB ?
+- ⚠️❓ Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
 
 
 # DEV ROADMAP
 - CRU Coopératives & Events:
 	👷 faire fonctionner Nominatim lors de :
+	😀 CODE DONNé PAR PIERRE
 		- update Coop
 		- update Evenement
 		- insert Evenement
@@ -39,6 +40,7 @@ o Développer Connection Cooperative
 			🙏 NTH: child for event list
 		o Coop logout: ajouter un bouton déconnection sur cette page
 	o Guard sur Gest. Coop. routes
+		o !!! j'utilise un BehaviorSubject (observable) pour voir si on est bien connecté, donc adapter le garde par rapport au code de la démo qui n'utilise pas les observables
 	🙏 gérer 'remember me' (local storage)
 	o Guard 'désactivate' vue recherche évènement quand Coop connectée
 
@@ -68,6 +70,8 @@ o Développer inscription à un event !
 o Développer vues events et coop quand user connecté
 	o Carte ?
 	o Calendrier ?
+
+o Virer module project pour le mettre à la racine (app)
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check TODOs

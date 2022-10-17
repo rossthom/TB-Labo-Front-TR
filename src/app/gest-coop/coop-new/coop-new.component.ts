@@ -6,6 +6,7 @@ import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Address, Category, GpsPosition } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
 import { NominatimService } from '../shared/services/nominatim.service';
+import { EmailCheckService, Entity } from 'src/app/shared/services/email-check.service';
 
 @Component({
   selector: 'app-coop-new',
@@ -13,7 +14,7 @@ import { NominatimService } from '../shared/services/nominatim.service';
   styleUrls: ['./coop-new.component.scss']
 })
 export class CoopNewComponent implements OnInit {
-  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService)
+  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.emailCheckService, Entity.Cooperative)
   coopTypes: Category[] = []
 
 
@@ -21,6 +22,7 @@ export class CoopNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private gestCoopService: GestcoopService,
+    private emailCheckService: EmailCheckService,
     private nominatimService: NominatimService
   ) { }
 

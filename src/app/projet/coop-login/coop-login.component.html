@@ -30,12 +30,6 @@
                                 </p>
                                 <p 
                                     class="text-red-500"
-                                    *ngIf="formControls['email'].errors?.['EmailUnicityValidator']" 
-                                >
-                                    {{ formControls['email'].errors?.['EmailUnicityValidator'] }}
-                                </p>
-                                <p 
-                                    class="text-red-500"
                                     *ngIf="formControls['email'].touched && formControls['email'].errors?.['required']" 
                                 >
                                     Ce champ est requis
@@ -73,7 +67,7 @@
                                 icon="pi pi-sign-in"
                                 type="button" 
                                 class="p-button-outlined p-button-success mr-2 mb-2"
-                                (click)="login()"
+                                (click)="checkLogin()"
                                 ></button>
                             </div>
                             <div class="col-6 mb-2">

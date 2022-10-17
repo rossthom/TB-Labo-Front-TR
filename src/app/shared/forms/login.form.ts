@@ -2,7 +2,7 @@ import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@ang
 import { EmailCheckService, Entity } from "../services/email-check.service";
 import { EmailUnicityValidator } from "../validators/emailUnicityCheck.validator";
 
-export function generateLoginForm(fb: FormBuilder, emailCheckService: EmailCheckService, entity: Entity): FormGroup {
+export function generateLoginForm(fb: FormBuilder): FormGroup {
     return fb.group({
         // Controls
         email: [
@@ -11,9 +11,6 @@ export function generateLoginForm(fb: FormBuilder, emailCheckService: EmailCheck
                 validators: [
                     Validators.required,
                     Validators.email,
-                ],
-                asyncValidators: [
-                    EmailUnicityValidator.checkAddress(emailCheckService, entity)
                 ],
             }
         ],
