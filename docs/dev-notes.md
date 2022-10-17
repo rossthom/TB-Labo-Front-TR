@@ -8,75 +8,71 @@ json-server start command:
 
 - ❓ Comment modifier mon objet juste avant de faire l'update en DB ?
 - ⚠️❓ Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
+- ⚠️❓ Guard Deactivate freeze mon app
 
 
 # DEV ROADMAP
-- CRU Coopératives & Events:
-	👷 faire fonctionner Nominatim lors de :
-	😀 CODE DONNé PAR PIERRE
-		- update Coop
-		- update Evenement
-		- insert Evenement
-		- insert Coop
-
-	o Test Créer Coop
-		⚠️ check si email n'existe pas déjà !!!
-		o rajouter un toast
-	o Test Update Coop
-		o rajouter un toast
-	o Test Créer Event
-		o rajouter un toast
-	o Test Update Event
-		o rajouter un toast
-
-	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
-	o Clean test button and methods from CCoop, UCoop, CRUEvent
-
 o Développer Connection Cooperative
 	- Form avec email et mot de passe (page login Sakai)
 	- coopAuthService: login() => check si email+mpd est OK
-	o gérer statut de login, rediriger vers la page de la Coop (coop/admin:id) 
-		o => refaire cette page en enlevant la liste de coops
-			🙏 NTH: child for event list
-		o Coop logout: ajouter un bouton déconnection sur cette page
-	o Guard sur Gest. Coop. routes
-		o !!! j'utilise un BehaviorSubject (observable) pour voir si on est bien connecté, donc adapter le garde par rapport au code de la démo qui n'utilise pas les observables
-	🙏 gérer 'remember me' (local storage)
-	o Guard 'désactivate' vue recherche évènement quand Coop connectée
+	- gérer statut de login, 
+	- page profil de la Coop
+		🙏 NTH: child for event list
+	- Guard sur Gest. Coop. routes
+	- gérer 'remember me' (local storage)
+	- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
 
-o Développer Registration User
-	- créer compo user-crea avec formulaire de création
-		- validateurs !
-		- check si email n'existe pas déjà !!!
-		⚠️ make Nominatim work (adresse nouvel utilisateur)
-	- User login
-		- créer compo user-login avec formulaire
-			- validators !
+o Développer Connection User
+	- Form avec email et mot de passe (page login Sakai)
 	o userAuthService: login() => check si email+mpd est OK
 	o gérer statut de login, 
+		o gérer 'remember me' (local storage)
 		o rediriger vers une page du profil User (user/profile:id)
 			o créer cette page
 			o User Logout: ajouter un bouton déconnection sur la page de profil
 	o Guard sur routes Vue Coop vues
-	o User logout
+
+o Navbar: améliorer status connection User et Coop
+
+- CRU Coops, Event, Users
+	👷 faire fonctionner Nominatim lors de :
+	😀 CODE DONNé PAR PIERRE
+		- Create Coop
+			o Test Créer Coop
+		- Update Coop
+			o Test Update Coop
+		- Create Evenement
+			o Test Créer Event
+		- Update Evenement
+			o Test Update Event
+		- Create User
+			o Test Créer User
+
+	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent
+	o Clean test button and methods from CCoop, UCoop, CRUEvent
+
 
 o page Vue Coop, changer en Vue Events (pour les users)
-	o bonton 'détail event', affiche détail coop + event
+	o bouton 'détail event', affiche détail coop + event
 
 o Développer inscription à un event !
 	o avoir un endroit avec 'mes events' (profil)
 	o BONUS... Dans event list, voir combien de personnes sont inscrites...
 
 o Développer vues events et coop quand user connecté
-	o Carte ?
-	o Calendrier ?
+	o Carte sur evenements
+	o trajet avec coordo GPS user ?
 
-o Virer module project pour le mettre à la racine (app)
+o ⚠️ MODULES !!!
+	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
+	o J'ai tout mon coop-login dans 'project' au lieu de 'gest-coop'
+	o Virer module project pour le mettre à la racine (app)
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check TODOs
 	o check debug elements dans interface
 	o check console.log
+	o check alerts
 	o delete commented code and unnecessary comments
 
 

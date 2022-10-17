@@ -6,6 +6,9 @@ export const environment = {
   production: false,
   dataUrl: "http://localhost:3000/",
   nominatimUrl: "https://nominatim.openstreetmap.org/search?",
+
+  coopIsConnectedKey: "coopIsConnected",
+  coopIdKey: "coopId",
 };
 
 /*

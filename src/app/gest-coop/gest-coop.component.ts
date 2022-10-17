@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CoopLoginService } from '../shared/services/coop-login.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
@@ -12,7 +14,7 @@ import { GesteventService } from './shared/services/gestevent.service';
   styleUrls: ['./gest-coop.component.scss']
 })
 export class GestCoopComponent implements OnInit {
-  listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
+  //listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
 
   coopId: number = 0
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
@@ -25,17 +27,19 @@ export class GestCoopComponent implements OnInit {
   //cEventPopupVisible: boolean = false;    // CREATE Event popup display status
 
   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService
+    private gestEventService: GesteventService,
+    private coopLoginService: CoopLoginService
   ) {
   }
 
   ngOnInit(): void {
-    this.gestCoopService.getAllCoops().subscribe({
-      next : (res : CooperativeView[]) => {
-        this.listCoops = res
-      }
-    })
+    if (this.activatedRoute.snapshot.params["id"]){
+      this.coopId = this.activatedRoute.snapshot.params["id"]
+      this.getOneCoop(this.coopId)
+    }
   }
 
   getOneCoop(id: number) {
@@ -58,6 +62,11 @@ export class GestCoopComponent implements OnInit {
     })
   }
 
+
+  logout() {
+    this.coopLoginService.logout()
+    this.router.navigate([""])
+  }
 
   // ℹ️ Update Coop Popup
   showCoopUpdatePopup(){

@@ -9,7 +9,7 @@ const routes: Routes = [
         children: [
             { path: '', loadChildren: () => import('./projet/projet.module').then(m => m.ProjetModule) },
             
-            { path: 'coop', loadChildren: () => import('./gest-coop/gest-coop.module').then(m => m.GestCoopModule) },
+            { path: 'coop-admin', loadChildren: () => import('./gest-coop/gest-coop.module').then(m => m.GestCoopModule) },
             
 
             // Routing 404

@@ -11,7 +11,8 @@ export class CoopLoginService {
   private _apiUrl: string = environment.dataUrl
 
   coopIsConnected: boolean = false
-  coopIsConnectedKey = "coopIsConnected"
+  coopIsConnectedKey = environment.coopIsConnectedKey //"coopIsConnected"
+  coopIdKey = environment.coopIdKey //"coopId"
   $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
 
   constructor(
@@ -37,27 +38,32 @@ export class CoopLoginService {
       )
   }
 
-  login(/*email: string, password: string, */remember: boolean) {
+  login(coopId: number, remember: boolean) {
     this.coopIsConnected = true
+    this.emit_isConnect()
     if (remember) {
-      //localStorage.setItem(this.coopIsConnectedKey, "true")
-      alert('Login (remember me) !!')
+      localStorage.setItem(this.coopIsConnectedKey, "true")
+      localStorage.setItem(this.coopIdKey, coopId.toString())
+      //alert('Login (remember me) !!')
     }
     else{
-      //sessionStorage.setItem(this.coopIsConnectedKey, "true")
-      alert('Login !!')
+      sessionStorage.setItem(this.coopIsConnectedKey, "true")
+      sessionStorage.setItem(this.coopIdKey, coopId.toString())
+      //alert('Login !!')
     }
   }
 
   logout(){
-    localStorage.removeItem('isConnect')
-    sessionStorage.removeItem('isConnect')
+    localStorage.removeItem(this.coopIsConnectedKey)
+    localStorage.removeItem(this.coopIdKey)
+    sessionStorage.removeItem(this.coopIsConnectedKey)
+    sessionStorage.removeItem(this.coopIdKey)
     this.coopIsConnected = false;
+    this.emit_isConnect()
   }
 
 
   //------ EMIT METHODS ---------------------------------------
-  // Par convention, on met les methodes 'emit' à la fin
   emit_isConnect() {
     this.$coopIsConnected.next(this.coopIsConnected)
   }

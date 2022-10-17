@@ -22,14 +22,14 @@
                 label="Créer une Coop"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/coop/admin/new"
+                routerLink="/coop-admin/new"
             ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
-                label="Admin Coop"
+                label="Voir profil Coop connectée"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/coop/admin"
+                (click)="seeCoopProfile()"
             ></button>
         </div>
 
@@ -69,3 +69,5 @@
         </div>
     </div>
 </div>
+
+<p-toast></p-toast>

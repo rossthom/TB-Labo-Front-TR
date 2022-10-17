@@ -27,8 +27,8 @@ export class AppMenuComponent implements OnInit {
                 label: 'Coopératives',
                 items: [
                     { label: 'Vue Coops', icon: 'pi pi-fw pi-search', routerLink: ['/coop'] },
-                    { label: 'Admin Coop', icon: 'pi pi-fw pi-id-card', routerLink: ['/coop/admin'] },
-                    { label: 'Create Coop', icon: 'pi pi-fw pi-user-plus', routerLink: ['/coop/admin/new'] },
+                    //{ label: 'Admin Coop', icon: 'pi pi-fw pi-id-card', routerLink: ['/coop/admin'] },
+                    { label: 'Create Coop', icon: 'pi pi-fw pi-user-plus', routerLink: ['/coop-admin/new'] },
                     //...
                 ]
             },

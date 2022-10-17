@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoopLoginGuard } from '../gest-coop/shared/guards/coop-login.guard';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
+import { CoopViewComponent } from './coop-view/coop-view.component';
 import { HomeComponent } from './home/home.component';
 import { TestboardComponent } from './testboard/testboard.component';
 import { UserLoginComponent } from './user-login/user-login.component';
@@ -10,10 +12,12 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'coop-login', component: CoopLoginComponent },
   { path: 'user-login', component: UserLoginComponent },
-  { path: "user", /*TODO: Add Guard coop !*/ children: [
+  { path: 'coop', component: CoopViewComponent },
+  { path: "user", /*canDeactivate: [CoopLoginGuard],*/ children: [
     {path: "new", component: UserNewComponent},
-    //{path: "profile", component: UserProfileComponent},
-  ]},  { path: 'test', component: TestboardComponent },
+    //{path: ":id", /*TODO: Add Guard user !*/ component: UserProfileComponent},
+  ]},
+  { path: 'test', component: TestboardComponent },
 ];
 
 @NgModule({

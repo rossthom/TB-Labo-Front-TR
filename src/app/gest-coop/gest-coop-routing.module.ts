@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoopNewComponent } from './coop-new/coop-new.component';
-import { CoopViewComponent } from './coop-view/coop-view.component';
+import { CoopViewComponent } from '../projet/coop-view/coop-view.component';
 import { GestCoopComponent } from './gest-coop.component';
+import { CoopLoginGuard } from './shared/guards/coop-login.guard';
 
 const routes: Routes = [
-  { path: '', /*TODO: Add Guard user !*/ component: CoopViewComponent },
-  { path: "admin", /*TODO: Add Guard coop !*/ children: [
-    {path: "", component: GestCoopComponent},
-    //{ path: ':id', component: GestCoopComponent },
-    {path: "new", component: CoopNewComponent},
+  {path: "view", canActivate: [CoopLoginGuard], children: [
+    { path: ':id', component: GestCoopComponent },
   ]},
-  //{ path: 'admin', component: GestCoopComponent },
-  //{ path: 'admin/new', component: CoopNewComponent },
-  
+  { path: "new", component: CoopNewComponent },
 ];
 
 @NgModule({

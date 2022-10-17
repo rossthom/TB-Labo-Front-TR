@@ -8,6 +8,8 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
@@ -15,20 +17,21 @@ import { ToastModule } from 'primeng/toast';
 // Application
 import { ProjetRoutingModule } from './projet-routing.module';
 import { HomeComponent } from './home/home.component';
-import { TestboardComponent } from './testboard/testboard.component';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
-import { MessageService } from 'primeng/api';
+import { CoopViewComponent } from './coop-view/coop-view.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserNewComponent } from './user-new/user-new.component';
+import { TestboardComponent } from './testboard/testboard.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     CoopLoginComponent,
-    TestboardComponent,
+    CoopViewComponent,
     UserLoginComponent,
     UserNewComponent,
+    TestboardComponent,
   ],
   imports: [
     // Angular
@@ -40,6 +43,7 @@ import { UserNewComponent } from './user-new/user-new.component';
     CalendarModule,
     CheckboxModule,
     DialogModule,
+    DropdownModule,
     InputTextModule,
     PasswordModule,
     ToastModule,

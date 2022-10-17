@@ -20,7 +20,6 @@ import { GestCoopComponent } from './gest-coop.component';
 import { CoopNewComponent } from './coop-new/coop-new.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
 import { EventCruComponent } from './event-cru/event-cru.component';
-import { CoopViewComponent } from './coop-view/coop-view.component';
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import { CoopViewComponent } from './coop-view/coop-view.component';
     CoopNewComponent,
     CoopUpdComponent,
     EventCruComponent,
-    CoopViewComponent,
   ],
   imports: [
     // Angular

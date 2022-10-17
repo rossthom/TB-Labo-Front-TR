@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { generateLoginForm } from 'src/app/shared/forms/login.form';
+import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -17,6 +19,8 @@ export class UserLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private userAuthService: UserAuthService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {

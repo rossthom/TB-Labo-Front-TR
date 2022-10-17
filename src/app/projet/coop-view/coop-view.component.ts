@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormMode } from '../event-cru/event-cru.component';
-import { CooperativeView } from '../shared/models/coop.model';
-import { EventView } from '../shared/models/event.model';
-import { GestcoopService } from '../shared/services/gestcoop.service';
-import { GesteventService } from '../shared/services/gestevent.service';
+import { CooperativeView } from '../../gest-coop/shared/models/coop.model';
+import { EventView } from '../../gest-coop/shared/models/event.model';
+import { GestcoopService } from '../../gest-coop/shared/services/gestcoop.service';
+import { GesteventService } from '../../gest-coop/shared/services/gestevent.service';
 
 @Component({
   selector: 'app-coop-view',
@@ -11,16 +10,13 @@ import { GesteventService } from '../shared/services/gestevent.service';
   styleUrls: ['./coop-view.component.scss']
 })
 export class CoopViewComponent implements OnInit {
-  listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
+  listCoops!: CooperativeView[]    
 
   coopId: number = 0
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
-  //updatePopupVisible: boolean = false;
   
   coopEvents!: EventView[]         // TODO: attribut coopEvents non initialisé !
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
-  //cruEventPopupVisible: boolean = false;          // Event popup display status
-  //cruEventPopupMode: FormMode = FormMode.Read;    // Event popup display mode
 
   constructor(
     private gestCoopService: GestcoopService,
