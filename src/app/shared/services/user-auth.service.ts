@@ -9,13 +9,12 @@ import { UserDtoNew, UserLogin, UserView } from '../models/user.model';
 })
 export class UserAuthService {
   private _apiUrl: string = environment.dataUrl
+  private _userIsConnectedKey = environment.userIsConnectedKey
+  private _userIdKey = environment.userIdKey
 
   userIsConnected: boolean = false
   $userIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
   
-  userIsConnectedKey = environment.userIsConnectedKey
-  userIdKey = environment.userIdKey
-
 
   constructor(
     private httpC : HttpClient
@@ -46,9 +45,9 @@ export class UserAuthService {
   }
 
   verifyLogged(): boolean {
-    let tmpIsConnect = localStorage.getItem(this.userIsConnectedKey)
+    let tmpIsConnect = localStorage.getItem(this._userIsConnectedKey)
     if (!tmpIsConnect) {
-      tmpIsConnect = sessionStorage.getItem(this.userIsConnectedKey)
+      tmpIsConnect = sessionStorage.getItem(this._userIsConnectedKey)
     }
 
     this.userIsConnected = tmpIsConnect == 'true'
@@ -68,22 +67,22 @@ export class UserAuthService {
     this.userIsConnected = true
     this.emit_isConnect()
     if (remember) {
-      localStorage.setItem(this.userIsConnectedKey, "true")
-      localStorage.setItem(this.userIdKey, userId.toString())
+      localStorage.setItem(this._userIsConnectedKey, "true")
+      localStorage.setItem(this._userIdKey, userId.toString())
       //alert('Login (remember me) !!')
     }
     else{
-      sessionStorage.setItem(this.userIsConnectedKey, "true")
-      sessionStorage.setItem(this.userIdKey, userId.toString())
+      sessionStorage.setItem(this._userIsConnectedKey, "true")
+      sessionStorage.setItem(this._userIdKey, userId.toString())
       //alert('Login !!')
     }
   }
 
   logout(){
-    localStorage.removeItem(this.userIsConnectedKey)
-    localStorage.removeItem(this.userIdKey)
-    sessionStorage.removeItem(this.userIsConnectedKey)
-    sessionStorage.removeItem(this.userIdKey)
+    localStorage.removeItem(this._userIsConnectedKey)
+    localStorage.removeItem(this._userIdKey)
+    sessionStorage.removeItem(this._userIsConnectedKey)
+    sessionStorage.removeItem(this._userIdKey)
     this.userIsConnected = false;
     this.emit_isConnect()
   }

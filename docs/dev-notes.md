@@ -12,27 +12,8 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Développer Connection Cooperative
-	- Form avec email et mot de passe (page login Sakai)
-	- coopAuthService: login() => check si email+mpd est OK
-	- gérer statut de login, 
-	- page profil de la Coop
-		🙏 NTH: child for event list
-	- Guard sur Gest. Coop. routes
-	- gérer 'remember me' (local storage)
+o Connection Cooperative
 	- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
-
-o Développer Connection User
-	- Form avec email et mot de passe (page login Sakai)
-	- userAuthService: login() => check si email+mpd est OK
-	- gérer statut de login, 
-		- gérer 'remember me' (local storage)
-		o rediriger vers une page du profil User (user/profile:id)
-			- créer cette page
-			o User Logout: ajouter un bouton déconnection sur la page de profil
-	o Guard sur routes Vue Coop vues
-
-- Navbar: améliorer status connection User et Coop
 
 - CRU Coops, Event, Users
 	👷 faire fonctionner Nominatim lors de :

@@ -7,7 +7,7 @@
     <div class="col-1">
     </div>
     <div class="col">
-        <div class="card">
+        <div *ngIf="!userIsConnected" class="card">
             <h2>Coopératives</h2>
             <button pButton pRipple 
                 icon="pi pi-plus-circle" 
@@ -33,7 +33,7 @@
             ></button>
         </div>
 
-        <div class="card">
+        <div *ngIf="!coopIsConnected" class="card">
             <h2>Participants</h2>
             <button pButton pRipple 
                 icon="pi pi-user-plus" 

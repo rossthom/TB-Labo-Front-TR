@@ -9,12 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class CoopLoginService {
   private _apiUrl: string = environment.dataUrl
+  private _coopIsConnectedKey = environment.coopIsConnectedKey //"coopIsConnected"
+  private _coopIdKey = environment.coopIdKey //"coopId"
 
   coopIsConnected: boolean = false
   $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
   
-  coopIsConnectedKey = environment.coopIsConnectedKey //"coopIsConnected"
-  coopIdKey = environment.coopIdKey //"coopId"
 
   constructor(
     private httpC : HttpClient
@@ -24,9 +24,9 @@ export class CoopLoginService {
   }
 
   verifyLogged(): boolean {
-    let tmpIsConnect = localStorage.getItem(this.coopIsConnectedKey)
+    let tmpIsConnect = localStorage.getItem(this._coopIsConnectedKey)
     if (!tmpIsConnect) {
-      tmpIsConnect = sessionStorage.getItem(this.coopIsConnectedKey)
+      tmpIsConnect = sessionStorage.getItem(this._coopIsConnectedKey)
     }
 
     this.coopIsConnected = tmpIsConnect == 'true'
@@ -47,22 +47,22 @@ export class CoopLoginService {
     this.coopIsConnected = true
     this.emit_isConnect()
     if (remember) {
-      localStorage.setItem(this.coopIsConnectedKey, "true")
-      localStorage.setItem(this.coopIdKey, coopId.toString())
+      localStorage.setItem(this._coopIsConnectedKey, "true")
+      localStorage.setItem(this._coopIdKey, coopId.toString())
       //alert('Login (remember me) !!')
     }
     else{
-      sessionStorage.setItem(this.coopIsConnectedKey, "true")
-      sessionStorage.setItem(this.coopIdKey, coopId.toString())
+      sessionStorage.setItem(this._coopIsConnectedKey, "true")
+      sessionStorage.setItem(this._coopIdKey, coopId.toString())
       //alert('Login !!')
     }
   }
 
   logout(){
-    localStorage.removeItem(this.coopIsConnectedKey)
-    localStorage.removeItem(this.coopIdKey)
-    sessionStorage.removeItem(this.coopIsConnectedKey)
-    sessionStorage.removeItem(this.coopIdKey)
+    localStorage.removeItem(this._coopIsConnectedKey)
+    localStorage.removeItem(this._coopIdKey)
+    sessionStorage.removeItem(this._coopIsConnectedKey)
+    sessionStorage.removeItem(this._coopIdKey)
     this.coopIsConnected = false;
     this.emit_isConnect()
   }
