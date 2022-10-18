@@ -6,39 +6,37 @@ json-server start command:
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 - ❓ Après insert, récup ID coop & user
-- ⚠️❓ Guard Deactivate freeze mon app
 
 
 # DEV ROADMAP
-o TO FIX
-	o "#" dans l'URL
-	o dans angular.json, tout en bas, il y a defaultproject "sakai" ...
-
 o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
+	o au pire, faire un get isUserConnected() qui retourne (id != 0) pour garder la compatibilité (et la lisibilité)
+	o Adapter le code faisant usage de ces variables......
 
-o Page 'Vue Coop', changer en Vue Events (pour les users)
-	- afficher liste events
-	- Bouton 'détail event', affiche détail coop + event
+o Page Events
+	o renommer compo en events-list + class en EventsList + modifier partout ...
 	o Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0
 	o Développer inscription à un event !
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 	🙏 Carte sur evenements
 		🙏 trajet avec coordo GPS user ?
-	🙏 Nom 'coop-view' et route 'coop' ne sont plus très parlants...
+
+o Lister la batterie de tests à faire
+	o Tester l'app en entier et préparer la démo
+
+o Clean code (everywhere, html, css, ts, modules, routes, ...):
+	o comments: 
+		o check TODOs, DEBUG (laisser les todos pertinents!)
+		o delete commented code and unnecessary comments
+	o debug elements
+		o check debug elements dans interface
+		o check console.logs
+		o check alerts
+	o check imports (unused, order)
 
 o git: update Readme
 
-o Liste de tests à faire
-
-o Clean code (everywhere, html, css, ts, modules, routes, ...):
-	o check TODOs, DEBUG
-	o check imports (unused, order)
-	o check debug elements dans interface
-	o check console.log
-	o check alerts
-	o delete commented code and unnecessary comments
-
-o Présentation !! aux mots en anglais !!
+o Update Présentation
 
 
 # Leaflet Setup
