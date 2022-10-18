@@ -68,7 +68,7 @@ import { UserService } from './shared/services/user.service';
         GestCoopModule,
     ],
     providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        //{ provide: LocationStrategy, useClass: HashLocationStrategy },
         MessageService,
         UserAuthService,
         UserEmailCheckService,
