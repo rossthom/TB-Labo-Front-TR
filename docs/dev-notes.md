@@ -5,14 +5,11 @@ json-server start command:
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
-- ⚠️❓ Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
-- ⚠️❓ Guard Deactivate freeze mon app
-
 - ❓ Après insert, récup ID coop & user
+- ⚠️❓ Guard Deactivate freeze mon app
 
 
 # DEV ROADMAP
-
 o Routes & Guards: 
 	- Changer nom route 'coop' en 'events'
 	- Faire une route 'login' avec /login/coop et /login/user
