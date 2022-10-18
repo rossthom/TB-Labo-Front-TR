@@ -190,13 +190,12 @@ export class EventCruComponent implements OnInit, OnChanges {
 
     console.log(eventUpd)
 
-    // 👷 TODO: call service
-    //this.gestEventService.updateEvent(eventUpd).subscribe({
-    //  next : () => {
+    this.gestEventService.updateEvent(eventUpd).subscribe({
+      next : () => {
         this._emptyForm()
         this.clickOnEventUpdate.emit(this.event.id)
-    //  }
-    //})
+      }
+    })
   }
   
   cancelModifications(){
@@ -229,14 +228,12 @@ export class EventCruComponent implements OnInit, OnChanges {
 
     console.log(eventNew)
 
-    // 👷 TODO: call service
-    //this.gestEventService.insertEvent(eventNew).subscribe({
-    //  next : () => {
+    this.gestEventService.insertEvent(eventNew).subscribe({
+      next : () => {
         this._emptyForm()
-        // TODO: Emit newly created id ?
-        this.clickOnNewEventSave.emit(/*this.coopId*/)
-    //  }
-    //})
+        this.clickOnNewEventSave.emit(this.coopId)
+      }
+    })
   }
   
 

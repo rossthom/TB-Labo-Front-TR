@@ -57,12 +57,11 @@ export class CoopNewComponent implements OnInit {
 
     console.log(coopNew)
 
-    //this.gestCoopService.insertCoop(coopNew).subscribe({
-    //  next : () => {
-        //TODO: RouterLink to Home or CoopLogin...
-        this.router.navigate(['/'])
-    //  }
-    //})
+    this.gestCoopService.insertCoop(coopNew).subscribe({
+      next : () => {
+        this.router.navigate(['/login/coop'])
+      }
+    })
   }
   
   cancelCoopCreation(){

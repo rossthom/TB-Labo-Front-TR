@@ -38,7 +38,6 @@ export class GestcoopService {
     
     /* Old code. It worked, but it's pointless now.
     return this.httpC.get<ICooperative>(this._apiUrl+"cooperatives/" + id).pipe(
-      // TODO: peut-on l'optimiser avec un forkJoin ?,
       switchMap((coop: ICooperative) => this.httpC.get<Category>(this._apiUrl+"coop_types/" + coop.coop_type_id)
         .pipe(
           map((c: Category) => {

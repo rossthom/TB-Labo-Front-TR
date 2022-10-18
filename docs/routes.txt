@@ -1,7 +1,9 @@
 /                   ProjetModule.HomeComponent
-/coop-login         ProjetModule.CoopLoginComponent
-/user-login         ProjetModule.UserLoginComponent
-/coop               GestCoopModule.CoopViewComponent    //canActivate(UserLoginGuard) + //canDeactivate(CoopLoginGuard)
+/login
+    /coop           ProjetModule.CoopLoginComponent
+    /user           ProjetModule.UserLoginComponent
+
+/events             GestCoopModule.CoopViewComponent    //canActivate(UserLoginGuard) + //canDeactivate(CoopLoginGuard)
 
 /coop-admin
     /view/:id       GestCoopModule.GestCoopComponent    canActivate(CoopLoginGuard)

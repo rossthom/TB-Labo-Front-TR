@@ -22,7 +22,7 @@
                 label="Connection (Coop)"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/coop-login"
+                routerLink="/login/coop"
             ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
@@ -48,7 +48,7 @@
             label="Connection (Participant)"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/user-login"
+                routerLink="/login/user"
             ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
@@ -63,7 +63,7 @@
                 label="Voir les Evènements"
                 type="button" 
                 class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/coop"
+                (click)="seeEventsList()"
             ></button>
         </div>
     </div>

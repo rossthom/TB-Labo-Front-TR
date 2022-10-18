@@ -61,7 +61,6 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             {
                 validators: [
                     Validators.required,
-                    // TODO: autre validateur sur Event DateTime Start ?
                 ]
             }
         ],
@@ -70,7 +69,6 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             {
                 validators: [
                     Validators.required,
-                    // TODO: autre validateur sur Event DateTime End ?
                 ]
             }
         ],

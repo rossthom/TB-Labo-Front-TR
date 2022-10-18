@@ -8,10 +8,17 @@ json-server start command:
 - ⚠️❓ Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
 - ⚠️❓ Guard Deactivate freeze mon app
 
+- ❓ Après insert, récup ID coop & user
+
 
 # DEV ROADMAP
-o Connection Cooperative
-	- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
+
+o Routes & Guards: 
+	- Changer nom route 'coop' en 'events'
+	- Faire une route 'login' avec /login/coop et /login/user
+		- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
+		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
+		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
 
 - CRU Coops, Event, Users
 	o faire fonctionner Nominatim lors de :
@@ -38,16 +45,10 @@ o Page 'Vue Coop', changer en Vue Events (pour les users)
 		🙏 trajet avec coordo GPS user ?
 	🙏 Nom 'coop-view' et route 'coop' ne sont plus très parlants...
 
-o Guards: 
-	o Faire une route 'login' avec /login/coop et /login/user
-		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
-		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
-
-
 o ⚠️ MODULES !!!
 	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
 	o J'ai tout mon coop-login dans 'project' au lieu de 'gest-coop'
-	o Virer module project pour le mettre à la racine (app)
+	- Virer module project pour le mettre à la racine (app)
 
 o git: update Readme
 

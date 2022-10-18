@@ -59,7 +59,6 @@ export function generateNewUserForm(fb: FormBuilder, nominatimService: Nominatim
             {
                 validators: [
                     Validators.required,
-                    // TODO: autre validateur sur BirthDate ?
                 ]
             }
         ],

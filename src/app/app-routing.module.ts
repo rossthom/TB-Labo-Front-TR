@@ -17,9 +17,11 @@ const routes: Routes = [
         children: [
             //{ path: '', loadChildren: () => import('./projet/projet.module').then(m => m.ProjetModule) },
             { path: '', component: HomeComponent },
-            { path: 'coop-login', component: CoopLoginComponent },
-            { path: 'user-login', component: UserLoginComponent },
-            { path: 'coop', canActivate: [UserLoginGuard], component: CoopViewComponent },
+            { path: 'events', canActivate: [UserLoginGuard], component: CoopViewComponent },
+            { path: "login", /*canDeactivate: [CoopLoginGuard], canDeactivate: [UserLoginGuard],*/ children: [
+                { path: 'coop', component: CoopLoginComponent },
+                { path: 'user', component: UserLoginComponent },
+            ]},
             { path: "user", /*canDeactivate: [CoopLoginGuard],*/ children: [
                 {path: "new", component: UserNewComponent},
                 {path: "profile", canActivate: [UserLoginGuard], children: [

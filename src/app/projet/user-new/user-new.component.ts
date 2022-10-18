@@ -51,12 +51,11 @@ export class UserNewComponent implements OnInit {
 
     console.log(userNew)
 
-    //this.userAuthService.createUser(userNew).subscribe({
-    //  next : () => {
-        //TODO: RouterLink to Home or UserProfile...
-        this.router.navigate(['/'])
-    //  }
-    //})
+    this.userAuthService.createUser(userNew).subscribe({
+      next : () => {
+        this.router.navigate(['/login/user'])
+      }
+    })
   }
   
   cancelUserCreation(){
