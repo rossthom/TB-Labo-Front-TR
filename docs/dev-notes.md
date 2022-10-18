@@ -11,12 +11,8 @@ json-server start command:
 
 # DEV ROADMAP
 o TO FIX
-	o Login forms : still PTVs...
-		+ erreur sur checkbox ???
 	o "#" dans l'URL
 	o dans angular.json, tout en bas, il y a defaultproject "sakai" ...
-	o quand user logué, ajouter Logout dans navbar
-		o pareil pour coop
 
 o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
 
