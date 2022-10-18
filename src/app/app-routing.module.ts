@@ -15,7 +15,6 @@ const routes: Routes = [
     {
         path: '', component: AppLayoutComponent,
         children: [
-            //{ path: '', loadChildren: () => import('./projet/projet.module').then(m => m.ProjetModule) },
             { path: '', component: HomeComponent },
             { path: 'events', canActivate: [UserLoginGuard], component: CoopViewComponent },
             { path: "login", /*canDeactivate: [CoopLoginGuard], canDeactivate: [UserLoginGuard],*/ children: [

@@ -44,6 +44,10 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 o Présentation !! aux mots en anglais !!
 
 
+# Leaflet Setup
+https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
+
+
 # PROJECT INIT: 
 - Start new project with sakai skeleton
 - move Sakai demo to documentation
