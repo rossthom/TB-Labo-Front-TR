@@ -17,10 +17,12 @@ o Routes & Guards:
 		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
 		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
 
+o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
+
 o Page 'Vue Coop', changer en Vue Events (pour les users)
 	- afficher liste events
 	- Bouton 'détail event', affiche détail coop + event
-	o Modifier User Auth pour avoir seulement l'ID en session et un observable dessus
+	o Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0
 	o Développer inscription à un event !
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 	🙏 Carte sur evenements
@@ -38,6 +40,8 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check console.log
 	o check alerts
 	o delete commented code and unnecessary comments
+
+o Présentation !! aux mots en anglais !!
 
 
 # PROJECT INIT: 
