@@ -10,6 +10,7 @@ import { UserNewComponent } from './projet/user-new/user-new.component';
 import { UserProfileComponent } from './projet/user-profile/user-profile.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { UserLoginGuard } from './shared/guards/user-login.guard';
+import { TestGuard } from './shared/guards/test.guard';
 
 const routes: Routes = [
     {
@@ -17,7 +18,7 @@ const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'events', canActivate: [UserLoginGuard], component: CoopViewComponent },
-            { path: "login", /*canDeactivate: [CoopLoginGuard], canDeactivate: [UserLoginGuard],*/ children: [
+            { path: "login", canActivateChild : [TestGuard] ,children: [
                 { path: 'coop', component: CoopLoginComponent },
                 { path: 'user', component: UserLoginComponent },
             ]},

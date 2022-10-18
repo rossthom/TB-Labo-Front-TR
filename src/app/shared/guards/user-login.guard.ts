@@ -26,10 +26,8 @@ export class UserLoginGuard implements CanActivate {
   }
 
   private _checkConnection() {
-    this.userAuthService.$userIsConnected.subscribe({
-      next: (isConnected: boolean) => {
+    this.userAuthService.$userIsConnected.subscribe((isConnected: boolean) => {
         this.isConnected = isConnected
-      }
     })
   }
 }
