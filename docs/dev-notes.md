@@ -14,8 +14,17 @@ o Routes & Guards:
 	- Changer nom route 'coop' en 'events'
 	- Faire une route 'login' avec /login/coop et /login/user
 		- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
+
+		o 👉 LOIC m'a donné la solution, le faire pour toutes mes routes (faire un nouveau guard pour les coop ;-) )
 		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
 		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
+
+o TO FIX
+	o Login forms : still PTVs...
+		+ erreur sur checkbox ???
+	o changer les re-routes "/" en ""
+	o "#" dans l'URL
+	o dans angular.json, tout en bas, il y a defaultproject "sakai" ...
 
 o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
 
