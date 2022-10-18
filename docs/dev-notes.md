@@ -5,8 +5,6 @@ json-server start command:
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
-
-- ❓ Comment modifier mon objet juste avant de faire l'update en DB ?
 - ⚠️❓ Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
 - ⚠️❓ Guard Deactivate freeze mon app
 
@@ -44,6 +42,10 @@ o ⚠️ MODULES !!!
 	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
 	o J'ai tout mon coop-login dans 'project' au lieu de 'gest-coop'
 	o Virer module project pour le mettre à la racine (app)
+
+o git: update Readme
+
+o Liste de tests à faire
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check TODOs
