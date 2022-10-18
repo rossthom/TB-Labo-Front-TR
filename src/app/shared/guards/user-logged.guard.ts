@@ -6,7 +6,7 @@ import { UserAuthService } from '../services/user-auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserLoginGuard implements CanActivate {
+export class UserLoggedGuard implements CanActivate {
   isConnected: boolean = false
 
   constructor(
@@ -18,16 +18,11 @@ export class UserLoginGuard implements CanActivate {
     //route: ActivatedRouteSnapshot,
     //state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    this._checkConnection()
-    if (!this.isConnected){
+    let isConnected = this.userAuthService.userIsConnected
+    if (!isConnected){
       this.router.navigate([""])
     }
-    return this.isConnected
-  }
 
-  private _checkConnection() {
-    this.userAuthService.$userIsConnected.subscribe((isConnected: boolean) => {
-        this.isConnected = isConnected
-    })
+    return isConnected 
   }
 }

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { CoopLoginService } from '../gest-coop/shared/services/coop-login.service';
 import { UserAuthService } from '../shared/services/user-auth.service';
@@ -23,6 +24,7 @@ export class AppTopBarComponent implements OnInit {
 
     constructor(
         public layoutService: LayoutService,
+        private router: Router,
         private coopLoginService: CoopLoginService,
         private userAuthService: UserAuthService
     ) { }
@@ -39,5 +41,15 @@ export class AppTopBarComponent implements OnInit {
           this.userIsConnected = isConnected
         }
       })
+    }
+
+    coopLogout(){
+      this.coopLoginService.logout()
+      this.router.navigate([""])
+    }
+
+    userLogout(){
+      this.userAuthService.logout()
+      this.router.navigate([""])
     }
 }
