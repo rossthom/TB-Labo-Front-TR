@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
-import { Address, Category, GpsPosition } from '../shared/models/types.model';
+import { Category } from '../shared/models/types.model';
 import { GestcoopService } from '../shared/services/gestcoop.service';
-import { NominatimService } from '../shared/services/nominatim.service';
-import { EmailCheckService, Entity } from 'src/app/shared/services/email-check.service';
+import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
+import { CoopEmailCheckService } from '../shared/services/coop-email-check.service';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Component({
   selector: 'app-coop-new',
@@ -14,7 +15,7 @@ import { EmailCheckService, Entity } from 'src/app/shared/services/email-check.s
   styleUrls: ['./coop-new.component.scss']
 })
 export class CoopNewComponent implements OnInit {
-  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.emailCheckService, Entity.Cooperative)
+  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.coopEmailCheckService)
   coopTypes: Category[] = []
 
 
@@ -22,7 +23,7 @@ export class CoopNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private gestCoopService: GestcoopService,
-    private emailCheckService: EmailCheckService,
+    private coopEmailCheckService: CoopEmailCheckService,
     private nominatimService: NominatimService
   ) { }
 

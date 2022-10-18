@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { Address, Category } from 'src/app/gest-coop/shared/models/types.model';
+import { Category } from 'src/app/gest-coop/shared/models/types.model';
 import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
 import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
-import { NominatimService } from 'src/app/gest-coop/shared/services/nominatim.service';
+import { Address } from 'src/app/openstreetmap/shared/models/types.model';
+import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
 
 @Component({
   selector: 'app-testboard',

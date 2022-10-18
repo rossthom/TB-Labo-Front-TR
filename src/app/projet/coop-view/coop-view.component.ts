@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
-import { CooperativeView } from '../../gest-coop/shared/models/coop.model';
-import { EventView } from '../../gest-coop/shared/models/event.model';
-import { GestcoopService } from '../../gest-coop/shared/services/gestcoop.service';
-import { GesteventService } from '../../gest-coop/shared/services/gestevent.service';
+import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
+import { EventView } from 'src/app/gest-coop/shared/models/event.model';
+import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
+import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
 
 @Component({
   selector: 'app-coop-view',

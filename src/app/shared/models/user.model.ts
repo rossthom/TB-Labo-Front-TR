@@ -1,4 +1,4 @@
-import { Address, GpsPosition } from "src/app/gest-coop/shared/models/types.model"
+import { Address, GpsPosition } from "src/app/openstreetmap/shared/models/types.model"
 
 export type UserView = {
     id: number

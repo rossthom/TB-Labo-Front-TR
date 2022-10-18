@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { HomeComponent } from './projet/home/home.component';
-import { CoopLoginComponent } from './projet/coop-login/coop-login.component';
+import { CoopLoginComponent } from './gest-coop/coop-login/coop-login.component';
 import { UserLoginComponent } from './projet/user-login/user-login.component';
 import { CoopViewComponent } from './projet/coop-view/coop-view.component';
 import { UserNewComponent } from './projet/user-new/user-new.component';

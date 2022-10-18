@@ -1,12 +1,12 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { EmailCheckService, Entity } from "src/app/shared/services/email-check.service";
-import { EmailUnicityValidator } from "src/app/shared/validators/emailUnicityCheck.validator";
-import { NominatimService } from "../../shared/services/nominatim.service";
+import { CoopEmailCheckService } from "../../shared/services/coop-email-check.service";
+import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
+import { CoopEmailUnicityValidator } from "../../shared/validators/coopEmailUnicityCheck.validator";
 import { matchPasswordValidator } from "../../shared/validators/matchPassword.validator";
-import { NominatimValidator } from "../../shared/validators/nominatim.validator";
+import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 
 
-export function generateNewCoopForm(fb: FormBuilder, nominatimService: NominatimService, emailCheckService: EmailCheckService, entity: Entity): FormGroup {
+export function generateNewCoopForm(fb: FormBuilder, nominatimService: NominatimService, coopEmailCheckService: CoopEmailCheckService): FormGroup {
     return fb.group({
         // Controls
         name: [
@@ -26,7 +26,7 @@ export function generateNewCoopForm(fb: FormBuilder, nominatimService: Nominatim
                     Validators.email,
                 ],
                 asyncValidators: [
-                    EmailUnicityValidator.checkAddress(emailCheckService, entity)
+                    CoopEmailUnicityValidator.checkAddress(coopEmailCheckService)
                 ],
             }
         ],

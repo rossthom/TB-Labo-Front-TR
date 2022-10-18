@@ -20,19 +20,6 @@ o Routes & Guards:
 		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
 		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
 
-- User Creation: birthdate without time
-
-- CRU Coops, Event, Users
-	- faire fonctionner Nominatim lors de :
-		✔️ Create Coop
-		✔️ Update Coop
-		✔️ Create Evenement
-		✔️ Update Evenement
-		✔️ Create User
-
-	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent, CUser
-	o Clean test button and methods from CCoop, UCoop, CRUEvent, CUser
-
 o Page 'Vue Coop', changer en Vue Events (pour les users)
 	- afficher liste events
 	- Bouton 'détail event', affiche détail coop + event
@@ -43,17 +30,13 @@ o Page 'Vue Coop', changer en Vue Events (pour les users)
 		🙏 trajet avec coordo GPS user ?
 	🙏 Nom 'coop-view' et route 'coop' ne sont plus très parlants...
 
-o ⚠️ MODULES !!!
-	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
-	o J'ai tout mon coop-login dans 'project' au lieu de 'gest-coop'
-	- Virer module project pour le mettre à la racine (app)
-
 o git: update Readme
 
 o Liste de tests à faire
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check TODOs, DEBUG
+	o check imports (unused, order)
 	o check debug elements dans interface
 	o check console.log
 	o check alerts

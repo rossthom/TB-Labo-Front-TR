@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { CoopLoginService } from '../shared/services/coop-login.service';
+import { CoopLoginService } from '../gest-coop/shared/services/coop-login.service';
 import { UserAuthService } from '../shared/services/user-auth.service';
 import { LayoutService } from "./service/app.layout.service";
 

@@ -1,7 +1,7 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../shared/services/nominatim.service";
+import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
 import { minMaxValidator } from "../../shared/validators/minMax.validator";
-import { NominatimValidator } from "../../shared/validators/nominatim.validator";
+import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 import { startEndDateValidator } from "../../shared/validators/startEndDate.validator";
 
 export function generateCRUEventForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {

@@ -1,6 +1,6 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../shared/services/nominatim.service";
-import { NominatimValidator } from "../../shared/validators/nominatim.validator";
+import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
+import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 
 
 export function generateUpdCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {

@@ -1,11 +1,11 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "src/app/gest-coop/shared/services/nominatim.service";
+import { NominatimService } from "src/app/openstreetmap/shared/services/nominatim.service";
 import { matchPasswordValidator } from "src/app/gest-coop/shared/validators/matchPassword.validator";
-import { NominatimValidator } from "src/app/gest-coop/shared/validators/nominatim.validator";
-import { EmailCheckService, Entity } from "src/app/shared/services/email-check.service";
-import { EmailUnicityValidator } from "src/app/shared/validators/emailUnicityCheck.validator";
+import { NominatimValidator } from "src/app/openstreetmap/shared/validators/nominatim.validator";
+import { UserEmailCheckService } from "src/app/shared/services/user-email-check.service";
+import { UserEmailUnicityValidator } from "src/app/shared/validators/userEmailUnicityCheck.validator";
 
-export function generateNewUserForm(fb: FormBuilder, nominatimService: NominatimService, emailCheckService: EmailCheckService, entity: Entity): FormGroup {
+export function generateNewUserForm(fb: FormBuilder, nominatimService: NominatimService, userEmailCheckService: UserEmailCheckService): FormGroup {
     return fb.group({
         // Controls
         first_name: [
@@ -34,7 +34,7 @@ export function generateNewUserForm(fb: FormBuilder, nominatimService: Nominatim
                     Validators.email,
                 ],
                 asyncValidators: [
-                    EmailUnicityValidator.checkAddress(emailCheckService, entity)
+                    UserEmailUnicityValidator.checkAddress(userEmailCheckService)
                 ],
             }
         ],

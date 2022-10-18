@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { CoopLoginService } from 'src/app/shared/services/coop-login.service';
+import { CoopLoginService } from 'src/app/gest-coop/shared/services/coop-login.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { environment } from 'src/environments/environment';
 

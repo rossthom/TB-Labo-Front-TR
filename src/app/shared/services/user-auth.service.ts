@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, mergeMap } from 'rxjs';
-import { GpsPosition } from 'src/app/gest-coop/shared/models/types.model';
-import { NominatimService } from 'src/app/gest-coop/shared/services/nominatim.service';
+import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
 import { environment } from 'src/environments/environment';
 import { UserDtoNew, UserLogin } from '../models/user.model';
 

@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventDtoNew, EventDtoUpd, EventView } from '../shared/models/event.model';
-import { Address, Category, GpsPosition } from '../shared/models/types.model';
+import { Category } from '../shared/models/types.model';
 import { GesteventService } from '../shared/services/gestevent.service';
-import { NominatimService } from '../shared/services/nominatim.service';
+import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
 import { generateCRUEventForm } from './forms/event-cru.form';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Component({
   selector: 'app-event-cru',
@@ -127,20 +128,6 @@ export class EventCruComponent implements OnInit, OnChanges {
       nb_people_min: '',
       nb_people_max: ''
     })
-    /*
-    this.formControls['name'].setValue('')
-    this.formControls['event_typeId'].setValue('')
-    this.formControls['description'].setValue('')
-    this.formControls['location'].setValue('')
-    this.formControls['addr_postal_code'].setValue('')
-    this.formControls['addr_city'].setValue('')
-    this.formControls['addr_street_name'].setValue('')
-    this.formControls['addr_street_nb'].setValue('')
-    this.formControls['datetime_start'].setValue('')
-    this.formControls['datetime_end'].setValue('')
-    this.formControls['nb_people_min'].setValue(null)
-    this.formControls['nb_people_max'].setValue(null)
-    */
   }
 
   private _updateEventType() {

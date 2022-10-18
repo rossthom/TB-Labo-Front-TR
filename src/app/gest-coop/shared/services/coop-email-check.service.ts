@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EmailCheckService {
+export class CoopEmailCheckService {
   private _apiUrl: string = environment.dataUrl
 
   constructor(
@@ -13,13 +13,15 @@ export class EmailCheckService {
   ) { }
 
 
-  checkEmailUnicity(email: string, entity: Entity){
+  checkCoopEmailUnicity(email: string/*, entity: Entity*/){
     let encodedEmail = email.split('@').join('%40')
-    return this.httpC.get<any>(this._apiUrl + entity + "/?email=" + encodedEmail)
+    return this.httpC.get<any>(this._apiUrl + "cooperatives/?email=" + encodedEmail)
   }
 }
 
+/*
 export enum Entity {
   Participant = "participants",
   Cooperative = "cooperatives"
 }
+*/

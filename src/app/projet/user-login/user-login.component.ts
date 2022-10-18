@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { generateLoginForm } from 'src/app/shared/forms/login.form';
+import { generateUserLoginForm } from 'src/app/projet/user-login/forms/user-login.form';
 import { UserLogin } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 
@@ -12,7 +12,7 @@ import { UserAuthService } from 'src/app/shared/services/user-auth.service';
   styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent implements OnInit {
-  userLoginForm: FormGroup = generateLoginForm(this.fb)
+  userLoginForm: FormGroup = generateUserLoginForm(this.fb)
 
   selectedValues: string[] = [];
   

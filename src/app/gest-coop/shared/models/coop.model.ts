@@ -1,4 +1,5 @@
-import { Address, Category, GpsPosition } from "./types.model"
+import { Address, GpsPosition } from "src/app/openstreetmap/shared/models/types.model"
+import { Category } from "./types.model"
 
 export type CooperativeView = {
     id: number

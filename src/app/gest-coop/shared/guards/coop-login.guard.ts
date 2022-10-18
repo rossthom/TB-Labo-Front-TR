@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanDeactivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CoopLoginService } from 'src/app/shared/services/coop-login.service';
+import { CoopLoginService } from '../services/coop-login.service';
 
 @Injectable({
   providedIn: 'root'

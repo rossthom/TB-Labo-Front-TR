@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, mergeMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CooperativeDtoNew, CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
-import { Category, GpsPosition } from '../models/types.model';
-import { NominatimService } from './nominatim.service';
+import { Category } from '../models/types.model';
+import { NominatimService } from '../../../openstreetmap/shared/services/nominatim.service';
+import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Injectable({
   providedIn: 'root'

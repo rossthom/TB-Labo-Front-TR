@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { CooperativeLogin } from 'src/app/gest-coop/shared/models/coop.model';
-import { CoopLoginService } from 'src/app/shared/services/coop-login.service';
-import { generateLoginForm } from '../../shared/forms/login.form';
+import { CooperativeLogin } from '../shared/models/coop.model';
+import { CoopLoginService } from '../shared/services/coop-login.service';
+import { generateCoopLoginForm } from './forms/coop-login.form';
 
 @Component({
   selector: 'app-coop-login',
@@ -12,7 +12,7 @@ import { generateLoginForm } from '../../shared/forms/login.form';
   styleUrls: ['./coop-login.component.scss']
 })
 export class CoopLoginComponent implements OnInit {
-  coopLoginForm: FormGroup = generateLoginForm(this.fb)
+  coopLoginForm: FormGroup = generateCoopLoginForm(this.fb)
 
   selectedValues: string[] = [];
   
