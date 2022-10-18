@@ -6,13 +6,6 @@
             <form [formGroup]="newCoopForm">
                 <div class="col-12">
                     <label for="name">Nom de la Coopérative</label>
-                    <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                        <span>P {{ formControls['name'].pristine ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>T {{ formControls['name'].touched ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>V {{ formControls['name'].valid ? '✔️': '❌' }}</span>
-                    </label>
                     <input pInputText type="text" 
                         id="name" formControlName="name"
                     >
@@ -31,13 +24,6 @@
                 </div>
                 <div class="col-12">
                     <label for="email">Email de contact</label>
-                    <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                        <span>P {{ formControls['email'].pristine ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>T {{ formControls['email'].touched ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>V {{ formControls['email'].valid ? '✔️': '❌' }}</span>
-                    </label>
                     <input pInputText type="email" 
                         id="email" formControlName="email"
                     >
@@ -64,13 +50,6 @@
                 <div class="grid col-12 my-grid">
                     <div class="col-6 pl-0">
                         <label for="password">Mot de passe</label>
-                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                            <span>P {{ formControls['password'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['password'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['password'].valid ? '✔️': '❌' }}</span>
-                        </label>
                         <input type="password" pPassword
                             id="password" formControlName="password"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -84,13 +63,6 @@
                     </div>
                     <div class="col-6 pr-0">
                         <label for="password_confirm">Confirmez votre mot de passe</label>
-                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                            <span>P {{ formControls['password_confirm'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['password_confirm'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['password_confirm'].valid ? '✔️': '❌' }}</span>
-                        </label>
                         <input type="password" pPassword
                             id="password_confirm" formControlName="password_confirm"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -113,13 +85,6 @@
                 </div>
                 <div class="col-12">
                     <label for="coop_typeId">Choisissez un type de coopérative</label>
-                    <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                        <span>P {{ formControls['coop_typeId'].pristine ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>T {{ formControls['coop_typeId'].touched ? '✔️': '❌' }}</span>
-                        &nbsp;|&nbsp;
-                        <span>V {{ formControls['coop_typeId'].valid ? '✔️': '❌' }}</span>
-                    </label>
                     <p-dropdown 
                         id="coop_typeId" formControlName="coop_typeId"
                         [options]="coopTypes" optionLabel="label" optionValue="id"
@@ -144,13 +109,6 @@
                 <div class="grid col-12 my-grid">
                     <div class="col-4 pl-0">
                         <label for="addr_postal_code">Code Postal</label>
-                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                            <span>P {{ formControls['addr_postal_code'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_postal_code'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_postal_code'].valid ? '✔️': '❌' }}</span>
-                        </label>
                         <input pInputText type="text"
                             id="addr_postal_code" formControlName="addr_postal_code"
                             [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -170,13 +128,6 @@
                     </div>
                     <div class="col pr-0">
                         <label for="addr_city">Ville / Village</label>
-                        <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                            <span>P {{ formControls['addr_city'].pristine ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>T {{ formControls['addr_city'].touched ? '✔️': '❌' }}</span>
-                            &nbsp;|&nbsp;
-                            <span>V {{ formControls['addr_city'].valid ? '✔️': '❌' }}</span>
-                        </label>
                         <input pInputText type="text"
                             id="addr_city" formControlName="addr_city"
                             [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -242,17 +193,6 @@
                         type="button" 
                         class="p-button-outlined p-button-danger mr-2 mb-2" 
                         (click)="cancelCoopCreation()"
-                    ></button>
-                </div>
-            </div>
-            <div class="grid ml-0 mr-0">
-                <div class="col-12 mb-2">
-                    <button pButton pRipple 
-                    label="Test"
-                    icon="pi pi-cog"
-                    type="button" 
-                    class="p-button-outlined p-button-warning mr-2 mb-2"
-                    (click)="testForm()"
                     ></button>
                 </div>
             </div>

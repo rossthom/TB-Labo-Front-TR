@@ -188,8 +188,6 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(eventUpd)
-
     this.gestEventService.updateEvent(eventUpd).subscribe({
       next : () => {
         this._emptyForm()
@@ -226,22 +224,12 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(eventNew)
-
     this.gestEventService.insertEvent(eventNew).subscribe({
       next : () => {
         this._emptyForm()
         this.clickOnNewEventSave.emit(this.coopId)
       }
     })
-  }
-  
-
-
-  // 👷 DEBUG
-  testForm(){
-    console.log(this.cruEventForm)
-    console.log('Event CRU Form is ' + (this.cruEventForm.valid?'':'not ') + 'valid')
   }
 }
 

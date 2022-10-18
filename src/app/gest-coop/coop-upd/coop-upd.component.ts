@@ -92,12 +92,4 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     this._fillFormWithCoop()
     this.clickOnCoopCancel.emit(this.cooperative.id)
   }
-  
-
-
-  // 👷 DEBUG
-  testForm(){
-    console.log(this.updCoopForm)
-    console.log('Coop Upd Form is ' + (this.updCoopForm.valid?'':'not ') + 'valid')
-  }
 }

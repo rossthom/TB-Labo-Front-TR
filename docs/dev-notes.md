@@ -20,18 +20,15 @@ o Routes & Guards:
 		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
 		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
 
+- User Creation: birthdate without time
+
 - CRU Coops, Event, Users
-	o faire fonctionner Nominatim lors de :
-		- Create Coop
-			o Test Créer Coop
+	- faire fonctionner Nominatim lors de :
+		✔️ Create Coop
 		✔️ Update Coop
-			✔️ Test Update Coop
-		- Create Evenement
-			o Test Créer Event
-		- Update Evenement
-			o Test Update Event
-		- Create User
-			o Test Créer User
+		✔️ Create Evenement
+		✔️ Update Evenement
+		✔️ Create User
 
 	o Clean PTV labels dans Forms CCoop, UCoop, CRUEvent, CUser
 	o Clean test button and methods from CCoop, UCoop, CRUEvent, CUser
@@ -39,6 +36,7 @@ o Routes & Guards:
 o Page 'Vue Coop', changer en Vue Events (pour les users)
 	- afficher liste events
 	- Bouton 'détail event', affiche détail coop + event
+	o Modifier User Auth pour avoir seulement l'ID en session et un observable dessus
 	o Développer inscription à un event !
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 	🙏 Carte sur evenements
@@ -55,7 +53,7 @@ o git: update Readme
 o Liste de tests à faire
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
-	o check TODOs
+	o check TODOs, DEBUG
 	o check debug elements dans interface
 	o check console.log
 	o check alerts

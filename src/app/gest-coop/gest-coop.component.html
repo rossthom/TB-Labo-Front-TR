@@ -2,25 +2,6 @@
 
 <div class="grid">
     <div class="col-12">
-        <!-- ⚠️ REMOVE THIS DIV WHEN COOP AUTH IS READY -->
-        <!--
-        <div class="card p-fluid">
-            <span class="pr-2 pb-1" style="border-radius: 2px; background-color: 'var(--yellow-100)';">
-                <p-tag styleClass="mr-2" severity="warning" value="Warning"></p-tag>
-                Cette page ne devra afficher qu'une seule Coop, cette liste disparaitra.
-            </span>
-            <h2>Liste des coopératives</h2>
-            <p-dropdown 
-                [options]="listCoops" optionLabel="name" optionValue="id"
-                [(ngModel)]="coopId" 
-                placeholder="Choisissez une coopérative" 
-                [showClear]="false"
-                (onChange)="getOneCoop(coopId)"
-            >
-            </p-dropdown>
-        </div>
-        -->
-        
         <!-- ℹ️ Cooperative and Events Details -->
         <div *ngIf="selectedCoop" class="card">
             <div class="grid">

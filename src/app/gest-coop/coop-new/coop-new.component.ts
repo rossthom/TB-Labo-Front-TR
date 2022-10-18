@@ -55,8 +55,6 @@ export class CoopNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(coopNew)
-
     this.gestCoopService.insertCoop(coopNew).subscribe({
       next : () => {
         this.router.navigate(['/login/coop'])
@@ -66,13 +64,5 @@ export class CoopNewComponent implements OnInit {
   
   cancelCoopCreation(){
     this.router.navigate(['/'])
-  }
-
-
-
-  // 👷 DEBUG
-  testForm(){
-    console.log(this.newCoopForm)
-    console.log('New Coop Form is ' + (this.newCoopForm.valid?'':'not ') + 'valid')
   }
 }

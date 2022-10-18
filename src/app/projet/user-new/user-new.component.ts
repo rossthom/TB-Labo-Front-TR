@@ -49,8 +49,6 @@ export class UserNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(userNew)
-
     this.userAuthService.createUser(userNew).subscribe({
       next : () => {
         this.router.navigate(['/login/user'])
@@ -60,13 +58,5 @@ export class UserNewComponent implements OnInit {
   
   cancelUserCreation(){
     this.router.navigate(['/'])
-  }
-
-
-
-  // 👷 DEBUG
-  testForm(){
-    console.log(this.newUserForm)
-    console.log('New User Form is ' + (this.newUserForm.valid?'':'not ') + 'valid')
   }
 }

@@ -106,10 +106,11 @@ export class GestCoopComponent implements OnInit {
     this.cruEventPopupVisible = false
     this.cruEventPopupMode = FormMode.Read
   }
-
+  
   eventUpdated(eventId: number){
     this._getEventsFromCoop(this.coopId)
     this.cruEventPopupVisible = false
+    this.cruEventPopupMode = FormMode.Read
   }
 
   eventUpdateNewCanceled(eventId: number){
