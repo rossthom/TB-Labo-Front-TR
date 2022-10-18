@@ -9,37 +9,30 @@ import { CoopViewComponent } from './projet/coop-view/coop-view.component';
 import { UserNewComponent } from './projet/user-new/user-new.component';
 import { UserProfileComponent } from './projet/user-profile/user-profile.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
-import { UserLoggedGuard } from './shared/guards/user-logged.guard';
-import { UserOrCoopLoggedOutGuard } from './shared/guards/user-or-coop-logged-out.guard';
-import { CoopNewComponent } from './gest-coop/coop-new/coop-new.component';
-import { GestCoopComponent } from './gest-coop/gest-coop.component';
-import { CoopLoggedGuard } from './shared/guards/coop-logged.guard';
+import { UserLoginGuard } from './shared/guards/user-login.guard';
+import { TestGuard } from './shared/guards/test.guard';
 
 const routes: Routes = [
     {
         path: '', component: AppLayoutComponent,
         children: [
             { path: '', component: HomeComponent },
-            { path: "login", canActivateChild: [UserOrCoopLoggedOutGuard], children: [
+            { path: 'events', canActivate: [UserLoginGuard], component: CoopViewComponent },
+            { path: "login", canActivateChild : [TestGuard] ,children: [
                 { path: 'coop', component: CoopLoginComponent },
                 { path: 'user', component: UserLoginComponent },
             ]},
-
-            { path: "create", canActivateChild: [UserOrCoopLoggedOutGuard], children: [
-                { path: 'coop', component: CoopNewComponent },
-                { path: 'user', component: UserNewComponent },
+            { path: "user", /*canDeactivate: [CoopLoginGuard],*/ children: [
+                {path: "new", component: UserNewComponent},
+                {path: "profile", canActivate: [UserLoginGuard], children: [
+                    { path: ':id', component: UserProfileComponent },
+                ]},
             ]},
-
-            { path: "profile", children: [
-                {path: "coop/:id", canActivate: [CoopLoggedGuard], component: GestCoopComponent},
-                {path: "user/:id", canActivate: [UserLoggedGuard], component: UserProfileComponent },
-            ]},
-
-            { path: 'events', canActivate: [UserLoggedGuard], component: CoopViewComponent },
-                        
+            
+            { path: 'coop-admin', loadChildren: () => import('./gest-coop/gest-coop.module').then(m => m.GestCoopModule) },
+            
             { path: 'test', component: TestboardComponent },
 
-            
             // Routing 404
             { path: '**', component: NotfoundComponent },
         ],

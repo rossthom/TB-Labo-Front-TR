@@ -6,37 +6,51 @@ json-server start command:
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
 - ❓ Après insert, récup ID coop & user
+- ⚠️❓ Guard Deactivate freeze mon app
 
 
 # DEV ROADMAP
-o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
-	o au pire, faire un get isUserConnected() qui retourne (id != 0) pour garder la compatibilité (et la lisibilité)
-	o Adapter le code faisant usage de ces variables......
+o Routes & Guards: 
+	- Changer nom route 'coop' en 'events'
+	- Faire une route 'login' avec /login/coop et /login/user
+		- 🐛 Guard 'désactivate' (ne fonctionne pas, freeze mon app) 
 
-o Page Events
-	o renommer compo en events-list + class en EventsList + modifier partout ...
+		o 👉 LOIC m'a donné la solution, le faire pour toutes mes routes (faire un nouveau guard pour les coop ;-) )
+		o Une fois connecté en tant que User, bloquer la route vers User Login aussi
+		o Une fois connecté en tant que Coop, bloquer la route vers Coop Login aussi
+
+o TO FIX
+	o Login forms : still PTVs...
+		+ erreur sur checkbox ???
+	o changer les re-routes "/" en ""
+	o "#" dans l'URL
+	o dans angular.json, tout en bas, il y a defaultproject "sakai" ...
+
+o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
+
+o Page 'Vue Coop', changer en Vue Events (pour les users)
+	- afficher liste events
+	- Bouton 'détail event', affiche détail coop + event
 	o Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0
 	o Développer inscription à un event !
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 	🙏 Carte sur evenements
 		🙏 trajet avec coordo GPS user ?
-
-o Lister la batterie de tests à faire
-	o Tester l'app en entier et préparer la démo
-
-o Clean code (everywhere, html, css, ts, modules, routes, ...):
-	o comments: 
-		o check TODOs, DEBUG (laisser les todos pertinents!)
-		o delete commented code and unnecessary comments
-	o debug elements
-		o check debug elements dans interface
-		o check console.logs
-		o check alerts
-	o check imports (unused, order)
+	🙏 Nom 'coop-view' et route 'coop' ne sont plus très parlants...
 
 o git: update Readme
 
-o Update Présentation
+o Liste de tests à faire
+
+o Clean code (everywhere, html, css, ts, modules, routes, ...):
+	o check TODOs, DEBUG
+	o check imports (unused, order)
+	o check debug elements dans interface
+	o check console.log
+	o check alerts
+	o delete commented code and unnecessary comments
+
+o Présentation !! aux mots en anglais !!
 
 
 # Leaflet Setup

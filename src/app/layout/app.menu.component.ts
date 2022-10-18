@@ -18,6 +18,32 @@ export class AppMenuComponent implements OnInit {
                 label: 'Home',
                 items: [
                     { label: 'Home page', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+                    { label: 'Login Coop', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login/coop'] },
+                    { label: 'Login User', icon: 'pi pi-fw pi-sign-in', routerLink: ['/login/user'] },
+                    //...
+                ]
+            },
+            {
+                label: 'Coopératives',
+                items: [
+                    { label: 'Vue Coops', icon: 'pi pi-fw pi-search', routerLink: ['/events'] },
+                    { label: 'Create Coop', icon: 'pi pi-fw pi-user-plus', routerLink: ['/coop-admin/new'] },
+                    //...
+                ]
+            },
+            {
+                label: 'Utilisateurs',
+                items: [
+                    //{ label: 'Admin User', icon: 'pi pi-fw pi-id-card', routerLink: ['/user/profile'] },
+                    { label: 'Create User', icon: 'pi pi-fw pi-user-plus', routerLink: ['/user/new'] },
+                    //...
+                ]
+            },
+            {
+                label: 'Tests',
+                items: [
+                    { label: 'Test Board', icon: 'pi pi-fw pi-exclamation-triangle', routerLink: ['/test'] },
+                    //...
                 ]
             },
         ];

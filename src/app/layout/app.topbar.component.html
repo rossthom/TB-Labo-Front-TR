@@ -16,22 +16,12 @@
             </a>
         </div>
         <div *ngIf="coopIsConnected">
-            <a (click)="coopLogout()" class="my-top-right-button my-red">
-                <i class="pi pi-sign-out"></i>&nbsp;Déconnection
-            </a>
-            <!--
-                <i class="pi pi-thumbs-up-fill"></i>
-                <span>&nbsp;Coopérative connectée</span>
-            -->
+            <i class="pi pi-thumbs-up-fill"></i>
+            <span>&nbsp;Coopérative connectée</span>
         </div>
         <div *ngIf="userIsConnected">
-            <a (click)="userLogout()" class="my-top-right-button my-red">
-                <i class="pi pi-sign-out"></i>&nbsp;Déconnection
-            </a>
-            <!--
-                <i class="pi pi-thumbs-up-fill"></i>
-                <span>&nbsp;Participant connecté</span>
-            -->
+            <i class="pi pi-thumbs-up-fill"></i>
+            <span>&nbsp;Participant connecté</span>
         </div>
     </div>
 </div>

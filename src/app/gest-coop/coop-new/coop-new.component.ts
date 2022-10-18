@@ -64,6 +64,6 @@ export class CoopNewComponent implements OnInit {
   }
   
   cancelCoopCreation(){
-    this.router.navigate([''])
+    this.router.navigate(['/'])
   }
 }

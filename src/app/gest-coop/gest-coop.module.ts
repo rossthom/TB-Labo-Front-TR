@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // PrimeNG Sakai
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -17,6 +16,7 @@ import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 
 // Application
+import { GestCoopRoutingModule } from './gest-coop-routing.module';
 import { GestCoopComponent } from './gest-coop.component';
 import { CoopNewComponent } from './coop-new/coop-new.component';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
@@ -44,7 +44,6 @@ import { GesteventService } from './shared/services/gestevent.service';
     // PrimeNG
     ButtonModule,
     CalendarModule,
-    CheckboxModule,
     DialogModule,
     DropdownModule,
     InputTextareaModule,
@@ -55,6 +54,7 @@ import { GesteventService } from './shared/services/gestevent.service';
     ToastModule,
 
     // Application
+    GestCoopRoutingModule,
   ],
   providers: [
     CoopLoginService,
