@@ -1,17 +1,19 @@
 /                   ProjetModule.HomeComponent
-/login                                                  //canDeactivate(CoopLoginGuard) + //canDeactivate(UserLoginGuard)
-    /coop           ProjetModule.CoopLoginComponent     
+
+/login                                                  canActivate(UserOrCoopLoggedOutGuard)
+    /coop           GestCoopModule.CoopLoginComponent     
     /user           ProjetModule.UserLoginComponent
 
-/events             GestCoopModule.CoopViewComponent    canActivate(UserLoginGuard)
+/create                                                 canActivate(UserOrCoopLoggedOutGuard)
+    /coop           GestCoopModule.CoopNewComponent     
+    /user           ProjetModule.UserNewComponent
 
-/coop-admin
-    /view/:id       GestCoopModule.GestCoopComponent    canActivate(CoopLoginGuard)
-    /new            GestCoopModule.CoopNewComponent
+/profile
+    /coop/:id       GestCoopModule.GestCoopComponent    canActivate(CoopLoggedGuard)
+    /user/:id       ProjetModule.UserProfileComponent   canActivate(UserLoggedGuard)
 
-/user                                                   //canDeactivate(CoopLoginGuard)
-    /profile/:id    ProjetModule.UserProfileComponent   canActivate(UserLoginGuard)
-    /new            ProjetModule.UserNewComponent           
+
+/events             GestCoopModule.CoopViewComponent    canActivate(UserLoggedGuard)
 
 /test               ProjetModule.TestboardComponent
 

@@ -58,6 +58,6 @@ export class UserNewComponent implements OnInit {
   }
   
   cancelUserCreation(){
-    this.router.navigate(['/'])
+    this.router.navigate([''])
   }
 }

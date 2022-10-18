@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanDeactivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CoopLoginService } from '../services/coop-login.service';
+import { CoopLoginService } from '../../gest-coop/shared/services/coop-login.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoopLoginGuard implements CanActivate, CanDeactivate<unknown> {
+export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
   isConnected: boolean = false
 
   constructor(

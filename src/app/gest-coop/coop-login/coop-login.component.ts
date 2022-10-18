@@ -42,12 +42,12 @@ export class CoopLoginComponent implements OnInit {
         else {
           let remember = this.selectedValues.find(element => element === 'remember') === "remember"
           this.coopLoginService.login(coops[0].id, remember)
-          this.router.navigate(['/coop-admin/view/' + coops[0].id])
+          this.router.navigate(['/profile/coop/' + coops[0].id])
         }
       })
   }
   
   cancelLogin(){
-    this.router.navigate(['/'])
+    this.router.navigate([''])
   }
 }
