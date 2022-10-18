@@ -42,12 +42,12 @@ export class UserLoginComponent implements OnInit {
         else {
           let remember = this.selectedValues.find(element => element === 'remember') === "remember"
           this.userAuthService.login(users[0].id, remember)
-          this.router.navigate(['/user/profile/' + users[0].id])
+          this.router.navigate(['/profile/user/' + users[0].id])
         }
       })
   }
   
   cancelLogin(){
-    this.router.navigate(['/'])
+    this.router.navigate([''])
   }
 }

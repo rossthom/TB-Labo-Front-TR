@@ -5,20 +5,13 @@
                 <div class="h-full w-full m-0 py-7 px-4" style="border-radius:53px; background: linear-gradient(180deg, var(--surface-50) 38.9%, var(--surface-0));">
                     <div class="text-center mb-5">
                         <div class="text-900 text-3xl font-medium mb-3">Bienvenue !</div>
-                        <span class="text-600 font-medium">Connectez-vous en tant que Coopérative</span>
+                        <span class="text-600 font-medium">💗 Connectez-vous en tant que Coopérative</span>
                     </div>
     
                     <div class="w-full md:w-10 mx-auto">
                         <form [formGroup]="coopLoginForm">
                             <div class="col-12">
                                 <label for="email">Email</label>
-                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                                    <span>P {{ formControls['email'].pristine ? '✔️': '❌' }}</span>
-                                    &nbsp;|&nbsp;
-                                    <span>T {{ formControls['email'].touched ? '✔️': '❌' }}</span>
-                                    &nbsp;|&nbsp;
-                                    <span>V {{ formControls['email'].valid ? '✔️': '❌' }}</span>
-                                </label>
                                 <input pInputText type="email" 
                                     id="email" formControlName="email"
                                 >
@@ -37,13 +30,6 @@
                             </div>
                             <div class="col-12">
                                 <label for="password">Mot de passe</label>
-                                <br /><label class="bg-gray-800 text-purple-200 pl-1 pr-1">
-                                    <span>P {{ formControls['password'].pristine ? '✔️': '❌' }}</span>
-                                    &nbsp;|&nbsp;
-                                    <span>T {{ formControls['password'].touched ? '✔️': '❌' }}</span>
-                                    &nbsp;|&nbsp;
-                                    <span>V {{ formControls['password'].valid ? '✔️': '❌' }}</span>
-                                </label>
                                 <input type="password" pPassword
                                     id="password" formControlName="password"
                                 >
