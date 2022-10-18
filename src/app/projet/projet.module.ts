@@ -12,6 +12,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 
 // Application
@@ -23,6 +24,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserNewComponent } from './user-new/user-new.component';
 import { TestboardComponent } from './testboard/testboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EventDetailComponent } from './coop-view/event-detail/event-detail.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     UserNewComponent,
     TestboardComponent,
     UserProfileComponent,
+    EventDetailComponent,
   ],
   imports: [
     // Angular
@@ -48,6 +51,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DropdownModule,
     InputTextModule,
     PasswordModule,
+    TableModule,
     ToastModule,
     // Application
     ProjetRoutingModule,

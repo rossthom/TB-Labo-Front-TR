@@ -32,11 +32,13 @@ o Connection Cooperative
 	o Clean test button and methods from CCoop, UCoop, CRUEvent, CUser
 
 o Page 'Vue Coop', changer en Vue Events (pour les users)
-	o Bouton 'détail event', affiche détail coop + event
+	- afficher liste events
+	- Bouton 'détail event', affiche détail coop + event
 	o Développer inscription à un event !
+		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 	🙏 Carte sur evenements
 		🙏 trajet avec coordo GPS user ?
-
+	🙏 Nom 'coop-view' et route 'coop' ne sont plus très parlants...
 
 o ⚠️ MODULES !!!
 	o Dans mon module GestCoop, j'ai un lien vers mon validateur checkemail présent dans mon module principal
@@ -49,33 +51,6 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o check console.log
 	o check alerts
 	o delete commented code and unnecessary comments
-
-
-# ARCHITECTURE
-- module gestCoop
-	- services
-		- gestCoopService
-			- get CoopTypes
-			- CRUD Coop
-		- gestEventService
-			- get EventTypes
-			- CRUD Events
-		- nominatimService
-			- get data from address
-	- models
-		- Coop
-		- Events
-	- compos
-		- ...
-
-- in app-modules:
-	- services
-		- usersService
-			- CRUD users
-	- home: 
-		- connect as coop
-			- unlock gest coop routes
-		- connect as user
 
 
 # PROJECT INIT: 
