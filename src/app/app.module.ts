@@ -30,7 +30,6 @@ import { UserNewComponent } from './projet/user-new/user-new.component';
 import { UserProfileComponent } from './projet/user-profile/user-profile.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { UserAuthService } from './shared/services/user-auth.service';
-import { UserEmailCheckService } from './shared/services/user-email-check.service';
 import { UserService } from './shared/services/user.service';
 
 
@@ -71,7 +70,6 @@ import { UserService } from './shared/services/user.service';
         //{ provide: LocationStrategy, useClass: HashLocationStrategy },
         MessageService,
         UserAuthService,
-        UserEmailCheckService,
         UserService,
     ],
     bootstrap: [AppComponent]

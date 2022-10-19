@@ -49,6 +49,11 @@ export class UserAuthService {
     return this.userIsConnected
   }
 
+  checkUserEmailUnicity(email: string){
+    let encodedEmail = email.split('@').join('%40')
+    return this.httpC.get<any>(this._apiUrl + "participants/?email=" + encodedEmail)
+  }
+
   checkLogin(email: string, password: string){
     // Merci Dorian !
     return this.httpC.get<UserLogin[]>(this._apiUrl+"participants")

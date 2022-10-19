@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanDeactivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CoopLoginService } from '../../gest-coop/shared/services/coop-login.service';
+import { CoopAuthService } from '../../gest-coop/shared/services/coop-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
   isConnected: boolean = false
 
   constructor(
-    private coopLoginService: CoopLoginService,
+    private coopAuthService: CoopAuthService,
     private router: Router
   ){}
 
@@ -39,7 +39,7 @@ export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
   }
   
   private _checkConnection() {
-    this.coopLoginService.$coopIsConnected.subscribe({
+    this.coopAuthService.$coopIsConnected.subscribe({
       next: (isConnected: boolean) => {
         this.isConnected = isConnected
       }

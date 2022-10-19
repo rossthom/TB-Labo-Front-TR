@@ -22,8 +22,7 @@ import { CoopNewComponent } from './coop-new/coop-new.component';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
 import { EventCruComponent } from './event-cru/event-cru.component';
-import { CoopLoginService } from './shared/services/coop-login.service';
-import { CoopEmailCheckService } from './shared/services/coop-email-check.service';
+import { CoopAuthService } from './shared/services/coop-auth.service';
 import { GesteventService } from './shared/services/gestevent.service';
 
 
@@ -57,8 +56,7 @@ import { GesteventService } from './shared/services/gestevent.service';
     // Application
   ],
   providers: [
-    CoopLoginService,
-    CoopEmailCheckService,
+    CoopAuthService,
     GestCoopComponent,
     GesteventService,
 ],

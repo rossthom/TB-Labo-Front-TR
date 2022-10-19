@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { CoopLoginService } from 'src/app/gest-coop/shared/services/coop-login.service';
+import { CoopAuthService } from 'src/app/gest-coop/shared/services/coop-auth.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -23,12 +23,12 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private messageService: MessageService,
-    private coopLoginService: CoopLoginService,
+    private coopAuthService: CoopAuthService,
     private userAuthService: UserAuthService
   ) { }
 
   ngOnInit(): void {
-    this.coopLoginService.$coopIsConnected.subscribe({
+    this.coopAuthService.$coopIsConnected.subscribe({
       next: (isConnected: boolean) => {
         this.coopIsConnected = isConnected
       }

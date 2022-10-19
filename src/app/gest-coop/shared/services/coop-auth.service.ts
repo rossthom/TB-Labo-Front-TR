@@ -7,10 +7,10 @@ import { CooperativeLogin } from '../models/coop.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CoopLoginService {
+export class CoopAuthService {
   private _apiUrl: string = environment.dataUrl
-  private _coopIsConnectedKey = environment.coopIsConnectedKey //"coopIsConnected"
-  private _coopIdKey = environment.coopIdKey //"coopId"
+  private _coopIsConnectedKey = environment.coopIsConnectedKey 
+  private _coopIdKey = environment.coopIdKey
 
   coopIsConnected: boolean = false
   $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
@@ -23,6 +23,7 @@ export class CoopLoginService {
     this.emit_isConnect()
   }
 
+ 
   verifyLogged(): boolean {
     let tmpIsConnect = localStorage.getItem(this._coopIsConnectedKey)
     if (!tmpIsConnect) {
@@ -33,6 +34,10 @@ export class CoopLoginService {
     return this.coopIsConnected
   }
 
+  checkCoopEmailUnicity(email: string){
+    let encodedEmail = email.split('@').join('%40')
+    return this.httpC.get<any>(this._apiUrl + "cooperatives/?email=" + encodedEmail)
+  }
 
   checkLogin(email: string, password: string){
     // Merci Dorian !
@@ -49,12 +54,10 @@ export class CoopLoginService {
     if (remember) {
       localStorage.setItem(this._coopIsConnectedKey, "true")
       localStorage.setItem(this._coopIdKey, coopId.toString())
-      //alert('Login (remember me) !!')
     }
     else{
       sessionStorage.setItem(this._coopIsConnectedKey, "true")
       sessionStorage.setItem(this._coopIdKey, coopId.toString())
-      //alert('Login !!')
     }
   }
 

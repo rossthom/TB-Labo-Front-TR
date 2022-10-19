@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoopLoginService } from './shared/services/coop-login.service';
+import { CoopAuthService } from './shared/services/coop-auth.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
@@ -31,7 +31,7 @@ export class GestCoopComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private gestCoopService: GestcoopService,
     private gestEventService: GesteventService,
-    private coopLoginService: CoopLoginService
+    private coopAuthService: CoopAuthService
   ) {
   }
 
@@ -64,7 +64,7 @@ export class GestCoopComponent implements OnInit {
 
 
   logout() {
-    this.coopLoginService.logout()
+    this.coopAuthService.logout()
     this.router.navigate([""])
   }
 
