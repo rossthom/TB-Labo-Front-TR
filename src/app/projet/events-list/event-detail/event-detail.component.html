@@ -41,11 +41,24 @@
         </table>
     </div>
     <div class="col-6">
-        <p class="bg-yellow-100">
-            lon: {{ event.gps.lon }}
-            <br />
-            lat: {{ event.gps.lat }}
-        </p>
+        <div class="grid">
+            <div class="col-6">
+                <h3>Evenement</h3>
+                <p class="bg-yellow-100">
+                    lon: {{ event.gps.lon }}
+                    <br />
+                    lat: {{ event.gps.lat }}
+                </p>
+            </div>
+            <div class="col-6">
+                <h3>Participant</h3>
+                <p class="bg-yellow-100">
+                    lon: {{ user.gps.lon }}
+                    <br />
+                    lat: {{ user.gps.lat }}
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 <div class="gc-popup-footer">

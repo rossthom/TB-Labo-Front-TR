@@ -4,6 +4,9 @@ import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
 import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
+import { UserView } from 'src/app/shared/models/user.model';
+import { UserAuthService } from 'src/app/shared/services/user-auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-coop-view',
@@ -14,6 +17,7 @@ export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   selectedCoop!: CooperativeView   // TODO: attribut selectedEvent non initialisé !
+  connectedUser!: UserView;        // TODO: attribut selectedEvent non initialisé !
   eventPopupVisible: boolean = false;
 
   // Sakai Table properties
@@ -22,7 +26,9 @@ export class EventsListComponent implements OnInit {
 
   constructor(
     private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService
+    private gestEventService: GesteventService,
+    private userAuthService: UserAuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -36,15 +42,17 @@ export class EventsListComponent implements OnInit {
         this.listEvents = res
       }
     })
+
+    this.userAuthService.$connectedUserId.subscribe({
+      next: (connectedUserId: number) => {
+        this.userService.getOneUser(connectedUserId).subscribe(user => this.connectedUser = user)
+      }
+    })
   }
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id).subscribe({
-        next : (res : CooperativeView) => {
-          this.selectedCoop = res
-        }
-      })
+      this.gestCoopService.getOneCoop(id).subscribe(res  => this.selectedCoop = res)
     }
   }
 

@@ -101,6 +101,7 @@
     <app-event-detail 
         [event]="selectedEvent"
         [coop]="selectedCoop"
+        [user]="connectedUser"
         (clickOnParticipate)="participate($event)"
         (clickOnEventClose)="eventViewClosed($event)"
     >

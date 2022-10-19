@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
+import { UserView } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-event-detail',
@@ -13,6 +14,10 @@ export class EventDetailComponent implements OnInit {
 
   @Input()
   coop!: CooperativeView
+
+  @Input()
+  user!: UserView
+
 
   @Output() 
   clickOnEventClose: EventEmitter<number> = new EventEmitter<number>()
