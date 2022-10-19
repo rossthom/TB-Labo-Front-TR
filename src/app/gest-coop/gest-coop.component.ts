@@ -45,7 +45,7 @@ export class GestCoopComponent implements OnInit {
   getOneCoop(id: number) {
     if (id != 0) {
       this.gestCoopService.getOneCoop(id)
-        .subscribe(res => this.selectedCoop = res)
+        .subscribe(coop => this.selectedCoop = coop)
 
       this._getEventsFromCoop(id)
     }
@@ -53,7 +53,7 @@ export class GestCoopComponent implements OnInit {
 
   private _getEventsFromCoop(coopId: number){
     this.gestEventService.getAllEventsFromCoop(coopId)
-      .subscribe(res => this.coopEvents = res)
+      .subscribe(events => this.coopEvents = events)
   }
 
 
@@ -85,13 +85,12 @@ export class GestCoopComponent implements OnInit {
     }
     else {
       if (eventId != 0) {
-        this.gestEventService.getOneEvent(eventId).subscribe({
-          next : (res : EventView) => {
-            this.selectedEvent = res
+        this.gestEventService.getOneEvent(eventId)
+          .subscribe((event : EventView) => {
+            this.selectedEvent = event
             this.cruEventPopupVisible = true;
             this.cruEventPopupMode = mode;
-          }
-        })
+          })
       }
     }
   }

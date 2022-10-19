@@ -35,7 +35,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
   
   ngOnInit(): void {
     this.gestCoopService.getCoopTypes()
-    .subscribe(res => this.coopTypes = res)
+    .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
   
   ngOnChanges(changes: SimpleChanges): void {

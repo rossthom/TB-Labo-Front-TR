@@ -36,7 +36,6 @@ export class CoopLoginComponent implements OnInit {
     this.coopAuthService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)
       .subscribe((coops: CooperativeLogin[]) => {
         if (coops.length < 1){
-          //alert("Email or Password invalid")
           this.messageService.add({
             severity:'error', 
             summary:'Echec Connection', 

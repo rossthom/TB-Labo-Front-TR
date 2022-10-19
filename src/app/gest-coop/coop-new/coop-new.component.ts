@@ -29,7 +29,7 @@ export class CoopNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.gestCoopService.getCoopTypes()
-      .subscribe(res => this.coopTypes = res)
+      .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
 
   get formControls() { 

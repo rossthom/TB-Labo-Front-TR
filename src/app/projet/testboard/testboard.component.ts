@@ -74,35 +74,35 @@ export class TestboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.gestCoopService.getCoopTypes()
-      .subscribe(res => this.coopTypes = res)
+      .subscribe(coopTypes => this.coopTypes = coopTypes)
 
     this.gestEventService.getEventTypes()
-      .subscribe(res => this.eventTypes = res)
+      .subscribe(eventTypes => this.eventTypes = eventTypes)
   }
   // Fetch all Cooperatives
   getAllCoops() {
     this.gestCoopService.getAllCoops()
-      .subscribe(res => this.cooperatives = res)
+      .subscribe(coops => this.cooperatives = coops)
   }
 
   getOneCoop(id: number) {
     this.gestCoopService.getOneCoop(id)
-      .subscribe(res => this.selectedCoop = res)
+      .subscribe(coop => this.selectedCoop = coop)
   }
 
   getAllEvents(){
     this.gestEventService.getAllEvents()
-      .subscribe(res => this.events = res)
+      .subscribe(events => this.events = events)
   }
 
   getAllEventFromCoop(coopId: number) {
     this.gestEventService.getAllEventsFromCoop(coopId)
-      .subscribe(res => this.events = res)   
+      .subscribe(events => this.events = events)   
   }
 
   getOneEvent(eventId: number){
     this.gestEventService.getOneEvent(eventId)
-      .subscribe(res => this.selectedEvent = res)
+      .subscribe(event => this.selectedEvent = event)
   }
 
   testNominatim(address: Address) {

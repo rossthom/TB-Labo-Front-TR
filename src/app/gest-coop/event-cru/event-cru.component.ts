@@ -49,8 +49,8 @@ export class EventCruComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.gestEventService.getEventTypes()
-      .subscribe((res : Category[]) => {
-        this.eventTypes = res
+      .subscribe((eventTypes : Category[]) => {
+        this.eventTypes = eventTypes
         this._updateEventType()
       })
   }

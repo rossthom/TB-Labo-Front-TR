@@ -28,10 +28,10 @@ export class UserProfileComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"]){
       this.userId = this.activatedRoute.snapshot.params["id"]
       this.userService.getOneUser(this.userId)
-        .subscribe((res: UserView) => {
-          this.connectedUser = res
+        .subscribe((user: UserView) => {
+          this.connectedUser = user
           this.gestEventService.getEventsFromIds(this.connectedUser.events_participation)
-            .subscribe(res => this.eventsParticipation = res)
+            .subscribe(events => this.eventsParticipation = events)
       })
     }
   }

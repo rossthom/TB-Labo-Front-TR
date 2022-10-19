@@ -38,7 +38,7 @@ export class EventsListComponent implements OnInit {
 
   getAllEvents(){
     this.gestEventService.getAllEvents()
-      .subscribe(res => this.listEvents = res)
+      .subscribe(events => this.listEvents = events)
 
     this.userAuthService.$connectedUserId
       .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
@@ -48,7 +48,7 @@ export class EventsListComponent implements OnInit {
   getOneCoop(id: number) {
     if (id != 0) {
       this.gestCoopService.getOneCoop(id)
-        .subscribe(res  => this.selectedCoop = res)
+        .subscribe(coop  => this.selectedCoop = coop)
     }
   }
 

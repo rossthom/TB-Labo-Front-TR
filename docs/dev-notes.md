@@ -9,7 +9,6 @@ json-server start command:
 
 
 # DEV ROADMAP
-O centralize toasts ?
 o subscribe: use better names than 'res'...
 
 o Page Events Bonus
