@@ -10,8 +10,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-coop-view',
-  templateUrl: './coop-view.component.html',
-  styleUrls: ['./coop-view.component.scss']
+  templateUrl: './events-list.component.html',
+  styleUrls: ['./events-list.component.scss']
 })
 export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
@@ -68,7 +68,11 @@ export class EventsListComponent implements OnInit {
 
 
   participate(eventId: number) {
-    // TODO: Not sure I need to do something here...
+    this.userAuthService.$connectedUserId.subscribe({
+      next: (connectedUserId: number) => {
+        this.userService.getOneUser(connectedUserId).subscribe(user => this.connectedUser = user)
+      }
+    })
   }
 
 

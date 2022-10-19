@@ -29,7 +29,7 @@ import { UserProfileComponent } from './projet/user-profile/user-profile.compone
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { UserAuthService } from './shared/services/user-auth.service';
 import { UserService } from './shared/services/user.service';
-import { EventsListComponent } from './projet/events-list/coop-view.component';
+import { EventsListComponent } from './projet/events-list/events-list.component';
 import { EventDetailComponent } from './projet/events-list/event-detail/event-detail.component';
 
 

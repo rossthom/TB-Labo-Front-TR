@@ -10,6 +10,11 @@ export type UserView = {
     gps: GpsPosition
 }
 
+export type UserDtoUpdParticipation = {
+    id: number
+    events_participation: number[]
+}
+
 export type UserDtoNew = {
     first_name: string
     last_name: string

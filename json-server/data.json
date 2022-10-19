@@ -309,7 +309,9 @@
         "street_name": "",
         "street_nb": ""
       },
-      "events_participation": [],
+      "events_participation": [
+        1
+      ],
       "gps": {
         "lon": 4.8723252,
         "lat": 50.4589561

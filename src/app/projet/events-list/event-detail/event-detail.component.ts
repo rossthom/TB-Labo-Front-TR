@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { UserView } from 'src/app/shared/models/user.model';
+import { UserDtoUpdParticipation, UserView } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -26,15 +27,30 @@ export class EventDetailComponent implements OnInit {
   clickOnParticipate: EventEmitter<number> = new EventEmitter<number>()
 
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  checkUserParticipation(): boolean{
+    return this.user?.events_participation.includes(this.event?.id)
   }
 
   participate(){
     alert('not yet implemented')
 
-    this.clickOnParticipate.emit(this.event.id)
+    let modifiedUser: UserDtoUpdParticipation = {
+      id: this.user?.id,
+      events_participation: this.user.events_participation
+    }
+
+    modifiedUser.events_participation.push(this.event?.id)
+    this.userService.updateUserParticipation(modifiedUser)
+      .subscribe(() => {
+        this.clickOnParticipate.emit(this.event.id)
+      })
   }
 
   close(){

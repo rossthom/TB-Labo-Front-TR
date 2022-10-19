@@ -13,7 +13,7 @@ import { UserOrCoopLoggedOutGuard } from './shared/guards/user-or-coop-logged-ou
 import { CoopNewComponent } from './gest-coop/coop-new/coop-new.component';
 import { GestCoopComponent } from './gest-coop/gest-coop.component';
 import { CoopLoggedGuard } from './shared/guards/coop-logged.guard';
-import { EventsListComponent } from './projet/events-list/coop-view.component';
+import { EventsListComponent } from './projet/events-list/events-list.component';
 
 const routes: Routes = [
     {
