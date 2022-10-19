@@ -10,7 +10,7 @@ import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.se
   templateUrl: './coop-view.component.html',
   styleUrls: ['./coop-view.component.scss']
 })
-export class CoopViewComponent implements OnInit {
+export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   selectedCoop!: CooperativeView   // TODO: attribut selectedEvent non initialisé !

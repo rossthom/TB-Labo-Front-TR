@@ -10,7 +10,7 @@ json-server start command:
 
 # DEV ROADMAP
 o Page Events
-	o renommer compo en events-list + class en EventsList + modifier partout ...
+	o renommer compo 'coop-view' en 'events-list' + class en EventsList + modifier partout ...
 	o Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0
 	o Développer inscription à un event !
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
