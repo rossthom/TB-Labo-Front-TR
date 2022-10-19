@@ -9,29 +9,36 @@ import { CooperativeLogin } from '../models/coop.model';
 })
 export class CoopAuthService {
   private _apiUrl: string = environment.dataUrl
-  private _coopIsConnectedKey = environment.coopIsConnectedKey 
+  //private _coopIsConnectedKey = environment.coopIsConnectedKey 
   private _coopIdKey = environment.coopIdKey
 
+  connectedCoopId: number = 0
+  $connectedCoopId: BehaviorSubject<number> = new BehaviorSubject<number>(this.connectedCoopId)
+  
   coopIsConnected: boolean = false
-  $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
+  $coopIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.coopIsConnected)
   
 
   constructor(
     private httpC : HttpClient
   ) {
     this.verifyLogged()
+  }
+
+  _updateConnectionStatus(coopId: number){
+    this.connectedCoopId = coopId
+    this.coopIsConnected = this.connectedCoopId != 0
+
     this.emit_isConnect()
   }
 
- 
-  verifyLogged(): boolean {
-    let tmpIsConnect = localStorage.getItem(this._coopIsConnectedKey)
-    if (!tmpIsConnect) {
-      tmpIsConnect = sessionStorage.getItem(this._coopIsConnectedKey)
+  verifyLogged() {
+    let tmpConnectedCoopId = localStorage.getItem(this._coopIdKey)
+    if (!tmpConnectedCoopId) {
+      tmpConnectedCoopId = sessionStorage.getItem(this._coopIdKey)
     }
 
-    this.coopIsConnected = tmpIsConnect == 'true'
-    return this.coopIsConnected
+    this._updateConnectionStatus(tmpConnectedCoopId ? parseInt(tmpConnectedCoopId) : 0)
   }
 
   checkCoopEmailUnicity(email: string){
@@ -49,30 +56,31 @@ export class CoopAuthService {
   }
 
   login(coopId: number, remember: boolean) {
-    this.coopIsConnected = true
-    this.emit_isConnect()
     if (remember) {
-      localStorage.setItem(this._coopIsConnectedKey, "true")
+      //localStorage.setItem(this._coopIsConnectedKey, "true")
       localStorage.setItem(this._coopIdKey, coopId.toString())
     }
     else{
-      sessionStorage.setItem(this._coopIsConnectedKey, "true")
+      //sessionStorage.setItem(this._coopIsConnectedKey, "true")
       sessionStorage.setItem(this._coopIdKey, coopId.toString())
     }
+
+    this._updateConnectionStatus(coopId)
   }
 
   logout(){
-    localStorage.removeItem(this._coopIsConnectedKey)
+    //localStorage.removeItem(this._coopIsConnectedKey)
     localStorage.removeItem(this._coopIdKey)
-    sessionStorage.removeItem(this._coopIsConnectedKey)
+    //sessionStorage.removeItem(this._coopIsConnectedKey)
     sessionStorage.removeItem(this._coopIdKey)
-    this.coopIsConnected = false;
-    this.emit_isConnect()
+    
+    this._updateConnectionStatus(0)
   }
 
 
   //------ EMIT METHODS ---------------------------------------
   emit_isConnect() {
+    this.$connectedCoopId.next(this.connectedCoopId)
     this.$coopIsConnected.next(this.coopIsConnected)
   }
 }

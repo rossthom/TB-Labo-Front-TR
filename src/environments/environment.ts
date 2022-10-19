@@ -10,9 +10,9 @@ export const environment = {
   nominatimUrl: "https://nominatim.openstreetmap.org/search?",
 
   // Storage Keys
-  coopIsConnectedKey: "coopIsConnected",
+  //coopIsConnectedKey: "coopIsConnected",
   coopIdKey: "coopId",
-  userIsConnectedKey: "userIsConnected",
+  //userIsConnectedKey: "userIsConnected",
   userIdKey: "userId",
 };
 

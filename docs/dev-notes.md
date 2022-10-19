@@ -9,10 +9,6 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Modifier UserAuth et CoopAuth pour n'avoir que l'ID en session, et non un binome redondant 'isConnected' et 'ID'
-	o au pire, faire un get isUserConnected() qui retourne (id != 0) pour garder la compatibilité (et la lisibilité)
-	o Adapter le code faisant usage de ces variables......
-
 o Page Events
 	o renommer compo en events-list + class en EventsList + modifier partout ...
 	o Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0

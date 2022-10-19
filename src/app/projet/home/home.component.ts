@@ -11,13 +11,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private _coopIsConnectedKey = environment.coopIsConnectedKey
-  private _coopIdKey = environment.coopIdKey
-  private _userIsConnectedKey = environment.userIsConnectedKey
-  private _userIdKey = environment.userIdKey
+  //private _coopIsConnectedKey = environment.coopIsConnectedKey
+  //private _coopIdKey = environment.coopIdKey
+  //private _userIsConnectedKey = environment.userIsConnectedKey
+  //private _userIdKey = environment.userIdKey
   
   coopIsConnected: boolean = false;
+  connectedCoopId: number = 0
   userIsConnected: boolean = false;
+  connectedUserId: number = 0;
 
 
   constructor(
@@ -31,49 +33,58 @@ export class HomeComponent implements OnInit {
     this.coopAuthService.$coopIsConnected.subscribe({
       next: (isConnected: boolean) => {
         this.coopIsConnected = isConnected
+        this.connectedCoopId = this.coopAuthService.connectedCoopId
       }
     })
 
     this.userAuthService.$userIsConnected.subscribe({
       next: (isConnected: boolean) => {
         this.userIsConnected = isConnected
+        this.connectedUserId = this.userAuthService.connectedUserId
       }
     })
   }
 
   seeCoopProfile(){
-    let fromLocal = true;
-    let isCoopConnect = localStorage.getItem(this._coopIsConnectedKey)
-    if (!isCoopConnect) {
-      fromLocal = false;
-      isCoopConnect = sessionStorage.getItem(this._coopIsConnectedKey)
-    }
+    // let fromLocal = true;
+    // let isCoopConnect = localStorage.getItem(this._coopIsConnectedKey)
+    // if (!isCoopConnect) {
+    //   fromLocal = false;
+    //   isCoopConnect = sessionStorage.getItem(this._coopIsConnectedKey)
+    // }
 
-    let coopId = fromLocal ? localStorage.getItem(this._coopIdKey) : sessionStorage.getItem(this._coopIdKey)
-
-    if (!coopId){
+    // let coopId = fromLocal ? localStorage.getItem(this._coopIdKey) : sessionStorage.getItem(this._coopIdKey)
+    
+    if (!this.coopIsConnected){
       this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Coopérative pourvoir votre profil'});
     }
     else {
-      this.router.navigate(['/profile/coop/' + coopId])
+      this.router.navigate(['/profile/coop/' + this.connectedCoopId])
     }
   }
 
   seeUserProfile(){
-    let fromLocal = true;
-    let isUserConnect = localStorage.getItem(this._userIsConnectedKey)
-    if (!isUserConnect) {
-      fromLocal = false;
-      isUserConnect = sessionStorage.getItem(this._userIsConnectedKey)
-    }
+    // let fromLocal = true;
+    // let isUserConnect = localStorage.getItem(this._userIsConnectedKey)
+    // if (!isUserConnect) {
+    //   fromLocal = false;
+    //   isUserConnect = sessionStorage.getItem(this._userIsConnectedKey)
+    // }
 
-    let userId = fromLocal ? localStorage.getItem(this._userIdKey) : sessionStorage.getItem(this._userIdKey)
+    // let userId = fromLocal ? localStorage.getItem(this._userIdKey) : sessionStorage.getItem(this._userIdKey)
 
-    if (!userId){
+    // if (!userId){
+    //   this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Participant pour voir votre profil'});
+    // }
+    // else {
+    //   this.router.navigate(['/profile/user/' + userId])
+    // }
+
+    if (!this.userIsConnected){
       this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Participant pour voir votre profil'});
     }
     else {
-      this.router.navigate(['/profile/user/' + userId])
+      this.router.navigate(['/profile/user/' + this.connectedUserId])
     }
   }
 
