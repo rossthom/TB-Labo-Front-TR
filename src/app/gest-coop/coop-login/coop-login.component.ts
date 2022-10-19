@@ -37,7 +37,11 @@ export class CoopLoginComponent implements OnInit {
       .subscribe((coops: CooperativeLogin[]) => {
         if (coops.length < 1){
           //alert("Email or Password invalid")
-          this.messageService.add({severity:'error', summary:'Echec Connection', detail:"L'email ou le mot de passe fournis sont incorrects"});
+          this.messageService.add({
+            severity:'error', 
+            summary:'Echec Connection', 
+            detail:"L'email ou le mot de passe fournis sont incorrects"
+          });
         }
         else {
           let remember = this.selectedValues.find(element => element === 'remember') === "remember"

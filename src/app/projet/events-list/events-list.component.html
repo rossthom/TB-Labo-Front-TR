@@ -48,6 +48,9 @@
 							</div>
 						</th>
 						<th>
+                            Participation ?
+						</th>
+						<th>
 						</th>
 					</tr>
 				</ng-template>
@@ -65,6 +68,9 @@
 						<td style="min-width: 10rem;">
 							{{event.address.city }}
 						</td>
+                        <td style="text-align: center">
+                            <span *ngIf="checkUserParticipation(event)">✔️</span>
+                        </td>
 						<td style="min-width: 12rem;">
 							<button pButton pRipple 
                                 label="Détails"

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { UserDtoUpdParticipation, UserView } from 'src/app/shared/models/user.model';
@@ -28,7 +29,8 @@ export class EventDetailComponent implements OnInit {
 
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,11 @@ export class EventDetailComponent implements OnInit {
     modifiedUser.events_participation.push(this.event?.id)
     this.userService.updateUserParticipation(modifiedUser)
       .subscribe(_ => this.clickOnParticipate.emit(this.event.id))
+
+      this.messageService.add({
+        severity:'success', 
+        summary:'Participation Confirmée', 
+        detail:"Vous êtes inscrit à " + this.event?.name});
   }
 
   close(){

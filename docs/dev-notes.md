@@ -9,7 +9,7 @@ json-server start command:
 
 
 # DEV ROADMAP
-o User profile, find a way to get registered events info
+O centralize toasts ?
 o subscribe: use better names than 'res'...
 
 o Page Events Bonus
