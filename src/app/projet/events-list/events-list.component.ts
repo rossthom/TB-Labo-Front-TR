@@ -53,7 +53,6 @@ export class EventsListComponent implements OnInit {
   }
 
   checkUserParticipation(event: EventView): boolean{
-    console.log('coucou')
     return this.connectedUser?.events_participation.includes(event?.id)
   }
 

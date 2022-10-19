@@ -5,14 +5,13 @@ json-server start command:
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
-- ❓ Après insert, récup ID coop & user
 
 
 # DEV ROADMAP
 o Page Events Bonus
-	🙏 Carte sur evenements
-		🙏 trajet avec coordo GPS user ?
-		🙏 calcul KM ? (et donner vaguement le temps et conso en voiture ?)
+	- Carte sur evenements
+		🙏 calcul trajet avec coordo GPS user
+			🙏 calcul KMs (⚠️ aller-retour) + consommation
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
@@ -30,10 +29,6 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 o git: update Readme
 
 o Update Présentation
-
-
-# Leaflet Setup
-https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
 
 
 # PROJECT INIT: 

@@ -1,20 +1,5 @@
-<div *ngIf="coop">
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    <img src="{{ coop.logo }}" width="60px">
-                </td>
-                <td>
-                    <h4>{{ coop.name }}</h4>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
 <div *ngIf="event" class="grid">
-    <div class="col-6">
+    <div class="col-4" style="position: relative;">
         <h3>{{ event.event_type.label }} - {{ event.name }}</h3>
         <h5>{{ event.description }}</h5>
         <p>
@@ -41,41 +26,34 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="col-6">
-        <div class="grid">
-            <div class="col-6">
-                <h3>Evenement</h3>
-                <p class="bg-yellow-100">
-                    lon: {{ event.gps.lon }}
-                    <br />
-                    lat: {{ event.gps.lat }}
-                </p>
+        <br />
+        <div class="p-fluid col pt-0 pb-0 stick-bottom">
+            <h4>Proposé par: </h4>
+            <div *ngIf="coop" style="text-align: center">
+                <span>
+                    <h4 class="ml-4">
+                        <img 
+                        class="mr-4" 
+                        style="vertical-align: middle" 
+                        src="{{ coop.logo }}" 
+                        width="60px">
+                        {{ coop.name }}
+                    </h4>
+                </span>
             </div>
-            <div *ngIf="user" class="col-6">
-                <h3>Participant</h3>
-                <p class="bg-yellow-100">
-                    lon: {{ user.gps.lon }}
-                    <br />
-                    lat: {{ user.gps.lat }}
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="gc-popup-footer">
-    <div class="grid ml-0 mr-0 p-fluid">
-        <div class="col-6">
+            <br />
+            <span 
+            *ngIf="checkUserParticipation()" 
+            class="info mb-2"
+            >💗&nbsp;<em>Vous participez déjà à cet évènement</em></span>
             <button pButton pRipple 
-                [disabled]="checkUserParticipation()"
+                *ngIf="!checkUserParticipation()"
                 label="Participer"
                 icon="pi pi-ticket"
                 type="button" 
                 class="p-button-outlined p-button-sm p-button-success mr-2 mb-2" 
                 (click)="participate()"
             ></button>
-        </div>
-        <div class="col-6">
             <button pButton pRipple 
                 label="Fermer"
                 icon="pi pi-times-circle"
@@ -85,6 +63,10 @@
             ></button>
         </div>
     </div>
+    <div class="col">
+        <app-event-map
+            [eventGpsPos]="event.gps"
+            [userGpsPos]="user.gps"
+        ></app-event-map>
+    </div>
 </div>
-
-<!--<p-toast></p-toast>-->

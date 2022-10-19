@@ -31,6 +31,7 @@ import { UserAuthService } from './shared/services/user-auth.service';
 import { UserService } from './shared/services/user.service';
 import { EventsListComponent } from './projet/events-list/events-list.component';
 import { EventDetailComponent } from './projet/events-list/event-detail/event-detail.component';
+import { EventMapComponent } from './projet/events-list/event-detail/event-map/event-map.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { EventDetailComponent } from './projet/events-list/event-detail/event-de
         UserNewComponent,
         UserProfileComponent,
         TestboardComponent,
+        EventMapComponent,
     ],
     imports: [
         // Angular
