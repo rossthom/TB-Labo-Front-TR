@@ -9,8 +9,6 @@ json-server start command:
 
 
 # DEV ROADMAP
-o subscribe: use better names than 'res'...
-
 o Page Events Bonus
 	🙏 Carte sur evenements
 		🙏 trajet avec coordo GPS user ?
