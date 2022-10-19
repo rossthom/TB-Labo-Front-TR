@@ -16,10 +16,11 @@ json-server start command:
 		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
 		- retourner ensuite sur le profil User et voir si c'est bien updaté
 
-o ajouter dans topbar un bouton profil :-)
+- ajouter dans topbar un bouton profil :-)
 
-o tester table events + pagination ?
 o simplifier subscribe() partout où je peux !
+o User profile, find a way to get registered events info
+o tester table events + pagination ?
 
 o Page Events Bonus
 	🙏 Carte sur evenements

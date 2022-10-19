@@ -23,11 +23,8 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     if (this.activatedRoute.snapshot.params["id"]){
       this.userId = this.activatedRoute.snapshot.params["id"]
-      this.userService.getOneUser(this.userId).subscribe({
-        next : (res : UserView) => {
-          this.connectedUser = res
-        }
-      })
+      this.userService.getOneUser(this.userId)
+        .subscribe(res => this.connectedUser = res)
     }
   }
 

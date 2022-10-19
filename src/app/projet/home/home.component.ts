@@ -30,33 +30,26 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.coopAuthService.$coopIsConnected.subscribe({
-      next: (isConnected: boolean) => {
+    this.coopAuthService.$coopIsConnected
+      .subscribe((isConnected: boolean) => {
         this.coopIsConnected = isConnected
         this.connectedCoopId = this.coopAuthService.connectedCoopId
-      }
-    })
+      })
 
-    this.userAuthService.$userIsConnected.subscribe({
-      next: (isConnected: boolean) => {
+    this.userAuthService.$userIsConnected
+      .subscribe((isConnected: boolean) => {
         this.userIsConnected = isConnected
         this.connectedUserId = this.userAuthService.connectedUserId
-      }
-    })
+      })
   }
 
   seeCoopProfile(){
-    // let fromLocal = true;
-    // let isCoopConnect = localStorage.getItem(this._coopIsConnectedKey)
-    // if (!isCoopConnect) {
-    //   fromLocal = false;
-    //   isCoopConnect = sessionStorage.getItem(this._coopIsConnectedKey)
-    // }
-
-    // let coopId = fromLocal ? localStorage.getItem(this._coopIdKey) : sessionStorage.getItem(this._coopIdKey)
-    
     if (!this.coopIsConnected){
-      this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Coopérative pourvoir votre profil'});
+      this.messageService.add({
+        severity:'error', 
+        summary:'Connection requise', 
+        detail:'Vous devez être connecté en tant que Coopérative pourvoir votre profil'
+      });
     }
     else {
       this.router.navigate(['/profile/coop/' + this.connectedCoopId])
@@ -64,24 +57,12 @@ export class HomeComponent implements OnInit {
   }
 
   seeUserProfile(){
-    // let fromLocal = true;
-    // let isUserConnect = localStorage.getItem(this._userIsConnectedKey)
-    // if (!isUserConnect) {
-    //   fromLocal = false;
-    //   isUserConnect = sessionStorage.getItem(this._userIsConnectedKey)
-    // }
-
-    // let userId = fromLocal ? localStorage.getItem(this._userIdKey) : sessionStorage.getItem(this._userIdKey)
-
-    // if (!userId){
-    //   this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Participant pour voir votre profil'});
-    // }
-    // else {
-    //   this.router.navigate(['/profile/user/' + userId])
-    // }
-
     if (!this.userIsConnected){
-      this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Participant pour voir votre profil'});
+      this.messageService.add({
+        severity:'error', 
+        summary:'Connection requise', 
+        detail:'Vous devez être connecté en tant que Participant pour voir votre profil'
+      });
     }
     else {
       this.router.navigate(['/profile/user/' + this.connectedUserId])
@@ -90,7 +71,11 @@ export class HomeComponent implements OnInit {
 
   seeEventsList(){
     if (!this.userIsConnected){
-      this.messageService.add({severity:'error', summary:'Connection requise', detail:'Vous devez être connecté en tant que Participant pour voir la liste des évènements'});
+      this.messageService.add({
+        severity:'error', 
+        summary:'Connection requise', 
+        detail:'Vous devez être connecté en tant que Participant pour voir la liste des évènements'
+      });
     }
     else {
       this.router.navigate(['/events'])

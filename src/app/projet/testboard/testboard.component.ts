@@ -73,69 +73,42 @@ export class TestboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes().subscribe({
-      next : (res : Category[]) => {
-        this.coopTypes = res
-      }
-    })
+    this.gestCoopService.getCoopTypes()
+      .subscribe(res => this.coopTypes = res)
 
-    this.gestEventService.getEventTypes().subscribe({
-      next : (res : Category[]) => {
-        this.eventTypes = res
-      }
-    })
+    this.gestEventService.getEventTypes()
+      .subscribe(res => this.eventTypes = res)
   }
   // Fetch all Cooperatives
   getAllCoops() {
-    this.gestCoopService.getAllCoops().subscribe({
-      next : (res : CooperativeView[]) => {
-        this.cooperatives = res
-      }
-    })
+    this.gestCoopService.getAllCoops()
+      .subscribe(res => this.cooperatives = res)
   }
 
   getOneCoop(id: number) {
-    this.gestCoopService.getOneCoop(id).subscribe({
-      next : (res : CooperativeView) => {
-        this.selectedCoop = res
-      }
-    })
+    this.gestCoopService.getOneCoop(id)
+      .subscribe(res => this.selectedCoop = res)
   }
 
   getAllEvents(){
-    this.gestEventService.getAllEvents().subscribe({
-      next : (res : EventView[]) => {
-        this.events = res
-      }
-    })
+    this.gestEventService.getAllEvents()
+      .subscribe(res => this.events = res)
   }
 
   getAllEventFromCoop(coopId: number) {
-    this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
-      next : (res : EventView[]) => {
-        this.events = res
-      }
-    })   
+    this.gestEventService.getAllEventsFromCoop(coopId)
+      .subscribe(res => this.events = res)   
   }
 
   getOneEvent(eventId: number){
-    this.gestEventService.getOneEvent(eventId).subscribe({
-      next : (res : EventView) => {
-        this.selectedEvent = res
-        console.log(this.selectedEvent)
-      }
-    })
+    this.gestEventService.getOneEvent(eventId)
+      .subscribe(res => this.selectedEvent = res)
   }
 
   testNominatim(address: Address) {
-    this.nominatimService.getAddressGpsLongLat(address).subscribe({
-      next : (res : any) => {
-        this.testGps = res[0]
-        console.log(this.testGps)
-      }
-    })
+    this.nominatimService.getAddressGpsLongLat(address)
+      .subscribe(res => this.testGps = res[0])
   }
-
 
   toast1() {
     this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});

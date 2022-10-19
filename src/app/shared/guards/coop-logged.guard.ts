@@ -39,10 +39,7 @@ export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
   }
   
   private _checkConnection() {
-    this.coopAuthService.$coopIsConnected.subscribe({
-      next: (isConnected: boolean) => {
-        this.isConnected = isConnected
-      }
-    })
+    this.coopAuthService.$coopIsConnected
+      .subscribe(isConnected => this.isConnected = isConnected)
   }
 }

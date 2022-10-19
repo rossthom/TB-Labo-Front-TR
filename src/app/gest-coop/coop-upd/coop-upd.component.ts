@@ -34,11 +34,8 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes().subscribe({
-      next : (res : Category[]) => {
-        this.coopTypes = res
-      }
-    })
+    this.gestCoopService.getCoopTypes()
+    .subscribe(res => this.coopTypes = res)
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,7 +60,6 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     }
   }
 
-
   saveModifications(){
     let coopUpd = <CooperativeDtoUpd>{
       id: this.cooperative.id,
@@ -82,11 +78,8 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
     console.log(coopUpd)
 
-    this.gestCoopService.updateCoop(coopUpd).subscribe({
-      next : () => {
-        this.clickOnCoopUpdate.emit(this.cooperative.id)
-      }
-    })
+    this.gestCoopService.updateCoop(coopUpd)
+      .subscribe(_ => this.clickOnCoopUpdate.emit(this.cooperative.id))
   }
 
   cancelModifications(){

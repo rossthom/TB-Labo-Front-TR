@@ -28,11 +28,8 @@ export class CoopNewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes().subscribe({
-      next : (res : Category[]) => {
-        this.coopTypes = res
-      }
-    })
+    this.gestCoopService.getCoopTypes()
+      .subscribe(res => this.coopTypes = res)
   }
 
   get formControls() { 
@@ -56,11 +53,8 @@ export class CoopNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestCoopService.insertCoop(coopNew).subscribe({
-      next : () => {
-        this.router.navigate(['/login/coop'])
-      }
-    })
+    this.gestCoopService.insertCoop(coopNew)
+      .subscribe(_ => this.router.navigate(['/login/coop']))
   }
   
   cancelCoopCreation(){

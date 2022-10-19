@@ -44,22 +44,16 @@ export class GestCoopComponent implements OnInit {
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id).subscribe({
-        next : (res : CooperativeView) => {
-          this.selectedCoop = res
-        }
-      })
+      this.gestCoopService.getOneCoop(id)
+        .subscribe(res => this.selectedCoop = res)
 
       this._getEventsFromCoop(id)
     }
   }
 
   private _getEventsFromCoop(coopId: number){
-    this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
-      next : (res : EventView[]) => {
-        this.coopEvents = res
-      }
-    })
+    this.gestEventService.getAllEventsFromCoop(coopId)
+      .subscribe(res => this.coopEvents = res)
   }
 
 

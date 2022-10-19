@@ -37,22 +37,18 @@ export class EventsListComponent implements OnInit {
   }
 
   getAllEvents(){
-    this.gestEventService.getAllEvents().subscribe({
-      next : (res : EventView[]) => {
-        this.listEvents = res
-      }
-    })
+    this.gestEventService.getAllEvents()
+      .subscribe(res => this.listEvents = res)
 
-    this.userAuthService.$connectedUserId.subscribe({
-      next: (connectedUserId: number) => {
-        this.userService.getOneUser(connectedUserId).subscribe(user => this.connectedUser = user)
-      }
-    })
+    this.userAuthService.$connectedUserId
+      .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
+        .subscribe(user => this.connectedUser = user))
   }
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id).subscribe(res  => this.selectedCoop = res)
+      this.gestCoopService.getOneCoop(id)
+        .subscribe(res  => this.selectedCoop = res)
     }
   }
 
@@ -68,11 +64,9 @@ export class EventsListComponent implements OnInit {
 
 
   participate(eventId: number) {
-    this.userAuthService.$connectedUserId.subscribe({
-      next: (connectedUserId: number) => {
-        this.userService.getOneUser(connectedUserId).subscribe(user => this.connectedUser = user)
-      }
-    })
+    this.userAuthService.$connectedUserId
+      .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
+        .subscribe(user => this.connectedUser = user))
   }
 
 

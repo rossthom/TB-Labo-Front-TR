@@ -48,12 +48,11 @@ export class EventCruComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    this.gestEventService.getEventTypes().subscribe({
-      next : (res : Category[]) => {
+    this.gestEventService.getEventTypes()
+      .subscribe((res : Category[]) => {
         this.eventTypes = res
         this._updateEventType()
-      }
-    })
+      })
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -175,16 +174,14 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestEventService.updateEvent(eventUpd).subscribe({
-      next : () => {
+    this.gestEventService.updateEvent(eventUpd)
+      .subscribe(_ => {
         this._emptyForm()
         this.clickOnEventUpdate.emit(this.event.id)
-      }
-    })
+      })
   }
   
   cancelModifications(){
-    //this._fillFormWithEvent()
     this._emptyForm()
     this.clickOnEventCancel.emit(/*this.event.id*/)
   }
@@ -211,12 +208,11 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestEventService.insertEvent(eventNew).subscribe({
-      next : () => {
+    this.gestEventService.insertEvent(eventNew)
+      .subscribe(_ => {
         this._emptyForm()
         this.clickOnNewEventSave.emit(this.coopId)
-      }
-    })
+      })
   }
 }
 

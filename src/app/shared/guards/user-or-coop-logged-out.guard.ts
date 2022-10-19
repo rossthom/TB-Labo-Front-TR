@@ -26,11 +26,5 @@ export class UserOrCoopLoggedOutGuard implements CanActivateChild {
     }
 
     return !userIsConnected && !coopIsConnected
-
-    /*return new Promise((resolve, reject) => {
-      this.userAuthService.$userIsConnected.subscribe((isConnect : boolean) => {
-        resolve(!isConnect)
-      })
-    })*/
   }
 }

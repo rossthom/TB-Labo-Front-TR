@@ -47,11 +47,8 @@ export class UserNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.userAuthService.createUser(userNew).subscribe({
-      next : () => {
-        this.router.navigate(['/login/user'])
-      }
-    })
+    this.userAuthService.createUser(userNew)
+      .subscribe(_ => this.router.navigate(['/login/user']))
   }
   
   cancelUserCreation(){

@@ -39,8 +39,6 @@ export class EventDetailComponent implements OnInit {
   }
 
   participate(){
-    alert('not yet implemented')
-
     let modifiedUser: UserDtoUpdParticipation = {
       id: this.user?.id,
       events_participation: this.user.events_participation
@@ -48,9 +46,7 @@ export class EventDetailComponent implements OnInit {
 
     modifiedUser.events_participation.push(this.event?.id)
     this.userService.updateUserParticipation(modifiedUser)
-      .subscribe(() => {
-        this.clickOnParticipate.emit(this.event.id)
-      })
+      .subscribe(_ => this.clickOnParticipate.emit(this.event.id))
   }
 
   close(){
