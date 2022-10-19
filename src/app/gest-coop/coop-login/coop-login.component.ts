@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CooperativeLogin } from '../shared/models/coop.model';
-import { CoopLoginService } from '../shared/services/coop-login.service';
+import { CoopAuthService } from '../shared/services/coop-auth.service';
 import { generateCoopLoginForm } from './forms/coop-login.form';
 
 @Component({
@@ -20,7 +20,7 @@ export class CoopLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private coopLoginService: CoopLoginService,
+    private coopAuthService: CoopAuthService,
     private messageService: MessageService
   ) { }
 
@@ -33,15 +33,18 @@ export class CoopLoginComponent implements OnInit {
 
 
   checkLogin(){
-    this.coopLoginService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)
+    this.coopAuthService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)
       .subscribe((coops: CooperativeLogin[]) => {
         if (coops.length < 1){
-          //alert("Email or Password invalid")
-          this.messageService.add({severity:'error', summary:'Echec Connection', detail:"L'email ou le mot de passe fournis sont incorrects"});
+          this.messageService.add({
+            severity:'error', 
+            summary:'Echec Connection', 
+            detail:"L'email ou le mot de passe fournis sont incorrects"
+          });
         }
         else {
           let remember = this.selectedValues.find(element => element === 'remember') === "remember"
-          this.coopLoginService.login(coops[0].id, remember)
+          this.coopAuthService.login(coops[0].id, remember)
           this.router.navigate(['/profile/coop/' + coops[0].id])
         }
       })

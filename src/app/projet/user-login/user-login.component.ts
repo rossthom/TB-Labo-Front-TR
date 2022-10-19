@@ -36,7 +36,6 @@ export class UserLoginComponent implements OnInit {
     this.userAuthService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)
       .subscribe((users: UserLogin[]) => {
         if (users.length < 1){
-          //alert("Email or Password invalid")
           this.messageService.add({severity:'error', summary:'Echec Connection', detail:"L'email ou le mot de passe fournis sont incorrects"});
         }
         else {

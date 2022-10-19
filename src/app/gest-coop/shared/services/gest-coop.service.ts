@@ -10,7 +10,7 @@ import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 @Injectable({
   providedIn: 'root'
 })
-export class GestcoopService {
+export class GestCoopService {
   private _apiUrl: string = environment.dataUrl
 
 

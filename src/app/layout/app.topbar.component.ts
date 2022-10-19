@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { CoopLoginService } from '../gest-coop/shared/services/coop-login.service';
+import { CoopAuthService } from '../gest-coop/shared/services/coop-auth.service';
 import { UserAuthService } from '../shared/services/user-auth.service';
 import { LayoutService } from "./service/app.layout.service";
 
@@ -14,7 +14,9 @@ export class AppTopBarComponent implements OnInit {
     items!: MenuItem[];
 
     coopIsConnected: boolean = false;
+    connectedCoopId: number = 0
     userIsConnected: boolean = false;
+    connectedUserId: number = 0;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -25,12 +27,25 @@ export class AppTopBarComponent implements OnInit {
     constructor(
         public layoutService: LayoutService,
         private router: Router,
-        private coopLoginService: CoopLoginService,
+        private coopAuthService: CoopAuthService,
         private userAuthService: UserAuthService
     ) { }
 
     ngOnInit(): void {
-      this.coopLoginService.$coopIsConnected.subscribe({
+      this.coopAuthService.$coopIsConnected.subscribe({
+        next: (isConnected: boolean) => {
+          this.coopIsConnected = isConnected
+          this.connectedCoopId = this.coopAuthService.connectedCoopId
+        }
+      })
+  
+      this.userAuthService.$userIsConnected.subscribe({
+        next: (isConnected: boolean) => {
+          this.userIsConnected = isConnected
+          this.connectedUserId = this.userAuthService.connectedUserId
+        }
+      })
+      /* this.coopAuthService.$coopIsConnected.subscribe({
         next: (isConnected: boolean) => {
           this.coopIsConnected = isConnected
         }
@@ -40,11 +55,12 @@ export class AppTopBarComponent implements OnInit {
         next: (isConnected: boolean) => {
           this.userIsConnected = isConnected
         }
-      })
+      }) */
+
     }
 
     coopLogout(){
-      this.coopLoginService.logout()
+      this.coopAuthService.logout()
       this.router.navigate([""])
     }
 

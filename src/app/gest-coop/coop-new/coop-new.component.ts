@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestcoopService } from '../shared/services/gestcoop.service';
+import { GestCoopService } from '../shared/services/gest-coop.service';
 import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
-import { CoopEmailCheckService } from '../shared/services/coop-email-check.service';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { CoopAuthService } from '../shared/services/coop-auth.service';
 
 @Component({
   selector: 'app-coop-new',
@@ -15,24 +15,21 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
   styleUrls: ['./coop-new.component.scss']
 })
 export class CoopNewComponent implements OnInit {
-  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.coopEmailCheckService)
+  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.coopAuthService)
   coopTypes: Category[] = []
 
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private gestCoopService: GestcoopService,
-    private coopEmailCheckService: CoopEmailCheckService,
+    private gestCoopService: GestCoopService,
+    private coopAuthService: CoopAuthService,
     private nominatimService: NominatimService
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes().subscribe({
-      next : (res : Category[]) => {
-        this.coopTypes = res
-      }
-    })
+    this.gestCoopService.getCoopTypes()
+      .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
 
   get formControls() { 
@@ -56,11 +53,8 @@ export class CoopNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestCoopService.insertCoop(coopNew).subscribe({
-      next : () => {
-        this.router.navigate(['/login/coop'])
-      }
-    })
+    this.gestCoopService.insertCoop(coopNew)
+      .subscribe(_ => this.router.navigate(['/login/coop']))
   }
   
   cancelCoopCreation(){

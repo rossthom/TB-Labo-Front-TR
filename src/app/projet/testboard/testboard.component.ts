@@ -3,8 +3,8 @@ import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { Category } from 'src/app/gest-coop/shared/models/types.model';
-import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
-import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
+import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
+import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
 import { Address } from 'src/app/openstreetmap/shared/models/types.model';
 import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
 
@@ -66,76 +66,49 @@ export class TestboardComponent implements OnInit {
   ]
 
   constructor(
-    private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService,
+    private gestCoopService: GestCoopService,
+    private gestEventService: GestEventService,
     private nominatimService: NominatimService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes().subscribe({
-      next : (res : Category[]) => {
-        this.coopTypes = res
-      }
-    })
+    this.gestCoopService.getCoopTypes()
+      .subscribe(coopTypes => this.coopTypes = coopTypes)
 
-    this.gestEventService.getEventTypes().subscribe({
-      next : (res : Category[]) => {
-        this.eventTypes = res
-      }
-    })
+    this.gestEventService.getEventTypes()
+      .subscribe(eventTypes => this.eventTypes = eventTypes)
   }
   // Fetch all Cooperatives
   getAllCoops() {
-    this.gestCoopService.getAllCoops().subscribe({
-      next : (res : CooperativeView[]) => {
-        this.cooperatives = res
-      }
-    })
+    this.gestCoopService.getAllCoops()
+      .subscribe(coops => this.cooperatives = coops)
   }
 
   getOneCoop(id: number) {
-    this.gestCoopService.getOneCoop(id).subscribe({
-      next : (res : CooperativeView) => {
-        this.selectedCoop = res
-      }
-    })
+    this.gestCoopService.getOneCoop(id)
+      .subscribe(coop => this.selectedCoop = coop)
   }
 
   getAllEvents(){
-    this.gestEventService.getAllEvents().subscribe({
-      next : (res : EventView[]) => {
-        this.events = res
-      }
-    })
+    this.gestEventService.getAllEvents()
+      .subscribe(events => this.events = events)
   }
 
   getAllEventFromCoop(coopId: number) {
-    this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
-      next : (res : EventView[]) => {
-        this.events = res
-      }
-    })   
+    this.gestEventService.getAllEventsFromCoop(coopId)
+      .subscribe(events => this.events = events)   
   }
 
   getOneEvent(eventId: number){
-    this.gestEventService.getOneEvent(eventId).subscribe({
-      next : (res : EventView) => {
-        this.selectedEvent = res
-        console.log(this.selectedEvent)
-      }
-    })
+    this.gestEventService.getOneEvent(eventId)
+      .subscribe(event => this.selectedEvent = event)
   }
 
   testNominatim(address: Address) {
-    this.nominatimService.getAddressGpsLongLat(address).subscribe({
-      next : (res : any) => {
-        this.testGps = res[0]
-        console.log(this.testGps)
-      }
-    })
+    this.nominatimService.getAddressGpsLongLat(address)
+      .subscribe(res => this.testGps = res[0])
   }
-
 
   toast1() {
     this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});

@@ -10,7 +10,7 @@ import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 @Injectable({
   providedIn: 'root'
 })
-export class GesteventService {
+export class GestEventService {
   private _apiUrl: string = environment.dataUrl
 
 
@@ -34,6 +34,13 @@ export class GesteventService {
 
   getOneEvent(id: number){
     return this.httpC.get<EventView>(this._apiUrl+"events/"+ id + "?_expand=event_type")
+  }
+
+  getEventsFromIds(idsList: number[]){
+    // target example: http://localhost:3000/events?_expand=event_type&id=1&id=5&id=7
+    let eventsIdsUri = (idsList.map(id => 'id='+id)).join("&")
+    
+    return this.httpC.get<EventView[]>(this._apiUrl+"events?_expand=event_type&"+eventsIdsUri)
   }
 
   updateEvent(event: EventDtoUpd){

@@ -11,11 +11,14 @@ import { UserDtoNew, UserLogin } from '../models/user.model';
 })
 export class UserAuthService {
   private _apiUrl: string = environment.dataUrl
-  private _userIsConnectedKey = environment.userIsConnectedKey
+  //private _userIsConnectedKey = environment.userIsConnectedKey
   private _userIdKey = environment.userIdKey
 
+  connectedUserId: number = 0
+  $connectedUserId: BehaviorSubject<number> = new BehaviorSubject<number>(this.connectedUserId)
+  
   userIsConnected: boolean = false
-  $userIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.verifyLogged())
+  $userIsConnected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.userIsConnected)
   
 
   constructor(
@@ -23,7 +26,6 @@ export class UserAuthService {
     private nominatimService: NominatimService
   ) {
     this.verifyLogged()
-    this.emit_isConnect()
   }
 
 
@@ -39,14 +41,27 @@ export class UserAuthService {
       )
   }
 
-  verifyLogged(): boolean {
-    let tmpIsConnect = localStorage.getItem(this._userIsConnectedKey)
-    if (!tmpIsConnect) {
-      tmpIsConnect = sessionStorage.getItem(this._userIsConnectedKey)
+  _updateConnectionStatus(userId: number){
+    this.connectedUserId = userId
+    this.userIsConnected = this.connectedUserId != 0
+
+    this.emit_isConnect()
+  }
+
+  verifyLogged() {
+    let tmpConnectedUserId = localStorage.getItem(this._userIdKey)
+    if (!tmpConnectedUserId) {
+      tmpConnectedUserId = sessionStorage.getItem(this._userIdKey)
     }
 
-    this.userIsConnected = tmpIsConnect == 'true'
-    return this.userIsConnected
+    //this.connectedUserId = tmpConnectedIserId ? parseInt(tmpConnectedIserId) : 0
+    //this.userIsConnected = this.connectedUserId != 0
+    this._updateConnectionStatus(tmpConnectedUserId ? parseInt(tmpConnectedUserId) : 0)
+  }
+
+  checkUserEmailUnicity(email: string){
+    let encodedEmail = email.split('@').join('%40')
+    return this.httpC.get<any>(this._apiUrl + "participants/?email=" + encodedEmail)
   }
 
   checkLogin(email: string, password: string){
@@ -59,32 +74,35 @@ export class UserAuthService {
   }
 
   login(userId: number, remember: boolean) {
-    this.userIsConnected = true
-    this.emit_isConnect()
     if (remember) {
-      localStorage.setItem(this._userIsConnectedKey, "true")
+      //localStorage.setItem(this._userIsConnectedKey, "true")
       localStorage.setItem(this._userIdKey, userId.toString())
-      //alert('Login (remember me) !!')
     }
     else{
-      sessionStorage.setItem(this._userIsConnectedKey, "true")
+      //sessionStorage.setItem(this._userIsConnectedKey, "true")
       sessionStorage.setItem(this._userIdKey, userId.toString())
-      //alert('Login !!')
     }
+    // this.connectedUserId = userId
+    // this.userIsConnected = true
+    // this.emit_isConnect()
+    this._updateConnectionStatus(userId)
   }
 
   logout(){
-    localStorage.removeItem(this._userIsConnectedKey)
+    //localStorage.removeItem(this._userIsConnectedKey)
     localStorage.removeItem(this._userIdKey)
-    sessionStorage.removeItem(this._userIsConnectedKey)
+    //sessionStorage.removeItem(this._userIsConnectedKey)
     sessionStorage.removeItem(this._userIdKey)
-    this.userIsConnected = false;
-    this.emit_isConnect()
+    // this.connectedUserId = 0;
+    // this.userIsConnected = false;
+    // this.emit_isConnect()
+    this._updateConnectionStatus(0)
   }
   
 
   //------ EMIT METHODS ---------------------------------------
   emit_isConnect() {
+    this.$connectedUserId.next(this.connectedUserId)
     this.$userIsConnected.next(this.userIsConnected)
   }
 }

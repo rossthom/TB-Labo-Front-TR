@@ -23,15 +23,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { HomeComponent } from './projet/home/home.component';
-import { CoopViewComponent } from './projet/coop-view/coop-view.component';
-import { EventDetailComponent } from './projet/coop-view/event-detail/event-detail.component';
 import { UserLoginComponent } from './projet/user-login/user-login.component';
 import { UserNewComponent } from './projet/user-new/user-new.component';
 import { UserProfileComponent } from './projet/user-profile/user-profile.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { UserAuthService } from './shared/services/user-auth.service';
-import { UserEmailCheckService } from './shared/services/user-email-check.service';
 import { UserService } from './shared/services/user.service';
+import { EventsListComponent } from './projet/events-list/events-list.component';
+import { EventDetailComponent } from './projet/events-list/event-detail/event-detail.component';
 
 
 @NgModule({
@@ -39,7 +38,7 @@ import { UserService } from './shared/services/user.service';
         AppComponent,
         NotfoundComponent,
         HomeComponent,
-        CoopViewComponent,
+        EventsListComponent,
         EventDetailComponent,
         UserLoginComponent,
         UserNewComponent,
@@ -71,7 +70,6 @@ import { UserService } from './shared/services/user.service';
         //{ provide: LocationStrategy, useClass: HashLocationStrategy },
         MessageService,
         UserAuthService,
-        UserEmailCheckService,
         UserService,
     ],
     bootstrap: [AppComponent]

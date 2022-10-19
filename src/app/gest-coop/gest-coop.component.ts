@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoopLoginService } from './shared/services/coop-login.service';
+import { CoopAuthService } from './shared/services/coop-auth.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
-import { GestcoopService } from './shared/services/gestcoop.service';
-import { GesteventService } from './shared/services/gestevent.service';
+import { GestCoopService } from './shared/services/gest-coop.service';
+import { GestEventService } from './shared/services/gest-event.service';
 
 
 @Component({
@@ -29,9 +29,9 @@ export class GestCoopComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService,
-    private coopLoginService: CoopLoginService
+    private gestCoopService: GestCoopService,
+    private gestEventService: GestEventService,
+    private coopAuthService: CoopAuthService
   ) {
   }
 
@@ -44,27 +44,21 @@ export class GestCoopComponent implements OnInit {
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id).subscribe({
-        next : (res : CooperativeView) => {
-          this.selectedCoop = res
-        }
-      })
+      this.gestCoopService.getOneCoop(id)
+        .subscribe(coop => this.selectedCoop = coop)
 
       this._getEventsFromCoop(id)
     }
   }
 
   private _getEventsFromCoop(coopId: number){
-    this.gestEventService.getAllEventsFromCoop(coopId).subscribe({
-      next : (res : EventView[]) => {
-        this.coopEvents = res
-      }
-    })
+    this.gestEventService.getAllEventsFromCoop(coopId)
+      .subscribe(events => this.coopEvents = events)
   }
 
 
   logout() {
-    this.coopLoginService.logout()
+    this.coopAuthService.logout()
     this.router.navigate([""])
   }
 
@@ -91,13 +85,12 @@ export class GestCoopComponent implements OnInit {
     }
     else {
       if (eventId != 0) {
-        this.gestEventService.getOneEvent(eventId).subscribe({
-          next : (res : EventView) => {
-            this.selectedEvent = res
+        this.gestEventService.getOneEvent(eventId)
+          .subscribe((event : EventView) => {
+            this.selectedEvent = event
             this.cruEventPopupVisible = true;
             this.cruEventPopupMode = mode;
-          }
-        })
+          })
       }
     }
   }

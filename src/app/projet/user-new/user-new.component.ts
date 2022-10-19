@@ -5,8 +5,6 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
 import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
 import { UserDtoNew } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
-import { UserEmailCheckService } from 'src/app/shared/services/user-email-check.service';
-
 import { generateNewUserForm } from './forms/user-new.form';
 
 @Component({
@@ -15,13 +13,12 @@ import { generateNewUserForm } from './forms/user-new.form';
   styleUrls: ['./user-new.component.scss']
 })
 export class UserNewComponent implements OnInit {
-  newUserForm: FormGroup = generateNewUserForm(this.fb, this.nominatimService, this.emailCheckService)
+  newUserForm: FormGroup = generateNewUserForm(this.fb, this.nominatimService, this.userAuthService)
   
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private nominatimService: NominatimService,
-    private emailCheckService: UserEmailCheckService,
     private userAuthService: UserAuthService
   ) { }
 
@@ -50,11 +47,8 @@ export class UserNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.userAuthService.createUser(userNew).subscribe({
-      next : () => {
-        this.router.navigate(['/login/user'])
-      }
-    })
+    this.userAuthService.createUser(userNew)
+      .subscribe(_ => this.router.navigate(['/login/user']))
   }
   
   cancelUserCreation(){

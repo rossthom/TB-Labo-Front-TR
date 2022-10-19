@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventDtoNew, EventDtoUpd, EventView } from '../shared/models/event.model';
 import { Category } from '../shared/models/types.model';
-import { GesteventService } from '../shared/services/gestevent.service';
+import { GestEventService } from '../shared/services/gest-event.service';
 import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
 import { generateCRUEventForm } from './forms/event-cru.form';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
@@ -43,17 +43,16 @@ export class EventCruComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestEventService: GesteventService,
+    private gestEventService: GestEventService,
     private nominatimService: NominatimService
   ) { }
 
   ngOnInit(): void {
-    this.gestEventService.getEventTypes().subscribe({
-      next : (res : Category[]) => {
-        this.eventTypes = res
+    this.gestEventService.getEventTypes()
+      .subscribe((eventTypes : Category[]) => {
+        this.eventTypes = eventTypes
         this._updateEventType()
-      }
-    })
+      })
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -175,16 +174,14 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestEventService.updateEvent(eventUpd).subscribe({
-      next : () => {
+    this.gestEventService.updateEvent(eventUpd)
+      .subscribe(_ => {
         this._emptyForm()
         this.clickOnEventUpdate.emit(this.event.id)
-      }
-    })
+      })
   }
   
   cancelModifications(){
-    //this._fillFormWithEvent()
     this._emptyForm()
     this.clickOnEventCancel.emit(/*this.event.id*/)
   }
@@ -211,12 +208,11 @@ export class EventCruComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestEventService.insertEvent(eventNew).subscribe({
-      next : () => {
+    this.gestEventService.insertEvent(eventNew)
+      .subscribe(_ => {
         this._emptyForm()
         this.clickOnNewEventSave.emit(this.coopId)
-      }
-    })
+      })
   }
 }
 
