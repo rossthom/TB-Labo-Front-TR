@@ -9,22 +9,12 @@ json-server start command:
 
 
 # DEV ROADMAP
-- Page Events
-	- renommer compo 'coop-view' en 'events-list' + class en EventsList + modifier partout ...
-	- Récupérer le User à partir de l'ID de la session (ou de l'observable du service, plutot ^_^) et check si l'ID n'est pas à 0
-	- Développer inscription à un event !
-		- voir si le user n'est pas déjà inscrit à l'event ! si oui, ne pas mettre le bouton mais un message à la place)
-		- retourner ensuite sur le profil User et voir si c'est bien updaté
-
-- ajouter dans topbar un bouton profil :-)
-
-o simplifier subscribe() partout où je peux !
 o User profile, find a way to get registered events info
-o tester table events + pagination ?
 
 o Page Events Bonus
 	🙏 Carte sur evenements
 		🙏 trajet avec coordo GPS user ?
+		🙏 calcul KM ? (et donner vaguement le temps et conso en voiture ?)
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo

@@ -98,23 +98,42 @@
       }
     },
     {
+      "id": 4,
       "coop_typeId": 2,
       "name": "Contrat Rivière Haute Meuse",
       "email": "info@crhm.be",
       "password": "crhm#pwd",
       "description": "Le Contrat de rivière Haute-Meuse (CRHM) est une asbl qui est financée par le Service public de Wallonie, la Province de Namur, la Province du Hainaut et 27 communes partenaires. Son fonctionnement s’articule autour de 3 structures : le Comité de rivière, les Comités locaux de concertation et la Cellule de coordination.",
       "address": {
-        "postal_code": 5000,
-        "city": "Namur",
-        "street_name": "Rue Henri Blès",
-        "street_nb": "190C"
+          "postal_code": 5000,
+          "city": "Namur",
+          "street_name": "Rue Henri Blès",
+          "street_nb": "190C"
       },
       "logo": "https://www.crhm.be/templates/frontend/images/base/crhm-logo-new.png",
       "gps": {
-        "lon": 4.835776762209532,
-        "lat": 50.4638439
-      },
-      "id": 4
+          "lon": 	4.835776762,
+          "lat": 	50.4638439
+      }	
+    },
+    {
+        "id": 5,
+        "coop_typeId": 2,
+        "name": "Contrat Rivière Meuse Aval",
+        "email": "info@crma.be",
+        "password": "crma#pwd",
+        "description": "Le Contrat de Rivière Meuse Aval et affluents est une ASBL (Association Sans But Lucratif).",
+        "address": {
+            "postal_code": 4520,
+            "city": "Wanze",
+            "street_name": "Place François Faniel",
+            "street_nb": "8"
+        },
+        "logo": "https://www.wanze.be/annuaire/contrat-de-riviere-meuse-aval-et-affluents/@@images/2cb31ef4-5915-4ed9-9b73-c91c5e5b100b.jpeg",
+        "gps": {
+            "lon": 	5.21433094,
+            "lat": 	50.53574415
+        }	
     }
   ],
   "events": [
@@ -273,26 +292,92 @@
       }
     },
     {
-      "coop_id": "4",
+      "id": 8,
+      "coop_id": 4,
       "event_typeId": 1,
       "name": "Nettoyage du Bocq",
       "description": "Venez nous aider à nettoyer les rives du Bocq",
       "location": "Donjon de Crupet",
       "address": {
-        "postal_code": 5332,
-        "city": "Assesse",
-        "street_name": "Rue Basse",
-        "street_nb": "27"
+          "postal_code": 5332,
+          "city": "Assesse",
+          "street_name": "Rue Basse",
+          "street_nb": "27"
       },
-      "datetime_start": "2023-02-22T07:00:24.000Z",
-      "datetime_end": "2023-02-22T07:08:35.000Z",
+      "datetime_start": "2023-03-22T08:00:00+02:00",
+      "datetime_end": "2023-03-22T11:30:00+02:00",
       "nb_people_min": 5,
       "nb_people_max": 15,
       "gps": {
-        "lon": 4.956566780833832,
-        "lat": 50.349224
+          "lon": 	4.956566781,
+          "lat": 	50.349224
+      }
+    },
+    {
+        "id": 9,
+        "coop_id": 4,
+        "event_typeId": 5,
+        "name": "Sortie Nature à La Plante",
+        "description": "Découvrez les plantes invasives qui poussent sur les îles de La Plante",
+        "location": "La Plante",
+        "address": {
+            "postal_code": 5000,
+            "city": "Namur",
+            "street_name": "Rue Théodore Baron",
+            "street_nb": ""
+        },
+        "datetime_start": "2023-06-08T08:00:00+02:00",
+        "datetime_end": "2023-06-08T11:30:00+02:00",
+        "nb_people_min": 5,
+        "nb_people_max": 20,
+        "gps": {
+            "lon": 	4.8592757,
+            "lat": 	50.4510159
+        }
+    },
+    {
+      "id": 10,
+      "coop_id": 5,
+      "event_typeId": 1,
+      "name": "Nettoyage des bords de Meuse à Huy",
+      "description": "Aidez-nous à nettoyer les rives de la Meuse à Huy",
+      "location": "Port de la Neuve Voie",
+      "address": {
+          "postal_code": 4500,
+          "city": "Huy",
+          "street_name": "Rue du Ponton",
+          "street_nb": ""
       },
-      "id": 8
+      "datetime_start": "2023-03-05T08:00:00+02:00",
+      "datetime_end": "2023-03-05T11:30:00+02:00",
+      "nb_people_min": 5,
+      "nb_people_max": 15,
+      "gps": {
+          "lon": 	5.2357097,
+          "lat": 	50.5174631
+      }
+    },
+    {
+        "id": 11,
+        "coop_id": 5,
+        "event_typeId": 5,
+        "name": "Sortie Nature à Liège",
+        "description": "Découvrez les plantes invasives qui poussent au bord de la Meuse à Liège",
+        "location": "Lac de la Gravière Brock",
+        "address": {
+            "postal_code": 4681,
+            "city": "Oupeye",
+            "street_name": "Rue Florent Leruth",
+            "street_nb": ""
+        },
+        "datetime_start": "2023-06-16T08:00:00+02:00",
+        "datetime_end": "2023-06-16T11:30:00+02:00",
+        "nb_people_min": 5,
+        "nb_people_max": 20,
+        "gps": {
+            "lon": 	5.6750872,
+            "lat": 	50.708632
+        }
     }
   ],
   "participants": [
@@ -316,25 +401,6 @@
         "lon": 4.8723252,
         "lat": 50.4589561
       }
-    },
-    {
-      "first_name": "Bart",
-      "last_name": "Noot",
-      "email": "bnoot@flaayoo.be",
-      "password": "fghij",
-      "birth_date": "1963-02-21T23:00:00.000Z",
-      "address": {
-        "postal_code": 5590,
-        "city": "Ciney",
-        "street_name": "",
-        "street_nb": ""
-      },
-      "events_participation": [],
-      "gps": {
-        "lon": 5.1008664,
-        "lat": 50.2964911
-      },
-      "id": 2
     }
   ]
 }
