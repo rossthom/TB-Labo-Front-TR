@@ -4,3 +4,22 @@ source: https://www.digitalocean.com/community/tutorials/angular-angular-and-lea
 npm install leaflet --legacy-peer-deps
 npm i --save-dev @types/leaflet --legacy-peer-deps
 
+- component:
+import L from 'leaflet';
+or
+import * as L from 'leaflet';
+
+- angular.json:
+    architect>build>options>styles, add
+        "./node_modules/leaflet/dist/leaflet.css",
+
+
+Simple Markers:
+source: https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
+- angular.json:
+    architect>build>options>assets, add:
+        {
+        "glob": "**/*",
+        "input": "node_modules/leaflet/dist/images/",
+        "output": "./assets"
+        }

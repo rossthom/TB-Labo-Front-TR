@@ -1,4 +1,7 @@
 # NOTES:
+build:
+npm i --legacy-peer-deps
+
 json-server start command:
 `json-server --watch .\json-server\data.json --port 3000`
 
