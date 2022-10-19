@@ -22,10 +22,10 @@ export class EventMapComponent implements AfterViewInit  {
 
 
   @Input()
-  eventGpsPos!: GpsPosition
+  eventGpsPos!: GpsPosition   // TODO: attribut eventGpsPos non initialisé !
   
   @Input()
-  userGpsPos!: GpsPosition
+  userGpsPos!: GpsPosition   // TODO: attribut userGpsPos non initialisé !
   
 
   constructor() { }
@@ -36,13 +36,13 @@ export class EventMapComponent implements AfterViewInit  {
 
   private _initMap(): void {
     // Init Map
-    this.map = L.map('map', {
+    this.map = L.map('map'/*, {
       center: [ 
         (this.eventGpsPos.lat + this.userGpsPos.lat)/2, 
         (this.eventGpsPos.lon + this.userGpsPos.lon)/2,
       ],
       zoom: 13
-    });
+    }*/);
 
     // Add tiles
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

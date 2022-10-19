@@ -18,7 +18,7 @@ export class EventsListComponent implements OnInit {
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   selectedCoop!: CooperativeView   // TODO: attribut selectedEvent non initialisé !
   connectedUser!: UserView;        // TODO: attribut selectedEvent non initialisé !
-  eventPopupVisible: boolean = false;
+  //eventPopupVisible: boolean = false;
 
   // Sakai Table properties
   loading: boolean = true;
@@ -56,6 +56,7 @@ export class EventsListComponent implements OnInit {
     return this.connectedUser?.events_participation.includes(event?.id)
   }
 
+  /*
   showEvent(event: EventView){
     this.eventPopupVisible = true
     this.selectedEvent = event
@@ -72,7 +73,7 @@ export class EventsListComponent implements OnInit {
       .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
         .subscribe(user => this.connectedUser = user))
   }
-
+*/
 
   // Sakai Table Methods
   onGlobalFilter(table: Table, event: Event) {
