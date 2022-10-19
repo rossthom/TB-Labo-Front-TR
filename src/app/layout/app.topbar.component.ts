@@ -14,7 +14,9 @@ export class AppTopBarComponent implements OnInit {
     items!: MenuItem[];
 
     coopIsConnected: boolean = false;
+    connectedCoopId: number = 0
     userIsConnected: boolean = false;
+    connectedUserId: number = 0;
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -33,6 +35,19 @@ export class AppTopBarComponent implements OnInit {
       this.coopAuthService.$coopIsConnected.subscribe({
         next: (isConnected: boolean) => {
           this.coopIsConnected = isConnected
+          this.connectedCoopId = this.coopAuthService.connectedCoopId
+        }
+      })
+  
+      this.userAuthService.$userIsConnected.subscribe({
+        next: (isConnected: boolean) => {
+          this.userIsConnected = isConnected
+          this.connectedUserId = this.userAuthService.connectedUserId
+        }
+      })
+      /* this.coopAuthService.$coopIsConnected.subscribe({
+        next: (isConnected: boolean) => {
+          this.coopIsConnected = isConnected
         }
       })
 
@@ -40,7 +55,8 @@ export class AppTopBarComponent implements OnInit {
         next: (isConnected: boolean) => {
           this.userIsConnected = isConnected
         }
-      })
+      }) */
+
     }
 
     coopLogout(){

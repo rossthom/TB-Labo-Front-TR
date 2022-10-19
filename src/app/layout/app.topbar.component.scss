@@ -8,20 +8,29 @@ a.my-top-right-button {
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 3px;
 }
-a.my-top-right-button.my-red {
-    color: #D32F2F !important;
-}
 a.my-top-right-button:hover {
     background: rgba(76, 175, 80, 0.04);
-    color: #D32F2F !important;
+    color: var(--primary-color) !important;
     border: 1px solid;
-}
-a.my-top-right-button.my-red:hover {
-    background: rgba(211, 47, 47, 0.04);
-    color: #D32F2F !important;
 }
 a.my-top-right-button:focus {
     outline: 0 none;
     outline-offset: 0;
     box-shadow: 0 0 0 0.2rem #b7e0b8;
+}
+
+a.my-top-right-button.my-red {
+    color: #D32F2F !important;
+}
+a.my-top-right-button.my-red:hover {
+    background: rgba(211, 47, 47, 0.04);
+    color: #D32F2F !important;
+}
+
+a.my-top-right-button.my-blue {
+    color: #0288D1 !important;
+}
+a.my-top-right-button.my-blue:hover {
+    background: rgba(2, 136, 209, 0.04);;
+    color: #0288D1 !important;
 }
