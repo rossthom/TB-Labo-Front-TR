@@ -1,3 +1,4 @@
+# LEAFLET
 source: https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
 
 - Install leaflet
@@ -14,7 +15,7 @@ import * as L from 'leaflet';
         "./node_modules/leaflet/dist/leaflet.css",
 
 
-Simple Markers:
+## simple leaflet markers:
 source: https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet-marker-service
 - angular.json:
     architect>build>options>assets, add:
@@ -23,3 +24,12 @@ source: https://www.digitalocean.com/community/tutorials/angular-angular-and-lea
         "input": "node_modules/leaflet/dist/images/",
         "output": "./assets"
         }
+
+
+# FA-Markers:
+source: https://www.npmjs.com/package/leaflet-fa-markers
+
+- install 
+    npm i leaflet-fa-markers --legacy-peer-deps
+    npm i --save-dev @types/leaflet-fa-markers --legacy-peer-deps
+

@@ -14,6 +14,7 @@ import { CoopNewComponent } from './gest-coop/coop-new/coop-new.component';
 import { GestCoopComponent } from './gest-coop/gest-coop.component';
 import { CoopLoggedGuard } from './shared/guards/coop-logged.guard';
 import { EventsListComponent } from './projet/events-list/events-list.component';
+import { EventDetailComponent } from './projet/event-detail/event-detail.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,7 @@ const routes: Routes = [
             ]},
 
             { path: 'events', canActivate: [UserLoggedGuard], component: EventsListComponent },
+            { path: 'events/:id', canActivate: [UserLoggedGuard], component: EventDetailComponent },
                         
             { path: 'test', component: TestboardComponent },
 

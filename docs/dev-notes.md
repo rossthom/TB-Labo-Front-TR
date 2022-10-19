@@ -11,10 +11,15 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Page Events Bonus
+o Page Events
 	- Carte sur evenements
-		🙏 calcul trajet avec coordo GPS user
-			🙏 calcul KMs (⚠️ aller-retour) + consommation
+		- calculate zoom depending on distance-x and distance-y between points
+			=> mention  presentation
+	o proposer une carte avec tous les events ?
+		o bouton 'Afficher carte' au dessus de la table , popup avec la carte, bim boum
+
+	🙏 calcul trajet avec coordo GPS user
+		🙏 calcul KMs (⚠️ aller-retour) + consommation
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
