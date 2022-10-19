@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestcoopService } from '../shared/services/gestcoop.service';
+import { GestCoopService } from '../shared/services/gest-coop.service';
 import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { CoopAuthService } from '../shared/services/coop-auth.service';
@@ -22,7 +22,7 @@ export class CoopNewComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private gestCoopService: GestcoopService,
+    private gestCoopService: GestCoopService,
     private coopAuthService: CoopAuthService,
     private nominatimService: NominatimService
   ) { }

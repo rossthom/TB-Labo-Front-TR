@@ -13,14 +13,15 @@
                                 <span *ngIf="connectedUser.address.street_name">
                                     {{ connectedUser.address.street_name }}
                                     <span *ngIf="connectedUser.address.street_nb">, {{ connectedUser.address.street_nb }}</span>
+                                    <br />
                                 </span>
-                                <br />
                                 <span>{{ connectedUser.address.postal_code }}&nbsp;{{ connectedUser.address.city }}</span>
                             </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <br />
             <button pButton pRipple 
                 icon="pi pi-id-card" 
                 label="Voir les Evènements"
@@ -36,16 +37,36 @@
                 (click)="logout()"
             ></button>
     
-            <h5>Liste des évènements où vous êtes inscrits;</h5>
-            <p *ngIf="connectedUser.events_participation.length == 0">
+            <h5>Liste des évènements où vous êtes inscrits:</h5>
+            <p *ngIf="!eventsParticipation || eventsParticipation.length == 0">
                 Vous n'êtes inscrit(e) à aucun évènement
             </p>
-            <ul>
-                <li *ngFor="let eventId of connectedUser.events_participation">
-                    {{ eventId}}
-                </li>
-            </ul>
-            <em class="text-blue-500">⚠️ IDs des events seulement car il faudrait un vrai backend pour ce genre de requetes</em>
+            <table class="events-list" *ngIf="eventsParticipation">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Lieu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of eventsParticipation">
+                        <td>
+                            {{ event.datetime_start | date: "dd MMM yyyy" }}
+                        </td>
+                        <td>
+                            <b>{{ event.event_type.label }}</b>
+                        </td>
+                        <td>
+                            {{ event.name }}
+                        </td>
+                        <td>
+                            {{ event.location ? event.location : event.address.city }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

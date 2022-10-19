@@ -3,8 +3,8 @@ import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { Category } from 'src/app/gest-coop/shared/models/types.model';
-import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
-import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
+import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
+import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
 import { Address } from 'src/app/openstreetmap/shared/models/types.model';
 import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
 
@@ -66,8 +66,8 @@ export class TestboardComponent implements OnInit {
   ]
 
   constructor(
-    private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService,
+    private gestCoopService: GestCoopService,
+    private gestEventService: GestEventService,
     private nominatimService: NominatimService,
     private messageService: MessageService
   ) { }

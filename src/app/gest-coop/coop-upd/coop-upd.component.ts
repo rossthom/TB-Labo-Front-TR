@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestcoopService } from '../shared/services/gestcoop.service';
+import { GestCoopService } from '../shared/services/gest-coop.service';
 import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
@@ -28,7 +28,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestCoopService: GestcoopService,
+    private gestCoopService: GestCoopService,
     private nominatimService: NominatimService
   ) { }
 

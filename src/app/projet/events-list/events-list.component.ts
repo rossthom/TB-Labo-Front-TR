@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { GestcoopService } from 'src/app/gest-coop/shared/services/gestcoop.service';
-import { GesteventService } from 'src/app/gest-coop/shared/services/gestevent.service';
+import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
+import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
 import { UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -25,8 +25,8 @@ export class EventsListComponent implements OnInit {
   @ViewChild('filter') filter!: ElementRef;
 
   constructor(
-    private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService,
+    private gestCoopService: GestCoopService,
+    private gestEventService: GestEventService,
     private userAuthService: UserAuthService,
     private userService: UserService
   ) { }

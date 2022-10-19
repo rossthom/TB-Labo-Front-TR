@@ -23,7 +23,7 @@ import { CoopLoginComponent } from './coop-login/coop-login.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
 import { EventCruComponent } from './event-cru/event-cru.component';
 import { CoopAuthService } from './shared/services/coop-auth.service';
-import { GesteventService } from './shared/services/gestevent.service';
+import { GestEventService } from './shared/services/gest-event.service';
 
 
 @NgModule({
@@ -58,7 +58,7 @@ import { GesteventService } from './shared/services/gestevent.service';
   providers: [
     CoopAuthService,
     GestCoopComponent,
-    GesteventService,
+    GestEventService,
 ],
 })
 export class GestCoopModule { }

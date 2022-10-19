@@ -4,8 +4,8 @@ import { CoopAuthService } from './shared/services/coop-auth.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
-import { GestcoopService } from './shared/services/gestcoop.service';
-import { GesteventService } from './shared/services/gestevent.service';
+import { GestCoopService } from './shared/services/gest-coop.service';
+import { GestEventService } from './shared/services/gest-event.service';
 
 
 @Component({
@@ -29,8 +29,8 @@ export class GestCoopComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private gestCoopService: GestcoopService,
-    private gestEventService: GesteventService,
+    private gestCoopService: GestCoopService,
+    private gestEventService: GestEventService,
     private coopAuthService: CoopAuthService
   ) {
   }

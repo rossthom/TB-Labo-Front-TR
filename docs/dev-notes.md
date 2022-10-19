@@ -10,6 +10,7 @@ json-server start command:
 
 # DEV ROADMAP
 o User profile, find a way to get registered events info
+o subscribe: use better names than 'res'...
 
 o Page Events Bonus
 	🙏 Carte sur evenements
