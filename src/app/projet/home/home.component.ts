@@ -3,19 +3,12 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CoopAuthService } from 'src/app/gest-coop/shared/services/coop-auth.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  //private _coopIsConnectedKey = environment.coopIsConnectedKey
-  //private _coopIdKey = environment.coopIdKey
-  //private _userIsConnectedKey = environment.userIsConnectedKey
-  //private _userIdKey = environment.userIdKey
-  
   coopIsConnected: boolean = false;
   connectedCoopId: number = 0
   userIsConnected: boolean = false;
@@ -42,6 +35,7 @@ export class HomeComponent implements OnInit {
         this.connectedUserId = this.userAuthService.connectedUserId
       })
   }
+
 
   seeCoopProfile(){
     if (!this.coopIsConnected){

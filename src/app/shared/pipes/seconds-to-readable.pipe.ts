@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'secondes'
+  name: 'secondToReadable'
 })
-export class SecondesPipe implements PipeTransform {
+export class SecondsToReadablePipe implements PipeTransform {
   
   transform(value: number, ...args: unknown[]): string {
     return (value != undefined) ? this.secondsToDhms(value) : ""

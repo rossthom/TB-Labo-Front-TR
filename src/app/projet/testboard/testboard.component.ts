@@ -3,8 +3,8 @@ import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { Category } from 'src/app/gest-coop/shared/models/types.model';
-import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
-import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
+import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
+import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 
@@ -19,11 +19,10 @@ export class TestboardComponent implements OnInit {
 
 
   cooperatives: CooperativeView[] = []
-  //coopList: string[] = []
-  selectedCoop!: CooperativeView    // TODO: warning, selectedCoop not initialized
+  selectedCoop!: CooperativeView
 
   events: EventView[] = []
-  selectedEvent!: EventView         // TODO: warning, selectedEvent not initialized
+  selectedEvent!: EventView
 
   testGps: any = {}
 
@@ -35,42 +34,42 @@ export class TestboardComponent implements OnInit {
   resultOpenRoute: any
 
   constructor(
-    private gestCoopService: GestCoopService,
-    private gestEventService: GestEventService,
+    private coopService: CoopService,
+    private eventService: EventService,
     private osmService: OsmService,
     private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes()
+    this.coopService.getCoopTypes()
       .subscribe(coopTypes => this.coopTypes = coopTypes)
 
-    this.gestEventService.getEventTypes()
+    this.eventService.getEventTypes()
       .subscribe(eventTypes => this.eventTypes = eventTypes)
   }
   // Fetch all Cooperatives
   getAllCoops() {
-    this.gestCoopService.getAllCoops()
+    this.coopService.getAllCoops()
       .subscribe(coops => this.cooperatives = coops)
   }
 
   getOneCoop(id: number) {
-    this.gestCoopService.getOneCoop(id)
+    this.coopService.getOneCoop(id)
       .subscribe(coop => this.selectedCoop = coop)
   }
 
   getAllEvents(){
-    this.gestEventService.getAllEvents()
+    this.eventService.getAllEvents()
       .subscribe(events => this.events = events)
   }
 
   getAllEventFromCoop(coopId: number) {
-    this.gestEventService.getAllEventsFromCoop(coopId)
+    this.eventService.getAllEventsFromCoop(coopId)
       .subscribe(events => this.events = events)   
   }
 
   getOneEvent(eventId: number){
-    this.gestEventService.getOneEvent(eventId)
+    this.eventService.getOneEvent(eventId)
       .subscribe(event => this.selectedEvent = event)
   }
 

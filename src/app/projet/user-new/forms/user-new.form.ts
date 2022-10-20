@@ -1,9 +1,9 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { OsmService } from "src/app/openstreetmap/shared/services/osm.service";
+import { UserAuthService } from "src/app/shared/services/user-auth.service";
 import { matchPasswordValidator } from "src/app/gest-coop/shared/validators/matchPassword.validator";
 import { NominatimValidator } from "src/app/openstreetmap/shared/validators/nominatim.validator";
 import { UserEmailUnicityValidator } from "src/app/shared/validators/userEmailUnicityCheck.validator";
-import { UserAuthService } from "src/app/shared/services/user-auth.service";
 
 export function generateNewUserForm(fb: FormBuilder, osmService: OsmService, userAuthService: UserAuthService): FormGroup {
     return fb.group({

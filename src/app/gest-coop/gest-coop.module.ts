@@ -10,20 +10,21 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { PasswordModule } from 'primeng/password';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 
 // Application
+import { CoopAuthService } from './shared/services/coop-auth.service';
+import { CoopService } from './shared/services/coop.service';
+import { EventService } from './shared/services/event.service';
 import { GestCoopComponent } from './gest-coop.component';
 import { CoopNewComponent } from './coop-new/coop-new.component';
 import { CoopLoginComponent } from './coop-login/coop-login.component';
 import { CoopUpdComponent } from './coop-upd/coop-upd.component';
 import { EventCruComponent } from './event-cru/event-cru.component';
-import { CoopAuthService } from './shared/services/coop-auth.service';
-import { GestEventService } from './shared/services/gest-event.service';
 
 
 @NgModule({
@@ -46,9 +47,9 @@ import { GestEventService } from './shared/services/gest-event.service';
     CheckboxModule,
     DialogModule,
     DropdownModule,
+    InputNumberModule,
     InputTextareaModule,
     InputTextModule,
-    InputNumberModule,
     PasswordModule,
     TagModule,
     ToastModule,
@@ -57,8 +58,8 @@ import { GestEventService } from './shared/services/gest-event.service';
   ],
   providers: [
     CoopAuthService,
-    GestCoopComponent,
-    GestEventService,
+    CoopService,
+    EventService,
 ],
 })
 export class GestCoopModule { }

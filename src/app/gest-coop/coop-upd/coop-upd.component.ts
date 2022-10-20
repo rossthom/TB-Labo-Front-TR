@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestCoopService } from '../shared/services/gest-coop.service';
-import { OsmService } from '../../openstreetmap/shared/services/osm.service';
+import { CoopService } from '../shared/services/coop.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
-import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Component({
   selector: 'app-coop-upd',
   templateUrl: './coop-upd.component.html',
-  styleUrls: ['./coop-upd.component.scss']
+  styleUrls: ['../shared/styles/my-form-group.style.scss']
 })
 export class CoopUpdComponent implements OnInit, OnChanges {
   updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.osmService)
@@ -28,13 +28,13 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestCoopService: GestCoopService,
+    private coopService: CoopService,
     private osmService: OsmService
   ) { }
 
   
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes()
+    this.coopService.getCoopTypes()
     .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
   
@@ -43,6 +43,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     this._fillFormWithCoop()
   }
 
+  
   get formControls() { 
     return this.updCoopForm.controls; 
   }
@@ -76,9 +77,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(coopUpd)
-
-    this.gestCoopService.updateCoop(coopUpd)
+    this.coopService.updateCoop(coopUpd)
       .subscribe(_ => this.clickOnCoopUpdate.emit(this.cooperative.id))
   }
 

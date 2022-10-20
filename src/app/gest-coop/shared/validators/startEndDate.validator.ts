@@ -1,7 +1,6 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 
 export function startEndDateValidator(controlGroup: AbstractControl): ValidationErrors | null {
-    //console.log(controlGroup)
     if ( controlGroup.value['datetime_start'] && controlGroup.value['datetime_end'] ) {
         let startD = new Date(controlGroup.value['datetime_start'])
         let endD = new Date(controlGroup.value['datetime_end'])

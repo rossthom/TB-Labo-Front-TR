@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoopAuthService } from './shared/services/coop-auth.service';
-import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
-import { GestCoopService } from './shared/services/gest-coop.service';
-import { GestEventService } from './shared/services/gest-event.service';
+import { CoopAuthService } from './shared/services/coop-auth.service';
+import { CoopService } from './shared/services/coop.service';
+import { EventService } from './shared/services/event.service';
+import { FormMode } from './event-cru/event-cru.component';
 
 
 @Component({
   selector: 'app-gest-coop',
   templateUrl: './gest-coop.component.html',
-  styleUrls: ['./gest-coop.component.scss']
+  styleUrls: ['./shared/styles/table-transposed.style.scss']
 })
 export class GestCoopComponent implements OnInit {
-  //listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
-
   coopId: number = 0
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
   updatePopupVisible: boolean = false;
@@ -24,13 +22,13 @@ export class GestCoopComponent implements OnInit {
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   cruEventPopupVisible: boolean = false;          // Event popup display status
   cruEventPopupMode: FormMode = FormMode.Read;    // Event popup display mode
-  //cEventPopupVisible: boolean = false;    // CREATE Event popup display status
+
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private gestCoopService: GestCoopService,
-    private gestEventService: GestEventService,
+    private coopService: CoopService,
+    private eventService: EventService,
     private coopAuthService: CoopAuthService
   ) {
   }
@@ -42,25 +40,27 @@ export class GestCoopComponent implements OnInit {
     }
   }
 
+
+  private _getEventsFromCoop(coopId: number){
+    this.eventService.getAllEventsFromCoop(coopId)
+      .subscribe(events => this.coopEvents = events)
+  }
+
+
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id)
+      this.coopService.getOneCoop(id)
         .subscribe(coop => this.selectedCoop = coop)
 
       this._getEventsFromCoop(id)
     }
   }
 
-  private _getEventsFromCoop(coopId: number){
-    this.gestEventService.getAllEventsFromCoop(coopId)
-      .subscribe(events => this.coopEvents = events)
-  }
-
-
   logout() {
     this.coopAuthService.logout()
     this.router.navigate([""])
   }
+
 
   // ℹ️ Update Coop Popup
   showCoopUpdatePopup(){
@@ -85,7 +85,7 @@ export class GestCoopComponent implements OnInit {
     }
     else {
       if (eventId != 0) {
-        this.gestEventService.getOneEvent(eventId)
+        this.eventService.getOneEvent(eventId)
           .subscribe((event : EventView) => {
             this.selectedEvent = event
             this.cruEventPopupVisible = true;
@@ -110,6 +110,7 @@ export class GestCoopComponent implements OnInit {
     this.cruEventPopupVisible = false
     this.cruEventPopupMode = FormMode.Read
   }
+  
   
   // ℹ️ New Event Popup
   newEventSaved(eventId: number){

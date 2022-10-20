@@ -2,31 +2,30 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
-import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
+import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
+import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-coop-view',
-  templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.scss']
+  templateUrl: './events-list.component.html'
 })
 export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
-  selectedCoop!: CooperativeView   // TODO: attribut selectedEvent non initialisé !
-  connectedUser!: UserView;        // TODO: attribut selectedEvent non initialisé !
-  //eventPopupVisible: boolean = false;
+  selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
+  connectedUser!: UserView;        // TODO: attribut connectedUser non initialisé !
 
   // Sakai Table properties
   loading: boolean = true;
   @ViewChild('filter') filter!: ElementRef;
 
+
   constructor(
-    private gestCoopService: GestCoopService,
-    private gestEventService: GestEventService,
+    private coopService: CoopService,
+    private eventService: EventService,
     private userAuthService: UserAuthService,
     private userService: UserService
   ) { }
@@ -36,8 +35,9 @@ export class EventsListComponent implements OnInit {
     this.loading = false;
   }
 
+
   getAllEvents(){
-    this.gestEventService.getAllEvents()
+    this.eventService.getAllEvents()
       .subscribe(events => this.listEvents = events)
 
     this.userAuthService.$connectedUserId
@@ -47,7 +47,7 @@ export class EventsListComponent implements OnInit {
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id)
+      this.coopService.getOneCoop(id)
         .subscribe(coop  => this.selectedCoop = coop)
     }
   }
@@ -55,25 +55,7 @@ export class EventsListComponent implements OnInit {
   checkUserParticipation(event: EventView): boolean{
     return this.connectedUser?.events_participation.includes(event?.id)
   }
-
-  /*
-  showEvent(event: EventView){
-    this.eventPopupVisible = true
-    this.selectedEvent = event
-    this.getOneCoop(event.coop_id)
-  }
-
-  eventViewClosed(eventId: number){
-    this.eventPopupVisible = false
-  }
-
-
-  participate(eventId: number) {
-    this.userAuthService.$connectedUserId
-      .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
-        .subscribe(user => this.connectedUser = user))
-  }
-*/
+  
 
   // Sakai Table Methods
   onGlobalFilter(table: Table, event: Event) {

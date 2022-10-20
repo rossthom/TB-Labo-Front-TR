@@ -196,7 +196,7 @@
       },
       "datetime_start": "2023-02-12T19:30:00+02:00",
       "datetime_end": "2023-02-12T22:30:00+02:00",
-      "nb_people_min": -1,
+      "nb_people_min": 100,
       "nb_people_max": 200,
       "gps": {
         "lon": 4.868552997,

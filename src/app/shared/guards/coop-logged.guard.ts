@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanDeactivate, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CoopAuthService } from '../../gest-coop/shared/services/coop-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
+export class CoopLoggedGuard implements CanActivate {
   isConnected: boolean = false
 
   constructor(
@@ -18,28 +18,11 @@ export class CoopLoggedGuard implements CanActivate, CanDeactivate<unknown> {
     //route: ActivatedRouteSnapshot,
     //state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    this._checkConnection()
-    if (!this.isConnected){
+    let isConnected = this.coopAuthService.coopIsConnected
+    if (!isConnected){
       this.router.navigate([""])
     }
-    return this.isConnected
-  }
-  
-  canDeactivate(
-    //component: unknown,
-    //currentRoute: ActivatedRouteSnapshot,
-    //currentState: RouterStateSnapshot,
-    //nextState?: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    this._checkConnection()
-    if (this.isConnected){
-      this.router.navigate([""])
-    }
-    return this.isConnected
-  }
-  
-  private _checkConnection() {
-    this.coopAuthService.$coopIsConnected
-      .subscribe(isConnected => this.isConnected = isConnected)
+
+    return isConnected 
   }
 }

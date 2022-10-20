@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { switchMap, timer } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Address, GpsPosition } from '../models/types.model';
 
@@ -29,7 +28,6 @@ export class OsmService {
     query += "&format=json"
     query += "&countrycodes=be"
 
-    //console.log(this._apiUrl + query)
     return query
   }
 
@@ -39,20 +37,13 @@ export class OsmService {
 
 
   // OPENROUTE
-  /* 🧠 Reminder
+  /*  ℹ️ Reminder
   lat (North): 50.708632 
   lon (East) : 5.6750872
   */
- /**
-  * GENERATED GEOJSON DATA Recap:
-  * features[0].properties.summary.distance : distance en m
-  * features[0].properties.summary.duration : durée en s
-  * features[0].geometry.coordinates : array of coordinates [lon, lat]
-  */
   getIniterary(start: GpsPosition, end: GpsPosition){
-    // lon, lat
+    // ℹ️ URI: lon, lat
     let url = this._openrouteUrl + `&start=${start.lon},${start.lat}&end=${end.lon},${end.lat}`
-    console.log(url)
     return this.httpC.get<any>(url)
   }
 }

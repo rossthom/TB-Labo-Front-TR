@@ -1,10 +1,9 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { OsmService } from "../../../openstreetmap/shared/services/osm.service";
+import { OsmService } from "src/app/openstreetmap/shared/services/osm.service";
+import { NominatimValidator } from "src/app/openstreetmap/shared/validators/nominatim.validator";
 import { CoopEmailUnicityValidator } from "../../shared/validators/coopEmailUnicityCheck.validator";
 import { matchPasswordValidator } from "../../shared/validators/matchPassword.validator";
-import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 import { CoopAuthService } from "../../shared/services/coop-auth.service";
-
 
 export function generateNewCoopForm(fb: FormBuilder, osmService: OsmService, coopAuthService: CoopAuthService): FormGroup {
     return fb.group({

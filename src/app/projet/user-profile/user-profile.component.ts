@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
+import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -9,7 +9,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   userId: number = 0
@@ -21,7 +20,7 @@ export class UserProfileComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userAuthService: UserAuthService,
     private userService: UserService,
-    private gestEventService: GestEventService,
+    private gestEventService: EventService,
   ) { }
 
   ngOnInit(): void {

@@ -8,7 +8,7 @@
     </div>
     <div class="col">
         <div *ngIf="!userIsConnected" class="card">
-            <h2>Coopératives</h2>
+            <h2>💗 Coopératives</h2>
             <button pButton pRipple 
                 icon="pi pi-plus-circle" 
                 label="Créer une Coop"
@@ -26,15 +26,15 @@
             ></button>
             <button pButton pRipple 
                 icon="pi pi-id-card" 
-                label="Voir profil Coop connectée"
+                label="Profil Coopérative"
                 type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                class="p-button-outlined p-button-info mr-2 mb-2" 
                 (click)="seeCoopProfile()"
             ></button>
         </div>
 
         <div *ngIf="!coopIsConnected" class="card">
-            <h2>Participants</h2>
+            <h2>🙋‍♀️ Participants</h2>
             <button pButton pRipple 
                 icon="pi pi-user-plus" 
                 label="Création Participant"
@@ -54,19 +54,28 @@
                 icon="pi pi-id-card" 
                 label="Profil Participant"
                 type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                class="p-button-outlined p-button-info mr-2 mb-2" 
                 (click)="seeUserProfile()"
             ></button>
             <br />
             <button pButton pRipple 
-                icon="pi pi-id-card" 
+                icon="pi pi-list" 
                 label="Voir les Evènements"
                 type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
+                class="p-button-outlined p-button-info mr-2 mb-2" 
                 (click)="seeEventsList()"
+            ></button>
+        </div>
+
+        <div *ngIf="!coopIsConnected" class="card">
+            <h2>👷 Tests</h2>
+            <button pButton pRipple 
+                icon="pi pi-cog" 
+                label="Page de Tests"
+                type="button" 
+                class="p-button-outlined p-button-warning mr-2 mb-2" 
+                routerLink="/test"
             ></button>
         </div>
     </div>
 </div>
-
-<!--<p-toast></p-toast>-->
