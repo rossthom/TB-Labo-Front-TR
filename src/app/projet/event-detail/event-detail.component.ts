@@ -1,5 +1,6 @@
 import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { resolve } from 'dns';
 import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
@@ -21,18 +22,26 @@ export class EventDetailComponent implements OnInit {
   coop!: CooperativeView   // TODO: attribut coop non initialisé !
   user!: UserView          // TODO: attribut user non initialisé !
 
-  geoJsonFeatures!: any    // TODO: attribut itineraryData non initialisé !
+  geoJsonFeatures!: any    // TODO: attribut geoJsonFeatures non initialisé !
   distance: number = 0
   duration: number = 0
+  meta_attribution: string = ""
+  meta_engine_version: string = ""
   
   /**
-   * Hypothèse de base: 
+   * Hypothèse de base pour le calcul: 
    * Une voiture qui consomme 5 litre/100km va émettre 5L x 2392 g/L / 100 (par km) = 120 g CO2/km.
    */
   private _defaultConso = 5
   private _defaultEmissions = 2392
   totalEmissions: number = 0
 
+  /**
+   * Permet de charger la carte seulement une fois toutes les données chargées.
+   * Sinon, la carte ne récupère pas les données GeoJSON à temps pour s'initialiser correctement.
+   * Le chargement de la carte est protégé par un *ngIf sur loading.
+   */
+  loading: boolean = true;    
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -48,41 +57,51 @@ export class EventDetailComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"]){
       this.eventId = this.activatedRoute.snapshot.params["id"]
       
-      // I need events and users to be retrieved first, then I can calculate the itinerary
-      Promise.all([
-        new Promise<EventView>((resolve, reject) => {
-          this.gestEventService.getOneEvent(this.eventId)
-            .subscribe((event: EventView) => {
-              this.event = event
-              this.gestCoopService.getOneCoop(this.event.coop_id)
-                .subscribe(coop => this.coop = coop)
-              resolve(this.event)
-            })
-        }),
-        
-        new Promise<UserView>((resolve, reject) => {
-          this.userService.getOneUser(this.userAuthService.connectedUserId)
-          .subscribe((user: UserView) => {
-            this.user = user
-            resolve(this.user)
-          })
-        })
-      ]).then((res: any[]) => {
-        this.osmService.getIniterary(this.user.gps, this.event.gps)
-        .subscribe((res: any) => {
-          this.geoJsonFeatures = res.features
-          console.log(this.geoJsonFeatures)
-          this.distance = this.geoJsonFeatures[0].properties.summary.distance
-          this.duration = this.geoJsonFeatures[0].properties.summary.duration
-          
-          this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
-        })
-      })
-      .catch((err : string) => {
-        console.log(err)
-      })
+      this._getData()
     }
   }
+
+  private _getData(){
+    // I need events and users to be retrieved first, then I can calculate the itinerary
+    Promise.all([
+      new Promise<EventView>((resolve, reject) => {
+        this.gestEventService.getOneEvent(this.eventId)
+          .subscribe((event: EventView) => {
+            this.event = event
+            this.gestCoopService.getOneCoop(this.event.coop_id)
+              .subscribe(coop => this.coop = coop)
+            resolve(this.event)
+          })
+      }),
+      
+      new Promise<UserView>((resolve, reject) => {
+        this.userService.getOneUser(this.userAuthService.connectedUserId)
+        .subscribe((user: UserView) => {
+          this.user = user
+          resolve(this.user)
+        })
+      })
+    ]).then((res: any[]) => {
+      this.osmService.getIniterary(this.user.gps, this.event.gps)
+      .subscribe((res: any) => {
+        console.log(res)
+        this.geoJsonFeatures = res.features
+        this.distance = this.geoJsonFeatures[0].properties.summary.distance
+        this.duration = this.geoJsonFeatures[0].properties.summary.duration
+        this.meta_attribution = res.metadata.attribution
+        this.meta_engine_version = res.metadata.engine.version
+        
+        this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
+
+        // libérer la construction de la carte
+        this.loading = false;
+      })
+    })
+    .catch((err : string) => {
+      console.log(err)
+    })
+  }
+
 
   /**
    * Calculates how much CO2 is emitted for the travel, depending on the car's performences

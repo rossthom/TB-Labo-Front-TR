@@ -8,12 +8,14 @@ import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
   templateUrl: './event-map.component.html',
   styleUrls: ['./event-map.component.scss']
 })
-export class EventMapComponent implements /*OnInit, */AfterViewInit  {
+export class EventMapComponent implements AfterViewInit  {
   /* 🧠 Reminder
   lat (North): 50.708632 
   lon (East) : 5.6750872
   */
   private map: any;
+  private _defaultTileSet = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  private _defaultAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   private _eventIconUrl = 'assets/app/images/colored-marker-event.png';
   private _eventIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
@@ -30,18 +32,7 @@ export class EventMapComponent implements /*OnInit, */AfterViewInit  {
   @Input()
   geoJsonFeatures!: any    // TODO: attribut itineraryData non initialisé !
 
-  constructor(
-    //private osmService: OsmService
-  ) { }
-
-  /*
-  ngOnInit(): void {
-    this.osmService.getIniterary(this.userGpsPos, this.eventGpsPos)
-      .subscribe((res: any) => {
-        this.geoJsonFeatures = res.features
-      })
-  }
-  */
+  constructor() { }
 
   ngAfterViewInit(): void {
     this._initMap()
@@ -51,16 +42,26 @@ export class EventMapComponent implements /*OnInit, */AfterViewInit  {
     // Init Map
     this.map = L.map('map');
 
-    // Add tiles
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 8,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
+    // Add base tiles
+    const tiles = L.tileLayer(
+      this._defaultTileSet,
+      {
+        maxZoom: 18,
+        minZoom: 8,
+        attribution: this._defaultAttribution
+      }
+    );
     tiles.addTo(this.map);
 
-    this._drawItinerary();
+    // Add layers
     this._drawMarkers();
+    this._drawItinerary();
+
+    // Adjust zoom
+    this.map.fitBounds([
+      [this.eventGpsPos.lat, this.eventGpsPos.lon],
+      [this.userGpsPos.lat, this.userGpsPos.lon]]
+    )
   }
 
   private _drawMarkers(){
@@ -75,10 +76,10 @@ export class EventMapComponent implements /*OnInit, */AfterViewInit  {
       tooltipAnchor: [16, -28],
       shadowSize: [41, 41]
     });
-    L.marker(
+    const eventMarker = L.marker(
       [this.eventGpsPos.lat, this.eventGpsPos.lon],
       {icon: eventIcon}
-    ).addTo(this.map);
+    )
     
     const userIcon = L.icon({
       iconRetinaUrl: this._userIconRetinaUrl,
@@ -90,30 +91,28 @@ export class EventMapComponent implements /*OnInit, */AfterViewInit  {
       tooltipAnchor: [16, -28],
       shadowSize: [41, 41]
     });
-    L.marker(
+    const userMarker = L.marker(
       [this.userGpsPos.lat, this.userGpsPos.lon], 
       {icon: userIcon}
-    ).addTo(this.map);
+    )
 
-    this.map.fitBounds([
-      [this.eventGpsPos.lat, this.eventGpsPos.lon],
-      [this.userGpsPos.lat, this.userGpsPos.lon]])
+    this.map.addLayer(L.layerGroup([userMarker, eventMarker]))
   }
 
   private _drawItinerary(){
-    /*const itineraryLayer = */L.geoJSON(
+    const itineraryLayer = L.geoJSON(
       this.geoJsonFeatures,
       {
-        style: {
-          color: '#008f68',
-          weight: 3,
-          opacity: 0.5,
-          //fillOpacity: 0.8,
-          //fillColor: 'none'
-        }
+        style: (feature) => ({
+          weight: 5,
+          opacity: 0.8,
+          color: '#0288D1',
+          fillOpacity: 0.8,
+          fillColor: '#0288D1;'
+        }),
       }
-    ).addTo(this.map);
+    )
 
-    //this.map.addLayer(itineraryLayer);
+    this.map.addLayer(itineraryLayer);
   }
 }

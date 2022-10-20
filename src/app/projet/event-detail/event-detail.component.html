@@ -5,7 +5,7 @@
         <div class="card">
             <div *ngIf="event" class="grid">
                 <div class="col-4" style="position: relative;">
-                    <h5>{{ event.description }}</h5>
+                    <h5 style="text-align: center;">{{ event.description }}</h5>
                     <p>
                         <em>Du {{ event.datetime_start | date: 'dd MMM yyyy H:mm' }} au {{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}</em>
                         <br />
@@ -36,7 +36,11 @@
                                 <td>
                                     <span>🚗 : {{ distance | km }}</span><br />
                                     <span>🕑 : {{ duration | secondes }}</span><br />
-                                    <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (allez-retour)</span>
+                                    <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (A-R)</span><br />
+                                    <br />
+                                    <span class="info">
+                                        <em>{{ meta_attribution.split(' | ')[0] }}&nbsp;v{{ meta_engine_version }}</em>
+                                    </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -79,7 +83,7 @@
                         ></button>
                     </div>
                 </div>
-                <div  *ngIf="user" class="col">
+                <div  *ngIf="user && !loading" class="col">
                     <app-event-map
                         [eventGpsPos]="event.gps"
                         [userGpsPos]="user.gps"

@@ -11,13 +11,6 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Page Event Detail:
-	- calcul trajet avec coordo GPS user
-		- calcul KMs
-			- On ne passe jamais dans le .then qui doit appeler mon service OSM
-			🐛 Meme avec les données, leaflet ne dessine pas mon trajet...
-		- calcul consommation (⚠️ aller-retour)
-
 o Réessayer la carte des events? (sans mettre le bouton dans la table, peut etre c'est ça qui mettait la schtouille)
 
 o Lister la batterie de tests à faire
