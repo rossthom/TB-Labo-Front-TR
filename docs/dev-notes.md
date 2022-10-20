@@ -11,22 +11,9 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Réessayer la carte des events? (sans mettre le bouton dans la table, peut etre c'est ça qui mettait la schtouille)
-
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
-- Clean code (everywhere, html, css, ts, modules, routes, ...):
-	- Clean json.data, json.full.data, json.pristine.data
-	- CSS: rapatrier mon CSS à un endroit
-	- comments:
-		- check TODOs, DEBUG (laisser les todos pertinents!)
-		- delete commented code and unnecessary comments
-		- check imports (unused, order)
-	- debug elements
-		- check debug elements dans interface
-		- check console.logs
-		- check alerts
 
 o git: update Readme
 	- mention de la présentation PDF dans docs

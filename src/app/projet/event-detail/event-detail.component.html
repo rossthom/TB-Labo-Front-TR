@@ -21,7 +21,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="border-right-width: 0"><i class="pi pi-map-marker text-red-500" style="font-size: 2rem"></i></td>
+                                    <td style="border-right-width: 0"><img src="../../../assets/app/images/colored-marker-event.png"></td>
                                     <td class="mr-3"  style="border-left-width: 0">
                                         <p>
                                             <b *ngIf="event.location != ''">{{ event.location }}</b>
@@ -82,7 +82,7 @@
                         ></button>
                     </div>
                 </div>
-                <div  *ngIf="user && !loading" class="col">
+                <div *ngIf="user && !loading" class="col">
                     <app-event-map
                         [eventGpsPos]="event.gps"
                         [userGpsPos]="user.gps"

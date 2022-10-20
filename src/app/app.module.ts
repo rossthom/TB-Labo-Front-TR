@@ -13,6 +13,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -34,6 +35,7 @@ import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { SecondsToReadablePipe } from './shared/pipes/seconds-to-readable.pipe';
 import { KmPipe } from './shared/pipes/km.pipe';
+import { AllEventsMapComponent } from './projet/events-list/all-events-map/all-events-map.component';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { KmPipe } from './shared/pipes/km.pipe';
         TestboardComponent,
         SecondsToReadablePipe,
         KmPipe,
+        AllEventsMapComponent,
     ],
     imports: [
         // Angular
@@ -67,6 +70,7 @@ import { KmPipe } from './shared/pipes/km.pipe';
         InputTextModule,
         PasswordModule,
         TableModule,
+        TabViewModule,
         ToastModule,
         // Application
         AppRoutingModule,
