@@ -17,7 +17,6 @@
             "label": "ASBL"
         }
     ],
-
     "event_types": [
         {
             "id": 1,
@@ -40,7 +39,6 @@
             "label": "Sortie Nature"
         }
     ],
-
     "cooperatives": [
         {
             "id": 1,
@@ -57,8 +55,8 @@
             },
             "logo": "https://www.natagora.be/themes/custom/natagora/img/donation_v2/logo1.png",
             "gps": {
-                "lon": 	4.8629776,
-                "lat": 	50.4731373
+                "lon": 4.8629776,
+                "lat": 50.4731373
             }
         },
         {
@@ -157,7 +155,6 @@
             }	
         }        
     ],
-
     "events": [
         {
             "id": 1,
@@ -424,7 +421,6 @@
             }
         }
     ],
-
     "participants": [
         {
             "id": 1,
@@ -439,7 +435,16 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [
+                1,
+                6,
+                5,
+                2
+            ],
+            "gps": {
+                "lon": 4.8723252,
+                "lat": 50.4589561
+            }
         },
         {
             "id": 2,
@@ -454,7 +459,11 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [],
+            "gps": {
+                "lon": 5.1008664,
+                "lat": 50.2964911
+            }
         },
         {
             "id": 3,
@@ -469,7 +478,11 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [],
+            "gps": {
+                "lon": 5.1238439,
+                "lat": 50.4359066
+            }
         },
         {
             "id": 4,
@@ -484,7 +497,11 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [],
+            "gps": {
+                "lon": 5.1594475,
+                "lat": 50.3408694
+            }
         },
         {
             "id": 5,
@@ -499,7 +516,11 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [],
+            "gps": {
+                "lon": 4.900545,
+                "lat": 50.4473127
+            }
         },
         {
             "id": 6,
@@ -514,7 +535,11 @@
                 "street_name": "",
                 "street_nb": ""
             },
-            "events_participation": []
+            "events_participation": [],
+            "gps": {
+                "lon": 5.24081380,
+                "lat": 50.51808560
+            }
         }
     ]
 }

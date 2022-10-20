@@ -5,61 +5,60 @@
         <div class="card">
             <div *ngIf="event" class="grid">
                 <div class="col-4" style="position: relative;">
-                    <h5 style="text-align: center;">{{ event.description }}</h5>
-                    <p>
-                        <em>Du {{ event.datetime_start | date: 'dd MMM yyyy H:mm' }} au {{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}</em>
+                    <div class="p-fluid col pt-0 pb-0">
+                        <h5 style="text-align: center;">{{ event.description }}</h5>
+                        <p>
+                            <em>Du {{ event.datetime_start | date: 'dd MMM yyyy H:mm' }} au {{ event.datetime_end | date: 'dd MMM yyyy H:mm' }}</em>
+                            <br />
+                            <em>{{ event.nb_people_min }} à {{ event.nb_people_max }} participants</em>
+                        </p>
+                        <table class="my-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="mr-3">Adresse</th>
+                                    <th>Trajet</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border-right-width: 0"><i class="pi pi-map-marker text-red-500" style="font-size: 2rem"></i></td>
+                                    <td class="mr-3"  style="border-left-width: 0">
+                                        <p>
+                                            <b *ngIf="event.location != ''">{{ event.location }}</b>
+                                            <br />
+                                            <span *ngIf="event.address.street_name">
+                                                {{ event.address.street_name }}
+                                                <span *ngIf="event.address.street_nb">, {{ event.address.street_nb }}</span>
+                                            </span>
+                                            <br />
+                                            <span>{{ event.address.postal_code }}&nbsp;{{ event.address.city }}</span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span>🚗 : {{ distance | km }}</span><br />
+                                        <span>🕑 : {{ duration | secondToReadable }}</span><br />
+                                        <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (A-R)</span><br />
+                                        <br />
+                                        <em><a class="info" href="https://openrouteservice.org/" target="_blank">{{ meta_attribution.split(' | ')[0] }}&nbsp;v{{ meta_engine_version }}</a></em>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <br />
-                        <em>{{ event.nb_people_min }} à {{ event.nb_people_max }} participants</em>
-                    </p>
-                    <table class="my-table">
-                        <thead>
-                            <tr>
-                                <th colspan="2" class="mr-3">Adresse</th>
-                                <th>Trajet</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="border-right-width: 0"><i class="pi pi-map-marker text-red-500" style="font-size: 2rem"></i></td>
-                                <td class="mr-3"  style="border-left-width: 0">
-                                    <p>
-                                        <b *ngIf="event.location != ''">{{ event.location }}</b>
-                                        <br />
-                                        <span *ngIf="event.address.street_name">
-                                            {{ event.address.street_name }}
-                                            <span *ngIf="event.address.street_nb">, {{ event.address.street_nb }}</span>
-                                        </span>
-                                        <br />
-                                        <span>{{ event.address.postal_code }}&nbsp;{{ event.address.city }}</span>
-                                    </p>
-                                </td>
-                                <td>
-                                    <span>🚗 : {{ distance | km }}</span><br />
-                                    <span>🕑 : {{ duration | secondToReadable }}</span><br />
-                                    <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (A-R)</span><br />
-                                    <br />
-                                    <span class="info">
-                                        <em>{{ meta_attribution.split(' | ')[0] }}&nbsp;v{{ meta_engine_version }}</em>
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br />
-                    <span 
-                    *ngIf="checkUserParticipation()" 
-                    class="info mb-2"
-                    >💗&nbsp;<em>Vous participez déjà à cet évènement</em></span>
-                    <button pButton pRipple 
-                        *ngIf="!checkUserParticipation()"
-                        label="Participer"
-                        icon="pi pi-ticket"
-                        type="button" 
-                        class="p-button-outlined p-button-sm p-button-success mr-2 mb-2" 
-                        (click)="participate()"
-                    ></button>
-                    <br />
-                    <div class="p-fluid col pt-0 pb-0 stick-bottom">
+                        <span 
+                        *ngIf="checkUserParticipation()" 
+                        class="info mb-2"
+                        >💗&nbsp;<em>Vous participez déjà à cet évènement</em></span>
+                        <button pButton pRipple 
+                            *ngIf="!checkUserParticipation()"
+                            label="Participer"
+                            icon="pi pi-ticket"
+                            type="button" 
+                            class="p-button-outlined p-button-sm p-button-success mr-2 mb-2" 
+                            (click)="participate()"
+                        ></button>
+                    </div>
+                    <div class="p-fluid col pt-0 pb-0 mt-5">
                         <h4>Proposé par: </h4>
                         <div *ngIf="coop" style="text-align: center">
                             <span>

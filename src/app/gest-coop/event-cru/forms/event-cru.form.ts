@@ -1,8 +1,8 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { OsmService } from "../../../openstreetmap/shared/services/osm.service";
 import { minMaxValidator } from "../../shared/validators/minMax.validator";
 import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 import { startEndDateValidator } from "../../shared/validators/startEndDate.validator";
+import { OsmService } from "src/app/openstreetmap/shared/services/osm.service";
 
 export function generateCRUEventForm(fb: FormBuilder, osmService: OsmService): FormGroup {
     return fb.group({

@@ -1,6 +1,5 @@
 import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { resolve } from 'dns';
 import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
@@ -14,7 +13,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
-  styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit {
   eventId: number = 0
@@ -29,7 +27,7 @@ export class EventDetailComponent implements OnInit {
   meta_engine_version: string = ""
   
   /**
-   * Hypothèse de base pour le calcul: 
+   * ℹ️ Hypothèse de base pour le calcul: 
    * Une voiture qui consomme 5 litre/100km va émettre 5L x 2392 g/L / 100 (par km) = 120 g CO2/km.
    */
   private _defaultConso = 5
@@ -37,11 +35,12 @@ export class EventDetailComponent implements OnInit {
   totalEmissions: number = 0
 
   /**
-   * Permet de charger la carte seulement une fois toutes les données chargées.
+   * ℹ️ Permet de charger la carte seulement une fois toutes les données chargées.
    * Sinon, la carte ne récupère pas les données GeoJSON à temps pour s'initialiser correctement.
    * Le chargement de la carte est protégé par un *ngIf sur loading.
    */
   loading: boolean = true;    
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -60,6 +59,7 @@ export class EventDetailComponent implements OnInit {
       this._getData()
     }
   }
+
 
   private _getData(){
     // I need events and users to be retrieved first, then I can calculate the itinerary
@@ -101,21 +101,21 @@ export class EventDetailComponent implements OnInit {
     })
   }
 
-
   /**
    * Calculates how much CO2 is emitted for the travel, depending on the car's performences
    * @param {number} distanceInM - distance to travel in meters.
    * @param {number} conso - how much liters of gas the car uses for 100 km.
-   * @param {number} emissions - the CO2 emissions of the car per liter consumed.
+   * @param {number} emission - the CO2 emissions of the car per liter consumed.
    * @returns {number} grams of CO2 emitted for the distance travelled
    */
   _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
     let nbKm = distanceInM/1000
     let emitPerKm = conso / 100 * emission
 
-    return emitPerKm * nbKm // total emissions
+    return emitPerKm * nbKm     // = total emissions
 
   }
+
 
   checkUserParticipation(): boolean{
     return this.user?.events_participation.includes(this.event?.id)

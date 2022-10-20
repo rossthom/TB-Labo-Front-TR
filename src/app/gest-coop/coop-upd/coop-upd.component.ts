@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
 import { CoopService } from '../shared/services/coop.service';
-import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
-import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Component({
   selector: 'app-coop-upd',
@@ -43,6 +43,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
     this._fillFormWithCoop()
   }
 
+  
   get formControls() { 
     return this.updCoopForm.controls; 
   }

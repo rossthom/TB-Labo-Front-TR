@@ -63,6 +63,7 @@ export class EventCruComponent implements OnInit, OnChanges {
     }
   }
 
+
   get formControls() { 
     return this.cruEventForm.controls; 
   }
@@ -147,7 +148,7 @@ export class EventCruComponent implements OnInit, OnChanges {
   // 👁️‍🗨️ READ Mode
   closePopup(){
     this._emptyForm()
-    this.clickOnEventClose.emit(/*this.event.id*/)
+    this.clickOnEventClose.emit()
   }
   
   
@@ -182,7 +183,7 @@ export class EventCruComponent implements OnInit, OnChanges {
   
   cancelModifications(){
     this._emptyForm()
-    this.clickOnEventCancel.emit(/*this.event.id*/)
+    this.clickOnEventCancel.emit()
   }
   
 

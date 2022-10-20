@@ -26,10 +26,10 @@ export class CoopLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   get formControls() { 
     return this.coopLoginForm.controls; 
   }
-
 
   checkLogin(){
     this.coopAuthService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)

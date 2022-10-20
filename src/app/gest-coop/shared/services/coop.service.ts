@@ -4,8 +4,8 @@ import { Observable, mergeMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CooperativeDtoNew, CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
 import { Category } from '../models/types.model';
-import { OsmService } from '../../../openstreetmap/shared/services/osm.service';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 
 @Injectable({
   providedIn: 'root'
@@ -36,19 +36,6 @@ export class CoopService {
      * _embed is for one-to-many
     */
     return this.httpC.get<CooperativeView>(this._apiUrl+"cooperatives/" + id + "?_expand=coop_type")
-    
-    /* Old code. It worked, but it's pointless now.
-    return this.httpC.get<ICooperative>(this._apiUrl+"cooperatives/" + id).pipe(
-      switchMap((coop: ICooperative) => this.httpC.get<Category>(this._apiUrl+"coop_types/" + coop.coop_type_id)
-        .pipe(
-          map((c: Category) => {
-            coop.coop_type_label = c.label
-            return coop
-          }
-          )
-        )
-      ),
-    */
   }
 
   updateCoop(coop: CooperativeDtoUpd){

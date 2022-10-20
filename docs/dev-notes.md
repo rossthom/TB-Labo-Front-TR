@@ -16,15 +16,15 @@ o Réessayer la carte des events? (sans mettre le bouton dans la table, peut etr
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
-o Clean code (everywhere, html, css, ts, modules, routes, ...):
-	o Clean json.data, json.full.data, json.pristine.data
+- Clean code (everywhere, html, css, ts, modules, routes, ...):
+	- Clean json.data, json.full.data, json.pristine.data
 	- CSS: rapatrier mon CSS à un endroit
-	o comments:
+	- comments:
 		- check TODOs, DEBUG (laisser les todos pertinents!)
-		o delete commented code and unnecessary comments
-		o check imports (unused, order)
-	o debug elements
-		o check debug elements dans interface
+		- delete commented code and unnecessary comments
+		- check imports (unused, order)
+	- debug elements
+		- check debug elements dans interface
 		- check console.logs
 		- check alerts
 

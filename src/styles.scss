@@ -47,9 +47,12 @@ div.my-grid>div {
 
 
 /* Information text */
-span.info {
-    color: #0288D1;
+.info {
+    color: #0288D1 !important;
     display: inline-block;
     width: 100%;
     text-align: center;
+}
+a.info:hover {
+    text-decoration: underline;
 }

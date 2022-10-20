@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generateNewCoopForm } from './forms/coop-new.form';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
 import { CoopService } from '../shared/services/coop.service';
-import { OsmService } from '../../openstreetmap/shared/services/osm.service';
-import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { CoopAuthService } from '../shared/services/coop-auth.service';
+import { generateNewCoopForm } from './forms/coop-new.form';
 
 @Component({
   selector: 'app-coop-new',
@@ -32,6 +32,7 @@ export class CoopNewComponent implements OnInit {
       .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
 
+  
   get formControls() { 
     return this.newCoopForm.controls; 
   }

@@ -17,7 +17,7 @@ export class UserOrCoopLoggedOutGuard implements CanActivateChild {
 
   canActivateChild(): Observable<boolean> | Promise<boolean> | boolean
   {
-    // !! This guard is used to block routes when a user OR a coop is connected
+    // ℹ️ !! This guard is used to block routes when a user OR a coop is connected
     let userIsConnected = this.userAuthService.userIsConnected
     let coopIsConnected = this.coopAuthService.coopIsConnected
 

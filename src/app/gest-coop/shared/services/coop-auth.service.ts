@@ -9,7 +9,6 @@ import { CooperativeLogin } from '../models/coop.model';
 })
 export class CoopAuthService {
   private _apiUrl: string = environment.dataUrl
-  //private _coopIsConnectedKey = environment.coopIsConnectedKey 
   private _coopIdKey = environment.coopIdKey
 
   connectedCoopId: number = 0
@@ -25,12 +24,14 @@ export class CoopAuthService {
     this.verifyLogged()
   }
 
+
   _updateConnectionStatus(coopId: number){
     this.connectedCoopId = coopId
     this.coopIsConnected = this.connectedCoopId != 0
 
     this.emit_isConnect()
   }
+
 
   verifyLogged() {
     let tmpConnectedCoopId = localStorage.getItem(this._coopIdKey)
@@ -57,11 +58,9 @@ export class CoopAuthService {
 
   login(coopId: number, remember: boolean) {
     if (remember) {
-      //localStorage.setItem(this._coopIsConnectedKey, "true")
       localStorage.setItem(this._coopIdKey, coopId.toString())
     }
     else{
-      //sessionStorage.setItem(this._coopIsConnectedKey, "true")
       sessionStorage.setItem(this._coopIdKey, coopId.toString())
     }
 
@@ -69,9 +68,7 @@ export class CoopAuthService {
   }
 
   logout(){
-    //localStorage.removeItem(this._coopIsConnectedKey)
     localStorage.removeItem(this._coopIdKey)
-    //sessionStorage.removeItem(this._coopIsConnectedKey)
     sessionStorage.removeItem(this._coopIdKey)
     
     this._updateConnectionStatus(0)

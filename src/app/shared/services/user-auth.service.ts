@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, mergeMap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
-import { environment } from 'src/environments/environment';
 import { UserDtoNew, UserLogin } from '../models/user.model';
 
 @Injectable({
@@ -11,7 +11,6 @@ import { UserDtoNew, UserLogin } from '../models/user.model';
 })
 export class UserAuthService {
   private _apiUrl: string = environment.dataUrl
-  //private _userIsConnectedKey = environment.userIsConnectedKey
   private _userIdKey = environment.userIdKey
 
   connectedUserId: number = 0
@@ -54,8 +53,6 @@ export class UserAuthService {
       tmpConnectedUserId = sessionStorage.getItem(this._userIdKey)
     }
 
-    //this.connectedUserId = tmpConnectedIserId ? parseInt(tmpConnectedIserId) : 0
-    //this.userIsConnected = this.connectedUserId != 0
     this._updateConnectionStatus(tmpConnectedUserId ? parseInt(tmpConnectedUserId) : 0)
   }
 
@@ -75,27 +72,19 @@ export class UserAuthService {
 
   login(userId: number, remember: boolean) {
     if (remember) {
-      //localStorage.setItem(this._userIsConnectedKey, "true")
       localStorage.setItem(this._userIdKey, userId.toString())
     }
     else{
-      //sessionStorage.setItem(this._userIsConnectedKey, "true")
       sessionStorage.setItem(this._userIdKey, userId.toString())
     }
-    // this.connectedUserId = userId
-    // this.userIsConnected = true
-    // this.emit_isConnect()
+
     this._updateConnectionStatus(userId)
   }
 
   logout(){
-    //localStorage.removeItem(this._userIsConnectedKey)
     localStorage.removeItem(this._userIdKey)
-    //sessionStorage.removeItem(this._userIsConnectedKey)
     sessionStorage.removeItem(this._userIdKey)
-    // this.connectedUserId = 0;
-    // this.userIsConnected = false;
-    // this.emit_isConnect()
+
     this._updateConnectionStatus(0)
   }
   

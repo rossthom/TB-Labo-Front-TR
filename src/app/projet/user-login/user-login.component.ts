@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { generateUserLoginForm } from 'src/app/projet/user-login/forms/user-login.form';
 import { UserLogin } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
+import { generateUserLoginForm } from './forms/user-login.form';
 
 @Component({
   selector: 'app-user-login',

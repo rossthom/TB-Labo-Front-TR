@@ -22,6 +22,7 @@ export class EventsListComponent implements OnInit {
   loading: boolean = true;
   @ViewChild('filter') filter!: ElementRef;
 
+
   constructor(
     private coopService: CoopService,
     private eventService: EventService,
@@ -33,6 +34,7 @@ export class EventsListComponent implements OnInit {
     this.getAllEvents()
     this.loading = false;
   }
+
 
   getAllEvents(){
     this.eventService.getAllEvents()
@@ -53,25 +55,7 @@ export class EventsListComponent implements OnInit {
   checkUserParticipation(event: EventView): boolean{
     return this.connectedUser?.events_participation.includes(event?.id)
   }
-
-  /*
-  showEvent(event: EventView){
-    this.eventPopupVisible = true
-    this.selectedEvent = event
-    this.getOneCoop(event.coop_id)
-  }
-
-  eventViewClosed(eventId: number){
-    this.eventPopupVisible = false
-  }
-
-
-  participate(eventId: number) {
-    this.userAuthService.$connectedUserId
-      .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
-        .subscribe(user => this.connectedUser = user))
-  }
-*/
+  
 
   // Sakai Table Methods
   onGlobalFilter(table: Table, event: Event) {
