@@ -71,6 +71,7 @@ export class EventDetailComponent implements OnInit {
         this.osmService.getIniterary(this.user.gps, this.event.gps)
         .subscribe((res: any) => {
           this.geoJsonFeatures = res.features
+          console.log(this.geoJsonFeatures)
           this.distance = this.geoJsonFeatures[0].properties.summary.distance
           this.duration = this.geoJsonFeatures[0].properties.summary.duration
           
