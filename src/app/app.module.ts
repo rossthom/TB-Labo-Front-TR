@@ -13,6 +13,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -69,6 +70,7 @@ import { AllEventsMapComponent } from './projet/events-list/all-events-map/all-e
         InputTextModule,
         PasswordModule,
         TableModule,
+        TabViewModule,
         ToastModule,
         // Application
         AppRoutingModule,
