@@ -10,6 +10,6 @@ export class KmPipe implements PipeTransform {
   }
 
   metersToKm(value: number){
-    return (value / 1000).toString() + ' km'
+    return `${(value / 1000).toFixed(2)} km`
   }
 }

@@ -50,21 +50,24 @@ export class EventDetailComponent implements OnInit {
       
       // I need events and users to be retrieved first, then I can calculate the itinerary
       Promise.all([
-        new Promise<string>((resolve, reject) => {
+        new Promise<EventView>((resolve, reject) => {
           this.gestEventService.getOneEvent(this.eventId)
             .subscribe((event: EventView) => {
               this.event = event
               this.gestCoopService.getOneCoop(this.event.coop_id)
                 .subscribe(coop => this.coop = coop)
+              resolve(this.event)
             })
         }),
         
-        new Promise<string>((resolve, reject) => {
+        new Promise<UserView>((resolve, reject) => {
           this.userService.getOneUser(this.userAuthService.connectedUserId)
-          .subscribe(user => this.user = user)
+          .subscribe((user: UserView) => {
+            this.user = user
+            resolve(this.user)
+          })
         })
-      ]).then((res: string[]) => {
-        console.log("Gif de John Travolta tout perdu dans la vie")
+      ]).then((res: any[]) => {
         this.osmService.getIniterary(this.user.gps, this.event.gps)
         .subscribe((res: any) => {
           this.geoJsonFeatures = res.features
