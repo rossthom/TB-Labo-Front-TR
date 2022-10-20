@@ -18,10 +18,13 @@ o Page Event Detail:
 			🐛 Meme avec les données, leaflet ne dessine pas mon trajet...
 		👷 calcul consommation (⚠️ aller-retour)
 
+o Réessayer la carte des events? (sans mettre le bouton dans la table, peut etre c'est ça qui mettait la schtouille)
+
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
+	o CSS: rapatrier mon CSS à un endroit
 	o comments: 
 		o check TODOs, DEBUG (laisser les todos pertinents!)
 		o delete commented code and unnecessary comments
@@ -33,8 +36,10 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o supprimer page tests :-)
 
 o git: update Readme
+	- mention de la présentation PDF dans docs
 
 o Update Présentation
+	o mettre le PDF dans docs/PROJET/
 
 
 # PROJECT INIT: 
