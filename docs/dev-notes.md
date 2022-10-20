@@ -11,7 +11,9 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Réessayer la carte des events? (sans mettre le bouton dans la table, peut etre c'est ça qui mettait la schtouille)
+- Réessayer la carte des events? (sans mettre le bouton dans la table, peut etre c'est ça qui mettait la schtouille)
+	- Popups sur les marqueurs pour le fun
+	o TabView ?
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo

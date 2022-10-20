@@ -34,6 +34,7 @@ import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
 import { SecondsToReadablePipe } from './shared/pipes/seconds-to-readable.pipe';
 import { KmPipe } from './shared/pipes/km.pipe';
+import { AllEventsMapComponent } from './projet/events-list/all-events-map/all-events-map.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { KmPipe } from './shared/pipes/km.pipe';
         TestboardComponent,
         SecondsToReadablePipe,
         KmPipe,
+        AllEventsMapComponent,
     ],
     imports: [
         // Angular

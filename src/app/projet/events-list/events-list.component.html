@@ -94,5 +94,15 @@
 				</ng-template>
     		</p-table>
         </div>
+		<div class="card">
+			<div class="grid">
+				<div *ngIf="!loading" class="col-12">
+					<app-all-events-map
+						[events]="listEvents"
+						[userGpsPos]="connectedUser.gps"
+					></app-all-events-map>
+				</div>
+			</div>
+		</div>
     </div>
 </div>
