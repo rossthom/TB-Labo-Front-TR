@@ -6,7 +6,7 @@ import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 @Component({
   selector: 'app-event-map',
   templateUrl: './event-map.component.html',
-  styleUrls: ['./event-map.component.scss']
+  styleUrls: ['../../../shared/styles/leaflet-map.style.scss']
 })
 export class EventMapComponent implements AfterViewInit  {
   /* 🧠 Reminder

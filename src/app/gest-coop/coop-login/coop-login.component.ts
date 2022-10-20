@@ -9,7 +9,6 @@ import { generateCoopLoginForm } from './forms/coop-login.form';
 @Component({
   selector: 'app-coop-login',
   templateUrl: './coop-login.component.html',
-  styleUrls: ['./coop-login.component.scss']
 })
 export class CoopLoginComponent implements OnInit {
   coopLoginForm: FormGroup = generateCoopLoginForm(this.fb)

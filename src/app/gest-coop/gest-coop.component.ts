@@ -4,14 +4,14 @@ import { CoopAuthService } from './shared/services/coop-auth.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { CooperativeView } from './shared/models/coop.model';
 import { EventView } from './shared/models/event.model';
-import { GestCoopService } from './shared/services/gest-coop.service';
-import { GestEventService } from './shared/services/gest-event.service';
+import { CoopService } from './shared/services/coop.service';
+import { EventService } from './shared/services/event.service';
 
 
 @Component({
   selector: 'app-gest-coop',
   templateUrl: './gest-coop.component.html',
-  styleUrls: ['./gest-coop.component.scss']
+  styleUrls: ['./shared/styles/table-transposed.style.scss']
 })
 export class GestCoopComponent implements OnInit {
   //listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
@@ -29,8 +29,8 @@ export class GestCoopComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private gestCoopService: GestCoopService,
-    private gestEventService: GestEventService,
+    private coopService: CoopService,
+    private eventService: EventService,
     private coopAuthService: CoopAuthService
   ) {
   }
@@ -44,7 +44,7 @@ export class GestCoopComponent implements OnInit {
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id)
+      this.coopService.getOneCoop(id)
         .subscribe(coop => this.selectedCoop = coop)
 
       this._getEventsFromCoop(id)
@@ -52,7 +52,7 @@ export class GestCoopComponent implements OnInit {
   }
 
   private _getEventsFromCoop(coopId: number){
-    this.gestEventService.getAllEventsFromCoop(coopId)
+    this.eventService.getAllEventsFromCoop(coopId)
       .subscribe(events => this.coopEvents = events)
   }
 
@@ -85,7 +85,7 @@ export class GestCoopComponent implements OnInit {
     }
     else {
       if (eventId != 0) {
-        this.gestEventService.getOneEvent(eventId)
+        this.eventService.getOneEvent(eventId)
           .subscribe((event : EventView) => {
             this.selectedEvent = event
             this.cruEventPopupVisible = true;

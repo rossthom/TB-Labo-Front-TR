@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // PrimeNG Sakai
-import { AppLayoutModule } from './layout/app.layout.module';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -18,6 +17,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 // Application
+import { AppLayoutModule } from './layout/app.layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { GestCoopModule } from './gest-coop/gest-coop.module';
 import { UserAuthService } from './shared/services/user-auth.service';
@@ -32,7 +32,7 @@ import { EventDetailComponent } from './projet/event-detail/event-detail.compone
 import { EventMapComponent } from './projet/event-detail/event-map/event-map.component';
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
-import { SecondesPipe } from './shared/pipes/secondes.pipe';
+import { SecondsToReadablePipe } from './shared/pipes/seconds-to-readable.pipe';
 import { KmPipe } from './shared/pipes/km.pipe';
 
 
@@ -46,9 +46,9 @@ import { KmPipe } from './shared/pipes/km.pipe';
         EventsListComponent,
         EventDetailComponent,
         EventMapComponent,
-        TestboardComponent,
         NotfoundComponent,
-        SecondesPipe,
+        TestboardComponent,
+        SecondsToReadablePipe,
         KmPipe,
     ],
     imports: [

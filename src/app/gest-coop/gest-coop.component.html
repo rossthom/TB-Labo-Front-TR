@@ -13,7 +13,7 @@
                             <img src="{{ selectedCoop.logo }}" width="70%">
                         </div>
                         <div class="col">
-                            <table>
+                            <table class="my-transposed">
                                 <tbody>
                                     <tr>
                                         <th>Nom</th>
@@ -64,7 +64,7 @@
                 <!-- ℹ️ Coop's Events list -->
                 <div *ngIf="coopEvents" class="col-6">
                     <h3>Evènements</h3>
-                    <table>
+                    <table class="my-transposed">
                         <tbody>
                             <tr *ngFor="let event of coopEvents">
                                 <th style="text-align: right">

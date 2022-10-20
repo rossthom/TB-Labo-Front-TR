@@ -17,8 +17,9 @@ o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
+	o Clean json.data, json.full.data, json.pristine.data
 	o CSS: rapatrier mon CSS à un endroit
-	o comments: 
+	o comments:
 		o check TODOs, DEBUG (laisser les todos pertinents!)
 		o delete commented code and unnecessary comments
 	o debug elements

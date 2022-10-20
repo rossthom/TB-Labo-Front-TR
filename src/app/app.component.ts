@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { GestCoopService } from './gest-coop/shared/services/gest-coop.service';
+import { CoopService } from './gest-coop/shared/services/coop.service';
 import { LayoutService } from './layout/service/app.layout.service';
 @Component({
     selector: 'app-root',

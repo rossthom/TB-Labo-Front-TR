@@ -2,16 +2,15 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
-import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
+import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
+import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-coop-view',
-  templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.scss']
+  templateUrl: './events-list.component.html'
 })
 export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
@@ -25,8 +24,8 @@ export class EventsListComponent implements OnInit {
   @ViewChild('filter') filter!: ElementRef;
 
   constructor(
-    private gestCoopService: GestCoopService,
-    private gestEventService: GestEventService,
+    private coopService: CoopService,
+    private eventService: EventService,
     private userAuthService: UserAuthService,
     private userService: UserService
   ) { }
@@ -37,7 +36,7 @@ export class EventsListComponent implements OnInit {
   }
 
   getAllEvents(){
-    this.gestEventService.getAllEvents()
+    this.eventService.getAllEvents()
       .subscribe(events => this.listEvents = events)
 
     this.userAuthService.$connectedUserId
@@ -47,7 +46,7 @@ export class EventsListComponent implements OnInit {
 
   getOneCoop(id: number) {
     if (id != 0) {
-      this.gestCoopService.getOneCoop(id)
+      this.coopService.getOneCoop(id)
         .subscribe(coop  => this.selectedCoop = coop)
     }
   }

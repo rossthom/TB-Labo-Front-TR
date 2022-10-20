@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventDtoNew, EventDtoUpd, EventView } from '../shared/models/event.model';
 import { Category } from '../shared/models/types.model';
-import { GestEventService } from '../shared/services/gest-event.service';
+import { EventService } from '../shared/services/event.service';
 import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { generateCRUEventForm } from './forms/event-cru.form';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
@@ -10,7 +10,7 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
 @Component({
   selector: 'app-event-cru',
   templateUrl: './event-cru.component.html',
-  styleUrls: ['./event-cru.component.scss']
+  styleUrls: ['../shared/styles/my-form-group.style.scss']
 })
 export class EventCruComponent implements OnInit, OnChanges {
   private _unknownEventType: Category = <Category>{id: 0, label:"Type d'évènement inconnu"}
@@ -43,7 +43,7 @@ export class EventCruComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestEventService: GestEventService,
+    private gestEventService: EventService,
     private osmService: OsmService
   ) { }
 

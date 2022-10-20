@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestCoopService } from '../shared/services/gest-coop.service';
+import { CoopService } from '../shared/services/coop.service';
 import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
@@ -10,7 +10,7 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
 @Component({
   selector: 'app-coop-upd',
   templateUrl: './coop-upd.component.html',
-  styleUrls: ['./coop-upd.component.scss']
+  styleUrls: ['../shared/styles/my-form-group.style.scss']
 })
 export class CoopUpdComponent implements OnInit, OnChanges {
   updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.osmService)
@@ -28,13 +28,13 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private gestCoopService: GestCoopService,
+    private coopService: CoopService,
     private osmService: OsmService
   ) { }
 
   
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes()
+    this.coopService.getCoopTypes()
     .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
   
@@ -78,7 +78,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
 
     console.log(coopUpd)
 
-    this.gestCoopService.updateCoop(coopUpd)
+    this.coopService.updateCoop(coopUpd)
       .subscribe(_ => this.clickOnCoopUpdate.emit(this.cooperative.id))
   }
 

@@ -4,8 +4,8 @@ import { resolve } from 'dns';
 import { MessageService } from 'primeng/api';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
-import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
-import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
+import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
+import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { UserDtoUpdParticipation, UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
@@ -47,8 +47,8 @@ export class EventDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private userAuthService: UserAuthService,
-    private gestEventService: GestEventService,
-    private gestCoopService: GestCoopService,
+    private gestEventService: EventService,
+    private coopService: CoopService,
     private osmService: OsmService,
     private messageService: MessageService
   ) { }
@@ -68,7 +68,7 @@ export class EventDetailComponent implements OnInit {
         this.gestEventService.getOneEvent(this.eventId)
           .subscribe((event: EventView) => {
             this.event = event
-            this.gestCoopService.getOneCoop(this.event.coop_id)
+            this.coopService.getOneCoop(this.event.coop_id)
               .subscribe(coop => this.coop = coop)
             resolve(this.event)
           })

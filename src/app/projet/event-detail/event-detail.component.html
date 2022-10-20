@@ -35,7 +35,7 @@
                                 </td>
                                 <td>
                                     <span>🚗 : {{ distance | km }}</span><br />
-                                    <span>🕑 : {{ duration | secondes }}</span><br />
+                                    <span>🕑 : {{ duration | secondToReadable }}</span><br />
                                     <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (A-R)</span><br />
                                     <br />
                                     <span class="info">

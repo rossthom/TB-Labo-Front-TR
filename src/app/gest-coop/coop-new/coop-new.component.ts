@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
-import { GestCoopService } from '../shared/services/gest-coop.service';
+import { CoopService } from '../shared/services/coop.service';
 import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { CoopAuthService } from '../shared/services/coop-auth.service';
@@ -12,7 +12,7 @@ import { CoopAuthService } from '../shared/services/coop-auth.service';
 @Component({
   selector: 'app-coop-new',
   templateUrl: './coop-new.component.html',
-  styleUrls: ['./coop-new.component.scss']
+  styleUrls: ['../shared/styles/my-form-group.style.scss']
 })
 export class CoopNewComponent implements OnInit {
   newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.osmService, this.coopAuthService)
@@ -22,13 +22,13 @@ export class CoopNewComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private gestCoopService: GestCoopService,
+    private coopService: CoopService,
     private coopAuthService: CoopAuthService,
     private osmService: OsmService
   ) { }
 
   ngOnInit(): void {
-    this.gestCoopService.getCoopTypes()
+    this.coopService.getCoopTypes()
       .subscribe(coopTypes => this.coopTypes = coopTypes)
   }
 
@@ -53,7 +53,7 @@ export class CoopNewComponent implements OnInit {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    this.gestCoopService.insertCoop(coopNew)
+    this.coopService.insertCoop(coopNew)
       .subscribe(_ => this.router.navigate(['/login/coop']))
   }
   
