@@ -8,6 +8,7 @@ export const environment = {
   // Backends URLs
   dataUrl: "http://localhost:3000/",
   nominatimUrl: "https://nominatim.openstreetmap.org/search?",
+  openrouteUrl: "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf62481e238567dd89481f90b77f9e0b8e23d2",
 
   // Storage Keys
   //coopIsConnectedKey: "coopIsConnected",

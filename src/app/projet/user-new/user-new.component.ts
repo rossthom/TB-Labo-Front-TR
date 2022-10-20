@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
-import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { UserDtoNew } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { generateNewUserForm } from './forms/user-new.form';
@@ -13,12 +13,12 @@ import { generateNewUserForm } from './forms/user-new.form';
   styleUrls: ['./user-new.component.scss']
 })
 export class UserNewComponent implements OnInit {
-  newUserForm: FormGroup = generateNewUserForm(this.fb, this.nominatimService, this.userAuthService)
+  newUserForm: FormGroup = generateNewUserForm(this.fb, this.osmService, this.userAuthService)
   
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private nominatimService: NominatimService,
+    private osmService: OsmService,
     private userAuthService: UserAuthService
   ) { }
 

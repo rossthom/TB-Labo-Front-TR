@@ -1,10 +1,10 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
+import { OsmService } from "../../../openstreetmap/shared/services/osm.service";
 import { minMaxValidator } from "../../shared/validators/minMax.validator";
 import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 import { startEndDateValidator } from "../../shared/validators/startEndDate.validator";
 
-export function generateCRUEventForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
+export function generateCRUEventForm(fb: FormBuilder, osmService: OsmService): FormGroup {
     return fb.group({
         name: [
             "",
@@ -98,7 +98,7 @@ export function generateCRUEventForm(fb: FormBuilder, nominatimService: Nominati
             minMaxValidator,
         ],
         asyncValidators: [
-            NominatimValidator.checkAddress(nominatimService),
+            NominatimValidator.checkAddress(osmService),
         ],
         updateOn: 'blur'    // update when loses focus, that's what 'blur' means in this context      
     })

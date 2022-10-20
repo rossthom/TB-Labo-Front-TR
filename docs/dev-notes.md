@@ -1,18 +1,22 @@
 # NOTES:
+build:
+npm i --legacy-peer-deps
+
 json-server start command:
 `json-server --watch .\json-server\data.json --port 3000`
 
 
 # QUESTIONS LOIC
 - ❓ Serieux, comment déclarer une variable basée sur un objet sans utiliser ! ??
-- ❓ Après insert, récup ID coop & user
 
 
 # DEV ROADMAP
-o Page Events Bonus
-	🙏 Carte sur evenements
-		🙏 trajet avec coordo GPS user ?
-		🙏 calcul KM ? (et donner vaguement le temps et conso en voiture ?)
+o Page Event Detail:
+	👷 calcul trajet avec coordo GPS user
+		👷 calcul KMs
+			🐛 On ne passe jamais dans le .then qui doit appeler mon service OSM
+			🐛 Meme avec les données, leaflet ne dessine pas mon trajet...
+		👷 calcul consommation (⚠️ aller-retour)
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
@@ -26,14 +30,11 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 		o check console.logs
 		o check alerts
 	o check imports (unused, order)
+	o supprimer page tests :-)
 
 o git: update Readme
 
 o Update Présentation
-
-
-# Leaflet Setup
-https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
 
 
 # PROJECT INIT: 

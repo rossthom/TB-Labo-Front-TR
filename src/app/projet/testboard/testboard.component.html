@@ -178,35 +178,37 @@
 <div class="card">
     <div class="grid" style="width: 100%;">
         <div class="col-12">
-            <h2>Test Nominatim</h2>
-            <table>
-                <tbody>
-                    <tr *ngFor="let address of testAddresses">
-                        <td>
-                            <b>CP: </b>{{ address.postal_code }}<br />
-                            <b>Cy: </b>{{ address.city }}<br />
-                            <b>St: </b>{{ address.street_name }}<br />
-                            <b>S#: </b>{{ address.street_nb }}<br />
-                        </td>
-                        <td>
-                            <button pButton pRipple 
-                            label="Test 1"
-                            icon="pi pi-cog"
-                            type="button"
-                            class="p-button-outlined p-button-warning mr-2 mb-2"
-                            (click)="testNominatim(address)"
-                            ></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2>Test Openroute</h2>
+            <div class="grid">
+                <div class="col-6">
+                    Start Lon:<br />
+                    <input [ngModel]="startLon">
+                    <br />
+                    <br />
+                    Start Lat:<br />
+                    <input [ngModel]="startLat">
+                </div>
+                <div class="col-6">
+                    End Lon:<br />
+                    <input [ngModel]="endLon">
+                    <br />
+                    <br />
+                    End Lat:<br />
+                    <input [ngModel]="endLat">
+                </div>
+            </div>
+            <button pButton pRipple 
+            label="Test"
+            icon="pi pi-cog"
+            type="button"
+            class="p-button-outlined p-button-warning mr-2 mb-2"
+            (click)="testOpenroute()"
+            ></button>
             <p
-                class="surface-800 text-orange-500"
-                style="font-family: monospace; padding: 5px; white-space: pre-line"
+            class="surface-800 text-orange-500"
+            style="font-family: monospace; padding: 5px; white-space: pre-line"
             >
-                lon: {{ testGps?.lon }}
-                <br />
-                lat: {{ testGps?.lat }}
+                {{ resultOpenRoute | json }}
             </p>
         </div>
     </div>

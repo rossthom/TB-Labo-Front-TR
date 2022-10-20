@@ -5,8 +5,8 @@ import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { Category } from 'src/app/gest-coop/shared/models/types.model';
 import { GestCoopService } from 'src/app/gest-coop/shared/services/gest-coop.service';
 import { GestEventService } from 'src/app/gest-coop/shared/services/gest-event.service';
-import { Address } from 'src/app/openstreetmap/shared/models/types.model';
-import { NominatimService } from 'src/app/openstreetmap/shared/services/nominatim.service';
+import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 
 @Component({
   selector: 'app-testboard',
@@ -26,49 +26,18 @@ export class TestboardComponent implements OnInit {
   selectedEvent!: EventView         // TODO: warning, selectedEvent not initialized
 
   testGps: any = {}
-  testAddresses: Address[] = [
-    {
-      postal_code: 5002,
-      city: 'Namur',
-      street_name: 'Traverse des Muses',
-      street_nb: '1'
-    },
-    {
-      postal_code: 5002,
-      city: 'Namur',
-      street_name: 'Traverse des Muses',
-      street_nb: ''
-    },
-    {
-      postal_code: 5002,
-      city: 'Namur',
-      street_name: '',
-      street_nb: ''
-    },
-    {
-      postal_code: 5000,
-      city: '',
-      street_name: '',
-      street_nb: ''
-    },
-    {
-      postal_code: 1234,
-      city: 'Namur',
-      street_name: '',
-      street_nb: ''
-    },
-    {
-      postal_code: 1234,
-      city: 'gmlkjd',
-      street_name: '',
-      street_nb: ''
-    },
-  ]
+
+
+  startLon: number = 4.8723252
+  startLat: number = 50.4589561
+  endLon: number = 5.1101419
+  endLat: number = 50.3084048
+  resultOpenRoute: any
 
   constructor(
     private gestCoopService: GestCoopService,
     private gestEventService: GestEventService,
-    private nominatimService: NominatimService,
+    private osmService: OsmService,
     private messageService: MessageService
   ) { }
 
@@ -106,11 +75,26 @@ export class TestboardComponent implements OnInit {
   }
 
   testNominatim(address: Address) {
-    this.nominatimService.getAddressGpsLongLat(address)
+    this.osmService.getAddressGpsLongLat(address)
       .subscribe(res => this.testGps = res[0])
   }
 
   toast1() {
     this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+  }
+
+  testOpenroute(){
+    let start = <GpsPosition>{lon: this.startLon , lat: this.startLat}
+    let end = <GpsPosition>{lon: this.endLon, lat: this.endLat}
+
+    this.osmService.getIniterary(start, end)
+      .subscribe((res: any) => {
+        let resSlim = {
+          distance: res.features[0].properties.summary.distance,
+          duration: res.features[0].properties.summary.duration,
+          coordinates: res.features[0].geometry.coordinates
+        }
+        this.resultOpenRoute = resSlim
+      })
   }
 }

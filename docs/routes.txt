@@ -13,7 +13,8 @@
     /user/:id       ProjetModule.UserProfileComponent   canActivate(UserLoggedGuard)
 
 
-/events             GestCoopModule.CoopViewComponent    canActivate(UserLoggedGuard)
+/events             GestCoopModule.CoopViewComponent      canActivate(UserLoggedGuard)
+    /:id            GestCoopModule.EventDetailComponent   canActivate(UserLoggedGuard)
 
 /test               ProjetModule.TestboardComponent
 

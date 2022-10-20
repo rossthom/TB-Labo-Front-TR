@@ -3,70 +3,73 @@
     
     <div class="grid">
         <div class="col-12">
-            <p>Vous êtes né(e) le: {{ connectedUser.birth_date | date: 'dd MMM yyyy'}}</p>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><i class="pi pi-map-marker text-red-500" style="font-size: 2rem"></i></td>
-                        <td>
-                            <p>
-                                <span *ngIf="connectedUser.address.street_name">
-                                    {{ connectedUser.address.street_name }}
-                                    <span *ngIf="connectedUser.address.street_nb">, {{ connectedUser.address.street_nb }}</span>
-                                    <br />
-                                </span>
-                                <span>{{ connectedUser.address.postal_code }}&nbsp;{{ connectedUser.address.city }}</span>
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br />
-            <button pButton pRipple 
-                icon="pi pi-id-card" 
-                label="Voir les Evènements"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/events"
-            ></button>
-            <button pButton pRipple 
-                label="Déconnection"
-                icon="pi pi-sign-out"
-                type="button" 
-                class="p-button-outlined p-button-danger mr-2 mb-2" 
-                (click)="logout()"
-            ></button>
-    
-            <h5>Liste des évènements où vous êtes inscrits:</h5>
-            <p *ngIf="!eventsParticipation || eventsParticipation.length == 0">
-                Vous n'êtes inscrit(e) à aucun évènement
-            </p>
-            <table class="events-list" *ngIf="eventsParticipation">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Nom</th>
-                        <th>Lieu</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let event of eventsParticipation">
-                        <td>
-                            {{ event.datetime_start | date: "dd MMM yyyy" }}
-                        </td>
-                        <td>
-                            <b>{{ event.event_type.label }}</b>
-                        </td>
-                        <td>
-                            {{ event.name }}
-                        </td>
-                        <td>
-                            {{ event.location ? event.location : event.address.city }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <p><b>Vous êtes né(e) le:</b>&nbsp;{{ connectedUser.birth_date | date: 'dd MMM yyyy'}}</p>
+                <p><b>Vous vivez à:</b></p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><i class="pi pi-map-marker text-red-500" style="font-size: 2rem"></i></td>
+                            <td>
+                                <p>
+                                    <span *ngIf="connectedUser.address.street_name">
+                                        {{ connectedUser.address.street_name }}
+                                        <span *ngIf="connectedUser.address.street_nb">, {{ connectedUser.address.street_nb }}</span>
+                                        <br />
+                                    </span>
+                                    <span>{{ connectedUser.address.postal_code }}&nbsp;{{ connectedUser.address.city }}</span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <button pButton pRipple 
+                    icon="pi pi-id-card" 
+                    label="Voir les Evènements"
+                    type="button" 
+                    class="p-button-outlined p-button-primary mr-2 mb-2" 
+                    routerLink="/events"
+                ></button>
+                <button pButton pRipple 
+                    label="Déconnection"
+                    icon="pi pi-sign-out"
+                    type="button" 
+                    class="p-button-outlined p-button-danger mr-2 mb-2" 
+                    (click)="logout()"
+                ></button>
+        
+                <h5>Liste des évènements où vous êtes inscrits:</h5>
+                <p *ngIf="!eventsParticipation || eventsParticipation.length == 0">
+                    Vous n'êtes inscrit(e) à aucun évènement
+                </p>
+                <table class="events-list" *ngIf="eventsParticipation">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Nom</th>
+                            <th>Lieu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let event of eventsParticipation">
+                            <td>
+                                {{ event.datetime_start | date: "dd MMM yyyy" }}
+                            </td>
+                            <td>
+                                <b>{{ event.event_type.label }}</b>
+                            </td>
+                            <td>
+                                {{ event.name }}
+                            </td>
+                            <td>
+                                {{ event.location ? event.location : event.address.city }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

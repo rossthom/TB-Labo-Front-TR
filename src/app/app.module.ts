@@ -18,32 +18,38 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 // Application
-import { GestCoopModule } from './gest-coop/gest-coop.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
-import { HomeComponent } from './projet/home/home.component';
-import { UserLoginComponent } from './projet/user-login/user-login.component';
-import { UserNewComponent } from './projet/user-new/user-new.component';
-import { UserProfileComponent } from './projet/user-profile/user-profile.component';
-import { TestboardComponent } from './projet/testboard/testboard.component';
+import { GestCoopModule } from './gest-coop/gest-coop.module';
 import { UserAuthService } from './shared/services/user-auth.service';
 import { UserService } from './shared/services/user.service';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './projet/home/home.component';
+import { UserNewComponent } from './projet/user-new/user-new.component';
+import { UserLoginComponent } from './projet/user-login/user-login.component';
+import { UserProfileComponent } from './projet/user-profile/user-profile.component';
 import { EventsListComponent } from './projet/events-list/events-list.component';
-import { EventDetailComponent } from './projet/events-list/event-detail/event-detail.component';
+import { EventDetailComponent } from './projet/event-detail/event-detail.component';
+import { EventMapComponent } from './projet/event-detail/event-map/event-map.component';
+import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
+import { TestboardComponent } from './projet/testboard/testboard.component';
+import { SecondesPipe } from './shared/pipes/secondes.pipe';
+import { KmPipe } from './shared/pipes/km.pipe';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        NotfoundComponent,
         HomeComponent,
+        UserNewComponent,
+        UserLoginComponent,
+        UserProfileComponent,
         EventsListComponent,
         EventDetailComponent,
-        UserLoginComponent,
-        UserNewComponent,
-        UserProfileComponent,
+        EventMapComponent,
         TestboardComponent,
+        NotfoundComponent,
+        SecondesPipe,
+        KmPipe,
     ],
     imports: [
         // Angular
