@@ -76,8 +76,6 @@ export class CoopUpdComponent implements OnInit, OnChanges {
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
 
-    console.log(coopUpd)
-
     this.coopService.updateCoop(coopUpd)
       .subscribe(_ => this.clickOnCoopUpdate.emit(this.cooperative.id))
   }

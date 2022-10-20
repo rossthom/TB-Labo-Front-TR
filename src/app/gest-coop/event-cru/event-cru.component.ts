@@ -85,7 +85,6 @@ export class EventCruComponent implements OnInit, OnChanges {
   }
 
   private _emptyForm() {
-    console.log('Empty form...')
     this.event = <EventView>{
         id: 0,
         coop_id: 0,

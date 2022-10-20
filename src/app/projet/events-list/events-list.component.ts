@@ -15,9 +15,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class EventsListComponent implements OnInit {
   listEvents: EventView[] = []
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
-  selectedCoop!: CooperativeView   // TODO: attribut selectedEvent non initialisé !
-  connectedUser!: UserView;        // TODO: attribut selectedEvent non initialisé !
-  //eventPopupVisible: boolean = false;
+  selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
+  connectedUser!: UserView;        // TODO: attribut connectedUser non initialisé !
 
   // Sakai Table properties
   loading: boolean = true;

@@ -14,7 +14,6 @@ import { EventService } from './shared/services/event.service';
   styleUrls: ['./shared/styles/table-transposed.style.scss']
 })
 export class GestCoopComponent implements OnInit {
-  //listCoops!: CooperativeView[]    // DEBUG: FOR DEBUG !
 
   coopId: number = 0
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
@@ -24,7 +23,6 @@ export class GestCoopComponent implements OnInit {
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   cruEventPopupVisible: boolean = false;          // Event popup display status
   cruEventPopupMode: FormMode = FormMode.Read;    // Event popup display mode
-  //cEventPopupVisible: boolean = false;    // CREATE Event popup display status
 
   constructor(
     private router: Router,

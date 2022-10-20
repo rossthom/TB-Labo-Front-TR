@@ -30,7 +30,7 @@ export class EventMapComponent implements AfterViewInit  {
   userGpsPos!: GpsPosition   // TODO: attribut userGpsPos non initialisé !
   
   @Input()
-  geoJsonFeatures!: any    // TODO: attribut itineraryData non initialisé !
+  geoJsonFeatures!: any    // TODO: attribut geoJsonFeatures non initialisé !
 
   constructor() { }
 

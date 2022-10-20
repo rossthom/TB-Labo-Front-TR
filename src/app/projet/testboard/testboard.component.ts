@@ -19,11 +19,10 @@ export class TestboardComponent implements OnInit {
 
 
   cooperatives: CooperativeView[] = []
-  //coopList: string[] = []
-  selectedCoop!: CooperativeView    // TODO: warning, selectedCoop not initialized
+  selectedCoop!: CooperativeView
 
   events: EventView[] = []
-  selectedEvent!: EventView         // TODO: warning, selectedEvent not initialized
+  selectedEvent!: EventView
 
   testGps: any = {}
 

@@ -18,15 +18,15 @@ o Lister la batterie de tests à faire
 
 o Clean code (everywhere, html, css, ts, modules, routes, ...):
 	o Clean json.data, json.full.data, json.pristine.data
-	o CSS: rapatrier mon CSS à un endroit
+	- CSS: rapatrier mon CSS à un endroit
 	o comments:
-		o check TODOs, DEBUG (laisser les todos pertinents!)
+		- check TODOs, DEBUG (laisser les todos pertinents!)
 		o delete commented code and unnecessary comments
+		o check imports (unused, order)
 	o debug elements
 		o check debug elements dans interface
-		o check console.logs
-		o check alerts
-	o check imports (unused, order)
+		- check console.logs
+		- check alerts
 
 o git: update Readme
 	- mention de la présentation PDF dans docs

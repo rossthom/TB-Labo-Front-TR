@@ -29,7 +29,6 @@ export class OsmService {
     query += "&format=json"
     query += "&countrycodes=be"
 
-    //console.log(this._apiUrl + query)
     return query
   }
 
@@ -50,9 +49,8 @@ export class OsmService {
   * features[0].geometry.coordinates : array of coordinates [lon, lat]
   */
   getIniterary(start: GpsPosition, end: GpsPosition){
-    // lon, lat
+    // ℹ️ URI: lon, lat
     let url = this._openrouteUrl + `&start=${start.lon},${start.lat}&end=${end.lon},${end.lat}`
-    console.log(url)
     return this.httpC.get<any>(url)
   }
 }
