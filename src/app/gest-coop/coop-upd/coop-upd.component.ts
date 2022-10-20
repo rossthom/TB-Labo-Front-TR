@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { CooperativeDtoUpd, CooperativeView } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
 import { GestCoopService } from '../shared/services/gest-coop.service';
-import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
+import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { generateUpdCoopForm } from './forms/coop-upd.form';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
@@ -13,7 +13,7 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
   styleUrls: ['./coop-upd.component.scss']
 })
 export class CoopUpdComponent implements OnInit, OnChanges {
-  updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.nominatimService)
+  updCoopForm: FormGroup = generateUpdCoopForm(this.fb, this.osmService)
   coopTypes: Category[] = []
 
   @Input()
@@ -29,7 +29,7 @@ export class CoopUpdComponent implements OnInit, OnChanges {
   constructor(
     private fb: FormBuilder,
     private gestCoopService: GestCoopService,
-    private nominatimService: NominatimService
+    private osmService: OsmService
   ) { }
 
   

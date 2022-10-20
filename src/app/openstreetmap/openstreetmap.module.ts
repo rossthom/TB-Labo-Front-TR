@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NominatimService } from './shared/services/nominatim.service';
+import { OsmService } from './shared/services/osm.service';
 
 
 @NgModule({
@@ -9,7 +9,7 @@ import { NominatimService } from './shared/services/nominatim.service';
     CommonModule
   ],
   providers: [
-    NominatimService,
+    OsmService,
 ],
 })
 export class OpenstreetmapModule { }

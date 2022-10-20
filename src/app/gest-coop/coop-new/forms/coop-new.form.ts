@@ -1,12 +1,12 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
+import { OsmService } from "../../../openstreetmap/shared/services/osm.service";
 import { CoopEmailUnicityValidator } from "../../shared/validators/coopEmailUnicityCheck.validator";
 import { matchPasswordValidator } from "../../shared/validators/matchPassword.validator";
 import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 import { CoopAuthService } from "../../shared/services/coop-auth.service";
 
 
-export function generateNewCoopForm(fb: FormBuilder, nominatimService: NominatimService, coopAuthService: CoopAuthService): FormGroup {
+export function generateNewCoopForm(fb: FormBuilder, osmService: OsmService, coopAuthService: CoopAuthService): FormGroup {
     return fb.group({
         // Controls
         name: [
@@ -94,7 +94,7 @@ export function generateNewCoopForm(fb: FormBuilder, nominatimService: Nominatim
             matchPasswordValidator,
         ],
         asyncValidators: [
-            NominatimValidator.checkAddress(nominatimService),
+            NominatimValidator.checkAddress(osmService),
         ],
         updateOn: 'blur'   // update when loses focus, that's what 'blur' means in this context      
     })

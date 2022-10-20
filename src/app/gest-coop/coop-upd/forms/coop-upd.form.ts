@@ -1,9 +1,9 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "../../../openstreetmap/shared/services/nominatim.service";
+import { OsmService } from "../../../openstreetmap/shared/services/osm.service";
 import { NominatimValidator } from "../../../openstreetmap/shared/validators/nominatim.validator";
 
 
-export function generateUpdCoopForm(fb: FormBuilder, nominatimService: NominatimService): FormGroup {
+export function generateUpdCoopForm(fb: FormBuilder, osmService: OsmService): FormGroup {
     return fb.group({
         // Controls
         name: [
@@ -61,7 +61,7 @@ export function generateUpdCoopForm(fb: FormBuilder, nominatimService: Nominatim
     <AbstractControlOptions>{
         validators: [],
         asyncValidators: [
-            NominatimValidator.checkAddress(nominatimService),
+            NominatimValidator.checkAddress(osmService),
         ],
         updateOn: 'blur'   // update when loses focus, that's what 'blur' means in this context      
     })

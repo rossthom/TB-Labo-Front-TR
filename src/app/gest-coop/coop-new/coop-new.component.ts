@@ -5,7 +5,7 @@ import { generateNewCoopForm } from './forms/coop-new.form';
 import { CooperativeDtoNew } from '../shared/models/coop.model';
 import { Category } from '../shared/models/types.model';
 import { GestCoopService } from '../shared/services/gest-coop.service';
-import { NominatimService } from '../../openstreetmap/shared/services/nominatim.service';
+import { OsmService } from '../../openstreetmap/shared/services/osm.service';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { CoopAuthService } from '../shared/services/coop-auth.service';
 
@@ -15,7 +15,7 @@ import { CoopAuthService } from '../shared/services/coop-auth.service';
   styleUrls: ['./coop-new.component.scss']
 })
 export class CoopNewComponent implements OnInit {
-  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.nominatimService, this.coopAuthService)
+  newCoopForm: FormGroup = generateNewCoopForm(this.fb, this.osmService, this.coopAuthService)
   coopTypes: Category[] = []
 
 
@@ -24,7 +24,7 @@ export class CoopNewComponent implements OnInit {
     private fb: FormBuilder,
     private gestCoopService: GestCoopService,
     private coopAuthService: CoopAuthService,
-    private nominatimService: NominatimService
+    private osmService: OsmService
   ) { }
 
   ngOnInit(): void {

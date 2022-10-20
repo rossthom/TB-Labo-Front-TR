@@ -4,7 +4,7 @@ import { Observable, mergeMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CooperativeDtoNew, CooperativeDtoUpd, CooperativeView } from '../models/coop.model';
 import { Category } from '../models/types.model';
-import { NominatimService } from '../../../openstreetmap/shared/services/nominatim.service';
+import { OsmService } from '../../../openstreetmap/shared/services/osm.service';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class GestCoopService {
 
   constructor(
     private httpC : HttpClient,
-    private nominatimService: NominatimService
+    private osmService: OsmService
   ) { }
 
 
@@ -52,7 +52,7 @@ export class GestCoopService {
   }
 
   updateCoop(coop: CooperativeDtoUpd){
-    return this.nominatimService.getAddressGpsLongLat(coop.address)
+    return this.osmService.getAddressGpsLongLat(coop.address)
       .pipe(
         mergeMap(res => {
           return this.httpC.patch(
@@ -64,7 +64,7 @@ export class GestCoopService {
   }
 
   insertCoop(coop: CooperativeDtoNew){
-    return this.nominatimService.getAddressGpsLongLat(coop.address)
+    return this.osmService.getAddressGpsLongLat(coop.address)
       .pipe(
         mergeMap(res => {
           return this.httpC.post(

@@ -1,11 +1,11 @@
 import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NominatimService } from "src/app/openstreetmap/shared/services/nominatim.service";
+import { OsmService } from "src/app/openstreetmap/shared/services/osm.service";
 import { matchPasswordValidator } from "src/app/gest-coop/shared/validators/matchPassword.validator";
 import { NominatimValidator } from "src/app/openstreetmap/shared/validators/nominatim.validator";
 import { UserEmailUnicityValidator } from "src/app/shared/validators/userEmailUnicityCheck.validator";
 import { UserAuthService } from "src/app/shared/services/user-auth.service";
 
-export function generateNewUserForm(fb: FormBuilder, nominatimService: NominatimService, userAuthService: UserAuthService): FormGroup {
+export function generateNewUserForm(fb: FormBuilder, osmService: OsmService, userAuthService: UserAuthService): FormGroup {
     return fb.group({
         // Controls
         first_name: [
@@ -94,7 +94,7 @@ export function generateNewUserForm(fb: FormBuilder, nominatimService: Nominatim
             matchPasswordValidator,
         ],
         asyncValidators: [
-            NominatimValidator.checkAddress(nominatimService),
+            NominatimValidator.checkAddress(osmService),
         ],
         updateOn: 'blur'   // update when loses focus, that's what 'blur' means in this context      
     })

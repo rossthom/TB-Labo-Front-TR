@@ -12,8 +12,11 @@ json-server start command:
 
 # DEV ROADMAP
 o Page Event Detail:
-	🙏 calcul trajet avec coordo GPS user
-		🙏 calcul KMs (⚠️ aller-retour) + consommation
+	👷 calcul trajet avec coordo GPS user
+		👷 calcul KMs
+			🐛 On ne passe jamais dans le .then qui doit appeler mon service OSM
+			🐛 Meme avec les données, leaflet ne dessine pas mon trajet...
+		👷 calcul consommation (⚠️ aller-retour)
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
@@ -27,6 +30,7 @@ o Clean code (everywhere, html, css, ts, modules, routes, ...):
 		o check console.logs
 		o check alerts
 	o check imports (unused, order)
+	o supprimer page tests :-)
 
 o git: update Readme
 

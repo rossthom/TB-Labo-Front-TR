@@ -20,6 +20,8 @@ import { MessageService } from 'primeng/api';
 // Application
 import { AppRoutingModule } from './app-routing.module';
 import { GestCoopModule } from './gest-coop/gest-coop.module';
+import { UserAuthService } from './shared/services/user-auth.service';
+import { UserService } from './shared/services/user.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './projet/home/home.component';
 import { UserNewComponent } from './projet/user-new/user-new.component';
@@ -30,8 +32,8 @@ import { EventDetailComponent } from './projet/event-detail/event-detail.compone
 import { EventMapComponent } from './projet/event-detail/event-map/event-map.component';
 import { NotfoundComponent } from './shared/compos/notfound/notfound.component';
 import { TestboardComponent } from './projet/testboard/testboard.component';
-import { UserAuthService } from './shared/services/user-auth.service';
-import { UserService } from './shared/services/user.service';
+import { SecondesPipe } from './shared/pipes/secondes.pipe';
+import { KmPipe } from './shared/pipes/km.pipe';
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import { UserService } from './shared/services/user.service';
         EventMapComponent,
         TestboardComponent,
         NotfoundComponent,
+        SecondesPipe,
+        KmPipe,
     ],
     imports: [
         // Angular

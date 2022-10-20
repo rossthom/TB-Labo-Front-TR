@@ -4,7 +4,7 @@ import { Observable, mergeMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EventDtoNew, EventDtoUpd, EventView } from '../models/event.model';
 import { Category } from '../models/types.model';
-import { NominatimService } from '../../../openstreetmap/shared/services/nominatim.service';
+import { OsmService } from '../../../openstreetmap/shared/services/osm.service';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class GestEventService {
 
   constructor(
     private httpC : HttpClient,
-    private nominatimService: NominatimService
+    private osmService: OsmService
   ) { }
 
 
@@ -44,7 +44,7 @@ export class GestEventService {
   }
 
   updateEvent(event: EventDtoUpd){
-    return this.nominatimService.getAddressGpsLongLat(event.address)
+    return this.osmService.getAddressGpsLongLat(event.address)
       .pipe(
         mergeMap(res => {
           return this.httpC.patch(
@@ -56,7 +56,7 @@ export class GestEventService {
   }
 
   insertEvent(event: EventDtoNew){
-    return this.nominatimService.getAddressGpsLongLat(event.address)
+    return this.osmService.getAddressGpsLongLat(event.address)
       .pipe(
         mergeMap(res => {
           return this.httpC.post(

@@ -27,6 +27,12 @@
                                         <span>{{ event.address.postal_code }}&nbsp;{{ event.address.city }}</span>
                                     </p>
                                 </td>
+                                <td class="pr-4"></td>
+                                <td>
+                                    <span>🚗 : {{ distance | km }}</span><br />
+                                    <span>🕑 : {{ duration | secondes }}</span><br />
+                                    <span>💨 : {{ totalEmissions | number: '1.0-0' }} g de CO2 rejeté (allez-retour)</span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -72,6 +78,7 @@
                     <app-event-map
                         [eventGpsPos]="event.gps"
                         [userGpsPos]="user.gps"
+                        [geoJsonFeatures]="geoJsonFeatures"
                     ></app-event-map>
                 </div>
             </div>
