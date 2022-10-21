@@ -30,9 +30,7 @@ export class EventsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // TODO: use _getData()
     this._getData()
-    //this._getData_OldVersion()
   }
 
   private _getData() {
@@ -49,34 +47,6 @@ export class EventsListComponent implements OnInit {
           this.loading = false;
 				}
 			})
-  }
-
-  // TODO: Delete this method
-  private _getData_OldVersion() {
-    Promise.all([
-      new Promise<EventView[]>((resolve, reject) => {
-        this.eventService.getAllEvents()
-        .subscribe((events: EventView[]) => {
-          this.listEvents = events
-          resolve(this.listEvents)
-        })
-      }),
-      
-      new Promise<UserView>((resolve, reject) => {
-        this.userAuthService.$connectedUserId
-        .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
-          .subscribe((user: UserView) => {
-            this.connectedUser = user
-            resolve(this.connectedUser)
-          }))
-      })
-    ]).then((res: any[]) => {
-      // libérer la construction de la carte et de la table
-      this.loading = false;
-    })
-    .catch((err : string) => {
-      console.log(err)
-    })
   }
 
   checkUserParticipation(event: EventView): boolean{

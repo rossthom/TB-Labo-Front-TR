@@ -91,10 +91,9 @@ export class AllEventsMapComponent implements AfterViewInit {
     // Add Marker for each event
     this.events.forEach(event => {
       let distance = Math.sqrt(
-        Math.pow(this.userGpsPos.lon - event.gps.lon, 2)
-        + Math.pow(this.userGpsPos.lat - event.gps.lat, 2)
-      )*this._kmPerLatDegree
-      console.log(`${event.name} : ${distance}`)
+          Math.pow(this.userGpsPos.lon - event.gps.lon, 2)
+          + Math.pow(this.userGpsPos.lat - event.gps.lat, 2)
+        ) * this._kmPerLatDegree
 
       let eventIconRetinaUrl: string = ''
       let eventIconUrl: string = ''
@@ -106,7 +105,7 @@ export class AllEventsMapComponent implements AfterViewInit {
         eventIconRetinaUrl = this._eventOrangeIconRetinaUrl
         eventIconUrl = this._eventOrangeIconUrl
       }
-      else {
+      else { // closer than 30km
         eventIconRetinaUrl = this._eventGreenIconRetinaUrl
         eventIconUrl = this._eventGreenIconUrl
       }

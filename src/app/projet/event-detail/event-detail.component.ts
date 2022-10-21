@@ -59,17 +59,15 @@ export class EventDetailComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"]){
       this.eventId = this.activatedRoute.snapshot.params["id"]
       
-      // TODO: use _getData()
       this._getData()
-      //this._getData_OldVersion()
     }
   }
 
   
   private _getData() {
-		// Data Mapping => Mapper les userId avec leur nom
-		// On veut attendre le résultat de plusieurs requête
-		forkJoin([
+		// I need events and users to be retrieved first, 
+    // then I can get the cooperative and calculate the itinerary
+    forkJoin([
       this.gestEventService.getOneEvent(this.eventId), 
       this.userService.getOneUser(this.userAuthService.connectedUserId)
     ])
@@ -77,6 +75,9 @@ export class EventDetailComponent implements OnInit {
 				next: ([event, user]: [EventView, UserView]) => {
 					this.event = event
           this.user = user
+
+          this.coopService.getOneCoop(this.event.coop_id)
+              .subscribe(coop => this.coop = coop)
 
           this._subscriptionOsmServ = this.osmService.getIniterary(this.user.gps, this.event.gps)
           .subscribe({
@@ -111,47 +112,6 @@ export class EventDetailComponent implements OnInit {
 			})
   }
 
-  // TODO: Delete this method
-  private _getData_OldVersion() {
-    // I need events and users to be retrieved first, then I can calculate the itinerary
-    Promise.all([
-      new Promise<EventView>((resolve, reject) => {
-        this.gestEventService.getOneEvent(this.eventId)
-          .subscribe((event: EventView) => {
-            this.event = event
-            this.coopService.getOneCoop(this.event.coop_id)
-              .subscribe(coop => this.coop = coop)
-            resolve(this.event)
-          })
-      }),
-      
-      new Promise<UserView>((resolve, reject) => {
-        this.userService.getOneUser(this.userAuthService.connectedUserId)
-        .subscribe((user: UserView) => {
-          this.user = user
-          resolve(this.user)
-        })
-      })
-    ]).then((res: any[]) => {
-      this.osmService.getIniterary(this.user.gps, this.event.gps)
-      .subscribe((res: any) => {
-        this.geoJsonFeatures = res.features
-        this.distance = this.geoJsonFeatures[0].properties.summary.distance
-        this.duration = this.geoJsonFeatures[0].properties.summary.duration
-        this.meta_attribution = res.metadata.attribution
-        this.meta_engine_version = res.metadata.engine.version
-        
-        this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
-
-        // libérer la construction de la carte
-        this.loading = false;
-      })
-    })
-    .catch((err : string) => {
-      console.log(err)
-    })
-  }
-
   /**
    * Calculates how much CO2 is emitted for the travel, depending on the car's performences
    * @param {number} distanceInM - distance to travel in meters.
@@ -159,7 +119,7 @@ export class EventDetailComponent implements OnInit {
    * @param {number} emission - the CO2 emissions of the car per liter consumed.
    * @returns {number} grams of CO2 emitted for the distance travelled
    */
-  _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
+  private _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
     let nbKm = distanceInM/1000
     let emitPerKm = conso / 100 * emission
 
