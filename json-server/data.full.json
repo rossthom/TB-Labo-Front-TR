@@ -28,7 +28,7 @@
         },
         {
             "id": 3,
-            "label": "Aide Récolte"
+            "label": "Aide à la Récolte"
         },
         {
             "id": 4,
@@ -402,7 +402,7 @@
             "id": 12,
             "coop_id": 6,
             "event_typeId": 3,
-            "name": "Aide Récolte",
+            "name": "Aide à la récolte des légumes d'été",
             "description": "Venez donner un coup de main pour la récolte de notre maraichère locale, buvette et panier de légumes gratuit !",
             "location": "Jardin des Mycorhizes",
             "address": {
