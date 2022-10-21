@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LOCALE_ID} from '@angular/core';
+import localeFr from '@angular/common/locales/fr'
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localeFr);
 
 // PrimeNG Sakai
 import { ButtonModule } from 'primeng/button';
@@ -78,6 +82,7 @@ import { AllEventsMapComponent } from './projet/events-list/all-events-map/all-e
     ],
     providers: [
         //{ provide: LocationStrategy, useClass: HashLocationStrategy },
+        {provide: LOCALE_ID, useValue: 'fr'},
         MessageService,
         UserAuthService,
         UserService,
