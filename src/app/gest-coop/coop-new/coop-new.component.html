@@ -5,7 +5,7 @@
         <div class="card p-fluid">
             <form [formGroup]="newCoopForm">
                 <div class="col-12">
-                    <label for="name">Nom de la Coopérative</label>
+                    <label for="name"><b>Nom de la Coopérative<sup>*</sup></b></label>
                     <input pInputText type="text" 
                         id="name" formControlName="name"
                     >
@@ -23,7 +23,7 @@
                     </p>
                 </div>
                 <div class="col-12">
-                    <label for="email">Email de contact</label>
+                    <label for="email"><b>Email de contact<sup>*</sup></b></label>
                     <input pInputText type="email" 
                         id="email" formControlName="email"
                     >
@@ -49,7 +49,7 @@
 
                 <div class="grid col-12 my-grid">
                     <div class="col-6 pl-0">
-                        <label for="password">Mot de passe</label>
+                        <label for="password"><b>Mot de passe<sup>*</sup></b></label>
                         <input type="password" pPassword
                             id="password" formControlName="password"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -62,7 +62,7 @@
                         </p>
                     </div>
                     <div class="col-6 pr-0">
-                        <label for="password_confirm">Confirmez votre mot de passe</label>
+                        <label for="password_confirm"><b>Confirmez votre mot de passe<sup>*</sup></b></label>
                         <input type="password" pPassword
                             id="password_confirm" formControlName="password_confirm"
                             [ngClass]="newCoopForm.errors?.['MatchPasswordValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label for="coop_typeId">Choisissez un type de coopérative</label>
+                    <label for="coop_typeId"><b>Choisissez un type de coopérative<sup>*</sup></b></label>
                     <p-dropdown 
                         id="coop_typeId" formControlName="coop_typeId"
                         [options]="coopTypes" optionLabel="label" optionValue="id"
@@ -108,7 +108,7 @@
 
                 <div class="grid col-12 my-grid">
                     <div class="col-4 pl-0">
-                        <label for="addr_postal_code">Code Postal</label>
+                        <label for="addr_postal_code"><b>Code Postal<sup>*</sup></b></label>
                         <input pInputText type="text"
                             id="addr_postal_code" formControlName="addr_postal_code"
                             [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -127,7 +127,7 @@
                         </p>
                     </div>
                     <div class="col pr-0">
-                        <label for="addr_city">Ville / Village</label>
+                        <label for="addr_city"><b>Ville / Village<sup>*</sup></b></label>
                         <input pInputText type="text"
                             id="addr_city" formControlName="addr_city"
                             [ngClass]="newCoopForm.errors?.['NominatimValidator'] ? 'ng-invalid ng-dirty' : ''"
@@ -166,11 +166,17 @@
                 </div>
 
                 <div class="col-12">
-                    <label for="logo">Logo (lien vers image)</label>
+                    <label for="logo"><b>Logo (lien vers image)<sup>*</sup></b></label>
                     <input pInputText type="text" 
                         id="logo" 
                         formControlName="logo"
                     >
+                    <p 
+                        class="text-red-500"
+                        *ngIf="formControls['logo'].touched && formControls['logo'].errors?.['required']" 
+                    >
+                        Ce champ est requis
+                    </p>
                 </div>
             </form>
             <br />

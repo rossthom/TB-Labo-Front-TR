@@ -11,6 +11,12 @@ json-server start command:
 
 
 # DEV ROADMAP
+o Champs requis !
+	- Coop crea
+	o Coop Modif
+	o Event crea / Update (mais pas read)
+	o User crea
+
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
