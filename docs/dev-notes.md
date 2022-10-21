@@ -13,7 +13,7 @@ json-server start command:
 # DEV ROADMAP
 o Champs requis !
 	- Coop crea
-	o Coop Modif
+	- Coop Modif
 	o Event crea / Update (mais pas read)
 	o User crea
 
