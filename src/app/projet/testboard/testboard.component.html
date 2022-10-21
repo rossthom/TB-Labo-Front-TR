@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="col-3">
-            <h2>Types d'Evènements</h2>
+            <h2>Types d'Événements</h2>
             <ul>
                 <li *ngFor="let eventType of eventTypes">
                     {{ eventType.id }}: {{ eventType.label }}
@@ -92,7 +92,7 @@
                     <br />
                     lat: {{ testGps?.lat }}
                 </p>
-                <button (click)="getAllEventFromCoop(selectedCoop.id)">Liste Evènements de cette coop</button>
+                <button (click)="getAllEventFromCoop(selectedCoop.id)">Liste Événements de cette coop</button>
             </div>
         </div>
     </div>
@@ -100,8 +100,8 @@
     
     <div class="grid" style="width: 100%;">
         <div class="col-6">
-            <h2>Liste Evènements</h2>
-            <button (click)="getAllEvents()">Tous les Evènements</button>
+            <h2>Liste Événements</h2>
+            <button (click)="getAllEvents()">Tous les Événements</button>
             <ul>
                 <li *ngFor="let event of events">
                     {{ event.name }}&nbsp;<button (click)="getOneEvent(event.id)">Détails</button>
@@ -110,7 +110,7 @@
         </div>
         <div class="col-6">
             <div *ngIf="selectedEvent != null && selectedEvent != undefined">
-                <h2>Détail Evènement</h2>
+                <h2>Détail Événement</h2>
                 <table>
                     <tbody>
                         <tr>

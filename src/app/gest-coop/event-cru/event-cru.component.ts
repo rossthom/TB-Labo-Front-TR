@@ -13,7 +13,7 @@ import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.
   styleUrls: ['../shared/styles/my-form-group.style.scss']
 })
 export class EventCruComponent implements OnInit, OnChanges {
-  private _unknownEventType: Category = <Category>{id: 0, label:"Type d'évènement inconnu"}
+  private _unknownEventType: Category = <Category>{id: 0, label:"Type d'événement inconnu"}
 
   cruEventForm: FormGroup = generateCRUEventForm(this.fb, this.osmService)
   eventTypes: Category[] = []

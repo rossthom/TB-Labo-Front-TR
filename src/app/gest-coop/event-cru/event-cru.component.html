@@ -5,7 +5,7 @@
             <div class="grid">
                 <form [formGroup]="cruEventForm">
                     <div class="col-12">
-                        <label for="name">Titre de l'évènement</label>
+                        <label for="name">Titre de l'événement</label>
                         <input pInputText type="text" 
                             id="name" formControlName="name"
                             [class.p-disabled]="formMode == 1"
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-12">
                         <div *ngIf="formMode != 1">
-                            <label for="event_typeId">Choisissez un type d'évènement</label>
+                            <label for="event_typeId">Choisissez un type d'événement</label>
                             <p-dropdown 
                                 id="event_typeId" formControlName="event_typeId"
                                 [options]="eventTypes" optionLabel="label" optionValue="id"
@@ -34,7 +34,7 @@
                             ></p-dropdown>
                         </div>
                         <div *ngIf="formMode == 1">
-                            <label for="event_type">Type d'évènement</label>
+                            <label for="event_type">Type d'événement</label>
                             <input pInputText type="text" 
                                 id="event_type"
                                 value="{{ eventType.label }}"
