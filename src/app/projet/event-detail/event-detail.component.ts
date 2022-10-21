@@ -123,7 +123,7 @@ export class EventDetailComponent implements OnInit {
     let nbKm = distanceInM/1000
     let emitPerKm = conso / 100 * emission
 
-    return emitPerKm * nbKm     // = total emissions
+    return emitPerKm * nbKm * 2     // = total emissions allez-retour
 
   }
 
