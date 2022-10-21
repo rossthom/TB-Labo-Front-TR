@@ -12,11 +12,12 @@ json-server start command:
 
 # DEV ROADMAP
 o subscribe()
+	o EventDetail._getData() => do better than promise
+	o EventsList._getData() => do better than promise
+	o UserProfile.ngOnInit() => do better than nested subscribe ?
+
 	o mettre des beaux next:, error: , ...
 	o refaire promesses
-
-o Warnings: essayer avec:
-	<div *ngIf="coopId != 0 && event" class="grid p-fluid">
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
