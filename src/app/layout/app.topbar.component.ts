@@ -45,18 +45,6 @@ export class AppTopBarComponent implements OnInit {
           this.connectedUserId = this.userAuthService.connectedUserId
         }
       })
-      /* this.coopAuthService.$coopIsConnected.subscribe({
-        next: (isConnected: boolean) => {
-          this.coopIsConnected = isConnected
-        }
-      })
-
-      this.userAuthService.$userIsConnected.subscribe({
-        next: (isConnected: boolean) => {
-          this.userIsConnected = isConnected
-        }
-      }) */
-
     }
 
     coopLogout(){
