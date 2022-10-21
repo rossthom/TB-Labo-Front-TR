@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { forkJoin, map, Subscription } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
@@ -15,6 +16,8 @@ import { UserService } from 'src/app/shared/services/user.service';
   templateUrl: './event-detail.component.html',
 })
 export class EventDetailComponent implements OnInit {
+  private _subscriptionOsmServ: Subscription = new Subscription();
+  
   eventId: number = 0
   event!: EventView        // TODO: attribut event non initialisé !
   coop!: CooperativeView   // TODO: attribut coop non initialisé !
@@ -56,12 +59,60 @@ export class EventDetailComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"]){
       this.eventId = this.activatedRoute.snapshot.params["id"]
       
+      // TODO: use _getData()
       this._getData()
+      //this._getData_OldVersion()
     }
   }
 
+  
+  private _getData() {
+		// Data Mapping => Mapper les userId avec leur nom
+		// On veut attendre le résultat de plusieurs requête
+		forkJoin([
+      this.gestEventService.getOneEvent(this.eventId), 
+      this.userService.getOneUser(this.userAuthService.connectedUserId)
+    ])
+			.subscribe({
+				next: ([event, user]: [EventView, UserView]) => {
+					this.event = event
+          this.user = user
 
-  private _getData(){
+          this._subscriptionOsmServ = this.osmService.getIniterary(this.user.gps, this.event.gps)
+          .subscribe({
+            next: (res: any) => {
+              this.geoJsonFeatures = res.features
+              this.distance = this.geoJsonFeatures[0].properties.summary.distance
+              this.duration = this.geoJsonFeatures[0].properties.summary.duration
+              this.meta_attribution = res.metadata.attribution
+              this.meta_engine_version = res.metadata.engine.version
+              
+              this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
+
+              // libérer la construction de la carte
+              this.loading = false;
+            },
+            error: (err) => {
+              this.messageService.add(
+                {
+                  severity:'error', 
+                  summary:'Erreur provenant du service OpenRoute', 
+                  detail: err.message
+                }
+              )
+              console.error(err.message);
+            },
+            complete: () => {
+              this.loading = false;
+              this._subscriptionOsmServ.unsubscribe();
+            }
+          })
+				}
+			})
+  }
+
+  // TODO: Delete this method
+  private _getData_OldVersion() {
     // I need events and users to be retrieved first, then I can calculate the itinerary
     Promise.all([
       new Promise<EventView>((resolve, reject) => {

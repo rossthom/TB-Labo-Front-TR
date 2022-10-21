@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
+import { forkJoin } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
@@ -29,11 +30,29 @@ export class EventsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // TODO: use _getData()
     this._getData()
+    //this._getData_OldVersion()
   }
 
-
   private _getData() {
+    forkJoin([
+      this.eventService.getAllEvents(), 
+      this.userService.getOneUser(this.userAuthService.connectedUserId)
+    ])
+			.subscribe({
+				next: ([events, user]: [EventView[], UserView]) => {
+					this.listEvents = events
+          this.connectedUser = user
+
+          // libérer la construction de la carte et de la table
+          this.loading = false;
+				}
+			})
+  }
+
+  // TODO: Delete this method
+  private _getData_OldVersion() {
     Promise.all([
       new Promise<EventView[]>((resolve, reject) => {
         this.eventService.getAllEvents()

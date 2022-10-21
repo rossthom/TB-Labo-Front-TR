@@ -32,6 +32,11 @@ export class UserProfileComponent implements OnInit {
           this.gestEventService.getEventsFromIds(this.connectedUser.events_participation)
             .subscribe(events => this.eventsParticipation = events)
       })
+
+      // TODO: Ici, je récupère un User, que je place dans this.connectedUser,
+      // puis je récupère les events (en utilisant les infos dans this.connectedUser.events_participation),
+        // pour les mettre dans this.eventsParticipation
+      // => Pas besoin de modifier ça alors, c'est bon comme ça, non?
     }
   }
 

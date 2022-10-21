@@ -11,16 +11,24 @@ json-server start command:
 
 
 # DEV ROADMAP
-o subscribe()
-	o EventDetail._getData() => do better than promise
-	o EventsList._getData() => do better than promise
-	o UserProfile.ngOnInit() => do better than nested subscribe ?
+o improve Observables
+	o subscribe()
+		- EventDetail._getData() => do better than promise
+		- EventsList._getData() => do better than promise
+		o ❓ UserProfile.ngOnInit() => do better than nested subscribe ?
 
-	o mettre des beaux next:, error: , ...
-	o refaire promesses
+	o ngOnInit (ou AfterInit) qui va chercher plusieurs trucs => ForkJoin
+		o ...
+
+	o OSM Services: manage errors + TOASTS !!
+		o ...
 
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
+
+o Clean code:
+	o TODO comments
+	o console.log
 
 o git: update Readme
 	- mention de la présentation PDF dans docs
