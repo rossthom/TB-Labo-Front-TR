@@ -54,7 +54,11 @@ export function generateUpdCoopForm(fb: FormBuilder, osmService: OsmService): Fo
         ],
         logo: [
             "", 
-            {}
+            {
+                validators: [
+                    Validators.required,
+                ]
+            }
         ]
     },
     // Options

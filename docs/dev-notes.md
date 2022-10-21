@@ -11,9 +11,6 @@ json-server start command:
 
 
 # DEV ROADMAP
-o Lister la batterie de tests à faire
-	o Tester l'app en entier et préparer la démo
-
 o Update Présentation
 	o mettre le PDF dans docs/PROJET/
 

@@ -38,29 +38,11 @@ export class HomeComponent implements OnInit {
 
 
   seeCoopProfile(){
-    if (!this.coopIsConnected){
-      this.messageService.add({
-        severity:'error', 
-        summary:'Connection requise', 
-        detail:'Vous devez être connecté en tant que Coopérative pourvoir votre profil'
-      });
-    }
-    else {
       this.router.navigate(['/profile/coop/' + this.connectedCoopId])
-    }
   }
 
   seeUserProfile(){
-    if (!this.userIsConnected){
-      this.messageService.add({
-        severity:'error', 
-        summary:'Connection requise', 
-        detail:'Vous devez être connecté en tant que Participant pour voir votre profil'
-      });
-    }
-    else {
       this.router.navigate(['/profile/user/' + this.connectedUserId])
-    }
   }
 
   seeEventsList(){

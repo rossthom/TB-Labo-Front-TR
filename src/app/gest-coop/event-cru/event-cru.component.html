@@ -5,7 +5,8 @@
             <div class="grid">
                 <form [formGroup]="cruEventForm">
                     <div class="col-12">
-                        <label for="name">Titre de l'événement</label>
+                        <label *ngIf="formMode != 1" for="name"><b>Titre de l'événement<sup>*</sup></b></label>
+                        <label *ngIf="formMode == 1" for="name">Titre de l'événement</label>
                         <input pInputText type="text" 
                             id="name" formControlName="name"
                             [class.p-disabled]="formMode == 1"
@@ -25,7 +26,7 @@
                     </div>
                     <div class="col-12">
                         <div *ngIf="formMode != 1">
-                            <label for="event_typeId">Choisissez un type d'événement</label>
+                            <label for="event_typeId"><b>Choisissez un type d'événement<sup>*</sup></b></label>
                             <p-dropdown 
                                 id="event_typeId" formControlName="event_typeId"
                                 [options]="eventTypes" optionLabel="label" optionValue="id"
@@ -65,7 +66,8 @@
                     </div>
                     <div class="grid col-12 my-grid">
                         <div class="col-4 pl-0">
-                            <label for="addr_postal_code">Code Postal</label>
+                            <label *ngIf="formMode != 1" for="addr_postal_code"><b>Code Postal<sup>*</sup></b></label>
+                            <label *ngIf="formMode == 1" for="addr_postal_code">Code Postal</label>
                             <input pInputText type="text"
                                 id="addr_postal_code" formControlName="addr_postal_code"
                                 [class.p-disabled]="formMode == 1"
@@ -86,7 +88,8 @@
                             </p>
                         </div>
                         <div class="col pr-0">
-                            <label for="addr_city">Ville / Village</label>
+                            <label *ngIf="formMode != 1" for="addr_city"><b>Ville / Village<sup>*</sup></b></label>
+                            <label *ngIf="formMode == 1" for="addr_city">Ville / Village</label>
                             <input pInputText type="text"
                                 id="addr_city" formControlName="addr_city"
                                 [class.p-disabled]="formMode == 1"
@@ -133,7 +136,7 @@
                     <div class="grid col-12 my-grid">
                         <div class="col-6 pl-0">
                             <div *ngIf="formMode != 1">
-                                <label for="datetime_start">Début</label>
+                                <label for="datetime_start"><b>Début<sup>*</sup></b></label>
                                 <p-calendar 
                                     id="datetime_start" formControlName="datetime_start"
                                     [showTime]="true" hourFormat="24"
@@ -157,7 +160,7 @@
                         </div>
                         <div class="col-6 pr-0">
                             <div *ngIf="formMode != 1">
-                                <label for="datetime_end">Fin</label>
+                                <label for="datetime_end"><b>Fin<sup>*</sup></b></label>
                                 <p-calendar 
                                     id="datetime_end" formControlName="datetime_end"
                                     [showTime]="true" hourFormat="24"
@@ -191,7 +194,7 @@
                     <div class="grid col-12 my-grid">
                         <div class="col-6 pl-0">
                             <div *ngIf="formMode != 1">
-                                <label for="nb_people_min">Nb minimum de participants</label>
+                                <label for="nb_people_min"><b>Nb minimum de participants<sup>*</sup></b></label>
                                 <p-inputNumber 
                                     id="nb_people_min" formControlName="nb_people_min"
                                     inputId="integeronly"
@@ -221,7 +224,7 @@
                         </div>
                         <div class="col-6 pr-0">
                             <div *ngIf="formMode != 1">
-                                <label for="nb_people_max">Nb maximum de participants</label>
+                                <label for="nb_people_max"><b>Nb maximum de participants<sup>*</sup></b></label>
                                 <p-inputNumber 
                                     id="nb_people_max" formControlName="nb_people_max"
                                     inputId="integeronly"

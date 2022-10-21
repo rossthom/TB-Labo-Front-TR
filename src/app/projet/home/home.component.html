@@ -8,66 +8,81 @@
     </div>
     <div class="col">
         <div *ngIf="!userIsConnected" class="card">
-            <h2>💗 Coopératives</h2>
-            <button pButton pRipple 
-                icon="pi pi-plus-circle" 
-                label="Créer une Coop"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/create/coop"
-            ></button>
-            <br />
-            <button pButton pRipple
-                icon="pi pi-sign-in" 
-                label="Connection (Coop)"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/login/coop"
-            ></button>
-            <button pButton pRipple 
-                icon="pi pi-id-card" 
-                label="Profil Coopérative"
-                type="button" 
-                class="p-button-outlined p-button-info mr-2 mb-2" 
-                (click)="seeCoopProfile()"
-            ></button>
+            <div class="grid p-fluid">
+                <div class="col-4">
+                    <h2>💗 Coopératives</h2>
+                    <button pButton pRipple 
+                        *ngIf="!coopIsConnected"
+                        icon="pi pi-plus-circle" 
+                        label="Créer un profil Coopérative"
+                        type="button" 
+                        class="p-button-outlined p-button-primary mr-2 mb-2" 
+                        routerLink="/create/coop"
+                    ></button>
+                    <br />
+                    <button pButton pRipple
+                        *ngIf="!coopIsConnected"
+                        icon="pi pi-sign-in" 
+                        label="Connection (Coopérative)"
+                        type="button" 
+                        class="p-button-outlined p-button-primary mr-2 mb-2" 
+                        routerLink="/login/coop"
+                    ></button>
+                    <button pButton pRipple 
+                        *ngIf="coopIsConnected"
+                        icon="pi pi-eye" 
+                        label="Voir Profil Coopérative"
+                        type="button" 
+                        class="p-button-outlined p-button-info mr-2 mb-2" 
+                        (click)="seeCoopProfile()"
+                    ></button>
+                </div>
+            </div>
         </div>
 
         <div *ngIf="!coopIsConnected" class="card">
-            <h2>🙋‍♀️ Participants</h2>
-            <button pButton pRipple 
-                icon="pi pi-user-plus" 
-                label="Création Participant"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/create/user"
-            ></button>
-            <br />
-            <button pButton pRipple 
-            icon="pi pi-sign-in" 
-            label="Connection (Participant)"
-                type="button" 
-                class="p-button-outlined p-button-primary mr-2 mb-2" 
-                routerLink="/login/user"
-            ></button>
-            <button pButton pRipple 
-                icon="pi pi-id-card" 
-                label="Profil Participant"
-                type="button" 
-                class="p-button-outlined p-button-info mr-2 mb-2" 
-                (click)="seeUserProfile()"
-            ></button>
-            <br />
-            <button pButton pRipple 
-                icon="pi pi-list" 
-                label="Voir les Événements"
-                type="button" 
-                class="p-button-outlined p-button-info mr-2 mb-2" 
-                (click)="seeEventsList()"
-            ></button>
+            <div class="grid p-fluid">
+                <div class="col-4">
+                    <h2>🙋‍♀️ Participants</h2>
+                    <button pButton pRipple 
+                        *ngIf="!userIsConnected"
+                        icon="pi pi-user-plus" 
+                        label="Créer un profil Participant"
+                        type="button" 
+                        class="p-button-outlined p-button-primary mr-2 mb-2" 
+                        routerLink="/create/user"
+                    ></button>
+                    <br />
+                    <button pButton pRipple 
+                        *ngIf="!userIsConnected"
+                        icon="pi pi-sign-in" 
+                        label="Connection (Participant)"
+                        type="button" 
+                        class="p-button-outlined p-button-primary mr-2 mb-2" 
+                        routerLink="/login/user"
+                    ></button>
+                    <button pButton pRipple 
+                        *ngIf="userIsConnected"
+                        icon="pi pi-eye" 
+                        label="Voir Profil Participant"
+                        type="button" 
+                        class="p-button-outlined p-button-info mr-2 mb-2" 
+                        (click)="seeUserProfile()"
+                    ></button>
+                    <br />
+                    <button pButton pRipple 
+                        [disabled]="!userIsConnected"
+                        icon="pi pi-list" 
+                        label="Voir les Événements"
+                        type="button" 
+                        class="p-button-outlined p-button-info mr-2 mb-2" 
+                        (click)="seeEventsList()"
+                    ></button>
+                </div>
+            </div>
         </div>
 
-        <div *ngIf="!coopIsConnected" class="card">
+        <div *ngIf="false" class="card">
             <h2>👷 Tests</h2>
             <button pButton pRipple 
                 icon="pi pi-cog" 

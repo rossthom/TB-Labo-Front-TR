@@ -37,9 +37,12 @@ export class EventService {
   }
 
   getEventsFromIds(idsList: number[]){
-    // target example: http://localhost:3000/events?_expand=event_type&id=1&id=5&id=7
+    if (idsList.length == 0) {
+      return []
+    }
+
+    // target URL example: http://localhost:3000/events?_expand=event_type&id=1&id=5&id=7
     let eventsIdsUri = (idsList.map(id => 'id='+id)).join("&")
-    
     return this.httpC.get<EventView[]>(this._apiUrl+"events?_expand=event_type&"+eventsIdsUri)
   }
 
