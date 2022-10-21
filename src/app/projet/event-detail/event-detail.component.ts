@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { forkJoin, map, Subscription } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
@@ -15,6 +16,8 @@ import { UserService } from 'src/app/shared/services/user.service';
   templateUrl: './event-detail.component.html',
 })
 export class EventDetailComponent implements OnInit {
+  private _subscriptionOsmServ: Subscription = new Subscription();
+  
   eventId: number = 0
   event!: EventView        // TODO: attribut event non initialisé !
   coop!: CooperativeView   // TODO: attribut coop non initialisé !
@@ -60,45 +63,53 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
-
-  private _getData(){
-    // I need events and users to be retrieved first, then I can calculate the itinerary
-    Promise.all([
-      new Promise<EventView>((resolve, reject) => {
-        this.gestEventService.getOneEvent(this.eventId)
-          .subscribe((event: EventView) => {
-            this.event = event
-            this.coopService.getOneCoop(this.event.coop_id)
-              .subscribe(coop => this.coop = coop)
-            resolve(this.event)
-          })
-      }),
-      
-      new Promise<UserView>((resolve, reject) => {
-        this.userService.getOneUser(this.userAuthService.connectedUserId)
-        .subscribe((user: UserView) => {
+  
+  private _getData() {
+		// I need events and users to be retrieved first, 
+    // then I can get the cooperative and calculate the itinerary
+    forkJoin([
+      this.gestEventService.getOneEvent(this.eventId), 
+      this.userService.getOneUser(this.userAuthService.connectedUserId)
+    ])
+			.subscribe({
+				next: ([event, user]: [EventView, UserView]) => {
+					this.event = event
           this.user = user
-          resolve(this.user)
-        })
-      })
-    ]).then((res: any[]) => {
-      this.osmService.getIniterary(this.user.gps, this.event.gps)
-      .subscribe((res: any) => {
-        this.geoJsonFeatures = res.features
-        this.distance = this.geoJsonFeatures[0].properties.summary.distance
-        this.duration = this.geoJsonFeatures[0].properties.summary.duration
-        this.meta_attribution = res.metadata.attribution
-        this.meta_engine_version = res.metadata.engine.version
-        
-        this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
 
-        // libérer la construction de la carte
-        this.loading = false;
-      })
-    })
-    .catch((err : string) => {
-      console.log(err)
-    })
+          this.coopService.getOneCoop(this.event.coop_id)
+              .subscribe(coop => this.coop = coop)
+
+          this._subscriptionOsmServ = this.osmService.getIniterary(this.user.gps, this.event.gps)
+          .subscribe({
+            next: (res: any) => {
+              this.geoJsonFeatures = res.features
+              this.distance = this.geoJsonFeatures[0].properties.summary.distance
+              this.duration = this.geoJsonFeatures[0].properties.summary.duration
+              this.meta_attribution = res.metadata.attribution
+              this.meta_engine_version = res.metadata.engine.version
+              
+              this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
+
+              // libérer la construction de la carte
+              this.loading = false;
+            },
+            error: (err) => {
+              this.messageService.add(
+                {
+                  severity:'error', 
+                  summary:'Erreur provenant du service OpenRoute', 
+                  detail: err.message
+                }
+              )
+              console.error(err.message);
+            },
+            complete: () => {
+              this.loading = false;
+              this._subscriptionOsmServ.unsubscribe();
+            }
+          })
+				}
+			})
   }
 
   /**
@@ -108,7 +119,7 @@ export class EventDetailComponent implements OnInit {
    * @param {number} emission - the CO2 emissions of the car per liter consumed.
    * @returns {number} grams of CO2 emitted for the distance travelled
    */
-  _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
+  private _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
     let nbKm = distanceInM/1000
     let emitPerKm = conso / 100 * emission
 

@@ -14,10 +14,6 @@ json-server start command:
 o Lister la batterie de tests à faire
 	o Tester l'app en entier et préparer la démo
 
-
-o git: update Readme
-	- mention de la présentation PDF dans docs
-
 o Update Présentation
 	o mettre le PDF dans docs/PROJET/
 

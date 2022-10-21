@@ -63,7 +63,7 @@
 
                 <!-- ℹ️ Coop's Events list -->
                 <div *ngIf="coopEvents" class="col-6">
-                    <h3>Evènements</h3>
+                    <h3>Événements</h3>
                     <table class="my-transposed">
                         <tbody>
                             <tr *ngFor="let event of coopEvents">
@@ -103,7 +103,7 @@
                     <br />
                     <div>
                         <button pButton pRipple 
-                            label="Nouvel Evènement"
+                            label="Nouvel Événement"
                             icon="pi pi-plus-circle"
                             type="button" 
                             class="p-button-outlined p-button-primary mr-2 mb-2" 
@@ -135,7 +135,7 @@
 <p-dialog 
     [(visible)]="cruEventPopupVisible" 
     [style]="{width: '800px'}" 
-    [header]="cruEventPopupMode == 1 ? '👁️‍🗨️ Détail Evènement' : cruEventPopupMode == 2 ? '✍️ Modifier Evènement' : '✨ Nouvel Evènement'"
+    [header]="cruEventPopupMode == 1 ? '👁️‍🗨️ Détail Événement' : cruEventPopupMode == 2 ? '✍️ Modifier Événement' : '✨ Nouvel Événement'"
     [modal]="true"
 >
     <app-event-cru 

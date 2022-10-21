@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { mergeMap, tap } from 'rxjs';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
@@ -27,11 +28,12 @@ export class UserProfileComponent implements OnInit {
     if (this.activatedRoute.snapshot.params["id"]){
       this.userId = this.activatedRoute.snapshot.params["id"]
       this.userService.getOneUser(this.userId)
-        .subscribe((user: UserView) => {
+      .pipe(
+        tap((user) => {
           this.connectedUser = user
-          this.gestEventService.getEventsFromIds(this.connectedUser.events_participation)
-            .subscribe(events => this.eventsParticipation = events)
-      })
+        }),
+        mergeMap(() => this.gestEventService.getEventsFromIds(this.connectedUser.events_participation))
+      ).subscribe(events => this.eventsParticipation = events)
     }
   }
 

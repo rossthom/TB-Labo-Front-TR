@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Table } from 'primeng/table';
+import { forkJoin } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
@@ -32,32 +33,20 @@ export class EventsListComponent implements OnInit {
     this._getData()
   }
 
-
   private _getData() {
-    Promise.all([
-      new Promise<EventView[]>((resolve, reject) => {
-        this.eventService.getAllEvents()
-        .subscribe((events: EventView[]) => {
-          this.listEvents = events
-          resolve(this.listEvents)
-        })
-      }),
-      
-      new Promise<UserView>((resolve, reject) => {
-        this.userAuthService.$connectedUserId
-        .subscribe(connectedUserId => this.userService.getOneUser(connectedUserId)
-          .subscribe((user: UserView) => {
-            this.connectedUser = user
-            resolve(this.connectedUser)
-          }))
-      })
-    ]).then((res: any[]) => {
-      // libérer la construction de la carte et de la table
-      this.loading = false;
-    })
-    .catch((err : string) => {
-      console.log(err)
-    })
+    forkJoin([
+      this.eventService.getAllEvents(), 
+      this.userService.getOneUser(this.userAuthService.connectedUserId)
+    ])
+			.subscribe({
+				next: ([events, user]: [EventView[], UserView]) => {
+					this.listEvents = events
+          this.connectedUser = user
+
+          // libérer la construction de la carte et de la table
+          this.loading = false;
+				}
+			})
   }
 
   checkUserParticipation(event: EventView): boolean{
