@@ -10,6 +10,7 @@ import { generateNewUserForm } from './forms/user-new.form';
 @Component({
   selector: 'app-user-new',
   templateUrl: './user-new.component.html',
+  styleUrls: ['../../shared/styles/my-form-group.style.scss']
 })
 export class UserNewComponent implements OnInit {
   newUserForm: FormGroup = generateNewUserForm(this.fb, this.osmService, this.userAuthService)
