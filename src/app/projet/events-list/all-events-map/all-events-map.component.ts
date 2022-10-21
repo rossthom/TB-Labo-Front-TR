@@ -16,11 +16,16 @@ export class AllEventsMapComponent implements AfterViewInit {
   private map: any;
   private _defaultTileSet = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   private _defaultAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  private _eventIconUrl = 'assets/app/images/colored-marker-event.png';
-  private _eventIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
+  private _eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
+  private _eventGreenIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
+  private _eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
+  private _eventOrangeIconRetinaUrl = 'assets/app/images/colored-marker-event-medium-2x.png';
+  private _eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
+  private _eventRedIconRetinaUrl = 'assets/app/images/colored-marker-event-far-2x.png';
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
   private _userIconRetinaUrl = 'assets/app/images/colored-marker-home.png';
   private _iconShadowUrl = 'assets/app/images/marker-shadow.png';
+  private _kmPerLatDegree = 111  // ℹ️ 1° === 111km environ à nos lattitudes
 
   private _boundBox: [number, number][] = []
 
@@ -63,8 +68,8 @@ export class AllEventsMapComponent implements AfterViewInit {
 
   private _drawMarkers(){
     let layerGroup: L.Marker[] = []
-
-    // Add Markers for User and Event GPS positions
+    
+    // Add Marker for user
     const userIcon = L.icon({
       iconRetinaUrl: this._userIconRetinaUrl,
       iconUrl: this._userIconUrl,
@@ -81,19 +86,42 @@ export class AllEventsMapComponent implements AfterViewInit {
     )
     layerGroup.push(userMarker)
     this._boundBox.push([this.userGpsPos.lat, this.userGpsPos.lon])
-    
-    
-    const eventIcon = L.icon({
-      iconRetinaUrl: this._eventIconRetinaUrl,
-      iconUrl: this._eventIconUrl,
-      shadowUrl: this._iconShadowUrl,
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      tooltipAnchor: [16, -28],
-      shadowSize: [41, 41]
-    });
+      
+      
+    // Add Marker for each event
     this.events.forEach(event => {
+      // Distance n'est pas en KM
+      let distance = Math.sqrt(
+        Math.pow(this.userGpsPos.lon - event.gps.lon, 2)
+        + Math.pow(this.userGpsPos.lat - event.gps.lat, 2)
+      )*this._kmPerLatDegree
+      console.log(`${event.name} : ${distance}`)
+
+      let eventIconRetinaUrl: string = ''
+      let eventIconUrl: string = ''
+      if (distance > 50) {  // au delà de 50km
+        eventIconRetinaUrl = this._eventRedIconRetinaUrl
+        eventIconUrl = this._eventRedIconUrl
+      }
+      else if (distance > 30) { // au delà de 30km
+        eventIconRetinaUrl = this._eventOrangeIconRetinaUrl
+        eventIconUrl = this._eventOrangeIconUrl
+      }
+      else {
+        eventIconRetinaUrl = this._eventGreenIconRetinaUrl
+        eventIconUrl = this._eventGreenIconUrl
+      }
+
+      const eventIcon = L.icon({
+        iconRetinaUrl: eventIconRetinaUrl,
+        iconUrl: eventIconUrl,
+        shadowUrl: this._iconShadowUrl,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        shadowSize: [41, 41]
+      });
       let eventMarker = L.marker(
         [event.gps.lat, event.gps.lon],
         {icon: eventIcon}

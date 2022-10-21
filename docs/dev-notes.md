@@ -11,7 +11,10 @@ json-server start command:
 
 
 # DEV ROADMAP
-o I18n angular : https://angular.io/guide/i18n-overview#i18n-pipes
+o subscribe()
+	o mettre des beaux next:, error: , ...
+	o refaire promesses
+
 o Warnings: essayer avec:
 	<div *ngIf="coopId != 0 && event" class="grid p-fluid">
 

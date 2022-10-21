@@ -96,6 +96,56 @@
 				</p-table>   
 			</p-tabPanel>
 			<p-tabPanel header="Carte des Événements" leftIcon="pi pi-map" >
+				<div class="grid">
+					<div class="col-3">
+						<table>
+							<tbody>
+								<tr>
+									<td class="mr-5">
+										<img src="../../../assets/app/images/colored-marker-home.png" height="30px">
+									</td>
+									<td>Chez vous</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-3">
+						<table>
+							<tbody>
+								<tr>
+									<td class="mr-5">
+										<img src="../../../assets/app/images/colored-marker-event.png" height="30px">
+									</td>
+									<td>Evènement proche</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-3">
+						<table>
+							<tbody>
+								<tr>
+									<td class="mr-5">
+										<img src="../../../assets/app/images/colored-marker-event-medium.png" height="30px">
+									</td>
+									<td>Evènement à plus de 30km</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-3">
+						<table>
+							<tbody>
+								<tr>
+									<td class="mr-5">
+										<img src="../../../assets/app/images/colored-marker-event-far.png" height="30px">
+									</td>
+									<td>Evènement à plus de 50km</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 				<ng-template pTemplate="content">
 					<div *ngIf="!loading">
 						<app-all-events-map
