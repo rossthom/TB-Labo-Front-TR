@@ -1,9 +1,9 @@
 # Labo Front-End (Angular)
 Réalisation pour la formation "Développeur Full Stack JS"<br>
-Technobel (Ciney - BE).
-12 Oct. 2022 - 26 Oct. 2022.
+Technobel (Ciney - BE)<br>
+12 Oct. 2022 - 26 Oct. 2022
 
-*Auteur:*: Thomas Rossi
+**Auteur:** Thomas Rossi
 
 *Description du projet:*
 - docs/PROJET/Labo FrontEnd - Enoncé.pdf
