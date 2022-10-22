@@ -1,18 +1,18 @@
-# Labo Front-End (Angular)
-Réalisation pour la formation "Développeur Full Stack JS"
-Technobel (Ciney - BE)
+# ℹ️ Labo Front-End (Angular)
+Réalisation pour la formation "Développeur Full Stack JS"<br>
+Technobel (Ciney - BE)<br>
 12 Oct. 2022 - 26 Oct. 2022
 
-*Auteur:*: Thomas Rossi
+🧔 **Auteur:** Thomas Rossi
 
-*Description du projet:*
+📄 **Description du projet:**
 - docs/PROJET/Labo FrontEnd - Enoncé.pdf
 
-*Présentation:*
+🗨️ **Présentation:**
 - docs/PROJET/Labo FrontEnd - Présentation .pdf
 
 
-# How to run it
+# 👨‍💻 How to run it
 - Git clone du projet
 - Compilation: 
     `npm i --legacy-peer-deps`
