@@ -1,24 +1,24 @@
-# TB-Labo-Front-TR
-Front-End Labo - Technobel (Ciney - BE)
+# Labo Front-End (Angular)
+Réalisation pour la formation "Développeur Full Stack JS"
+Technobel (Ciney - BE)
 12 Oct. 2022 - 26 Oct. 2022
 
+*Auteur:*: Thomas Rossi
 
-# About
-## 🧔 Author
-Thomas Rossi
+*Description du projet:*
+- docs/PROJET/Labo FrontEnd - Enoncé.pdf
 
-## 📄 Project Description
-see: docs/PROJET/Labo FrontEnd - Enoncé.pdf
-
-## 🗨️ Presentation
-see: docs/PROJET/Labo FrontEnd - Présentation .pdf
+*Présentation:*
+- docs/PROJET/Labo FrontEnd - Présentation .pdf
 
 
 # How to run it
-- Git clone the project
-- Build:
+- Git clone du projet
+- Compilation: 
     `npm i --legacy-peer-deps`
-- Start json-server:
+- Démarrage serveur JSON: 
     `json-server --watch .\json-server\data.json --port 3000`
-- Start Front-End
+- Démarrage Front-End: 
     `ng serve --port 4200`
+- Ouvrir son navigateur à l'adresse: 
+    `http://localhost:4200/`
