@@ -1,15 +1,17 @@
-import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { forkJoin, map, Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { UserDtoUpdParticipation, UserView } from 'src/app/shared/models/user.model';
+import { Co2Service } from 'src/app/shared/services/co2.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-event-detail',
@@ -22,12 +24,18 @@ export class EventDetailComponent implements OnInit {
   event!: EventView        // TODO: attribut event non initialisé !
   coop!: CooperativeView   // TODO: attribut coop non initialisé !
   user!: UserView          // TODO: attribut user non initialisé !
-
+  
   geoJsonFeatures!: any    // TODO: attribut geoJsonFeatures non initialisé !
   distance: number = 0
   duration: number = 0
   meta_attribution: string = ""
   meta_engine_version: string = ""
+  
+  eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
+  eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
+  eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
+  redDistance = environment.redDistance
+  orangeDistance = environment.orangeDistance
   
   /**
    * ℹ️ Hypothèse de base pour le calcul: 
@@ -52,6 +60,7 @@ export class EventDetailComponent implements OnInit {
     private gestEventService: EventService,
     private coopService: CoopService,
     private osmService: OsmService,
+    private co2Service: Co2Service,
     private messageService: MessageService
   ) { }
 
@@ -88,7 +97,7 @@ export class EventDetailComponent implements OnInit {
               this.meta_attribution = res.metadata.attribution
               this.meta_engine_version = res.metadata.engine.version
               
-              this.totalEmissions = this._calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
+              this.totalEmissions = this.co2Service.calculateCO2Emissions(this.distance, this._defaultConso, this._defaultEmissions)
 
               // libérer la construction de la carte
               this.loading = false;
@@ -112,21 +121,13 @@ export class EventDetailComponent implements OnInit {
 			})
   }
 
-  /**
-   * Calculates how much CO2 is emitted for the travel, depending on the car's performences
-   * @param {number} distanceInM - distance to travel in meters.
-   * @param {number} conso - how much liters of gas the car uses for 100 km.
-   * @param {number} emission - the CO2 emissions of the car per liter consumed.
-   * @returns {number} grams of CO2 emitted for the distance travelled
-   */
-  private _calculateCO2Emissions(distanceInM: number, conso: number, emission: number){
-    let nbKm = distanceInM/1000
-    let emitPerKm = conso / 100 * emission
-
-    return emitPerKm * nbKm * 2     // = total emissions allez-retour
-
+  getMarkerIcon(): string{
+    return this.co2Service.getEventMarkerIcon(this.distance).regular
   }
 
+  getMarkSign(): string {
+    return this.co2Service.getMarkSign(this.distance)
+  }
 
   checkUserParticipation(): boolean{
     return this.user?.events_participation.includes(this.event?.id)

@@ -48,11 +48,9 @@
 									<p-columnFilter type="text" field="address.city" display="menu" placeholder="Recherche par ville"></p-columnFilter>
 								</div>
 							</th>
-							<th>
-								Participation ?
-							</th>
-							<th>
-							</th>
+							<th>Distance</th>
+							<th>Participation ?</th>
+							<th></th>
 						</tr>
 					</ng-template>
 					<ng-template pTemplate="body" let-event>
@@ -69,6 +67,7 @@
 							<td style="min-width: 10rem;">
 								{{event.address.city }}
 							</td>
+							<td style="text-align: center">{{ checkDistance(event) }}</td>
 							<td style="text-align: center">
 								<span *ngIf="checkUserParticipation(event)">✔️</span>
 							</td>
@@ -128,7 +127,7 @@
 									<td class="mr-5">
 										<img src="../../../assets/app/images/colored-marker-event-medium.png" height="30px">
 									</td>
-									<td>Evènement à plus de 30km</td>
+									<td>Evènement à plus de {{ orangeDistance | km }}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -140,7 +139,7 @@
 									<td class="mr-5">
 										<img src="../../../assets/app/images/colored-marker-event-far.png" height="30px">
 									</td>
-									<td>Evènement à plus de 50km</td>
+									<td>Evènement à plus de {{ redDistance | km }}</td>
 								</tr>
 							</tbody>
 						</table>

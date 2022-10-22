@@ -2,6 +2,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
+import { Co2Service } from 'src/app/shared/services/co2.service';
 
 @Component({
   selector: 'app-all-events-map',
@@ -16,16 +17,9 @@ export class AllEventsMapComponent implements AfterViewInit {
   private map: any;
   private _defaultTileSet = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   private _defaultAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  private _eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
-  private _eventGreenIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
-  private _eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
-  private _eventOrangeIconRetinaUrl = 'assets/app/images/colored-marker-event-medium-2x.png';
-  private _eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
-  private _eventRedIconRetinaUrl = 'assets/app/images/colored-marker-event-far-2x.png';
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
   private _userIconRetinaUrl = 'assets/app/images/colored-marker-home.png';
   private _iconShadowUrl = 'assets/app/images/marker-shadow.png';
-  private _kmPerLatDegree = 111  // ℹ️ 1° === 111km environ à nos lattitudes
 
   private _boundBox: [number, number][] = []
 
@@ -37,7 +31,9 @@ export class AllEventsMapComponent implements AfterViewInit {
   userGpsPos!: GpsPosition   // TODO: attribut userGpsPos non initialisé !
   
 
-  constructor() { }
+  constructor(
+    private co2Service: Co2Service
+  ) { }
 
   ngAfterViewInit(): void {
     this._initMap()
@@ -90,29 +86,11 @@ export class AllEventsMapComponent implements AfterViewInit {
       
     // Add Marker for each event
     this.events.forEach(event => {
-      let distance = Math.sqrt(
-          Math.pow(this.userGpsPos.lon - event.gps.lon, 2)
-          + Math.pow(this.userGpsPos.lat - event.gps.lat, 2)
-        ) * this._kmPerLatDegree
-
-      let eventIconRetinaUrl: string = ''
-      let eventIconUrl: string = ''
-      if (distance > 50) {  // beyond 50km
-        eventIconRetinaUrl = this._eventRedIconRetinaUrl
-        eventIconUrl = this._eventRedIconUrl
-      }
-      else if (distance > 30) { // beyond 30km
-        eventIconRetinaUrl = this._eventOrangeIconRetinaUrl
-        eventIconUrl = this._eventOrangeIconUrl
-      }
-      else { // closer than 30km
-        eventIconRetinaUrl = this._eventGreenIconRetinaUrl
-        eventIconUrl = this._eventGreenIconUrl
-      }
+      let distance = this.co2Service.calculateRoughDistanceInMeters(this.userGpsPos, event.gps)
 
       const eventIcon = L.icon({
-        iconRetinaUrl: eventIconRetinaUrl,
-        iconUrl: eventIconUrl,
+        iconRetinaUrl: this.co2Service.getEventMarkerIcon(distance).retina,
+        iconUrl: this.co2Service.getEventMarkerIcon(distance).regular,
         shadowUrl: this._iconShadowUrl,
         iconSize: [25, 41],
         iconAnchor: [12, 41],
