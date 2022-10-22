@@ -1,6 +1,7 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,12 +17,17 @@ export class EventMapComponent implements AfterViewInit  {
   private map: any;
   private _defaultTileSet = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   private _defaultAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  private _eventIconUrl = 'assets/app/images/colored-marker-event.png';
-  private _eventIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
+  private _eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
+  private _eventGreenIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
+  private _eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
+  private _eventOrangeIconRetinaUrl = 'assets/app/images/colored-marker-event-medium-2x.png';
+  private _eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
+  private _eventRedIconRetinaUrl = 'assets/app/images/colored-marker-event-far-2x.png';
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
   private _userIconRetinaUrl = 'assets/app/images/colored-marker-home.png';
   private _iconShadowUrl = 'assets/app/images/marker-shadow.png';
-
+  private _redDistance = environment.redDistance;
+  private _orangeDistance = environment.orangeDistance;
   
   @Input()
   eventGpsPos!: GpsPosition   // TODO: attribut eventGpsPos non initialisé !
@@ -67,22 +73,9 @@ export class EventMapComponent implements AfterViewInit  {
   }
 
   private _drawMarkers(){
+    let distance = this.geoJsonFeatures[0].properties.summary.distance
+
     // Add Markers for User and Event GPS positions
-    const eventIcon = L.icon({
-      iconRetinaUrl: this._eventIconRetinaUrl,
-      iconUrl: this._eventIconUrl,
-      shadowUrl: this._iconShadowUrl,
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      tooltipAnchor: [16, -28],
-      shadowSize: [41, 41]
-    });
-    const eventMarker = L.marker(
-      [this.eventGpsPos.lat, this.eventGpsPos.lon],
-      {icon: eventIcon}
-    )
-    
     const userIcon = L.icon({
       iconRetinaUrl: this._userIconRetinaUrl,
       iconUrl: this._userIconUrl,
@@ -98,6 +91,21 @@ export class EventMapComponent implements AfterViewInit  {
       {icon: userIcon}
     )
 
+    const eventIcon = L.icon({
+      iconRetinaUrl: (distance > this._redDistance) ? this._eventRedIconRetinaUrl : (distance > this._orangeDistance) ? this._eventOrangeIconRetinaUrl : this._eventGreenIconRetinaUrl,
+      iconUrl: (distance > this._redDistance) ? this._eventRedIconUrl : (distance > this._orangeDistance) ? this._eventOrangeIconUrl : this._eventGreenIconUrl,
+      shadowUrl: this._iconShadowUrl,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      tooltipAnchor: [16, -28],
+      shadowSize: [41, 41]
+    });
+    const eventMarker = L.marker(
+      [this.eventGpsPos.lat, this.eventGpsPos.lon],
+      {icon: eventIcon}
+    )
+    
     this.map.addLayer(L.layerGroup([userMarker, eventMarker]))
   }
 

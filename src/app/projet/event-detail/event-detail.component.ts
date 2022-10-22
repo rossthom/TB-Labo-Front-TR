@@ -1,7 +1,7 @@
-import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { forkJoin, map, Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import { CooperativeView } from 'src/app/gest-coop/shared/models/coop.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { CoopService } from 'src/app/gest-coop/shared/services/coop.service';
@@ -10,6 +10,7 @@ import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { UserDtoUpdParticipation, UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-event-detail',
@@ -22,12 +23,18 @@ export class EventDetailComponent implements OnInit {
   event!: EventView        // TODO: attribut event non initialisé !
   coop!: CooperativeView   // TODO: attribut coop non initialisé !
   user!: UserView          // TODO: attribut user non initialisé !
-
+  
   geoJsonFeatures!: any    // TODO: attribut geoJsonFeatures non initialisé !
   distance: number = 0
   duration: number = 0
   meta_attribution: string = ""
   meta_engine_version: string = ""
+  
+  eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
+  eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
+  eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
+  redDistance = environment.redDistance
+  orangeDistance = environment.orangeDistance
   
   /**
    * ℹ️ Hypothèse de base pour le calcul: 

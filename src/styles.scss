@@ -35,6 +35,17 @@ table.my-table th {
     background: #f8f9fa;
 }
 
+table.no-style {
+    border-collapse: collapse;
+}
+table.no-style td {
+    vertical-align: top;
+    padding: 0;
+    border: none !important;
+}
+
+
+
 /* Forms input alignment (when several inputs are on the same line) */
 div.my-grid {
     margin-left: auto;

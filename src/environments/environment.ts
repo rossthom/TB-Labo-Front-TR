@@ -13,6 +13,10 @@ export const environment = {
   // Storage Keys
   coopIdKey: "coopId",
   userIdKey: "userId",
+
+  // Distances
+  redDistance: 40000,
+  orangeDistance: 20000,
 };
 
 /*

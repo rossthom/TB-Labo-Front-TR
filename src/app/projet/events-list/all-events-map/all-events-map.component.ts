@@ -2,6 +2,7 @@ import { Component, Input, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-all-events-map',
@@ -25,7 +26,7 @@ export class AllEventsMapComponent implements AfterViewInit {
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
   private _userIconRetinaUrl = 'assets/app/images/colored-marker-home.png';
   private _iconShadowUrl = 'assets/app/images/marker-shadow.png';
-  private _kmPerLatDegree = 111  // ℹ️ 1° === 111km environ à nos lattitudes
+  private _kmPerLatDegree = 111 * Math.cos(50)  // ℹ️ 1° === 111 * cos(lat) km
 
   private _boundBox: [number, number][] = []
 
@@ -93,19 +94,19 @@ export class AllEventsMapComponent implements AfterViewInit {
       let distance = Math.sqrt(
           Math.pow(this.userGpsPos.lon - event.gps.lon, 2)
           + Math.pow(this.userGpsPos.lat - event.gps.lat, 2)
-        ) * this._kmPerLatDegree
+        ) * this._kmPerLatDegree * 1000 // in meters
 
       let eventIconRetinaUrl: string = ''
       let eventIconUrl: string = ''
-      if (distance > 50) {  // beyond 50km
+      if (distance > environment.redDistance) { 
         eventIconRetinaUrl = this._eventRedIconRetinaUrl
         eventIconUrl = this._eventRedIconUrl
       }
-      else if (distance > 30) { // beyond 30km
+      else if (distance > environment.orangeDistance) {
         eventIconRetinaUrl = this._eventOrangeIconRetinaUrl
         eventIconUrl = this._eventOrangeIconUrl
       }
-      else { // closer than 30km
+      else { 
         eventIconRetinaUrl = this._eventGreenIconRetinaUrl
         eventIconUrl = this._eventGreenIconUrl
       }

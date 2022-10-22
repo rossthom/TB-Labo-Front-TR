@@ -7,6 +7,7 @@ import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-coop-view',
@@ -17,6 +18,9 @@ export class EventsListComponent implements OnInit {
   selectedEvent!: EventView        // TODO: attribut selectedEvent non initialisé !
   selectedCoop!: CooperativeView   // TODO: attribut selectedCoop non initialisé !
   connectedUser!: UserView;        // TODO: attribut connectedUser non initialisé !
+
+  redDistance = environment.redDistance;
+  orangeDistance = environment.orangeDistance;
 
   // Sakai Table properties
   loading: boolean = true;
