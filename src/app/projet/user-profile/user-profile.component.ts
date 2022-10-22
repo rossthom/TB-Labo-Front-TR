@@ -4,6 +4,7 @@ import { mergeMap, tap } from 'rxjs';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
+import { Co2Service } from 'src/app/shared/services/co2.service';
 import { UserAuthService } from 'src/app/shared/services/user-auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -22,6 +23,7 @@ export class UserProfileComponent implements OnInit {
     private userAuthService: UserAuthService,
     private userService: UserService,
     private gestEventService: EventService,
+    private co2Service: Co2Service
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class UserProfileComponent implements OnInit {
         mergeMap(() => this.gestEventService.getEventsFromIds(this.connectedUser.events_participation))
       ).subscribe(events => this.eventsParticipation = events)
     }
+  }
+
+  getMarkSign(event: EventView): string {
+    return this.co2Service.getMarkSign(this.co2Service.calculateRoughDistanceInMeters(this.connectedUser.gps, event.gps))
   }
 
   logout() {

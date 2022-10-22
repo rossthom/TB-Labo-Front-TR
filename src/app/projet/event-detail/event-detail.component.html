@@ -22,7 +22,7 @@
                             <tbody>
                                 <tr>
                                     <td style="border-right-width: 0">
-                                        <img [src]="(distance > redDistance) ? eventRedIconUrl : (distance > orangeDistance) ? eventOrangeIconUrl : eventGreenIconUrl">
+                                        <img [src]="getMarkerIcon()">
                                     </td>
                                     <td class="mr-3"  style="border-left-width: 0">
                                         <p>
@@ -50,11 +50,7 @@
                                                 <td class="pr-1">💨</td>
                                                 <td>
                                                     {{ totalEmissions | number: '1.0-0' }}g de CO<sub>2</sub> rejeté
-                                                    <span *ngIf="distance > redDistance">&nbsp;🔴</span>
-                                                    <span *ngIf="distance > orangeDistance">&nbsp;🟠</span>
-                                                    <span *ngIf="distance <= orangeDistance">&nbsp;🟢</span>
-                                                    <br />
-                                                    <em>(allez-retour)</em>
+                                                    <span> {{ getMarkSign() }} </span><em>(allez-retour)</em>
                                                 </td>
                                             </tr>
                                         </table>

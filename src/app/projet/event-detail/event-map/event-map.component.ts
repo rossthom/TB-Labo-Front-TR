@@ -1,7 +1,7 @@
 import { Component, Input, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
-import { environment } from 'src/environments/environment';
+import { Co2Service } from 'src/app/shared/services/co2.service';
 
 
 @Component({
@@ -17,17 +17,9 @@ export class EventMapComponent implements AfterViewInit  {
   private map: any;
   private _defaultTileSet = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   private _defaultAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  private _eventGreenIconUrl = 'assets/app/images/colored-marker-event.png';
-  private _eventGreenIconRetinaUrl = 'assets/app/images/colored-marker-event-2x.png';
-  private _eventOrangeIconUrl = 'assets/app/images/colored-marker-event-medium.png';
-  private _eventOrangeIconRetinaUrl = 'assets/app/images/colored-marker-event-medium-2x.png';
-  private _eventRedIconUrl = 'assets/app/images/colored-marker-event-far.png';
-  private _eventRedIconRetinaUrl = 'assets/app/images/colored-marker-event-far-2x.png';
   private _userIconUrl = 'assets/app/images/colored-marker-home.png';
   private _userIconRetinaUrl = 'assets/app/images/colored-marker-home.png';
   private _iconShadowUrl = 'assets/app/images/marker-shadow.png';
-  private _redDistance = environment.redDistance;
-  private _orangeDistance = environment.orangeDistance;
   
   @Input()
   eventGpsPos!: GpsPosition   // TODO: attribut eventGpsPos non initialisé !
@@ -39,7 +31,9 @@ export class EventMapComponent implements AfterViewInit  {
   geoJsonFeatures!: any    // TODO: attribut geoJsonFeatures non initialisé !
 
 
-  constructor() { }
+  constructor(
+    private co2Service: Co2Service
+  ) { }
 
   ngAfterViewInit(): void {
     this._initMap()
@@ -92,8 +86,8 @@ export class EventMapComponent implements AfterViewInit  {
     )
 
     const eventIcon = L.icon({
-      iconRetinaUrl: (distance > this._redDistance) ? this._eventRedIconRetinaUrl : (distance > this._orangeDistance) ? this._eventOrangeIconRetinaUrl : this._eventGreenIconRetinaUrl,
-      iconUrl: (distance > this._redDistance) ? this._eventRedIconUrl : (distance > this._orangeDistance) ? this._eventOrangeIconUrl : this._eventGreenIconUrl,
+      iconRetinaUrl: this.co2Service.getEventMarkerIcon(distance).retina,
+      iconUrl: this.co2Service.getEventMarkerIcon(distance).regular,
       shadowUrl: this._iconShadowUrl,
       iconSize: [25, 41],
       iconAnchor: [12, 41],
