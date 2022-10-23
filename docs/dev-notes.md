@@ -11,8 +11,18 @@ json-server start command:
 
 
 # DEV ROADMAP
+o Code:
+	o Coop Profile: retirer ID coop_type
+	o Liste évènements: tri par date
+		o EventList
+		o User Profile
+
 o Update Présentation
-	o mettre le PDF dans docs/PROJET/
+	o Mension que la logique métier est implémentée dans des services (dans section 'features angular')
+	o "Ergonomie" au lieu d'"Accessibilité"
+
+o README
+	o Retirer mension présentation 
 
 
 # PROJECT INIT: 
