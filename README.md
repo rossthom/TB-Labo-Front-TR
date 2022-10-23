@@ -8,9 +8,6 @@ Technobel (Ciney - BE)<br>
 📄 **Description du projet:**
 - docs/PROJET/Labo FrontEnd - Enoncé.pdf
 
-🗨️ **Présentation:**
-- docs/PROJET/Labo FrontEnd - Présentation .pdf
-
 
 # 👨‍💻 How to run it
 - Git clone du projet

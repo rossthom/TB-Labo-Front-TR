@@ -12,14 +12,20 @@ json-server start command:
 
 # DEV ROADMAP
 o Code:
-	o Coop Profile: retirer ID coop_type
 	o Liste évènements: tri par date
 		o EventList
 		o User Profile
 
-o Update Présentation
-	o Mension que la logique métier est implémentée dans des services (dans section 'features angular')
-	o "Ergonomie" au lieu d'"Accessibilité"
+	Code:
+	.pipe(
+		map((events) => {
+			events.sort((e1, e2) => {
+				return e2.datetime_start.getTime() - e1.datetime_start.getTime()
+			});
+			return events;
+    	})
+	)
+
 
 o README
 	o Retirer mension présentation 
