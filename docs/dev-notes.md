@@ -16,6 +16,17 @@ o Code:
 		o EventList
 		o User Profile
 
+	Code:
+	.pipe(
+		map((events) => {
+			events.sort((e1, e2) => {
+				return e2.datetime_start.getTime() - e1.datetime_start.getTime()
+			});
+			return events;
+    	})
+	)
+
+
 o README
 	o Retirer mension présentation 
 
