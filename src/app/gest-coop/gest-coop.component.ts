@@ -6,6 +6,7 @@ import { CoopAuthService } from './shared/services/coop-auth.service';
 import { CoopService } from './shared/services/coop.service';
 import { EventService } from './shared/services/event.service';
 import { FormMode } from './event-cru/event-cru.component';
+import { map } from 'rxjs';
 
 
 @Component({
@@ -43,7 +44,22 @@ export class GestCoopComponent implements OnInit {
 
   private _getEventsFromCoop(coopId: number){
     this.eventService.getAllEventsFromCoop(coopId)
-      .subscribe(events => this.coopEvents = events)
+    .pipe(
+      map((events) => {
+        events.sort(
+          (e1, e2) => {
+            let firstDate = e1.datetime_start;
+            let secondDate = e2.datetime_start;
+          
+            if (firstDate < secondDate) return -1;
+            if (firstDate > secondDate) return 1;
+            return 0;
+          }
+        );
+        return events;
+        })
+    )
+    .subscribe(events => this.coopEvents = events)
   }
 
 
