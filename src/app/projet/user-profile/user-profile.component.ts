@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { mergeMap, tap } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs';
 import { EventView } from 'src/app/gest-coop/shared/models/event.model';
 import { EventService } from 'src/app/gest-coop/shared/services/event.service';
 import { UserView } from 'src/app/shared/models/user.model';
@@ -35,7 +35,23 @@ export class UserProfileComponent implements OnInit {
           this.connectedUser = user
         }),
         mergeMap(() => this.gestEventService.getEventsFromIds(this.connectedUser.events_participation))
-      ).subscribe(events => this.eventsParticipation = events)
+      )
+      .pipe(
+        map((events) => {
+          events.sort(
+            (e1, e2) => {
+              let firstDate = e1.datetime_start;
+              let secondDate = e2.datetime_start;
+            
+              if (firstDate < secondDate) return -1;
+              if (firstDate > secondDate) return 1;
+              return 0;
+            }
+          );
+          return events;
+          })
+      )
+      .subscribe(events => this.eventsParticipation = events)
     }
   }
 
