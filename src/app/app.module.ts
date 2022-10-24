@@ -25,6 +25,7 @@ import { MessageService } from 'primeng/api';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { AppRoutingModule } from './app-routing.module';
 import { GestCoopModule } from './gest-coop/gest-coop.module';
+import { Co2Service } from './shared/services/co2.service';
 import { UserAuthService } from './shared/services/user-auth.service';
 import { UserService } from './shared/services/user.service';
 import { AppComponent } from './app.component';
@@ -84,6 +85,7 @@ import { AllEventsMapComponent } from './projet/events-list/all-events-map/all-e
         //{ provide: LocationStrategy, useClass: HashLocationStrategy },
         {provide: LOCALE_ID, useValue: 'fr'},
         MessageService,
+        Co2Service,
         UserAuthService,
         UserService,
     ],
