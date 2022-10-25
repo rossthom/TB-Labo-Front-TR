@@ -11,6 +11,13 @@ json-server start command:
 
 
 # DEV ROADMAP
+o TDD:
+	- Co2Service: test every method
+	o UserLoginCompo: test creation
+
+o unsubscribe: 
+	o in compos, store subscriptions in a variable (mySub)
+	o ngOnDestroy: mySub.unsubscribe()
 
 
 # PROJECT INIT: 
