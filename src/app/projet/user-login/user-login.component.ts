@@ -35,7 +35,7 @@ export class UserLoginComponent implements OnInit {
     this.userAuthService.checkLogin(this.formControls['email'].value, this.formControls['password'].value)
       .subscribe((users: UserLogin[]) => {
         if (users.length < 1){
-          this.messageService.add({severity:'error', summary:'Echec Connection', detail:"L'email ou le mot de passe fournis sont incorrects"});
+          this.messageService.add({severity:'error', summary:'Echec Connexion', detail:"L'email ou le mot de passe fournis sont incorrects"});
         }
         else {
           let remember = this.selectedValues.find(element => element === 'remember') === "remember"
