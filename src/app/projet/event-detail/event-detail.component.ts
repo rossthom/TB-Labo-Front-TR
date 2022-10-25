@@ -103,13 +103,11 @@ export class EventDetailComponent implements OnInit {
               this.loading = false;
             },
             error: (err) => {
-              this.messageService.add(
-                {
-                  severity:'error', 
-                  summary:'Erreur provenant du service OpenRoute', 
-                  detail: err.message
-                }
-              )
+              this.messageService.add({
+                severity:'error', 
+                summary:'Erreur provenant du service OpenRoute', 
+                detail: err.message
+              })
               console.error(err.message);
             },
             complete: () => {
@@ -141,13 +139,11 @@ export class EventDetailComponent implements OnInit {
 
     modifiedUser.events_participation.push(this.event?.id)
     this.userService.updateUserParticipation(modifiedUser)
-      .subscribe(_ => this.messageService.add(
-        {
-          severity:'success', 
-          summary:'Participation Confirmée', 
-          detail:"Vous êtes inscrit à " + this.event?.name
-        }
-      ))
+      .subscribe(_ => this.messageService.add({
+        severity:'success', 
+        summary:'Participation Confirmée', 
+        detail:"Vous êtes inscrit à " + this.event?.name
+      }))
   }
 
   cancelParticipation(){
@@ -162,12 +158,10 @@ export class EventDetailComponent implements OnInit {
     }
 
     this.userService.updateUserParticipation(modifiedUser)
-      .subscribe(_ => this.messageService.add(
-        {
-          severity:'success', 
-          summary:'Annulation de la participation réussie', 
-          detail:"Vous vous êtes désinscrit de " + this.event?.name
-        }
-      ))
+      .subscribe(_ => this.messageService.add({
+        severity:'success', 
+        summary:'Annulation de la participation réussie', 
+        detail:"Vous vous êtes désinscrit de " + this.event?.name
+      }))
   }
 }

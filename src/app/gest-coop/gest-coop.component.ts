@@ -7,6 +7,7 @@ import { CoopService } from './shared/services/coop.service';
 import { EventService } from './shared/services/event.service';
 import { FormMode } from './event-cru/event-cru.component';
 import { map } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class GestCoopComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private coopService: CoopService,
     private eventService: EventService,
-    private coopAuthService: CoopAuthService
+    private coopAuthService: CoopAuthService,
+    private messageService: MessageService
   ) {
   }
 
@@ -86,6 +88,11 @@ export class GestCoopComponent implements OnInit {
   updateCooperative(coopId: number) {
     this.getOneCoop(coopId)
     this.updatePopupVisible = false
+    this.messageService.add({
+      severity:'success', 
+      summary:'Mise à jour réussie', 
+      detail:"Les modifications concernant votre coopératives sont bien enregistrées dans notre base de données."
+    })
   }
   
   cancelCoopUpdate(coopId: number) {
@@ -120,6 +127,11 @@ export class GestCoopComponent implements OnInit {
     this._getEventsFromCoop(this.coopId)
     this.cruEventPopupVisible = false
     this.cruEventPopupMode = FormMode.Read
+    this.messageService.add({
+      severity:'success', 
+      summary:'Mise à jour réussie', 
+      detail:"Les modifications concernant votre événement sont bien enregistrées dans notre base de données."
+    })
   }
 
   eventUpdateNewCanceled(eventId: number){
@@ -133,5 +145,10 @@ export class GestCoopComponent implements OnInit {
     this._getEventsFromCoop(this.coopId)
     this.cruEventPopupVisible = false
     this.cruEventPopupMode = FormMode.Read
+    this.messageService.add({
+      severity:'success', 
+      summary:'Création réussie', 
+      detail:"Votre nouvel événement est bien enregistré dans notre base de données."
+    })
   }
 }
