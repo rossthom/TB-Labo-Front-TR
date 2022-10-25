@@ -149,4 +149,25 @@ export class EventDetailComponent implements OnInit {
         }
       ))
   }
+
+  cancelParticipation(){
+    let modifiedUser: UserDtoUpdParticipation = {
+      id: this.user?.id,
+      events_participation: this.user.events_participation
+    }
+
+    let eventIndex = modifiedUser.events_participation.indexOf(this.event?.id);
+    if (eventIndex !== -1) {
+      modifiedUser.events_participation.splice(eventIndex, 1);
+    }
+
+    this.userService.updateUserParticipation(modifiedUser)
+      .subscribe(_ => this.messageService.add(
+        {
+          severity:'success', 
+          summary:'Annulation de la participation réussie', 
+          detail:"Vous vous êtes désinscrit de " + this.event?.name
+        }
+      ))
+  }
 }

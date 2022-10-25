@@ -65,6 +65,14 @@
                         class="info mb-2"
                         >💚&nbsp;<em>Vous participez déjà à cet événement</em></span>
                         <button pButton pRipple 
+                            *ngIf="checkUserParticipation()"
+                            label="Ne plus participer"
+                            icon="pi pi-user-minus"
+                            type="button" 
+                            class="p-button-outlined p-button-sm p-button-warning mr-2 mb-2" 
+                            (click)="cancelParticipation()"
+                        ></button>
+                        <button pButton pRipple 
                             *ngIf="!checkUserParticipation()"
                             label="Participer"
                             icon="pi pi-ticket"
