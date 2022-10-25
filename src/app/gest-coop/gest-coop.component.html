@@ -64,22 +64,23 @@
                 <!-- ℹ️ Coop's Events list -->
                 <div *ngIf="coopEvents" class="col-6">
                     <h3>Événements</h3>
-                    <table class="my-transposed">
+                    <table class="my-transposed" style="border-collapse: collapse;">
                         <tbody>
                             <tr *ngFor="let event of coopEvents">
-                                <th style="text-align: right">
+                                <th style="text-align: right; vertical-align: middle;" class="pl-1 pr-1">
                                     <em>{{ event.event_type.label }}</em>
-                                <td>
+                                </th>
+                                <td style="vertical-align: middle;">
                                     {{ event.name }}
                                 </td>
-                                <td>
+                                <td class="pl-1 pr-1" style="vertical-align: middle;">
                                     {{ event.datetime_start | date: 'dd MMM yy' }}
                                 </td>
-                                <td>
+                                <td class="pl-1 pr-1" style="vertical-align: middle;">
                                     <span *ngIf="event.location != ''"> ({{ event.location }})</span>
                                     <span *ngIf="event.location == ''"> ({{ event.address.city }})</span>
                                 </td>
-                                <td>
+                                <td class="pl-1 pr-1" style="vertical-align: middle;">
                                     <button pButton pRipple 
                                         label=""
                                         icon="pi pi-info-circle"
@@ -88,7 +89,7 @@
                                         (click)="showEventPopup(event.id, 1)"
                                     ></button>
                                 </td>
-                                <td>
+                                <td class="pl-1 pr-1" style="vertical-align: middle;">
                                     <button pButton pRipple 
                                         label=""
                                         icon="pi pi-pencil"
