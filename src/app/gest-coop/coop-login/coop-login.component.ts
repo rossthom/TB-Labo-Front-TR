@@ -37,7 +37,7 @@ export class CoopLoginComponent implements OnInit {
         if (coops.length < 1){
           this.messageService.add({
             severity:'error', 
-            summary:'Echec Connection', 
+            summary:'Echec Connexion', 
             detail:"L'email ou le mot de passe fournis sont incorrects"
           });
         }

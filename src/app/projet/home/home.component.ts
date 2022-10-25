@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     if (!this.userIsConnected){
       this.messageService.add({
         severity:'error', 
-        summary:'Connection requise', 
+        summary:'Connexion requise', 
         detail:'Vous devez être connecté en tant que Participant pour voir la liste des événements'
       });
     }
