@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Address, GpsPosition } from 'src/app/openstreetmap/shared/models/types.model';
 import { OsmService } from 'src/app/openstreetmap/shared/services/osm.service';
 import { UserDtoNew } from 'src/app/shared/models/user.model';
@@ -19,7 +20,8 @@ export class UserNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private osmService: OsmService,
-    private userAuthService: UserAuthService
+    private userAuthService: UserAuthService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +48,12 @@ export class UserNewComponent implements OnInit {
       events_participation: [],
       gps: <GpsPosition>{lon: 0, lat: 0}
     }
+
+    this.messageService.add({
+      severity:'success', 
+      summary:'Création compte Participant réussie', 
+      detail:"Votre profil Participant est bien enregistré dans notre base de données."
+    })
 
     this.userAuthService.createUser(userNew)
       .subscribe(_ => this.router.navigate(['/login/user']))

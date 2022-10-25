@@ -8,6 +8,7 @@ import { Category } from '../shared/models/types.model';
 import { CoopService } from '../shared/services/coop.service';
 import { CoopAuthService } from '../shared/services/coop-auth.service';
 import { generateNewCoopForm } from './forms/coop-new.form';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-coop-new',
@@ -24,7 +25,8 @@ export class CoopNewComponent implements OnInit {
     private fb: FormBuilder,
     private coopService: CoopService,
     private coopAuthService: CoopAuthService,
-    private osmService: OsmService
+    private osmService: OsmService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +57,14 @@ export class CoopNewComponent implements OnInit {
     }
 
     this.coopService.insertCoop(coopNew)
-      .subscribe(_ => this.router.navigate(['/login/coop']))
+      .subscribe(() => {
+        this.messageService.add({
+          severity:'success', 
+          summary:'Création compte Coopérative réussie', 
+          detail:"Votre coopérative est bien enregistrée dans notre base de données."
+        })
+        this.router.navigate(['/login/coop'])
+      })
   }
   
   cancelCoopCreation(){
